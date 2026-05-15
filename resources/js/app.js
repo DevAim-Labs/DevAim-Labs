@@ -3,9 +3,13 @@ import ContactForm from './components/ContactForm.vue'
 import ClientWork from './components/ClientWork.vue'
 import PersonalProjects from './components/PersonalProjects.vue'
 import NavTransitionCube from './components/NavTransitionCube.vue'
+import ServicesGrid from './components/ServicesGrid.vue'
 import { initHeroAnimation, initScrollReveal } from './animations.js'
 
 document.addEventListener('DOMContentLoaded', () => {
+    const servicesEl = document.getElementById('services-mount')
+    if (servicesEl) createApp(ServicesGrid).mount(servicesEl)
+
     const clientWorkEl = document.getElementById('client-work-mount')
     if (clientWorkEl) createApp(ClientWork).mount(clientWorkEl)
 

@@ -77,7 +77,7 @@
                     <h3 class="font-semibold text-[--color-text] mb-2 text-sm">Schedule a call</h3>
                     <p class="text-sm text-[--color-text-muted] leading-relaxed mb-5">Prefer to talk? Book a free 30-minute discovery call directly on my calendar.</p>
                     <a
-                        href="https://cal.com/devaim"
+                        href="https://www.cal.eu/devaim/"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md border border-[--color-border] text-sm text-[--color-accent] hover:border-[--color-accent]/40 transition-all duration-200"

@@ -7,7 +7,7 @@
     @include('partials.nav')
     @include('partials.hero')
     @include('partials.about')
-    @include('partials.services')
+    <div id="services-mount"></div>
 
     <div id="client-work-mount"></div>
 

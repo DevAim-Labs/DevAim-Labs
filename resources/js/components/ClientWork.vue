@@ -1,7 +1,7 @@
 <template>
     <section id="client-work" class="py-20">
         <div class="max-w-6xl mx-auto px-6">
-            <p class="section-eyebrow text-center mb-12">Clients I've worked with</p>
+            <p class="section-eyebrow text-center mb-12">Websites I've built</p>
 
             <div class="relative flex items-center gap-4">
                 <!-- Prev arrow -->
