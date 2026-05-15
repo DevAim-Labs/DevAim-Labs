@@ -4,8 +4,119 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source '../**/*.vue';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-surface:     #0a0a0a;
+    --color-surface-1:   #111111;
+    --color-surface-2:   #1a1a1a;
+    --color-border:      #242424;
+    --color-border-dim:  #1c1c1c;
+    --color-text:        #f0f0f0;
+    --color-text-muted:  #888888;
+    --color-text-dim:    #555555;
+    --color-accent:      #22d3ee;
+    --color-accent-dim:  #0891b2;
+    --color-accent-glow: rgba(34, 211, 238, 0.15);
 }
+
+@layer utilities {
+    .text-gradient-accent {
+        background: linear-gradient(135deg, #22d3ee 0%, #818cf8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .glow-accent {
+        box-shadow: 0 0 0 1px var(--color-border), 0 0 20px var(--color-accent-glow);
+    }
+
+    .reveal-hidden {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    .reveal-visible {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .bg-grid {
+        background-size: 40px 40px;
+        background-image:
+            linear-gradient(to right, rgba(36, 36, 36, 0.4) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(36, 36, 36, 0.4) 1px, transparent 1px);
+    }
+}
+
+/* ── Hero orb ── */
+@keyframes orb-pulse {
+    0%, 100% { opacity: 0.45; transform: translateY(-50%) scale(1); }
+    50%       { opacity: 0.85; transform: translateY(-50%) scale(1.22); }
+}
+
+.hero-orb {
+    width: 540px;
+    height: 540px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(129, 140, 248, 0.08) 50%, transparent 70%);
+    filter: blur(72px);
+    animation: orb-pulse 7s ease-in-out infinite;
+}
+
+/* ── Floating shape keyframes ── */
+@keyframes shape-float-a {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-20px); }
+}
+
+@keyframes shape-float-b {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-14px); }
+}
+
+@keyframes shape-float-c {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-26px); }
+}
+
+@keyframes cube-rotate-a {
+    from { transform: rotateX(22deg) rotateY(0deg) rotateZ(8deg); }
+    to   { transform: rotateX(22deg) rotateY(360deg) rotateZ(8deg); }
+}
+
+@keyframes cube-rotate-b {
+    from { transform: rotateX(-15deg) rotateY(0deg) rotateZ(-12deg); }
+    to   { transform: rotateX(-15deg) rotateY(-360deg) rotateZ(-12deg); }
+}
+
+/* ── CSS 3D cube ── */
+.hero-cube {
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.hero-cube .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(34, 211, 238, 0.18);
+    background: rgba(34, 211, 238, 0.03);
+}
+
+.hero-cube.violet .face {
+    border-color: rgba(129, 140, 248, 0.22);
+    background: rgba(129, 140, 248, 0.05);
+}
+
+.face-front  { transform: translateZ(var(--cube-half)); }
+.face-back   { transform: rotateY(180deg)  translateZ(var(--cube-half)); }
+.face-right  { transform: rotateY(90deg)   translateZ(var(--cube-half)); }
+.face-left   { transform: rotateY(-90deg)  translateZ(var(--cube-half)); }
+.face-top    { transform: rotateX(90deg)   translateZ(var(--cube-half)); }
+.face-bottom { transform: rotateX(-90deg)  translateZ(var(--cube-half)); }

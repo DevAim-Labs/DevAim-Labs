@@ -1,16 +1,17 @@
 @extends('layouts.site')
 
-@section('content')
+@section('title', 'DevAim Labs — Full-Stack Web Development')
+@section('meta_description', 'Custom websites, web apps, dashboards, third-party integrations and payment systems built by a solo full-stack developer.')
 
-<div class="max-w-full">
-    <div class="py-2">header</div>
-    <!-- hero section -->
-    <div class="max-w-full bg-gray-500 py-70">
-        <div class="flex justify-center mx-auto max-w-4xl bg-blue-500">
-            <div class="text-2xl text-red-500 font-bold italic">
-                hi
-            </div>
-        </div>
-    </div>
-</div>
+@section('content')
+    @include('partials.nav')
+    @include('partials.hero')
+    @include('partials.about')
+    @include('partials.services')
+
+    <div id="portfolio-mount" class="border-t border-[--color-border-dim]"></div>
+
+    <div id="contact-mount" class="border-t border-[--color-border-dim]"></div>
+
+    @include('partials.footer')
 @endsection
