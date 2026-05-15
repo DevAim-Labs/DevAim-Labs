@@ -25,14 +25,15 @@
                             rel="noopener noreferrer"
                             class="shrink-0 flex items-center justify-center py-10 px-6 transition-opacity duration-300"
                             :style="{ width: itemWidth, opacity: '0.45' }"
-                            @mouseover="$event.currentTarget.style.opacity = '1'"
-                            @mouseleave="$event.currentTarget.style.opacity = '0.45'"
+                            @mouseover="$event.currentTarget.style.opacity = '1'; $event.currentTarget.querySelector('img').style.filter = 'none'"
+                            @mouseleave="$event.currentTarget.style.opacity = '0.45'; $event.currentTarget.querySelector('img').style.filter = 'brightness(0) invert(1)'"
                         >
                             <img
                                 v-if="client.logo"
                                 :src="client.logo"
                                 :alt="client.name"
                                 class="max-h-20 max-w-full object-contain"
+                                style="filter: brightness(0) invert(1); transition: filter 0.3s ease;"
                             >
                             <span v-else class="font-semibold text-xl tracking-tight" style="color:#f0f0f0">
                                 {{ client.name }}
