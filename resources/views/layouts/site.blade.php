@@ -12,6 +12,8 @@
 <body class="bg-[--color-surface] text-[--color-text] font-sans antialiased overflow-x-hidden">
     @yield('content')
 
+    <div id="nav-transition-mount"></div>
+
     <script>
         const nav = document.getElementById('site-nav');
         const sentinel = document.getElementById('nav-sentinel');
