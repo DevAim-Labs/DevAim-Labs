@@ -1,8 +1,8 @@
 <template>
     <section id="contact" class="max-w-6xl mx-auto px-6 py-24">
         <div class="mb-16">
-            <p class="text-xs text-[--color-accent] uppercase tracking-widest mb-3">Get in touch</p>
-            <h2 class="text-4xl font-bold tracking-tight text-[--color-text]" style="letter-spacing: -0.02em;">Let's build something.</h2>
+            <p class="section-eyebrow mb-3">Get in touch</p>
+            <h2 class="text-4xl section-title">Let's build something.</h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-12 items-start">
@@ -73,7 +73,7 @@
 
             <!-- Booking column -->
             <div class="space-y-5">
-                <div class="rounded-xl border border-[--color-border] bg-[--color-surface-1] p-6">
+                <div class="card-glow rounded-xl border border-[--color-border] bg-[--color-surface-1] p-6">
                     <h3 class="font-semibold text-[--color-text] mb-2 text-sm">Schedule a call</h3>
                     <p class="text-sm text-[--color-text-muted] leading-relaxed mb-5">Prefer to talk? Book a free 30-minute discovery call directly on my calendar.</p>
                     <a

@@ -59,7 +59,7 @@
 
         <!-- Sub-copy -->
         <p data-gsap="hero-sub" class="reveal-hidden text-lg max-w-xl mb-10 leading-relaxed" style="color: #8a8a9a;">
-            Custom web applications, dashboards, integrations, and payment systems — built end-to-end by one developer who ships.
+            Custom web applications built around your goals. Development with aim, not just output.
         </p>
 
         <!-- CTAs -->

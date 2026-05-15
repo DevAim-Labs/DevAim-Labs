@@ -9,9 +9,11 @@
     @include('partials.about')
     @include('partials.services')
 
-    <div id="portfolio-mount" class="border-t border-[--color-border-dim]"></div>
+    <div id="client-work-mount"></div>
 
-    <div id="contact-mount" class="border-t border-[--color-border-dim]"></div>
+    <div id="personal-projects-mount"></div>
+
+    <div id="contact-mount"></div>
 
     @include('partials.footer')
 @endsection

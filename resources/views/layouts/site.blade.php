@@ -9,7 +9,7 @@
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[--color-surface] text-[--color-text] font-sans antialiased overflow-x-hidden">
+<body style="background:#0a0a0a;color:#f0f0f0" class="font-sans antialiased overflow-x-hidden">
     @yield('content')
 
     <div id="nav-transition-mount"></div>

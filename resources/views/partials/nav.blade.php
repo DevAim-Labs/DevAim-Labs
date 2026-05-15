@@ -6,7 +6,8 @@
 
         <ul class="hidden md:flex items-center gap-8 text-sm" style="color: #888888;">
             <li><a href="#services" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Services</a></li>
-            <li><a href="#portfolio" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Work</a></li>
+            <li><a href="#client-work" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Work</a></li>
+            <li><a href="#personal-projects" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Projects</a></li>
             <li><a href="#contact" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Contact</a></li>
         </ul>
 
@@ -26,7 +27,8 @@
     <div id="mobile-menu" class="hidden md:hidden border-t backdrop-blur-md" style="border-color: #1c1c1c; background: rgba(10,10,10,0.95);">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm" style="color: #888888;">
             <a href="#services" class="transition-colors hover:text-white">Services</a>
-            <a href="#portfolio" class="transition-colors hover:text-white">Work</a>
+            <a href="#client-work" class="transition-colors hover:text-white">Work</a>
+            <a href="#personal-projects" class="transition-colors hover:text-white">Projects</a>
             <a href="#contact" class="transition-colors hover:text-white">Contact</a>
         </div>
     </div>
