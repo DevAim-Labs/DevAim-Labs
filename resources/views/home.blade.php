@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title', 'DevAim Labs — Full-Stack Web Development')
+@section('title', 'DevAim Labs')
 @section('meta_description', 'Custom websites, web apps, dashboards, third-party integrations and payment systems built by a solo full-stack developer.')
 
 @section('content')

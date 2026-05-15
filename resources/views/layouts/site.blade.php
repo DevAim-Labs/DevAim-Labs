@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'DevAim Labs — Full-Stack Web Development')</title>
+    <title>@yield('title', 'DevAim Labs')</title>
     <meta name="description" content="@yield('meta_description', 'Custom websites, web apps, dashboards, third-party integrations and payment systems built by a solo full-stack developer.')">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
     @vite(['resources/css/app.css', 'resources/js/app.js'])

@@ -1,6 +1,6 @@
 # DevAim-Labs
 
-Front page of the devaim labs website.
+Front page of the website.
 
 Laravel application (PHP 8.3+, Inertia + Vue). See the [Laravel documentation](https://laravel.com/docs) for framework topics.
 
