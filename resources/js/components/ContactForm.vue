@@ -9,7 +9,7 @@
             <!-- Form column -->
             <div>
                 <!-- Success state -->
-                <div v-if="success" class="rounded-xl border border-[--color-accent]/30 p-6" style="background: rgba(34,211,238,0.08);">
+                <div v-if="success" class="rounded-xl border border-[--color-accent]/30 p-6" style="background: rgba(11,133,152,0.08);">
                     <p class="font-semibold text-[--color-text] mb-1">Message received.</p>
                     <p class="text-sm text-[--color-text-muted]">I'll get back to you within 24 hours.</p>
                 </div>
@@ -82,7 +82,7 @@
                         rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md border border-[--color-border] text-sm text-[--color-accent] hover:border-[--color-accent]/40 transition-all duration-200"
                         style="--tw-bg-opacity: 0;"
-                        @mouseenter="$event.currentTarget.style.background = 'rgba(34,211,238,0.08)'"
+                        @mouseenter="$event.currentTarget.style.background = 'rgba(11,133,152,0.08)'"
                         @mouseleave="$event.currentTarget.style.background = 'transparent'"
                     >
                         Book a call →

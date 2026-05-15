@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navEl) createApp(NavTransitionCube, {
         text:           'DEVAIM',
         primaryColor:   'rgba(8,12,20,0.97)',
-        secondaryColor: '#22d3ee',
+        secondaryColor: '#0B8598',
     }).mount(navEl)
 
     initHeroAnimation()

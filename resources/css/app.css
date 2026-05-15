@@ -10,22 +10,22 @@
     --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --color-surface:     #0a0a0a;
-    --color-surface-1:   #111111;
-    --color-surface-2:   #1a1a1a;
-    --color-border:      #242424;
-    --color-border-dim:  #1c1c1c;
+    --color-surface:     #141414;
+    --color-surface-1:   #043239;
+    --color-surface-2:   #07535F;
+    --color-border:      #0d3a44;
+    --color-border-dim:  #082830;
     --color-text:        #f0f0f0;
     --color-text-muted:  #888888;
     --color-text-dim:    #555555;
-    --color-accent:      #22d3ee;
-    --color-accent-dim:  #0891b2;
-    --color-accent-glow: rgba(34, 211, 238, 0.15);
+    --color-accent:      #0B8598;
+    --color-accent-dim:  #07535F;
+    --color-accent-glow: rgba(11, 133, 152, 0.15);
 }
 
 @layer utilities {
     .text-gradient-accent {
-        background: linear-gradient(135deg, #22d3ee 0%, #818cf8 100%);
+        background: linear-gradient(135deg, #0B8598 0%, #818cf8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -37,17 +37,17 @@
 
     .card-glow {
         box-shadow:
-            0 0 0 1px rgba(34, 211, 238, 0.07),
-            0 0 24px rgba(34, 211, 238, 0.05),
-            inset 0 1px 0 rgba(34, 211, 238, 0.04);
+            0 0 0 1px rgba(11, 133, 152, 0.18),
+            0 0 28px rgba(11, 133, 152, 0.10),
+            inset 0 1px 0 rgba(11, 133, 152, 0.10);
         transition: box-shadow 0.3s ease;
     }
     .card-glow:hover {
         box-shadow:
-            0 0 0 1px rgba(34, 211, 238, 0.22),
-            0 0 36px rgba(34, 211, 238, 0.12),
-            0 0 64px rgba(34, 211, 238, 0.05),
-            inset 0 1px 0 rgba(34, 211, 238, 0.08);
+            0 0 0 1px rgba(11, 133, 152, 0.45),
+            0 0 40px rgba(11, 133, 152, 0.25),
+            0 0 80px rgba(11, 133, 152, 0.10),
+            inset 0 1px 0 rgba(11, 133, 152, 0.18);
     }
 
     .reveal-hidden {
@@ -72,7 +72,7 @@
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        color: #22d3ee;
+        color: #0B8598;
     }
 
     .section-title {
@@ -92,7 +92,7 @@
     width: 540px;
     height: 540px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(129, 140, 248, 0.08) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(11, 133, 152, 0.22) 0%, rgba(129, 140, 248, 0.08) 50%, transparent 70%);
     filter: blur(72px);
     animation: orb-pulse 7s ease-in-out infinite;
 }
@@ -133,8 +133,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 1px solid rgba(34, 211, 238, 0.18);
-    background: rgba(34, 211, 238, 0.03);
+    border: 1px solid rgba(11, 133, 152, 0.18);
+    background: rgba(11, 133, 152, 0.03);
 }
 
 .hero-cube.violet .face {

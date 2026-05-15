@@ -13,14 +13,14 @@
             >
                 <div class="aspect-video bg-[--color-surface-2] flex items-center justify-center relative overflow-hidden">
                     <div class="absolute inset-0 bg-grid opacity-40"></div>
-                    <div class="relative w-14 h-14 rounded-xl border border-[--color-border] flex items-center justify-center font-bold text-lg" style="color:#22d3ee">
+                    <div class="relative w-14 h-14 rounded-xl border border-[--color-border] flex items-center justify-center font-bold text-lg" style="color:#0B8598">
                         {{ project.initials }}
                     </div>
                 </div>
 
                 <div class="p-5">
                     <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-semibold text-sm" style="color:#22d3ee">{{ project.title }}</h3>
+                        <h3 class="font-semibold text-sm" style="color:#0B8598">{{ project.title }}</h3>
                         <span class="text-xs" style="color:#555555">{{ project.year }}</span>
                     </div>
                     <p class="text-xs leading-relaxed mb-4" style="color:#888888">{{ project.description }}</p>
@@ -40,7 +40,7 @@
                             rel="noopener noreferrer"
                             class="text-xs shrink-0 ml-4 transition-colors duration-200"
                             style="color:#888888"
-                            @mouseover="$event.target.style.color='#22d3ee'"
+                            @mouseover="$event.target.style.color='#0B8598'"
                             @mouseleave="$event.target.style.color='#888888'"
                         >View project →</a>
                     </div>

@@ -1,7 +1,7 @@
-<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" style="--scrolled-bg: rgba(10,10,10,0.9);">
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" style="--scrolled-bg: rgba(20,20,20,0.9);">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="/" class="font-bold tracking-tight text-lg" style="color: #f0f0f0;">
-            DevAim<span style="color: #22d3ee;">.</span>
+            DevAim<span style="color: #0B8598;">.</span>
         </a>
 
         <ul class="hidden md:flex items-center gap-8 text-sm" style="color: #888888;">
@@ -11,7 +11,7 @@
             <li><a href="#contact" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Contact</a></li>
         </ul>
 
-        <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm transition-all duration-200" style="border-color: #242424; color: #22d3ee;">
+        <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm transition-all duration-200" style="border-color: #0d3a44; color: #0B8598;">
             Let's talk
         </a>
 
@@ -24,7 +24,7 @@
     </nav>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t backdrop-blur-md" style="border-color: #1c1c1c; background: rgba(10,10,10,0.95);">
+    <div id="mobile-menu" class="hidden md:hidden border-t backdrop-blur-md" style="border-color: #082830; background: rgba(20,20,20,0.95);">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm" style="color: #888888;">
             <a href="#services" class="transition-colors hover:text-white">Services</a>
             <a href="#client-work" class="transition-colors hover:text-white">Work</a>

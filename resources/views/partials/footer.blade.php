@@ -1,4 +1,4 @@
-<footer class="border-t border-[--color-border-dim] mt-8">
+<footer class="mt-8" style="background:#000000">
     <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-start gap-8">
         <div>
             <p class="font-bold text-[--color-text] text-lg">DevAim<span class="text-[--color-accent]">.</span></p>
@@ -10,7 +10,7 @@
             <a href="#contact" class="hover:text-[--color-text] transition-colors duration-200">Contact</a>
         </nav>
     </div>
-    <div class="border-t border-[--color-border-dim]">
+    <div style="border-top: 1px solid #043239;">
         <p class="max-w-6xl mx-auto px-6 py-4 text-xs text-[--color-text-dim]">
             &copy; {{ date('Y') }} DevAim Labs. All rights reserved.
         </p>

@@ -16,7 +16,7 @@ import { gsap } from 'gsap'
 const props = defineProps({
   text:           { type: String, default: 'DEVAIM' },
   primaryColor:   { type: String, default: 'rgba(8,12,20,0.97)' },
-  secondaryColor: { type: String, default: '#22d3ee' },
+  secondaryColor: { type: String, default: '#0B8598' },
 })
 
 const overlay = ref(null)

@@ -1,4 +1,4 @@
-<section class="relative min-h-screen flex items-center pt-16 overflow-hidden" style="background: radial-gradient(ellipse at 80% 50%, #0a1828 0%, #0a0a0a 60%);">
+<section class="relative min-h-screen flex items-center pt-16 overflow-hidden" style="background: radial-gradient(ellipse at 80% 50%, #043239 0%, #141414 60%);">
 
     <!-- Pulsing orb (right side, behind shapes) -->
     <div class="hero-orb absolute pointer-events-none" style="right: -60px; top: 50%; transform: translateY(-50%);"></div>
@@ -46,8 +46,8 @@
 
     <div class="relative max-w-6xl mx-auto px-6 py-24">
         <!-- Eyebrow -->
-        <div data-gsap="hero-eyebrow" class="reveal-hidden inline-flex items-center gap-3 text-xs uppercase tracking-widest mb-8" style="color: #22d3ee;">
-            <span class="w-4 h-px" style="background:#22d3ee;"></span>
+        <div data-gsap="hero-eyebrow" class="reveal-hidden inline-flex items-center gap-3 text-xs uppercase tracking-widest mb-8" style="color: #0B8598;">
+            <span class="w-4 h-px" style="background:#0B8598;"></span>
             Full-stack developer
         </div>
 
@@ -64,15 +64,15 @@
 
         <!-- CTAs -->
         <div data-gsap="hero-cta" class="reveal-hidden flex flex-wrap items-center gap-4">
-            <a href="#contact" class="px-6 py-3 rounded-md font-semibold text-sm transition-colors duration-200" style="background:#22d3ee; color:#0a0a0a;">
+            <a href="#contact" class="px-6 py-3 rounded-md font-semibold text-sm transition-colors duration-200" style="background:#0B8598; color:#141414;">
                 Start a project
             </a>
-            <a href="#portfolio" class="px-6 py-3 rounded-md border text-sm transition-all duration-200" style="border-color:#242424; color:#888888;">
+            <a href="#portfolio" class="px-6 py-3 rounded-md border text-sm transition-all duration-200" style="border-color:#0d3a44; color:#888888;">
                 See my work →
             </a>
         </div>
     </div>
 
     <!-- Bottom fade -->
-    <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none" style="background: linear-gradient(to bottom, transparent, #0a0a0a);"></div>
+    <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none" style="background: linear-gradient(to bottom, transparent, #141414);"></div>
 </section>
