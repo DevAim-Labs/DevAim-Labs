@@ -53,7 +53,7 @@
 
         <!-- Headline -->
         <h1 data-gsap="hero-headline" class="reveal-hidden text-5xl md:text-7xl font-bold leading-[1.05] mb-6 max-w-4xl" style="letter-spacing: -0.03em; color: #f0f0f0;">
-            Building software<br>
+            Building soFtware<br>
             <span class="text-gradient-accent">that moves fast.</span>
         </h1>
 
