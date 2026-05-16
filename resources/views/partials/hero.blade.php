@@ -2,7 +2,7 @@
 
     <!-- Blurred hero background image -->
     <div class="absolute inset-0 pointer-events-none" style="z-index:0;">
-        <img src="{{ Vite::asset('resources/assets/heroimage.jpg') }}"
+        <img src="/heroimage.jpg"
              alt=""
              class="absolute inset-0 w-full h-full object-cover"
              style="filter: blur(5px); transform: scale(1.05); opacity: 0.18;">
