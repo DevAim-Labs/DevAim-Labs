@@ -1,0 +1,9 @@
+node_modules
+.git
+tests
+storage/logs
+storage/framework/sessions
+storage/framework/cache
+.phpunit.result.cache
+.env
+.env.production
