@@ -7,7 +7,7 @@
                 One developer.<br>Clear Aim.
             </h2>
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-4">
-                Hi, I'm Aymane. As a full-stack developer I guide projects through the entire lifecycle from concept to deployment.
+                Hi, I'm [name]. As a full-stack developer I guide projects through the entire lifecycle from concept to deployment.
             </p>
             <p class="text-[var(--color-text-muted)] leading-relaxed">
             You collaborate directly with the person creating the product, eliminating miscommunications. I focus on building software that functions beautifully and feels intuitive.
