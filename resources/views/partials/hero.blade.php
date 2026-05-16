@@ -4,8 +4,8 @@
     <div class="absolute inset-0 pointer-events-none" style="z-index:0;">
         <img src="/heroimage.jpg"
              alt=""
-             class="absolute inset-0 w-full h-full object-cover"
-             style="filter: blur(5px); transform: scale(1.05); opacity: 0.18;">
+             class="hero-bg-img absolute inset-0 w-full h-full object-cover"
+             style="filter: blur(5px); transform: scale(1.05);">
     </div>
 
     <!-- Pulsing orb (right side, behind shapes) -->

@@ -232,6 +232,10 @@ html[data-theme="light"] #mobile-menu {
     background: rgba(208, 205, 215, 0.97);
 }
 
+/* ── Hero background image opacity (theme-aware) ── */
+.hero-bg-img { opacity: 0.18; }
+html[data-theme="light"] .hero-bg-img { opacity: 0.25; }
+
 /* ── Client logo filter (theme-aware) ── */
 .client-logo-img {
     filter: brightness(0) invert(1);
