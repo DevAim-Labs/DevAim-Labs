@@ -20,7 +20,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+# /vendor — committed to repo; Vercel has no PHP in build environment
 _ide_helper.php
 Homestead.json
 Homestead.yaml
