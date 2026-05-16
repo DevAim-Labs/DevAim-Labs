@@ -1,6 +1,7 @@
 <template>
-    <section id="client-work" class="py-20">
-        <div class="max-w-6xl mx-auto px-6">
+    <section id="client-work">
+        <div class="section-card">
+        <div class="max-w-6xl mx-auto px-6 py-20">
             <p class="section-eyebrow text-center mb-12">Websites I've built</p>
 
             <div class="relative flex items-center gap-4">
@@ -9,7 +10,7 @@
                     v-if="showArrows"
                     @click="prev"
                     class="shrink-0 w-8 h-8 flex items-center justify-center rounded border text-lg transition-opacity duration-200"
-                    style="border-color:#242424;color:#555555"
+                    style="border-color: var(--color-border); color: var(--color-text-dim)"
                     :style="{ opacity: currentIndex === 0 ? '0.25' : '1', cursor: currentIndex === 0 ? 'default' : 'pointer' }"
                 >‹</button>
                 <div v-else class="w-8 shrink-0"></div>
@@ -25,17 +26,16 @@
                             rel="noopener noreferrer"
                             class="shrink-0 flex items-center justify-center py-10 px-6 transition-opacity duration-300"
                             :style="{ width: itemWidth, opacity: '0.45' }"
-                            @mouseover="$event.currentTarget.style.opacity = '1'; $event.currentTarget.querySelector('img').style.filter = 'none'"
-                            @mouseleave="$event.currentTarget.style.opacity = '0.45'; $event.currentTarget.querySelector('img').style.filter = 'brightness(0) invert(1)'"
+                            @mouseover="$event.currentTarget.style.opacity = '1'; $event.currentTarget.querySelector('img') && ($event.currentTarget.querySelector('img').style.filter = 'none')"
+                            @mouseleave="$event.currentTarget.style.opacity = '0.45'; $event.currentTarget.querySelector('img') && ($event.currentTarget.querySelector('img').style.filter = '')"
                         >
                             <img
                                 v-if="client.logo"
                                 :src="client.logo"
                                 :alt="client.name"
-                                class="max-h-20 max-w-full object-contain"
-                                style="filter: brightness(0) invert(1); transition: filter 0.3s ease;"
+                                class="client-logo-img max-h-20 max-w-full object-contain"
                             >
-                            <span v-else class="font-semibold text-xl tracking-tight" style="color:#f0f0f0">
+                            <span v-else class="font-semibold text-xl tracking-tight" style="color: var(--color-text)">
                                 {{ client.name }}
                             </span>
                         </a>
@@ -47,11 +47,12 @@
                     v-if="showArrows"
                     @click="next"
                     class="shrink-0 w-8 h-8 flex items-center justify-center rounded border text-lg transition-opacity duration-200"
-                    style="border-color:#242424;color:#555555"
+                    style="border-color: var(--color-border); color: var(--color-text-dim)"
                     :style="{ opacity: currentIndex >= clients.length - visibleCount ? '0.25' : '1', cursor: currentIndex >= clients.length - visibleCount ? 'default' : 'pointer' }"
                 >›</button>
                 <div v-else class="w-8 shrink-0"></div>
             </div>
+        </div>
         </div>
     </section>
 </template>

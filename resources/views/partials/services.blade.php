@@ -7,10 +7,10 @@
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach($services as $service)
-            <div class="card-glow group relative p-6 rounded-xl border border-[--color-border] bg-[--color-surface-1] hover:border-[--color-accent]/30 hover:bg-[--color-surface-2] transition-all duration-300">
-                <div class="mb-4 text-[--color-accent] text-2xl leading-none select-none">{{ $service['icon'] }}</div>
-                <h3 class="font-semibold text-[--color-text] mb-2 text-sm">{{ $service['title'] }}</h3>
-                <p class="text-sm text-[--color-text-muted] leading-relaxed">{{ $service['description'] }}</p>
+            <div class="card-glow group relative p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-1)] hover:border-[var(--color-accent)]/30 hover:bg-[var(--color-surface-2)] transition-all duration-300">
+                <div class="mb-4 text-[var(--color-accent)] text-2xl leading-none select-none">{{ $service['icon'] }}</div>
+                <h3 class="font-semibold text-[var(--color-text)] mb-2 text-sm">{{ $service['title'] }}</h3>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{{ $service['description'] }}</p>
             </div>
             @endforeach
         </div>

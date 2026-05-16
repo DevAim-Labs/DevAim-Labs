@@ -1,5 +1,6 @@
 <template>
     <section id="services" data-gsap="section-services" class="reveal-hidden">
+        <div class="section-card">
         <div class="max-w-6xl mx-auto px-6 py-24">
             <div class="mb-16">
                 <p class="section-eyebrow mb-3">What I build</p>
@@ -11,13 +12,13 @@
                 <div
                     v-for="service in services"
                     :key="service.id"
-                    class="card-glow group relative p-6 rounded-xl border border-[--color-border] bg-[--color-surface-1] hover:border-[--color-accent]/30 hover:bg-[--color-surface-2] transition-all duration-300 cursor-pointer select-none"
+                    class="card-glow group relative p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-accent)]/30 transition-all duration-300 cursor-pointer select-none flex flex-col"
                     @click="selectService(service)"
                 >
-                    <div class="mb-4 text-2xl leading-none" style="color:#0B8598">{{ service.icon }}</div>
-                    <h3 class="font-semibold text-sm mb-2" style="color:#f0f0f0">{{ service.title }}</h3>
-                    <p class="text-sm leading-relaxed" style="color:#888888">{{ service.description }}</p>
-                    <p class="mt-4 text-xs" style="color:#0B8598;opacity:0.6">Click to explore →</p>
+                    <div class="mb-4 text-2xl leading-none" style="color: var(--color-accent)">{{ service.icon }}</div>
+                    <h3 class="font-semibold text-sm mb-2" style="color: var(--color-text)">{{ service.title }}</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--color-text-muted)">{{ service.description }}</p>
+                    <p class="mt-auto pt-4 text-xs" style="color: var(--color-accent);opacity:0.6">Click to explore →</p>
                 </div>
             </div>
 
@@ -26,7 +27,7 @@
                 v-if="selected"
                 ref="expandedRef"
                 class="card-glow rounded-xl border overflow-hidden"
-                style="border-color:#0d3a44; background:#0c1a1d; opacity:0;"
+                style="border-color: var(--color-border); background: var(--color-surface-1); opacity:0;"
             >
                 <div class="flex flex-col md:flex-row" style="min-height:380px;">
 
@@ -35,30 +36,30 @@
                         <div>
                             <button
                                 class="mb-8 text-xs uppercase tracking-widest flex items-center gap-2 transition-colors duration-200"
-                                style="color:#555555;"
-                                @mouseover="$event.currentTarget.style.color='#0B8598'"
-                                @mouseleave="$event.currentTarget.style.color='#555555'"
+                                style="color: var(--color-text-dim);"
+                                @mouseover="$event.currentTarget.style.color='var(--color-accent)'"
+                                @mouseleave="$event.currentTarget.style.color='var(--color-text-dim)'"
                                 @click="closeExpanded"
                             >← Back</button>
 
-                            <div class="text-3xl mb-4" style="color:#0B8598">{{ selected.icon }}</div>
-                            <h3 class="font-bold text-xl mb-4 leading-snug" style="color:#f0f0f0">{{ selected.title }}</h3>
-                            <p class="text-sm leading-relaxed" style="color:#888888">{{ selected.detail }}</p>
+                            <div class="text-3xl mb-4" style="color: var(--color-accent)">{{ selected.icon }}</div>
+                            <h3 class="font-bold text-xl mb-4 leading-snug" style="color: var(--color-text)">{{ selected.title }}</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--color-text-muted)">{{ selected.detail }}</p>
                         </div>
 
                         <a
                             href="#contact"
                             class="mt-8 inline-flex px-5 py-2.5 rounded-md text-sm font-semibold transition-colors duration-200 self-start"
-                            style="background:#0B8598; color:#141414;"
+                            style="background: var(--color-accent); color: var(--color-surface);"
                             @click="closeExpanded"
                         >Start a project →</a>
                     </div>
 
                     <!-- Divider (desktop only) -->
-                    <div class="hidden md:block w-px shrink-0" style="background:#0d3a44;"></div>
+                    <div class="hidden md:block w-px shrink-0" style="background: var(--color-border);"></div>
 
                     <!-- Right 75% — image / placeholder -->
-                    <div class="md:w-3/4 relative overflow-hidden" style="background:#07535F; min-height:220px;">
+                    <div class="md:w-3/4 relative overflow-hidden" style="background: var(--color-surface-2); min-height:220px;">
                         <img
                             v-if="selected.image"
                             :src="selected.image"
@@ -68,14 +69,15 @@
                         <template v-else>
                             <div class="absolute inset-0 bg-grid opacity-20"></div>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-[10rem] leading-none select-none" style="color:#0B8598;opacity:0.12">{{ selected.icon }}</span>
+                                <span class="text-[10rem] leading-none select-none" style="color: var(--color-accent);opacity:0.12">{{ selected.icon }}</span>
                             </div>
-                            <div class="absolute bottom-5 left-6 text-xs uppercase tracking-widest" style="color:#0B8598;opacity:0.45">Preview coming soon</div>
+                            <div class="absolute bottom-5 left-6 text-xs uppercase tracking-widest" style="color: var(--color-accent);opacity:0.45">Preview coming soon</div>
                         </template>
                     </div>
 
                 </div>
             </div>
+        </div>
         </div>
     </section>
 </template>

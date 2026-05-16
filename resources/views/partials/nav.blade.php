@@ -1,31 +1,62 @@
-<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" style="--scrolled-bg: rgba(20,20,20,0.9);">
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/" class="font-bold tracking-tight text-lg" style="color: #f0f0f0;">
-            DevAim<span style="color: #0B8598;">.</span>
+        <a href="/" class="font-bold tracking-tight text-lg" style="color: var(--color-text);">
+            DevAim<span style="color: var(--color-accent);">.</span>
         </a>
 
-        <ul class="hidden md:flex items-center gap-8 text-sm" style="color: #888888;">
-            <li><a href="#services" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Services</a></li>
-            <li><a href="#client-work" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Work</a></li>
-            <li><a href="#personal-projects" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Projects</a></li>
-            <li><a href="#contact" class="transition-colors duration-200 hover:text-white" style="color: inherit;">Contact</a></li>
-        </ul>
+        <!-- Pill nav bar -->
+        <div class="hidden md:flex items-center rounded-full p-1" style="background: var(--color-surface-1);">
+            <a href="#services"          class="nav-pill" data-section="services">Services</a>
+            <a href="#client-work"       class="nav-pill" data-section="client-work">Work</a>
+            <a href="#personal-projects" class="nav-pill" data-section="personal-projects">Projects</a>
+            <a href="#contact"           class="nav-pill" data-section="contact">Contact</a>
+        </div>
 
-        <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm transition-all duration-200" style="border-color: #0d3a44; color: #0B8598;">
-            Let's talk
-        </a>
+        <div class="hidden md:flex items-center gap-3">
+            <!-- Theme toggle -->
+            <button onclick="toggleTheme()" aria-label="Toggle theme" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
+                <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                </svg>
+            </button>
 
-        <!-- Mobile menu button -->
-        <button id="mobile-menu-btn" class="md:hidden transition-colors" style="color: #888888;" aria-label="Toggle menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
+            <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm transition-all duration-200" style="border-color: var(--color-border); color: var(--color-accent);">
+                Let's talk
+            </a>
+        </div>
+
+        <!-- Mobile controls -->
+        <div class="md:hidden flex items-center gap-2">
+            <button onclick="toggleTheme()" aria-label="Toggle theme" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
+                <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                </svg>
+            </button>
+            <button id="mobile-menu-btn" class="transition-colors" style="color: var(--color-text-muted);" aria-label="Toggle menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
     </nav>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t backdrop-blur-md" style="border-color: #082830; background: rgba(20,20,20,0.95);">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm" style="color: #888888;">
+    <div id="mobile-menu" class="hidden md:hidden border-t backdrop-blur-md" style="border-color: var(--color-border-dim);">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm" style="color: var(--color-text-muted);">
             <a href="#services" class="transition-colors hover:text-white">Services</a>
             <a href="#client-work" class="transition-colors hover:text-white">Work</a>
             <a href="#personal-projects" class="transition-colors hover:text-white">Projects</a>

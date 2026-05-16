@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,9 +7,15 @@
     <title>@yield('title', 'DevAim Labs')</title>
     <meta name="description" content="@yield('meta_description', 'Custom websites, web apps, dashboards, third-party integrations and payment systems built by a solo full-stack developer.')">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
+    <script>
+        (function() {
+            var t = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body style="background:#141414;color:#f0f0f0" class="font-sans antialiased overflow-x-hidden">
+<body style="background:var(--color-surface);color:var(--color-text)" class="font-sans antialiased overflow-x-hidden">
     @yield('content')
 
     <div id="nav-transition-mount"></div>
@@ -19,12 +25,16 @@
         const sentinel = document.getElementById('nav-sentinel');
         if (nav && sentinel) {
             const io = new IntersectionObserver(([e]) => {
-                const scrolled = !e.isIntersecting;
-                nav.style.background = scrolled ? 'rgba(10,10,10,0.9)' : 'transparent';
-                nav.style.backdropFilter = scrolled ? 'blur(12px)' : '';
-                nav.style.borderBottom = scrolled ? '1px solid #1c1c1c' : '';
+                nav.classList.toggle('is-scrolled', !e.isIntersecting);
             }, { rootMargin: '-80px 0px 0px 0px' });
             io.observe(sentinel);
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
         }
     </script>
 </body>

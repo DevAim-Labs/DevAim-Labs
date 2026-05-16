@@ -22,10 +22,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const navEl = document.getElementById('nav-transition-mount')
     if (navEl) createApp(NavTransitionCube, {
         text:           'DEVAIM',
-        primaryColor:   'rgba(8,12,20,0.97)',
+        primaryColor:   'var(--color-surface)',
         secondaryColor: '#0B8598',
     }).mount(navEl)
 
     initHeroAnimation()
     initScrollReveal()
+
+    // Pill nav — highlight active section on scroll
+    const navPills = document.querySelectorAll('.nav-pill[data-section]')
+    if (navPills.length) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navPills.forEach(pill =>
+                        pill.classList.toggle('active', pill.dataset.section === entry.target.id)
+                    )
+                }
+            })
+        }, { rootMargin: '-20% 0px -60% 0px' })
+
+        ;['services', 'client-work', 'personal-projects', 'contact'].forEach(id => {
+            const el = document.getElementById(id)
+            if (el) sectionObserver.observe(el)
+        })
+    }
 })
