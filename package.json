@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
+        "postbuild": "node -e \"require('fs').copyFileSync('deploy/build.htaccess','public/build/.htaccess')\"",
         "dev": "vite",
         "watch": "vite",
         "optimize-images": "node scripts/optimize-images.mjs"

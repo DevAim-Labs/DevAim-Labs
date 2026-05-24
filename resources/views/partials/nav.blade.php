@@ -65,7 +65,7 @@
 
 <div id="nav-sentinel" class="absolute top-0 h-px w-full pointer-events-none"></div>
 
-<script>
+<script nonce="{{ $cspNonce ?? '' }}">
     document.getElementById('mobile-menu-btn').addEventListener('click', function() {
         document.getElementById('mobile-menu').classList.toggle('hidden');
     });

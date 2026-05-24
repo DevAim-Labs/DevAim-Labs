@@ -42,7 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }).mount(navEl)
     }
 
-    initHeroAnimation()
+    const runHero = () => initHeroAnimation()
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(runHero, { timeout: 800 })
+    } else {
+        setTimeout(runHero, 1)
+    }
 
     import('./scrollReveal.js').then(({ initScrollReveal }) => {
         const run = () => initScrollReveal()

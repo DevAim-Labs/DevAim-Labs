@@ -3,7 +3,7 @@
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY86R8VE0V"></script>
-    <script>
+    <script nonce="{{ $cspNonce ?? '' }}">
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -36,7 +36,7 @@
     <link rel="preload" as="image" href="/heroimage-768.webp" type="image/webp" media="(max-width: 768px)">
     <link rel="preload" as="image" href="/heroimage.webp" type="image/webp" media="(min-width: 769px)">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
-    <script>
+    <script nonce="{{ $cspNonce ?? '' }}">
         (function() {
             var t = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', t);
@@ -86,7 +86,7 @@
 
     <div id="nav-transition-mount"></div>
 
-    <script>
+    <script nonce="{{ $cspNonce ?? '' }}">
         const nav = document.getElementById('site-nav');
         const sentinel = document.getElementById('nav-sentinel');
         if (nav && sentinel) {

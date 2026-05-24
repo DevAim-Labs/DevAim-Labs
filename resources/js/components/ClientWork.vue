@@ -5,7 +5,6 @@
             <p class="section-eyebrow text-center mb-3">Eerdere klanten</p>
 
             <div class="relative flex items-center gap-4">
-                <!-- Prev arrow -->
                 <button
                     v-if="showArrows"
                     @click="prev"
@@ -15,9 +14,12 @@
                 >‹</button>
                 <div v-else class="w-8 shrink-0"></div>
 
-                <!-- Track -->
                 <div ref="track" class="flex-1 overflow-hidden">
-                    <div ref="inner" class="flex">
+                    <div
+                        ref="inner"
+                        class="flex transition-transform duration-500 ease-in-out"
+                        :style="{ transform: `translateX(-${currentIndex * slidePercent}%)` }"
+                    >
                         <a
                             v-for="client in clients"
                             :key="client.id"
@@ -46,7 +48,6 @@
                     </div>
                 </div>
 
-                <!-- Next arrow -->
                 <button
                     v-if="showArrows"
                     @click="next"
@@ -63,7 +64,6 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { gsap } from 'gsap'
 import lokantaLogo from '../../assets/lokanta.webp'
 import slowdownLogo from '../../assets/slowdown.webp'
 
@@ -88,30 +88,18 @@ const clients = [
     },
 ]
 
-const track = ref(null)
-const inner = ref(null)
 const currentIndex = ref(0)
 
 const cols = computed(() => Math.min(clients.length, visibleCount))
 const itemWidth = computed(() => `${100 / cols.value}%`)
+const slidePercent = computed(() => 100 / cols.value)
 const showArrows = computed(() => clients.length > visibleCount)
 
-function goTo(index) {
-    if (!track.value) return
-    const itemW = track.value.offsetWidth / cols.value
-    gsap.to(inner.value, {
-        x: -index * itemW,
-        duration: 0.8,
-        ease: 'power2.inOut',
-    })
-    currentIndex.value = index
-}
-
 function prev() {
-    if (currentIndex.value > 0) goTo(currentIndex.value - 1)
+    if (currentIndex.value > 0) currentIndex.value -= 1
 }
 
 function next() {
-    if (currentIndex.value < clients.length - visibleCount) goTo(currentIndex.value + 1)
+    if (currentIndex.value < clients.length - visibleCount) currentIndex.value += 1
 }
 </script>
