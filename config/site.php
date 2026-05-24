@@ -57,8 +57,8 @@ return [
         ],
         'faq' => [
             'id' => 'faq',
-            'slug' => 'veelgestelde-vragen',
-            'path' => '/veelgestelde-vragen',
+            'slug' => 'faq',
+            'path' => '/faq',
             'title' => 'Veelgestelde vragen — Maatwerksoftware',
             'description' => 'Antwoorden over maatwerksoftware, doorlooptijd, eigendom van code, betalingen en onderhoud.',
             'keywords' => 'maatwerksoftware vragen, software ontwikkeling faq',
@@ -91,7 +91,7 @@ return [
         '/process' => '/werkwijze',
         '/work' => '/klantwerk',
         '/projects' => '/projecten',
-        '/faq' => '/veelgestelde-vragen',
+        '/faq' => '/faq',
     ],
 
     'organization' => [

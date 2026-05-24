@@ -8,7 +8,7 @@
             <a href="/diensten" class="hover:text-[var(--color-text)] transition-colors duration-200">Diensten</a>
             <a href="/werkwijze" class="hover:text-[var(--color-text)] transition-colors duration-200">Werkwijze</a>
             <a href="/klantwerk" class="hover:text-[var(--color-text)] transition-colors duration-200">Klantwerk</a>
-            <a href="/veelgestelde-vragen" class="hover:text-[var(--color-text)] transition-colors duration-200">FAQ</a>
+            <a href="/faq" class="hover:text-[var(--color-text)] transition-colors duration-200">FAQ</a>
             <a href="/contact" class="hover:text-[var(--color-text)] transition-colors duration-200">Contact</a>
         </nav>
         <div class="gap-x-6 text-sm">
