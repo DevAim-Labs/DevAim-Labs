@@ -289,19 +289,19 @@ html[data-theme="light"] .nav-pill.active {
     max-width: 36rem;
 }
 
-.hero-cta {
-    width: 100%;
-}
-
 @media (max-width: 639px) {
     .hero-orb {
         display: none;
     }
 
-    .hero-cta .btn-primary,
-    .hero-cta .btn-outline {
-        width: 100%;
-        justify-content: center;
+    .hero-section {
+        min-height: auto;
+        align-items: flex-start;
+        padding-bottom: 2rem;
+    }
+
+    .hero-content {
+        padding-block: 1.25rem 1.75rem;
     }
 }
 

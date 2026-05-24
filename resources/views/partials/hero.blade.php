@@ -70,22 +70,22 @@
         </div>
 
         <!-- Headline -->
-        <h1 data-gsap="hero-headline" class="hero-headline font-bold mb-5 sm:mb-6" style="color: var(--color-text);">
+        <h1 data-gsap="hero-headline" class="hero-headline font-bold mb-6 sm:mb-6" style="color: var(--color-text);">
             Maatwerksoftware<br>
             <span class="text-gradient-accent">gebouwd voor jou.</span>
         </h1>
 
         <!-- Sub-copy -->
-        <p data-gsap="hero-sub" class="hero-sub mb-8 sm:mb-10" style="color: var(--color-text-muted);">
+        <p data-gsap="hero-sub" class="hero-sub mb-10 sm:mb-10" style="color: var(--color-text-muted);">
             Adminpanelen, KPI-dashboards, landingspagina's, Stripe- en Mollie-integraties en API-koppelingen — afgestemd op jouw proces.
         </p>
 
         <!-- CTAs -->
-        <div data-gsap="hero-cta" class="hero-cta flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-            <a href="/contact" class="btn-primary px-6 py-3 rounded-md font-semibold text-sm" data-track="cta_click" data-track-label="Start een project" data-track-location="hero">
+        <div data-gsap="hero-cta" class="hero-cta flex flex-row flex-wrap items-center gap-3 sm:gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center px-6 py-3 rounded-md font-semibold text-sm" data-track="cta_click" data-track-label="Start een project" data-track-location="hero">
                 Start een project
             </a>
-            <a href="/diensten" class="btn-outline px-6 py-3 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Bekijk diensten" data-track-location="hero">
+            <a href="/diensten" class="btn-outline inline-flex items-center px-6 py-3 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Bekijk diensten" data-track-location="hero">
                 Bekijk diensten →
             </a>
         </div>

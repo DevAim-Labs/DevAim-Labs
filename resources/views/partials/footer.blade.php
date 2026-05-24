@@ -1,8 +1,8 @@
 <footer class="mt-8" style="background: var(--color-surface)">
     <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-start gap-8">
         <div>
-            <p class="font-bold text-[var(--color-text)] text-lg">DevAim<span class="text-[var(--color-accent)]">.</span></p>
-            <p class="text-sm text-[var(--color-text-muted)] mt-1 max-w-xs">Maatwerksoftware — dashboards, adminpanelen, websites, integraties en betalingen.</p>
+            <p class="font-bold text-[var(--color-text)] text-lg">DevAim Labs<span class="text-[var(--color-accent)]">.</span></p>
+            <p class="text-sm text-[var(--color-text)] mt-1 max-w-xs">Software dat bij jou past.<br></p>
         </div>
         <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-[var(--color-text-muted)]">
             <a href="/diensten" class="hover:text-[var(--color-text)] transition-colors duration-200">Diensten</a>

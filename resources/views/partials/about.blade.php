@@ -1,6 +1,6 @@
 <section id="about" data-gsap="section-about" class="reveal-hidden">
     <div class="section-card">
-    <div class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+    <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
         <div>
             <p class="section-eyebrow mb-4">Over ons</p>
             <h2 class="text-3xl md:text-4xl section-title mb-6">
@@ -14,7 +14,7 @@
             </p>
             <a
                 href="/contact"
-                class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
+                class="btn-primary hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
                 data-track="cta_click"
                 data-track-label="Meer informatie"
                 data-track-location="about"
@@ -33,6 +33,20 @@
                 @endforeach
             </div>
         </div>
+
+        <div class="inline-flex md:hidden justify-center">
+            <a
+                href="/contact"
+                class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
+                data-track="cta_click"
+                data-track-label="Meer informatie"
+                data-track-location="about"
+            >
+                Meer informatie →
+            </a>
+        </div>
+
+
     </div>
     </div>
 </section>
