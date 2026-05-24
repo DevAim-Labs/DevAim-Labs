@@ -33,6 +33,10 @@
                                 v-if="client.logo"
                                 :src="client.logo"
                                 :alt="client.name"
+                                :width="client.logoWidth"
+                                :height="client.logoHeight"
+                                loading="lazy"
+                                decoding="async"
                                 class="client-logo-img max-h-20 max-w-full object-contain"
                             >
                             <span v-else class="font-semibold text-xl tracking-tight" style="color: var(--color-text)">
@@ -60,8 +64,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { gsap } from 'gsap'
-import lokantaLogo from '../../assets/lokanta.png'
-import slowdownLogo from '../../assets/slowdown.png'
+import lokantaLogo from '../../assets/lokanta.webp'
+import slowdownLogo from '../../assets/slowdown.webp'
 
 const visibleCount = 4
 
@@ -70,12 +74,16 @@ const clients = [
         id: 1,
         name: 'Lokanta Proeflokaal',
         logo: lokantaLogo,
+        logoWidth: 200,
+        logoHeight: 71,
         href: 'https://lokanta-proeflokaal.nl',
     },
     {
         id: 2,
         name: 'Slowdown Store',
         logo: slowdownLogo,
+        logoWidth: 125,
+        logoHeight: 65,
         href: 'https://slowdownstore.com',
     },
 ]

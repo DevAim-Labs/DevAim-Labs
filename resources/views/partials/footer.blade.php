@@ -19,7 +19,7 @@
         </div>
     </div>
     <div style="border-top: 1px solid var(--color-border);">
-        <p class="max-w-6xl mx-auto px-6 py-4 text-xs text-[var(--color-text-dim)]">
+        <p class="max-w-6xl mx-auto px-6 py-4 text-sm text-[var(--color-text-dim)]">
             &copy; {{ date('Y') }} DevAim Labs. Alle rechten voorbehouden.
         </p>
     </div>

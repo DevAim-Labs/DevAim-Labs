@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Secties: routing, analytics (GTM / GA4) en SEO.
+ * Secties: routing, analytics (GA4) en SEO.
  * `id` = HTML-sectie & scroll-target (Engels intern).
  * `slug` / `path` = Nederlandse URL.
  */

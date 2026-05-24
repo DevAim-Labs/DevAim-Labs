@@ -51,7 +51,7 @@
         </div>
 
         <div v-else class="card-glow rounded-xl border border-dashed border-[var(--color-border)] p-12 text-center">
-            <p class="text-sm" style="color: var(--color-text-dim)">Eigen projecten volgen binnenkort.</p>
+            <p class="text-sm text-[var(--color-text-muted)]">Eigen projecten volgen binnenkort.</p>
         </div>
         </div>
         </div>

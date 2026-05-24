@@ -97,7 +97,7 @@
                 <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-input)] p-6">
                     <h3 class="font-semibold text-[var(--color-text)] mb-2 text-sm">Beschikbaarheid</h3>
                     <p class="text-sm text-[var(--color-text-muted)]">Momenteel open voor nieuwe projecten.</p>
-                    <span class="inline-flex items-center gap-1.5 mt-3 text-xs text-[var(--color-accent)]">
+                    <span class="inline-flex items-center gap-1.5 mt-3 text-sm text-[var(--color-accent-bright)]">
                         <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
                         Beschikbaar
                     </span>

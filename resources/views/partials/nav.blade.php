@@ -1,4 +1,4 @@
-<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-[background,backdrop-filter,box-shadow] duration-300">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="/" class="font-bold tracking-tight text-lg" style="color: var(--color-text);">
             DevAim<span style="color: var(--color-accent);">.</span>

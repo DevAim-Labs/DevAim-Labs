@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="nl" class="scroll-smooth" data-theme="dark">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-P9ZMKHCZ');</script>
-    <!-- End Google Tag Manager -->
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY86R8VE0V"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WY86R8VE0V');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WY86R8VE0V');
     </script>
 
     <meta charset="utf-8">
@@ -41,6 +33,8 @@
 
     <link rel="icon" type="image/png" sizes="144x144" href="{{ asset('IMG_144.png') }}">
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('IMG_144.png') }}">
+    <link rel="preload" as="image" href="/heroimage-768.webp" type="image/webp" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="/heroimage.webp" type="image/webp" media="(min-width: 769px)">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
     <script>
         (function() {
@@ -86,11 +80,9 @@
 </head>
 <body style="background:var(--color-surface);color:var(--color-text)" class="font-sans antialiased overflow-x-hidden">
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9ZMKHCZ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    @yield('content')
+    <main id="main-content">
+        @yield('content')
+    </main>
 
     <div id="nav-transition-mount"></div>
 

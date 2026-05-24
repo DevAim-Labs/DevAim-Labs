@@ -1,5 +1,5 @@
 /**
- * Section URLs + GTM/GA4 dataLayer events for the marketing one-pager.
+ * Section URLs + GA4 (gtag) dataLayer events for the marketing one-pager.
  */
 
 import { isNavTransitionBusy, playNavTransition } from './navTransition.js'
@@ -12,6 +12,11 @@ let scrollObserver = null
 function pushDataLayer(payload) {
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push(payload)
+
+    if (typeof window.gtag !== 'function' || !payload.event) return
+
+    const { event, ...params } = payload
+    window.gtag('event', event, params)
 }
 
 function gtagPageView(section) {

@@ -1,14 +1,21 @@
 <section id="home" class="hero-section relative min-h-screen flex items-center pt-16 overflow-hidden">
 
-    <!-- Blurred hero background image -->
+    <!-- Blurred hero background image (WebP + responsive sizes) -->
     <div class="absolute inset-0 pointer-events-none" style="z-index:0;">
-        <img src="/heroimage.jpg"
-             alt="DevAim Labs — maatwerksoftware en custom software ontwikkeling"
-             class="hero-bg-img absolute inset-0 w-full h-full object-cover"
-             width="1920"
-             height="1080"
-             fetchpriority="high"
-             style="filter: blur(5px); transform: scale(1.05);">
+        <picture>
+            <source type="image/webp"
+                    srcset="/heroimage-768.webp 768w, /heroimage-1280.webp 1280w, /heroimage.webp 1920w"
+                    sizes="100vw">
+            <img src="/heroimage.jpg"
+                 alt=""
+                 role="presentation"
+                 class="hero-bg-img absolute inset-0 w-full h-full object-cover"
+                 width="1920"
+                 height="1080"
+                 fetchpriority="high"
+                 decoding="async"
+                 style="filter: blur(5px); transform: scale(1.05);">
+        </picture>
     </div>
 
     <!-- Pulsing orb (right side, behind shapes) -->
@@ -63,7 +70,7 @@
         </div>
 
         <!-- Headline -->
-        <h1 data-gsap="hero-headline" class="reveal-hidden text-5xl md:text-7xl font-bold leading-[1.05] mb-6 max-w-4xl" style="letter-spacing: -0.03em; color: var(--color-text);">
+        <h1 data-gsap="hero-headline" class="text-5xl md:text-7xl font-bold leading-[1.05] mb-6 max-w-4xl" style="letter-spacing: -0.03em; color: var(--color-text);">
             Maatwerksoftware<br>
             <span class="text-gradient-accent">gebouwd voor jou.</span>
         </h1>
