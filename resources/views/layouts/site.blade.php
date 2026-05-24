@@ -6,7 +6,7 @@
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KW96JLBB');</script>
+    })(window,document,'script','dataLayer','GTM-P9ZMKHCZ');</script>
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
@@ -35,8 +35,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body style="background:var(--color-surface);color:var(--color-text)" class="font-sans antialiased overflow-x-hidden">
+
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KW96JLBB"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9ZMKHCZ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     @yield('content')
