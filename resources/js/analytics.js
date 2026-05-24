@@ -2,6 +2,8 @@
  * Section URLs + GTM/GA4 dataLayer events for the marketing one-pager.
  */
 
+import { isNavTransitionBusy, playNavTransition } from './navTransition.js'
+
 let sectionsById = new Map()
 let sectionsByPath = new Map()
 let lastTrackedId = null
@@ -77,34 +79,56 @@ function sectionFromPath(pathname) {
     return sectionsByPath.get(pathname) || sectionsByPath.get('/')
 }
 
-function handleInPageNavClick(event) {
-    const link = event.target.closest('a[href]')
-    if (!link) return
-
-    const href = link.getAttribute('href')
-    if (!href || !href.startsWith('/')) return
-    if (href.startsWith('//')) return
-
-    const url = new URL(href, window.location.origin)
-    if (url.origin !== window.location.origin) return
-
-    const section = sectionsByPath.get(url.pathname)
-    if (!section) return
-
-    event.preventDefault()
-
-    scrollToSection(section.id)
+function finishSectionNav(section, link) {
     trackSectionView(section, 'nav_click')
 
     if (link.dataset.trackLabel || link.dataset.trackLocation) {
         trackCtaClick({
             label: link.dataset.trackLabel || link.textContent?.trim() || '',
             location: link.dataset.trackLocation || section.id,
-            url: url.pathname,
+            url: section.path,
         })
     }
 
     document.getElementById('mobile-menu')?.classList.add('hidden')
+}
+
+function handleInPageNavClick(event) {
+    const link = event.target.closest('a[href]')
+    if (!link || isNavTransitionBusy()) return
+
+    const href = link.getAttribute('href')
+    if (!href) return
+
+    let section = null
+    let target = null
+
+    if (href.startsWith('#')) {
+        if (href === '#') return
+        target = document.querySelector(href)
+        if (!target?.id) return
+        section = sectionsById.get(target.id)
+    } else if (href.startsWith('/') && !href.startsWith('//')) {
+        const url = new URL(href, window.location.origin)
+        if (url.origin !== window.location.origin) return
+        section = sectionsByPath.get(url.pathname)
+        if (!section) return
+        target = document.getElementById(section.id)
+    }
+
+    if (!section || !target) return
+
+    event.preventDefault()
+
+    const runAfterNav = () => finishSectionNav(section, link)
+
+    if (section.id === 'home' && window.location.pathname === '/') {
+        scrollToSection('home', 'smooth')
+        runAfterNav()
+        return
+    }
+
+    playNavTransition(target, runAfterNav)
 }
 
 function initScrollTracking() {

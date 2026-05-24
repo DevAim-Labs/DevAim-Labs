@@ -25,11 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactEl) createApp(ContactForm).mount(contactEl)
 
     const navEl = document.getElementById('nav-transition-mount')
-    if (navEl) createApp(NavTransitionCube, {
-        text:           'DEVAIM',
-        primaryColor:   'var(--color-surface)',
-        secondaryColor: '#0B8598',
-    }).mount(navEl)
+    if (navEl) {
+        createApp(NavTransitionCube, {
+            text:           'DEVAIM',
+            primaryColor:   'var(--color-surface)',
+            secondaryColor: '#0B8598',
+        }).mount(navEl)
+    }
 
     initHeroAnimation()
     initScrollReveal()
