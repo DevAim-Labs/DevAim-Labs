@@ -7,7 +7,7 @@
                 Fitting software.<br>
             </h2>
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-4">
-                We build custom software for those with bright ideas. <br> From internal tools and dashboards to public-facing sites and payment flows.
+                We build custom software focusing on your needs. <br> From internal tools and dashboards to public-facing sites and payment flows.
             </p>
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-8">
                 You work directly with the developer creating your product. Clear communication, aiming to build software that fits how you operate.
