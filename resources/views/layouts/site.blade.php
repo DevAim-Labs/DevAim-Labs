@@ -23,8 +23,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'DevAim Labs')</title>
     <meta name="description" content="@yield('meta_description', 'Custom software for your business — admin panels, KPI dashboards, websites, API integrations and payment systems.')">
-    <link rel="icon" type="image/png" href="{{ asset('DevAim_IMG.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('DevAim_IMG.png') }}">
+    <link rel="icon" type="image/png" sizes="144x144" href="{{ asset('IMG_144.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('IMG_144.png') }}">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
     <script>
         (function() {
