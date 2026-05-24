@@ -62,26 +62,26 @@
 
     </div>
 
-    <div class="relative max-w-6xl mx-auto px-6 py-24">
+    <div class="hero-content relative">
         <!-- Eyebrow -->
-        <div data-gsap="hero-eyebrow" class="reveal-hidden inline-flex items-center gap-3 text-xs uppercase tracking-widest mb-8" style="color: var(--color-accent);">
-            <span class="w-4 h-px" style="background: var(--color-accent);"></span>
-            Custom software ontwikkeling
+        <div data-gsap="hero-eyebrow" class="hero-eyebrow reveal-hidden inline-flex items-center gap-2 sm:gap-3 uppercase mb-6 sm:mb-8" style="color: var(--color-accent);">
+            <span class="w-4 h-px shrink-0" style="background: var(--color-accent);"></span>
+            <span>Custom software ontwikkeling</span>
         </div>
 
         <!-- Headline -->
-        <h1 data-gsap="hero-headline" class="text-5xl md:text-7xl font-bold leading-[1.05] mb-6 max-w-4xl" style="letter-spacing: -0.03em; color: var(--color-text);">
+        <h1 data-gsap="hero-headline" class="hero-headline font-bold mb-5 sm:mb-6" style="color: var(--color-text);">
             Maatwerksoftware<br>
             <span class="text-gradient-accent">gebouwd voor jou.</span>
         </h1>
 
         <!-- Sub-copy -->
-        <p data-gsap="hero-sub" class="reveal-hidden text-lg max-w-xl mb-10 leading-relaxed" style="color: var(--color-text-muted);">
+        <p data-gsap="hero-sub" class="hero-sub reveal-hidden mb-8 sm:mb-10" style="color: var(--color-text-muted);">
             Adminpanelen, KPI-dashboards, landingspagina's, Stripe- en Mollie-integraties en API-koppelingen — afgestemd op jouw proces.
         </p>
 
         <!-- CTAs -->
-        <div data-gsap="hero-cta" class="reveal-hidden flex flex-wrap items-center gap-4">
+        <div data-gsap="hero-cta" class="hero-cta reveal-hidden flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
             <a href="/contact" class="btn-primary px-6 py-3 rounded-md font-semibold text-sm" data-track="cta_click" data-track-label="Start een project" data-track-location="hero">
                 Start een project
             </a>
