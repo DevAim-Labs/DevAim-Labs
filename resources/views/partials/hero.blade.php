@@ -64,7 +64,7 @@
 
     <div class="hero-content relative">
         <!-- Eyebrow -->
-        <div data-gsap="hero-eyebrow" class="hero-eyebrow reveal-hidden inline-flex items-center gap-2 sm:gap-3 uppercase mb-6 sm:mb-8" style="color: var(--color-accent);">
+        <div data-gsap="hero-eyebrow" class="hero-eyebrow inline-flex items-center gap-2 sm:gap-3 uppercase mb-6 sm:mb-8" style="color: var(--color-accent);">
             <span class="w-4 h-px shrink-0" style="background: var(--color-accent);"></span>
             <span>Custom software ontwikkeling</span>
         </div>
@@ -76,12 +76,12 @@
         </h1>
 
         <!-- Sub-copy -->
-        <p data-gsap="hero-sub" class="hero-sub reveal-hidden mb-8 sm:mb-10" style="color: var(--color-text-muted);">
+        <p data-gsap="hero-sub" class="hero-sub mb-8 sm:mb-10" style="color: var(--color-text-muted);">
             Adminpanelen, KPI-dashboards, landingspagina's, Stripe- en Mollie-integraties en API-koppelingen — afgestemd op jouw proces.
         </p>
 
         <!-- CTAs -->
-        <div data-gsap="hero-cta" class="hero-cta reveal-hidden flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
+        <div data-gsap="hero-cta" class="hero-cta flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
             <a href="/contact" class="btn-primary px-6 py-3 rounded-md font-semibold text-sm" data-track="cta_click" data-track-label="Start een project" data-track-location="hero">
                 Start een project
             </a>

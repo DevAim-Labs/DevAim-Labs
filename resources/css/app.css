@@ -262,6 +262,11 @@ html[data-theme="light"] .nav-pill.active {
     padding-block: clamp(4rem, 12vw, 6rem);
 }
 
+.hero-content [data-gsap] {
+    opacity: 1;
+    visibility: visible;
+}
+
 .hero-eyebrow {
     font-size: clamp(0.625rem, 2vw, 0.75rem);
     letter-spacing: 0.08em;
