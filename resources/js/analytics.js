@@ -9,6 +9,8 @@ let sectionsByPath = new Map()
 let lastTrackedId = null
 let scrollObserver = null
 
+const URL_SYNC_SOURCES = new Set(['nav_click', 'direct_url', 'popstate'])
+
 function pushDataLayer(payload) {
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push(payload)
@@ -37,7 +39,8 @@ export function trackSectionView(section, source = 'scroll') {
 
     lastTrackedId = section.id
 
-    if (section.path && window.location.pathname !== section.path) {
+    // URL alleen bij expliciete navigatie — niet bij scroll (anders wordt refresh /over-ons)
+    if (URL_SYNC_SOURCES.has(source) && section.path && window.location.pathname !== section.path) {
         window.history.replaceState({ sectionId: section.id }, '', section.path)
     }
 
@@ -52,7 +55,7 @@ export function trackSectionView(section, source = 'scroll') {
 
     gtagPageView(section)
 
-    if (section.title) {
+    if (section.title && URL_SYNC_SOURCES.has(source)) {
         document.title = section.title
     }
 }
@@ -121,6 +124,7 @@ function handleInPageNavClick(event) {
         section = sectionsByPath.get(url.pathname)
         if (!section) return
         target = document.getElementById(section.id)
+            ?? document.querySelector(`[data-section-id="${section.id}"]`)
     }
 
     if (!section || !target) return
@@ -184,17 +188,22 @@ export function initAnalytics(sections, initialSectionId = null) {
     initGlobalClickTracking()
     initScrollTracking()
 
-    const pathSection = sectionFromPath(window.location.pathname)
-    const startId = initialSectionId || pathSection?.id || 'home'
-    const startSection = sectionsById.get(startId) || sectionsById.get('home')
+    const homeSection = sectionsById.get('home')
 
     if (initialSectionId) {
+        const startSection = sectionsById.get(initialSectionId) || homeSection
         requestAnimationFrame(() => {
             scrollToSection(initialSectionId, 'auto')
             trackSectionView(startSection, 'direct_url')
         })
     } else {
-        trackSectionView(startSection, 'page_load')
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual'
+        }
+        window.scrollTo(0, 0)
+
+        lastTrackedId = null
+        trackSectionView(homeSection, 'page_load')
     }
 
     window.addEventListener('popstate', () => {
