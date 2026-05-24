@@ -4,12 +4,13 @@
             DevAim<span style="color: var(--color-accent);">.</span>
         </a>
 
-        <div class="hidden md:flex items-center rounded-full p-1" style="background: var(--color-surface-1);">
-            <a href="/diensten" class="nav-pill" data-section="services">Diensten</a>
-            <a href="/werkwijze" class="nav-pill" data-section="process">Werkwijze</a>
-            <a href="/klantwerk" class="nav-pill" data-section="client-work">Klantwerk</a>
-            <a href="/contact" class="nav-pill" data-section="contact">Contact</a>
-            <a href="/veelgestelde-vragen" class="nav-pill" data-section="faq">FAQ</a>
+        <div class="nav-pills-track hidden md:flex items-center rounded-full p-1" style="background: var(--color-surface-1);">
+            <span data-nav-pill-indicator class="nav-pill-indicator" aria-hidden="true"></span>
+            <a href="/diensten" class="nav-pill relative z-[1]" data-section="services">Diensten</a>
+            <a href="/werkwijze" class="nav-pill relative z-[1]" data-section="process">Werkwijze</a>
+            <a href="/klantwerk" class="nav-pill relative z-[1]" data-section="client-work">Klantwerk</a>
+            <a href="/contact" class="nav-pill relative z-[1]" data-section="contact">Contact</a>
+            <a href="/veelgestelde-vragen" class="nav-pill relative z-[1]" data-section="faq">FAQ</a>
         </div>
 
         <div class="hidden md:flex items-center gap-3">

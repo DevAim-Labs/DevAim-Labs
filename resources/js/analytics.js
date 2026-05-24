@@ -3,6 +3,7 @@
  */
 
 import { isNavTransitionBusy, playNavTransition } from './navTransition.js'
+import { updateNavPillActive } from './navPills.js'
 
 let sectionsById = new Map()
 let sectionsByPath = new Map()
@@ -35,14 +36,18 @@ function gtagPageView(section) {
 }
 
 export function trackSectionView(section, source = 'scroll') {
-    if (!section || lastTrackedId === section.id) return
+    if (!section) return
 
-    lastTrackedId = section.id
-
-    // URL alleen bij expliciete navigatie — niet bij scroll (anders wordt refresh /over-ons)
+    // URL bij menu-klik altijd syncen (ook als scroll al dezelfde sectie "zag")
     if (URL_SYNC_SOURCES.has(source) && section.path && window.location.pathname !== section.path) {
         window.history.replaceState({ sectionId: section.id }, '', section.path)
     }
+
+    if (lastTrackedId === section.id) {
+        return
+    }
+
+    lastTrackedId = section.id
 
     pushDataLayer({
         event: 'virtual_page_view',
@@ -90,7 +95,9 @@ function sectionFromPath(pathname) {
 }
 
 function finishSectionNav(section, link) {
+    lastTrackedId = null
     trackSectionView(section, 'nav_click')
+    updateNavPillActive(section.id)
 
     if (link.dataset.trackLabel || link.dataset.trackLocation) {
         trackCtaClick({
@@ -155,7 +162,9 @@ function initScrollTracking() {
 
             const id = visible[0].target.id
             const section = sectionsById.get(id)
-            if (section) trackSectionView(section, 'scroll')
+            if (section) {
+                trackSectionView(section, 'scroll')
+            }
         },
         { rootMargin: '-25% 0px -55% 0px', threshold: [0.15, 0.35, 0.55] }
     )
@@ -195,6 +204,7 @@ export function initAnalytics(sections, initialSectionId = null) {
         requestAnimationFrame(() => {
             scrollToSection(initialSectionId, 'auto')
             trackSectionView(startSection, 'direct_url')
+            updateNavPillActive(initialSectionId)
         })
     } else {
         if ('scrollRestoration' in history) {
@@ -212,6 +222,7 @@ export function initAnalytics(sections, initialSectionId = null) {
             scrollToSection(section.id, 'auto')
             lastTrackedId = null
             trackSectionView(section, 'popstate')
+            updateNavPillActive(section.id)
         }
     })
 }

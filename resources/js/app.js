@@ -3,6 +3,7 @@ import NavTransitionCube from './components/NavTransitionCube.vue'
 import { initHeroAnimation } from './animations.js'
 import { initAnalytics } from './analytics.js'
 import { initThemeToggle } from './theme.js'
+import { initNavPillScrollSpy, refreshNavPillScrollSpy } from './navPills.js'
 
 function isNearViewport(el) {
     const rect = el.getBoundingClientRect()
@@ -15,6 +16,8 @@ async function mountSection(id, loader) {
 
     const { default: Component } = await loader()
     createApp(Component).mount(el)
+
+    refreshNavPillScrollSpy()
 
     const sectionId = el.dataset.sectionId
     if (sectionId && window.__INITIAL_SECTION__ === sectionId) {
@@ -43,18 +46,18 @@ function mountWhenVisible(id, loader) {
 
     observer.observe(el)
 
-    // Fallback: lege mount-divs hebben geen hoogte → IO vuurt soms nooit
     setTimeout(() => {
         if (!el.childElementCount) mount()
     }, 2500)
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     initThemeToggle()
 
-    // Belangrijke secties direct mounten (geen lege IO-target)
-    mountSection('services-mount', () => import('./components/ServicesGrid.vue'))
-    mountSection('process-mount', () => import('./components/ProcessTimeline.vue'))
+    await Promise.all([
+        mountSection('services-mount', () => import('./components/ServicesGrid.vue')),
+        mountSection('process-mount', () => import('./components/ProcessTimeline.vue')),
+    ])
 
     mountWhenVisible('client-work-mount', () => import('./components/ClientWork.vue'))
     mountWhenVisible('personal-projects-mount', () => import('./components/PersonalProjects.vue'))
@@ -85,21 +88,5 @@ document.addEventListener('DOMContentLoaded', () => {
         initAnalytics(sections, window.__INITIAL_SECTION__ || null)
     }
 
-    const navPills = document.querySelectorAll('.nav-pill[data-section]')
-    if (navPills.length) {
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navPills.forEach(pill =>
-                        pill.classList.toggle('active', pill.dataset.section === entry.target.id)
-                    )
-                }
-            })
-        }, { rootMargin: '-20% 0px -60% 0px' })
-
-        ;['home', 'about', 'services', 'process', 'client-work', 'personal-projects', 'faq', 'contact'].forEach(id => {
-            const el = document.getElementById(id)
-            if (el) sectionObserver.observe(el)
-        })
-    }
+    initNavPillScrollSpy()
 })
