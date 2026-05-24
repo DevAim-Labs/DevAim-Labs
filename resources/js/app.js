@@ -6,6 +6,7 @@ import NavTransitionCube from './components/NavTransitionCube.vue'
 import ServicesGrid from './components/ServicesGrid.vue'
 import ProcessTimeline from './components/ProcessTimeline.vue'
 import { initHeroAnimation, initScrollReveal } from './animations.js'
+import { initAnalytics } from './analytics.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     const servicesEl = document.getElementById('services-mount')
@@ -33,6 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroAnimation()
     initScrollReveal()
 
+    const sections = window.__ANALYTICS_SECTIONS__ || []
+    if (sections.length) {
+        initAnalytics(sections, window.__INITIAL_SECTION__ || null)
+    }
+
     // Pill nav — highlight active section on scroll
     const navPills = document.querySelectorAll('.nav-pill[data-section]')
     if (navPills.length) {
@@ -46,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }, { rootMargin: '-20% 0px -60% 0px' })
 
-        ;['services', 'process', 'client-work', 'faq', 'contact'].forEach(id => {
+        ;['home', 'about', 'services', 'process', 'client-work', 'personal-projects', 'faq', 'contact'].forEach(id => {
             const el = document.getElementById(id)
             if (el) sectionObserver.observe(el)
         })

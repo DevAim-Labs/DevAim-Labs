@@ -3,11 +3,10 @@
         <div class="section-card">
         <div class="max-w-6xl mx-auto px-6 py-24">
             <div class="mb-16">
-                <p class="section-eyebrow mb-3">Custom software</p>
-                <h2 class="text-4xl section-title">What we can build for you</h2>
+                <p class="section-eyebrow mb-3">Maatwerksoftware</p>
+                <h2 class="text-4xl section-title">Wat we voor je kunnen bouwen</h2>
             </div>
 
-            <!-- Grid — always in DOM, hidden via display:none during expansion -->
             <div ref="gridRef" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div
                     v-for="service in services"
@@ -18,11 +17,10 @@
                     <div class="mb-4 text-2xl leading-none" style="color: var(--color-accent)">{{ service.icon }}</div>
                     <h3 class="font-semibold text-sm mb-2" style="color: var(--color-text)">{{ service.title }}</h3>
                     <p class="text-sm leading-relaxed" style="color: var(--color-text-muted)">{{ service.description }}</p>
-                    <p class="mt-auto pt-4 text-xs" style="color: var(--color-accent);opacity:0.6">Click to explore →</p>
+                    <p class="mt-auto pt-4 text-xs" style="color: var(--color-accent);opacity:0.6">Klik voor meer →</p>
                 </div>
             </div>
 
-            <!-- Expanded panel — rendered only when a service is selected -->
             <div
                 v-if="selected"
                 ref="expandedRef"
@@ -30,8 +28,6 @@
                 style="border-color: var(--color-border); background: var(--color-surface-1); opacity:0;"
             >
                 <div class="flex flex-col md:flex-row" style="min-height:380px;">
-
-                    <!-- Left 25% — text content -->
                     <div class="md:w-1/4 p-8 flex flex-col justify-between">
                         <div>
                             <button
@@ -40,7 +36,7 @@
                                 @mouseover="$event.currentTarget.style.color='var(--color-accent)'"
                                 @mouseleave="$event.currentTarget.style.color='var(--color-text-dim)'"
                                 @click="closeExpanded"
-                            >← Back</button>
+                            >← Terug</button>
 
                             <div class="text-3xl mb-4" style="color: var(--color-accent)">{{ selected.icon }}</div>
                             <h3 class="font-bold text-xl mb-4 leading-snug" style="color: var(--color-text)">{{ selected.title }}</h3>
@@ -48,16 +44,17 @@
                         </div>
 
                         <a
-                            href="#contact"
+                            href="/contact"
                             class="btn-primary mt-8 inline-flex px-5 py-2.5 rounded-md text-sm font-semibold self-start"
+                            data-track="cta_click"
+                            data-track-label="Start een project"
+                            data-track-location="services_expanded"
                             @click="closeExpanded"
-                        >Start a project →</a>
+                        >Start een project →</a>
                     </div>
 
-                    <!-- Divider (desktop only) -->
                     <div class="hidden md:block w-px shrink-0" style="background: var(--color-border);"></div>
 
-                    <!-- Right 75% — image / placeholder -->
                     <div class="md:w-3/4 relative overflow-hidden" style="background: var(--color-surface-2); min-height:220px;">
                         <img
                             v-if="selected.image"
@@ -70,10 +67,9 @@
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <span class="text-[10rem] leading-none select-none" style="color: var(--color-accent);opacity:0.12">{{ selected.icon }}</span>
                             </div>
-                            <div class="absolute bottom-5 left-6 text-xs uppercase tracking-widest" style="color: var(--color-accent);opacity:0.45">Preview coming soon</div>
+                            <div class="absolute bottom-5 left-6 text-xs uppercase tracking-widest" style="color: var(--color-accent);opacity:0.45">Preview volgt binnenkort</div>
                         </template>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -89,41 +85,41 @@ const services = [
     {
         id: 1,
         icon: '◈',
-        title: 'Websites & landing pages',
-        description: 'Fast, SEO-friendly marketing sites built to convert.',
-        detail: 'Landing pages, company sites, and campaign pages with solid semantics, Core Web Vitals in mind, and clear CTAs. Optional CMS or content workflows when you need to update copy without a developer.',
+        title: 'Websites & landingspagina\'s',
+        description: 'Landingspagina laten maken. Snelle, SEO-vriendelijke sites die converteren.',
+        detail: 'Landingspagina\'s, bedrijfswebsites en campagnepagina\'s met goede semantiek, Core Web Vitals en duidelijke call-to-actions.',
         image: null,
     },
     {
         id: 2,
         icon: '▦',
-        title: 'Admin panels & internal tools',
-        description: 'Replace spreadsheets with software your team actually wants to use.',
-        detail: 'Role-based admin panels, approval flows, inventory, and operations tooling shaped around how your business runs — one source of truth instead of fragmented files and tabs.',
+        title: 'Adminpanelen & interne tools',
+        description: 'Adminpaneel bouwen met Laravel en Vue. Spreadsheets vervangen door echt tooling.',
+        detail: 'Role-based adminpanelen, goedkeuringsflows, voorraad en operationele tooling die past bij hoe je bedrijf werkt — één bron van waarheid in plaats van losse bestanden.',
         image: null,
     },
     {
         id: 3,
         icon: '⬡',
-        title: 'KPI dashboards & reporting',
-        description: 'Realtime insight, exports, and alerts when metrics move off track.',
-        detail: 'Dashboards that pull live data from your stack — filters, charts, PDF or Excel exports, and notifications when KPIs cross thresholds. Built for decision-makers, not vanity metrics.',
+        title: 'KPI-dashboards & rapportages',
+        description: 'KPI-dashboard voor bedrijfsrapportages met realtime inzicht en alerts.',
+        detail: 'Dashboards met live data uit je stack. Filters, grafieken, PDF- of Excel-export en meldingen wanneer KPI\'s drempels passeren.',
         image: null,
     },
     {
         id: 4,
         icon: '◎',
-        title: 'API integrations',
-        description: 'Connect CRM, accounting, logistics, and internal systems.',
-        detail: 'REST APIs, webhooks, and sync jobs between Stripe, HubSpot, ERP, or custom backends. Integrations are designed so you can change providers later without rewriting the product.',
+        title: 'API-integraties',
+        description: 'API-koppelingen tussen andere systemen.',
+        detail: 'REST API\'s, webhooks en syncjobs tussen custom backends. Zo kun je later van leverancier wisselen zonder alles opnieuw te bouwen.',
         image: null,
     },
     {
         id: 5,
         icon: '◈',
-        title: 'Payment systems',
-        description: 'Checkout, subscriptions, invoicing, and webhooks. Stripe and Mollie.',
-        detail: 'One-time payments, subscriptions, usage-based billing, customer portals, and webhook handling with retries and failure paths. Production-ready flows for Dutch and international customers.',
+        title: 'Betaalsystemen',
+        description: 'Stripe- en Mollie-integratie webshop — checkout, abonnementen en facturatie.',
+        detail: 'Eenmalige betalingen, abonnementen, usage-based billing, klantportalen en webhook-afhandeling met retries. Productieklaar voor Nederlandse en internationale klanten.',
         image: null,
     },
 ]

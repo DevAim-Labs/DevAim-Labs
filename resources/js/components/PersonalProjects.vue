@@ -3,8 +3,8 @@
         <div class="section-card">
         <div class="max-w-6xl mx-auto px-6 py-24">
         <div class="mb-16">
-            <p class="section-eyebrow mb-3">Personal projects</p>
-            <h2 class="text-4xl section-title">Built for fun</h2>
+            <p class="section-eyebrow mb-3">Eigen projecten</p>
+            <h2 class="text-4xl section-title">Gebouwd voor de leuk</h2>
         </div>
 
         <div v-if="personal.length" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -44,14 +44,14 @@
                             style="color: var(--color-text-muted)"
                             @mouseover="$event.target.style.color='var(--color-accent)'"
                             @mouseleave="$event.target.style.color='var(--color-text-muted)'"
-                        >View project →</a>
+                        >Bekijk project →</a>
                     </div>
                 </div>
             </article>
         </div>
 
         <div v-else class="card-glow rounded-xl border border-dashed border-[var(--color-border)] p-12 text-center">
-            <p class="text-sm" style="color: var(--color-text-dim)">Personal projects coming soon.</p>
+            <p class="text-sm" style="color: var(--color-text-dim)">Eigen projecten volgen binnenkort.</p>
         </div>
         </div>
         </div>

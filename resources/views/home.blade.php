@@ -1,8 +1,5 @@
 @extends('layouts.site')
 
-@section('title', 'DevAim Labs — Custom software development')
-@section('meta_description', 'Custom software for your business — admin panels, KPI dashboards, websites, API integrations and payment systems. Built with Laravel, Vue, Stripe and Mollie.')
-
 @section('content')
 @include('partials.nav')
 @include('partials.hero')
@@ -15,3 +12,11 @@
     @include('partials.faq')
     @include('partials.footer')
 @endsection
+
+@push('scripts')
+<script>
+    window.__INITIAL_SECTION__ = @json($initialSection ?? null);
+    window.__ANALYTICS_SECTIONS__ = @json($analyticsSections ?? []);
+    window.__GA_MEASUREMENT_ID__ = 'G-WY86R8VE0V';
+</script>
+@endpush

@@ -1,10 +1,13 @@
-<section class="hero-section relative min-h-screen flex items-center pt-16 overflow-hidden">
+<section id="home" class="hero-section relative min-h-screen flex items-center pt-16 overflow-hidden">
 
     <!-- Blurred hero background image -->
     <div class="absolute inset-0 pointer-events-none" style="z-index:0;">
         <img src="/heroimage.jpg"
-             alt=""
+             alt="DevAim Labs — maatwerksoftware en custom software ontwikkeling"
              class="hero-bg-img absolute inset-0 w-full h-full object-cover"
+             width="1920"
+             height="1080"
+             fetchpriority="high"
              style="filter: blur(5px); transform: scale(1.05);">
     </div>
 
@@ -56,27 +59,27 @@
         <!-- Eyebrow -->
         <div data-gsap="hero-eyebrow" class="reveal-hidden inline-flex items-center gap-3 text-xs uppercase tracking-widest mb-8" style="color: var(--color-accent);">
             <span class="w-4 h-px" style="background: var(--color-accent);"></span>
-            Custom software
+            Custom software ontwikkeling
         </div>
 
         <!-- Headline -->
         <h1 data-gsap="hero-headline" class="reveal-hidden text-5xl md:text-7xl font-bold leading-[1.05] mb-6 max-w-4xl" style="letter-spacing: -0.03em; color: var(--color-text);">
-            Custom software<br>
-            <span class="text-gradient-accent">built for you.</span>
+            Maatwerksoftware<br>
+            <span class="text-gradient-accent">gebouwd voor jou.</span>
         </h1>
 
         <!-- Sub-copy -->
         <p data-gsap="hero-sub" class="reveal-hidden text-lg max-w-xl mb-10 leading-relaxed" style="color: var(--color-text-muted);">
-            Admin panels, KPI dashboards, websites and integrations shaped around your process.
+            Adminpanelen, KPI-dashboards, landingspagina's, Stripe- en Mollie-integraties en API-koppelingen — afgestemd op jouw proces.
         </p>
 
         <!-- CTAs -->
         <div data-gsap="hero-cta" class="reveal-hidden flex flex-wrap items-center gap-4">
-            <a href="#contact" class="btn-primary px-6 py-3 rounded-md font-semibold text-sm">
-                Start a project
+            <a href="/contact" class="btn-primary px-6 py-3 rounded-md font-semibold text-sm" data-track="cta_click" data-track-label="Start een project" data-track-location="hero">
+                Start een project
             </a>
-            <a href="#services" class="btn-outline px-6 py-3 rounded-md text-sm font-medium">
-                View services →
+            <a href="/diensten" class="btn-outline px-6 py-3 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Bekijk diensten" data-track-location="hero">
+                Bekijk diensten →
             </a>
         </div>
     </div>

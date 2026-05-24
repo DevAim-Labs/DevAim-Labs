@@ -3,14 +3,13 @@
         <div class="section-card">
             <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
                 <header class="mb-12 md:mb-16 max-w-2xl">
-                    <p class="section-eyebrow mb-3">How we work</p>
-                    <h2 class="text-3xl md:text-4xl section-title">Custom software, step by step.</h2>
+                    <p class="section-eyebrow mb-3">Werkwijze</p>
+                    <h2 class="text-3xl md:text-4xl section-title">Maatwerksoftware, stap voor stap.</h2>
                     <p class="text-sm md:text-base text-[var(--color-text-muted)] mt-3 leading-relaxed">
-                        From first conversation to deployment and beyond.
+                        Van het eerste gesprek tot oplevering en daarna.
                     </p>
                 </header>
 
-                <!-- Desktop: horizontal timeline -->
                 <ol class="hidden md:grid md:grid-cols-5 md:gap-4 relative list-none m-0 p-0">
                     <div
                         class="absolute top-7 left-[10%] right-[10%] h-px -translate-y-1/2 pointer-events-none"
@@ -37,7 +36,6 @@
                     </li>
                 </ol>
 
-                <!-- Mobile: vertical timeline -->
                 <ol class="md:hidden list-none m-0 p-0 space-y-8">
                     <li
                         v-for="(step, i) in steps"
@@ -71,10 +69,13 @@
 
                 <div class="mt-12 md:mt-14 text-center">
                     <a
-                        href="#contact"
+                        href="/contact"
                         class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
+                        data-track="cta_click"
+                        data-track-label="Bespreek je project"
+                        data-track-location="process"
                     >
-                        Talk about your project →
+                        Bespreek je project →
                     </a>
                 </div>
             </div>
@@ -84,10 +85,10 @@
 
 <script setup>
 const steps = [
-    { id: 1, number: 1, title: 'Meeting', body: "We discuss your idea, goals, and constraints. With this we'll be able to check whether custom software is the right fit." },
-    { id: 2, number: 2, title: 'Scope & plan', body: 'Clear milestones, timeline, and what the goal looks like before start.' },
-    { id: 3, number: 3, title: 'Build', body: 'Iterative development with demos every 2 weeks' },
-    { id: 4, number: 4, title: 'Launch', body: 'Deploy, hand over, and document so your team can use it from day one.' },
-    { id: 5, number: 5, title: 'Iterate', body: 'Improvements, new features, and support as your product grows.' },
+    { id: 1, number: 1, title: 'Kennismaking', body: 'We bespreken je idee, doelen en randvoorwaarden. Zo checken we of maatwerksoftware de juiste keuze is.' },
+    { id: 2, number: 2, title: 'Scope & planning', body: 'Heldere milestones, planning en wat succes betekent — voordat we beginnen met bouwen.' },
+    { id: 3, number: 3, title: 'Bouwen', body: 'Iteratief ontwikkelen met demos om de twee weken.' },
+    { id: 4, number: 4, title: 'Oplevering', body: 'Deployen, overdragen en documenteren zodat je team het vanaf dag één kan gebruiken.' },
+    { id: 5, number: 5, title: 'Doorontwikkeling', body: 'Verbeteringen, nieuwe features en ondersteuning terwijl je product groeit.' },
 ]
 </script>

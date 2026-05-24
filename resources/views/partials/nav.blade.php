@@ -4,18 +4,16 @@
             DevAim<span style="color: var(--color-accent);">.</span>
         </a>
 
-        <!-- Pill nav bar -->
         <div class="hidden md:flex items-center rounded-full p-1" style="background: var(--color-surface-1);">
-            <a href="#services"          class="nav-pill" data-section="services">Services</a>
-            <a href="#process"           class="nav-pill" data-section="process">Process</a>
-            <a href="#client-work"       class="nav-pill" data-section="client-work">Work</a>
-            <a href="#faq"               class="nav-pill" data-section="faq">FAQ</a>
-            <a href="#contact"           class="nav-pill" data-section="contact">Contact</a>
+            <a href="/diensten" class="nav-pill" data-section="services">Diensten</a>
+            <a href="/werkwijze" class="nav-pill" data-section="process">Werkwijze</a>
+            <a href="/klantwerk" class="nav-pill" data-section="client-work">Klantwerk</a>
+            <a href="/veelgestelde-vragen" class="nav-pill" data-section="faq">FAQ</a>
+            <a href="/contact" class="nav-pill" data-section="contact">Contact</a>
         </div>
 
         <div class="hidden md:flex items-center gap-3">
-            <!-- Theme toggle -->
-            <button onclick="toggleTheme()" aria-label="Toggle theme" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
+            <button onclick="toggleTheme()" aria-label="Thema wisselen" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
                 <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
                     <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -28,14 +26,13 @@
                 </svg>
             </button>
 
-            <a href="#contact" class="btn-outline-accent inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium">
-                Let's talk
+            <a href="/contact" class="btn-outline-accent inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Laten we praten" data-track-location="nav">
+                Laten we praten
             </a>
         </div>
 
-        <!-- Mobile controls -->
         <div class="md:hidden flex items-center gap-2">
-            <button onclick="toggleTheme()" aria-label="Toggle theme" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
+            <button onclick="toggleTheme()" aria-label="Thema wisselen" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
                 <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
                     <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -47,7 +44,7 @@
                     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
                 </svg>
             </button>
-            <button id="mobile-menu-btn" class="transition-colors" style="color: var(--color-text-muted);" aria-label="Toggle menu">
+            <button id="mobile-menu-btn" class="transition-colors" style="color: var(--color-text-muted);" aria-label="Menu openen">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -55,14 +52,13 @@
         </div>
     </nav>
 
-    <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden md:hidden border-t backdrop-blur-md" style="border-color: var(--color-border-dim);">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm" style="color: var(--color-text-muted);">
-            <a href="#services" class="transition-colors hover:text-white">Services</a>
-            <a href="#process" class="transition-colors hover:text-white">Process</a>
-            <a href="#client-work" class="transition-colors hover:text-white">Work</a>
-            <a href="#faq" class="transition-colors hover:text-white">FAQ</a>
-            <a href="#contact" class="transition-colors hover:text-white">Contact</a>
+            <a href="/diensten" class="transition-colors hover:text-white">Diensten</a>
+            <a href="/werkwijze" class="transition-colors hover:text-white">Werkwijze</a>
+            <a href="/klantwerk" class="transition-colors hover:text-white">Klantwerk</a>
+            <a href="/veelgestelde-vragen" class="transition-colors hover:text-white">FAQ</a>
+            <a href="/contact" class="transition-colors hover:text-white">Contact</a>
         </div>
     </div>
 </header>
