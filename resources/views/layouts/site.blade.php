@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'DevAim Labs')</title>
-    <meta name="description" content="@yield('meta_description', 'Custom websites, web apps, dashboards, third-party integrations and payment systems built by a solo full-stack developer.')">
+    <meta name="description" content="@yield('meta_description', 'Custom software for your business — admin panels, KPI dashboards, websites, API integrations and payment systems.')">
+    <link rel="icon" type="image/png" href="{{ asset('DevAim_IMG.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('DevAim_IMG.png') }}">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
     <script>
         (function() {

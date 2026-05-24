@@ -56,27 +56,27 @@
         <!-- Eyebrow -->
         <div data-gsap="hero-eyebrow" class="reveal-hidden inline-flex items-center gap-3 text-xs uppercase tracking-widest mb-8" style="color: var(--color-accent);">
             <span class="w-4 h-px" style="background: var(--color-accent);"></span>
-            Full-stack developer
+            Custom software
         </div>
 
         <!-- Headline -->
         <h1 data-gsap="hero-headline" class="reveal-hidden text-5xl md:text-7xl font-bold leading-[1.05] mb-6 max-w-4xl" style="letter-spacing: -0.03em; color: var(--color-text);">
-            Building software<br>
-            <span class="text-gradient-accent">that moves fast.</span>
+            Custom software<br>
+            <span class="text-gradient-accent">built for you.</span>
         </h1>
 
         <!-- Sub-copy -->
         <p data-gsap="hero-sub" class="reveal-hidden text-lg max-w-xl mb-10 leading-relaxed" style="color: var(--color-text-muted);">
-            Custom web applications built around your goals. Development with aim, not just output.
+            Admin panels, KPI dashboards, websites and integrations shaped around your process.
         </p>
 
         <!-- CTAs -->
         <div data-gsap="hero-cta" class="reveal-hidden flex flex-wrap items-center gap-4">
-            <a href="#contact" class="px-6 py-3 rounded-md font-semibold text-sm transition-colors duration-200" style="background: var(--color-accent); color: var(--color-surface);">
+            <a href="#contact" class="btn-primary px-6 py-3 rounded-md font-semibold text-sm">
                 Start a project
             </a>
-            <a href="#client-work" class="px-6 py-3 rounded-md border text-sm transition-all duration-200" style="border-color: var(--color-border); color: var(--color-text-muted);">
-                See my work →
+            <a href="#services" class="btn-outline px-6 py-3 rounded-md text-sm font-medium">
+                View services →
             </a>
         </div>
     </div>

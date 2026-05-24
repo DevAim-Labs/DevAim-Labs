@@ -7,8 +7,9 @@
         <!-- Pill nav bar -->
         <div class="hidden md:flex items-center rounded-full p-1" style="background: var(--color-surface-1);">
             <a href="#services"          class="nav-pill" data-section="services">Services</a>
+            <a href="#process"           class="nav-pill" data-section="process">Process</a>
             <a href="#client-work"       class="nav-pill" data-section="client-work">Work</a>
-            <a href="#personal-projects" class="nav-pill" data-section="personal-projects">Projects</a>
+            <a href="#faq"               class="nav-pill" data-section="faq">FAQ</a>
             <a href="#contact"           class="nav-pill" data-section="contact">Contact</a>
         </div>
 
@@ -27,7 +28,7 @@
                 </svg>
             </button>
 
-            <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm transition-all duration-200" style="border-color: var(--color-border); color: var(--color-accent);">
+            <a href="#contact" class="btn-outline-accent inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium">
                 Let's talk
             </a>
         </div>
@@ -58,8 +59,9 @@
     <div id="mobile-menu" class="hidden md:hidden border-t backdrop-blur-md" style="border-color: var(--color-border-dim);">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm" style="color: var(--color-text-muted);">
             <a href="#services" class="transition-colors hover:text-white">Services</a>
+            <a href="#process" class="transition-colors hover:text-white">Process</a>
             <a href="#client-work" class="transition-colors hover:text-white">Work</a>
-            <a href="#personal-projects" class="transition-colors hover:text-white">Projects</a>
+            <a href="#faq" class="transition-colors hover:text-white">FAQ</a>
             <a href="#contact" class="transition-colors hover:text-white">Contact</a>
         </div>
     </div>

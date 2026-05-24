@@ -64,7 +64,7 @@
                     <button
                         type="submit"
                         :disabled="form.processing"
-                        class="w-full py-3 rounded-md bg-[var(--color-accent)] text-[var(--color-surface)] font-semibold text-sm hover:bg-[var(--color-accent-dim)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                        class="btn-primary w-full py-3 rounded-md font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {{ form.processing ? 'Sending…' : 'Send message' }}
                     </button>
@@ -73,29 +73,39 @@
 
             <!-- Booking column -->
             <div class="space-y-5">
+
+
                 <div class="card-glow rounded-xl border border-[var(--color-border)] bg-[var(--color-input)] p-6">
                     <h3 class="font-semibold text-[var(--color-text)] mb-2 text-sm">Schedule a call</h3>
-                    <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-5">Prefer to talk? Book a free 30-minute discovery call directly on my calendar.</p>
+                    <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-5">Prefer to talk? Book a video call directly with us.</p>
                     <a
                         href="https://www.cal.eu/devaim/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-accent)] hover:border-[var(--color-accent)]/40 transition-all duration-200"
-                        style="--tw-bg-opacity: 0;"
-                        @mouseenter="$event.currentTarget.style.background = 'rgba(11,133,152,0.08)'"
-                        @mouseleave="$event.currentTarget.style.background = 'transparent'"
+                        class="btn-outline-accent inline-flex items-center gap-2 px-4 py-2.5 rounded-md text-sm font-medium"
                     >
                         Book a call →
                     </a>
                 </div>
 
+
+                <!--
+                <div class="card-glow rounded-xl border border-[var(--color-border)] bg-[var(--color-input)] p-6">
+                    <h3 class="font-semibold text-[var(--color-text)] mb-2 text-sm">Get in touch:</h3>
+                    <div class="font-light text-m">
+                        <p>E-mail: devaimlabs@gmail.com</p>
+                        <p>Phone: +31 6385230999</p>
+                    </div>
+                </div>
+                -->
+
                 <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-input)] p-6">
-                    <p class="text-xs text-[var(--color-text-dim)] uppercase tracking-widest mb-2">Response time</p>
+                    <h3 class="font-semibold text-[var(--color-text)] mb-2 text-sm">Response time</h3>
                     <p class="text-sm text-[var(--color-text-muted)]">Typically within 24 hours on business days.</p>
                 </div>
 
                 <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-input)] p-6">
-                    <p class="text-xs text-[var(--color-text-dim)] uppercase tracking-widest mb-2">Availability</p>
+                    <h3 class="font-semibold text-[var(--color-text)] mb-2 text-sm">Availability</h3>
                     <p class="text-sm text-[var(--color-text-muted)]">Currently open for new projects.</p>
                     <span class="inline-flex items-center gap-1.5 mt-3 text-xs text-[var(--color-accent)]">
                         <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse"></span>

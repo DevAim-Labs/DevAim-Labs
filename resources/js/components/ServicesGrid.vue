@@ -3,8 +3,8 @@
         <div class="section-card">
         <div class="max-w-6xl mx-auto px-6 py-24">
             <div class="mb-16">
-                <p class="section-eyebrow mb-3">What I build</p>
-                <h2 class="text-4xl section-title">Services</h2>
+                <p class="section-eyebrow mb-3">Custom software</p>
+                <h2 class="text-4xl section-title">What we can build for you</h2>
             </div>
 
             <!-- Grid — always in DOM, hidden via display:none during expansion -->
@@ -49,8 +49,7 @@
 
                         <a
                             href="#contact"
-                            class="mt-8 inline-flex px-5 py-2.5 rounded-md text-sm font-semibold transition-colors duration-200 self-start"
-                            style="background: var(--color-accent); color: var(--color-surface);"
+                            class="btn-primary mt-8 inline-flex px-5 py-2.5 rounded-md text-sm font-semibold self-start"
                             @click="closeExpanded"
                         >Start a project →</a>
                     </div>
@@ -90,49 +89,41 @@ const services = [
     {
         id: 1,
         icon: '◈',
-        title: 'Custom Websites',
-        description: 'Marketing sites, landing pages, and portfolios built for performance.',
-        detail: 'Pixel-perfect marketing sites, landing pages, and portfolios. Built with clean semantics, fast load times, and full CMS control if needed. Every page is tuned for conversions and optimised for search.',
+        title: 'Websites & landing pages',
+        description: 'Fast, SEO-friendly marketing sites built to convert.',
+        detail: 'Landing pages, company sites, and campaign pages with solid semantics, Core Web Vitals in mind, and clear CTAs. Optional CMS or content workflows when you need to update copy without a developer.',
         image: null,
     },
     {
         id: 2,
-        icon: '⬡',
-        title: 'Web Applications',
-        description: 'Full-stack apps with authentication, roles, business logic, and clean APIs.',
-        detail: 'From idea to production — auth flows, user roles, multi-tenancy, and business logic that holds up as your product scales. Clean architecture from day one so the codebase stays manageable.',
+        icon: '▦',
+        title: 'Admin panels & internal tools',
+        description: 'Replace spreadsheets with software your team actually wants to use.',
+        detail: 'Role-based admin panels, approval flows, inventory, and operations tooling shaped around how your business runs — one source of truth instead of fragmented files and tabs.',
         image: null,
     },
     {
         id: 3,
-        icon: '▦',
-        title: 'Dashboards & Systems',
-        description: 'Admin panels, reporting tools, and internal tooling your team actually wants to use.',
-        detail: 'Internal tools your team will actually use. KPI dashboards, reporting suites, inventory management, and admin panels built around real workflows — not generic templates.',
+        icon: '⬡',
+        title: 'KPI dashboards & reporting',
+        description: 'Realtime insight, exports, and alerts when metrics move off track.',
+        detail: 'Dashboards that pull live data from your stack — filters, charts, PDF or Excel exports, and notifications when KPIs cross thresholds. Built for decision-makers, not vanity metrics.',
         image: null,
     },
     {
         id: 4,
         icon: '◎',
-        title: 'Integrations',
-        description: 'Third-party APIs, webhooks, and service integrations that extend what your application can do.',
-        detail: "Stripe, HubSpot, Slack, or whatever your stack needs. Clean integrations that extend your application without tightly coupling it — so swapping providers later doesn't break everything.",
+        title: 'API integrations',
+        description: 'Connect CRM, accounting, logistics, and internal systems.',
+        detail: 'REST APIs, webhooks, and sync jobs between Stripe, HubSpot, ERP, or custom backends. Integrations are designed so you can change providers later without rewriting the product.',
         image: null,
     },
     {
         id: 5,
         icon: '◈',
-        title: 'Payment Systems',
-        description: 'Subscriptions, webhooks, invoicing, and checkout flows.',
-        detail: 'Subscription billing, one-time charges, usage-based pricing, webhooks, invoicing, and checkout flows. Built on Stripe with proper failure handling, retry logic, and customer portal support.',
-        image: null,
-    },
-    {
-        id: 6,
-        icon: '⬡',
-        title: 'API Development',
-        description: 'REST APIs and backend services that other systems can rely on at scale.',
-        detail: 'REST APIs designed for long-term reliability. Versioned endpoints, clear contracts, rate limiting, and documentation that makes your API easy to consume — by your team or third-party clients.',
+        title: 'Payment systems',
+        description: 'Checkout, subscriptions, invoicing, and webhooks. Stripe and Mollie.',
+        detail: 'One-time payments, subscriptions, usage-based billing, customer portals, and webhook handling with retries and failure paths. Production-ready flows for Dutch and international customers.',
         image: null,
     },
 ]

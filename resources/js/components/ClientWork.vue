@@ -2,7 +2,7 @@
     <section id="client-work">
         <div class="section-card">
         <div class="max-w-6xl mx-auto px-6 py-20">
-            <p class="section-eyebrow text-center mb-12">Websites I've built</p>
+            <p class="section-eyebrow text-center mb-3">Previous clients</p>
 
             <div class="relative flex items-center gap-4">
                 <!-- Prev arrow -->

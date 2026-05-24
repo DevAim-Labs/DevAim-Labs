@@ -4,11 +4,15 @@ import ClientWork from './components/ClientWork.vue'
 import PersonalProjects from './components/PersonalProjects.vue'
 import NavTransitionCube from './components/NavTransitionCube.vue'
 import ServicesGrid from './components/ServicesGrid.vue'
+import ProcessTimeline from './components/ProcessTimeline.vue'
 import { initHeroAnimation, initScrollReveal } from './animations.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     const servicesEl = document.getElementById('services-mount')
     if (servicesEl) createApp(ServicesGrid).mount(servicesEl)
+
+    const processEl = document.getElementById('process-mount')
+    if (processEl) createApp(ProcessTimeline).mount(processEl)
 
     const clientWorkEl = document.getElementById('client-work-mount')
     if (clientWorkEl) createApp(ClientWork).mount(clientWorkEl)
@@ -42,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }, { rootMargin: '-20% 0px -60% 0px' })
 
-        ;['services', 'client-work', 'personal-projects', 'contact'].forEach(id => {
+        ;['services', 'process', 'client-work', 'faq', 'contact'].forEach(id => {
             const el = document.getElementById(id)
             if (el) sectionObserver.observe(el)
         })
