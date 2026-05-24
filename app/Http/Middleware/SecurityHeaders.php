@@ -57,10 +57,5 @@ class SecurityHeaders
         ];
 
         $response->headers->set('Content-Security-Policy', implode('; ', $directives));
-
-        $response->headers->set(
-            'Content-Security-Policy-Report-Only',
-            "require-trusted-types-for 'script'; trusted-types default"
-        );
     }
 }
