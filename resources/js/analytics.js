@@ -75,6 +75,8 @@ export function trackFormSubmit(formName) {
 
 function scrollToSection(sectionId, behavior = 'smooth') {
     const el = document.getElementById(sectionId)
+        ?? document.querySelector(`[data-section-id="${sectionId}"]`)
+
     if (el) {
         el.scrollIntoView({ behavior, block: 'start' })
     }

@@ -13,7 +13,7 @@
         </div>
 
         <div class="hidden md:flex items-center gap-3">
-            <button onclick="toggleTheme()" aria-label="Thema wisselen" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
+            <button type="button" data-theme-toggle aria-label="Thema wisselen" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
                 <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
                     <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="md:hidden flex items-center gap-2">
-            <button onclick="toggleTheme()" aria-label="Thema wisselen" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
+            <button type="button" data-theme-toggle aria-label="Thema wisselen" class="w-8 h-8 flex items-center justify-center rounded transition-colors duration-200" style="color: var(--color-text-muted);">
                 <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
                     <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>

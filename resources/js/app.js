@@ -2,17 +2,35 @@ import { createApp } from 'vue'
 import NavTransitionCube from './components/NavTransitionCube.vue'
 import { initHeroAnimation } from './animations.js'
 import { initAnalytics } from './analytics.js'
+import { initThemeToggle } from './theme.js'
+
+function isNearViewport(el) {
+    const rect = el.getBoundingClientRect()
+    return rect.top < window.innerHeight + 320 && rect.bottom > -320
+}
+
+async function mountSection(id, loader) {
+    const el = document.getElementById(id)
+    if (!el) return
+
+    const { default: Component } = await loader()
+    createApp(Component).mount(el)
+
+    const sectionId = el.dataset.sectionId
+    if (sectionId && window.__INITIAL_SECTION__ === sectionId) {
+        requestAnimationFrame(() => {
+            document.getElementById(sectionId)?.scrollIntoView({ block: 'start' })
+        })
+    }
+}
 
 function mountWhenVisible(id, loader) {
     const el = document.getElementById(id)
     if (!el) return
 
-    const mount = async () => {
-        const { default: Component } = await loader()
-        createApp(Component).mount(el)
-    }
+    const mount = () => mountSection(id, loader)
 
-    if (!('IntersectionObserver' in window)) {
+    if (!('IntersectionObserver' in window) || isNearViewport(el)) {
         mount()
         return
     }
@@ -21,14 +39,23 @@ function mountWhenVisible(id, loader) {
         if (!entries.some((e) => e.isIntersecting)) return
         observer.disconnect()
         mount()
-    }, { rootMargin: '240px' })
+    }, { rootMargin: '320px' })
 
     observer.observe(el)
+
+    // Fallback: lege mount-divs hebben geen hoogte → IO vuurt soms nooit
+    setTimeout(() => {
+        if (!el.childElementCount) mount()
+    }, 2500)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    mountWhenVisible('services-mount', () => import('./components/ServicesGrid.vue'))
-    mountWhenVisible('process-mount', () => import('./components/ProcessTimeline.vue'))
+    initThemeToggle()
+
+    // Belangrijke secties direct mounten (geen lege IO-target)
+    mountSection('services-mount', () => import('./components/ServicesGrid.vue'))
+    mountSection('process-mount', () => import('./components/ProcessTimeline.vue'))
+
     mountWhenVisible('client-work-mount', () => import('./components/ClientWork.vue'))
     mountWhenVisible('personal-projects-mount', () => import('./components/PersonalProjects.vue'))
     mountWhenVisible('contact-mount', () => import('./components/ContactForm.vue'))

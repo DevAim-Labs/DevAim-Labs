@@ -4,11 +4,11 @@
 @include('partials.nav')
 @include('partials.hero')
 @include('partials.about')
-    <div id="services-mount"></div>
-    <div id="process-mount"></div>
-    <div id="client-work-mount"></div>
-    <div id="personal-projects-mount"></div>
-    <div id="contact-mount"></div>
+    <div id="services-mount" data-section-id="services"></div>
+    <div id="process-mount" data-section-id="process"></div>
+    <div id="client-work-mount" data-section-id="client-work"></div>
+    <div id="personal-projects-mount" data-section-id="personal-projects"></div>
+    <div id="contact-mount" data-section-id="contact"></div>
     @include('partials.faq')
     @include('partials.footer')
 @endsection
