@@ -9,7 +9,7 @@
             <a href="/werkwijze" class="nav-pill" data-section="process">Werkwijze</a>
             <a href="/klantwerk" class="nav-pill" data-section="client-work">Klantwerk</a>
             <a href="/contact" class="nav-pill" data-section="contact">Contact</a>
-            <a href="/faq" class="nav-pill" data-section="faq">FAQ</a>
+            <a href="/veelgestelde-vragen" class="nav-pill" data-section="faq">FAQ</a>
         </div>
 
         <div class="hidden md:flex items-center gap-3">
@@ -58,7 +58,7 @@
             <a href="/werkwijze" class="transition-colors hover:text-white">Werkwijze</a>
             <a href="/klantwerk" class="transition-colors hover:text-white">Klantwerk</a>
             <a href="/contact" class="transition-colors hover:text-white">Contact</a>
-            <a href="/faq" class="transition-colors hover:text-white">FAQ</a>
+            <a href="/veelgestelde-vragen" class="transition-colors hover:text-white">FAQ</a>
             <div class="flex justify-center items-center">
                 <a href="/contact" class="btn-outline-accent inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Laten we praten" data-track-location="nav">
                     Laten we praten
