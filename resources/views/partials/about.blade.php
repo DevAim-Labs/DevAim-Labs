@@ -7,7 +7,7 @@
                 Software die past.<br>
             </h2>
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-4">
-                Wij bouwen maatwerksoftware voor bedrijven met duidelijke doelen — van interne tools en KPI-dashboards tot landingspagina's en betaalstromen.
+                Wij bouwen maatwerksoftware voor bedrijven met duidelijke doelen. <br> Van interne tools en KPI-dashboards tot landingspagina's en betaalstromen.
             </p>
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-8">
                 Je werkt direct met de developer die jouw product bouwt. Heldere communicatie, met software die aansluit op hoe jij werkt.

@@ -20,7 +20,7 @@
                             v-model="form.name"
                             @change="form.validate('name')"
                             type="text"
-                            placeholder="Je naam"
+                            placeholder="Naam"
                             autocomplete="name"
                             class="w-full px-4 py-2.5 rounded-md bg-[var(--color-input)] text-[var(--color-text)] text-sm placeholder-[var(--color-text-dim)] outline-none border transition-colors duration-200"
                             :class="form.invalid('name') ? 'border-red-500/60 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent)]/60'"
@@ -35,7 +35,7 @@
                             v-model="form.email"
                             @change="form.validate('email')"
                             type="email"
-                            placeholder="jij@bedrijf.nl"
+                            placeholder="john@company.com"
                             autocomplete="email"
                             class="w-full px-4 py-2.5 rounded-md bg-[var(--color-input)] text-[var(--color-text)] text-sm placeholder-[var(--color-text-dim)] outline-none border transition-colors duration-200"
                             :class="form.invalid('email') ? 'border-red-500/60 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-accent)]/60'"
@@ -75,7 +75,7 @@
             <div class="space-y-5">
                 <div class="card-glow rounded-xl border border-[var(--color-border)] bg-[var(--color-input)] p-6">
                     <h3 class="font-semibold text-[var(--color-text)] mb-2 text-sm">Plan een gesprek</h3>
-                    <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-5">Liever even bellen? Boek direct een videogesprek.</p>
+                    <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-5">Liever even bellen? Boek direct een (video)gesprek.</p>
                     <a
                         href="https://www.cal.eu/devaim/"
                         target="_blank"
