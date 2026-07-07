@@ -1,4 +1,22 @@
-<section class="relative min-h-screen flex items-center pt-16 overflow-hidden" style="background: radial-gradient(ellipse at 80% 50%, #043239 0%, #141414 60%);">
+<section id="home" class="hero-section relative min-h-screen flex items-center pt-16 overflow-hidden">
+
+    <!-- Blurred hero background image (WebP + responsive sizes) -->
+    <div class="absolute inset-0 pointer-events-none" style="z-index:0;">
+        <picture>
+            <source type="image/webp"
+                    srcset="/heroimage-768.webp 768w, /heroimage-1280.webp 1280w, /heroimage.webp 1920w"
+                    sizes="100vw">
+            <img src="/heroimage.jpg"
+                 alt=""
+                 role="presentation"
+                 class="hero-bg-img absolute inset-0 w-full h-full object-cover"
+                 width="1920"
+                 height="1080"
+                 fetchpriority="high"
+                 decoding="async"
+                 style="filter: blur(5px); transform: scale(1.05);">
+        </picture>
+    </div>
 
     <!-- Pulsing orb (right side, behind shapes) -->
     <div class="hero-orb absolute pointer-events-none" style="right: -60px; top: 50%; transform: translateY(-50%);"></div>
@@ -44,35 +62,35 @@
 
     </div>
 
-    <div class="relative max-w-6xl mx-auto px-6 py-24">
+    <div class="hero-content relative">
         <!-- Eyebrow -->
-        <div data-gsap="hero-eyebrow" class="reveal-hidden inline-flex items-center gap-3 text-xs uppercase tracking-widest mb-8" style="color: #0B8598;">
-            <span class="w-4 h-px" style="background:#0B8598;"></span>
-            Full-stack developer
+        <div data-gsap="hero-eyebrow" class="hero-eyebrow inline-flex items-center gap-2 sm:gap-3 uppercase mb-6 sm:mb-8" style="color: var(--color-accent);">
+            <span class="w-4 h-px shrink-0" style="background: var(--color-accent);"></span>
+            <span>Custom software ontwikkeling</span>
         </div>
 
         <!-- Headline -->
-        <h1 data-gsap="hero-headline" class="reveal-hidden text-5xl md:text-7xl font-bold leading-[1.05] mb-6 max-w-4xl" style="letter-spacing: -0.03em; color: #f0f0f0;">
-            Building software<br>
-            <span class="text-gradient-accent">that moves fast.</span>
+        <h1 data-gsap="hero-headline" class="hero-headline font-bold mb-6 sm:mb-6" style="color: var(--color-text);">
+            Maatwerksoftware<br>
+            <span class="text-gradient-accent">gebouwd voor jou.</span>
         </h1>
 
         <!-- Sub-copy -->
-        <p data-gsap="hero-sub" class="reveal-hidden text-lg max-w-xl mb-10 leading-relaxed" style="color: #8a8a9a;">
-            Custom web applications built around your goals. Development with aim, not just output.
+        <p data-gsap="hero-sub" class="hero-sub mb-10 sm:mb-10" style="color: var(--color-text-muted);">
+            Adminpanelen, KPI-dashboards, landingspagina's, Stripe- en Mollie-integraties en API-koppelingen — afgestemd op jouw proces.
         </p>
 
         <!-- CTAs -->
-        <div data-gsap="hero-cta" class="reveal-hidden flex flex-wrap items-center gap-4">
-            <a href="#contact" class="px-6 py-3 rounded-md font-semibold text-sm transition-colors duration-200" style="background:#0B8598; color:#141414;">
-                Start a project
+        <div data-gsap="hero-cta" class="hero-cta flex flex-row flex-wrap items-center gap-3 sm:gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center px-6 py-3 rounded-md font-semibold text-sm" data-track="cta_click" data-track-label="Start een project" data-track-location="hero">
+                Start een project
             </a>
-            <a href="#portfolio" class="px-6 py-3 rounded-md border text-sm transition-all duration-200" style="border-color:#0d3a44; color:#888888;">
-                See my work →
+            <a href="/diensten" class="btn-outline inline-flex items-center px-6 py-3 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Bekijk diensten" data-track-location="hero">
+                Bekijk diensten →
             </a>
         </div>
     </div>
 
     <!-- Bottom fade -->
-    <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none" style="background: linear-gradient(to bottom, transparent, #141414);"></div>
+    <div class="hero-fade absolute bottom-0 inset-x-0 h-32 pointer-events-none"></div>
 </section>

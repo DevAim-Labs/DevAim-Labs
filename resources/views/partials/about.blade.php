@@ -1,26 +1,52 @@
-<section data-gsap="section-about" class="reveal-hidden">
-    <div class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+<section id="about" data-gsap="section-about" class="reveal-hidden">
+    <div class="section-card">
+    <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
         <div>
-            <p class="section-eyebrow mb-4">About</p>
+            <p class="section-eyebrow mb-4">Over ons</p>
             <h2 class="text-3xl md:text-4xl section-title mb-6">
-                One developer.<br>Clear Aim.
+                Software die past.<br>
             </h2>
-            <p class="text-[--color-text-muted] leading-relaxed mb-4">
-                Hi, I'm Aymane. As a full-stack developer I guide projects through the entire lifecycle from concept to deployment.
+            <p class="text-[var(--color-text-muted)] leading-relaxed mb-4">
+                Wij bouwen maatwerksoftware voor bedrijven met duidelijke doelen. <br> Van interne tools en KPI-dashboards tot landingspagina's en betaalstromen.
             </p>
-            <p class="text-[--color-text-muted] leading-relaxed">
-            You collaborate directly with the person creating the product, eliminating miscommunications. I focus on building software that functions beautifully and feels intuitive.
-            Every project is built with care.
+            <p class="text-[var(--color-text-muted)] leading-relaxed mb-8">
+                Je werkt direct met de developer die jouw product bouwt. Heldere communicatie, met software die aansluit op hoe jij werkt.
             </p>
+            <a
+                href="/contact"
+                class="btn-primary hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
+                data-track="cta_click"
+                data-track-label="Meer informatie"
+                data-track-location="about"
+            >
+                Meer informatie →
+            </a>
         </div>
 
-        <!-- Tech stack pills -->
-        <div class="grid grid-cols-3 gap-3">
-            @foreach(['PHP', 'C#', 'React', 'Python', 'Java- & Typescript', 'Inertia', 'REST APIs', 'Stripe', 'Tailwind CSS'] as $tech)
-            <div class="card-glow flex items-center justify-center px-3 py-2.5 rounded-md border border-[--color-border] text-xs text-[--color-text-muted] hover:border-[--color-accent]/30 hover:text-[--color-text] transition-all duration-200 text-center">
-                {{ $tech }}
+        <div>
+            <p class="flex mb-7 text-xl font-bold justify-center items-center flex-wrap">Onze specialisaties</p>
+            <div class="grid grid-cols-3 gap-3">
+                @foreach(['Laravel', 'C#', 'React', 'Python', 'Java & TypeScript', 'Inertia', 'REST API\'s', 'Stripe & Mollie', 'Tailwind CSS'] as $tech)
+                <div class="card-glow flex items-center justify-center px-3 py-2.5 rounded-md border border-[var(--color-border)] text-xs text-[var(--color-text-muted)] hover:border-[var(--color-accent)]/30 hover:text-[var(--color-text)] transition-all duration-200 text-center">
+                    {{ $tech }}
+                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
+
+        <div class="inline-flex md:hidden justify-center">
+            <a
+                href="/contact"
+                class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
+                data-track="cta_click"
+                data-track-label="Meer informatie"
+                data-track-location="about"
+            >
+                Meer informatie →
+            </a>
+        </div>
+
+
+    </div>
     </div>
 </section>

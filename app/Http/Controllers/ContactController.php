@@ -14,11 +14,18 @@ class ContactController extends Controller
             'name'    => ['required', 'string', 'max:100'],
             'email'   => ['required', 'email', 'max:255'],
             'message' => ['required', 'string', 'min:20', 'max:2000'],
+        ], [
+            'name.required'    => 'Vul je naam in.',
+            'email.required'   => 'Vul je e-mailadres in.',
+            'email.email'      => 'Vul een geldig e-mailadres in.',
+            'message.required' => 'Schrijf een bericht.',
+            'message.min'      => 'Je bericht moet minimaal 20 tekens bevatten.',
+            'message.max'      => 'Je bericht mag maximaal 2000 tekens bevatten.',
         ]);
 
         Mail::to(config('mail.from.address'))
             ->send(new ContactFormSubmission($validated));
 
-        return response()->json(['message' => 'Sent.'], 200);
+        return response()->json(['message' => 'Verzonden.'], 200);
     }
 }

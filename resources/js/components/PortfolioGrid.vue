@@ -11,11 +11,11 @@
             <article
                 v-for="project in clients"
                 :key="project.id"
-                class="group relative rounded-xl border border-[--color-border] bg-[--color-surface-1] overflow-hidden hover:border-[--color-accent]/30 transition-all duration-300"
+                class="group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-1)] overflow-hidden hover:border-[var(--color-accent)]/30 transition-all duration-300"
             >
-                <div class="aspect-video bg-[--color-surface-2] flex items-center justify-center relative overflow-hidden">
+                <div class="aspect-video bg-[var(--color-surface-2)] flex items-center justify-center relative overflow-hidden">
                     <div class="absolute inset-0 bg-grid opacity-40"></div>
-                    <div class="relative w-14 h-14 rounded-xl border border-[--color-border] flex items-center justify-center font-bold text-lg" style="color:#22d3ee">
+                    <div class="relative w-14 h-14 rounded-xl border border-[var(--color-border)] flex items-center justify-center font-bold text-lg" style="color:#22d3ee">
                         {{ project.initials }}
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                             <span
                                 v-for="tag in project.tags"
                                 :key="tag"
-                                class="px-2 py-0.5 rounded border border-[--color-border] text-[10px] uppercase tracking-wide"
+                                class="px-2 py-0.5 rounded border border-[var(--color-border)] text-[10px] uppercase tracking-wide"
                                 style="color:#555555"
                             >{{ tag }}</span>
                         </div>
@@ -59,11 +59,11 @@
             <article
                 v-for="project in personal"
                 :key="project.id"
-                class="group relative rounded-xl border border-[--color-border] bg-[--color-surface-1] overflow-hidden hover:border-[--color-accent]/30 transition-all duration-300"
+                class="group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-1)] overflow-hidden hover:border-[var(--color-accent)]/30 transition-all duration-300"
             >
-                <div class="aspect-video bg-[--color-surface-2] flex items-center justify-center relative overflow-hidden">
+                <div class="aspect-video bg-[var(--color-surface-2)] flex items-center justify-center relative overflow-hidden">
                     <div class="absolute inset-0 bg-grid opacity-40"></div>
-                    <div class="relative w-14 h-14 rounded-xl border border-[--color-border] flex items-center justify-center font-bold text-lg" style="color:#22d3ee">
+                    <div class="relative w-14 h-14 rounded-xl border border-[var(--color-border)] flex items-center justify-center font-bold text-lg" style="color:#22d3ee">
                         {{ project.initials }}
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                             <span
                                 v-for="tag in project.tags"
                                 :key="tag"
-                                class="px-2 py-0.5 rounded border border-[--color-border] text-[10px] uppercase tracking-wide"
+                                class="px-2 py-0.5 rounded border border-[var(--color-border)] text-[10px] uppercase tracking-wide"
                                 style="color:#555555"
                             >{{ tag }}</span>
                         </div>
@@ -98,7 +98,7 @@
             </article>
         </div>
 
-        <div v-else class="rounded-xl border border-dashed border-[--color-border] p-12 text-center">
+        <div v-else class="rounded-xl border border-dashed border-[var(--color-border)] p-12 text-center">
             <p class="text-sm" style="color:#555555">Personal projects coming soon.</p>
         </div>
 
