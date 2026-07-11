@@ -11,7 +11,7 @@
                  role="presentation"
                  class="hero-bg-img absolute inset-0 w-full h-full object-cover"
                  width="1920"
-                 height="1080"
+                 height="1280"
                  fetchpriority="high"
                  decoding="async"
                  style="filter: blur(5px); transform: scale(1.05);">
@@ -36,9 +36,9 @@
             </div>
         </div>
 
-        <!-- Medium violet cube, mid right -->
+        <!-- Medium warm-accent cube, mid right -->
         <div style="position:absolute; right:26%; top:54%; animation:shape-float-b 9s ease-in-out infinite 1.5s;">
-            <div class="hero-cube violet" style="width:105px; height:105px; --cube-half:52.5px; animation:cube-rotate-b 25s linear infinite 2s;">
+            <div class="hero-cube warm" style="width:105px; height:105px; --cube-half:52.5px; animation:cube-rotate-b 25s linear infinite 2s;">
                 <div class="face face-front"></div>
                 <div class="face face-back"></div>
                 <div class="face face-right"></div>

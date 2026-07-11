@@ -8,19 +8,16 @@ class SitemapController extends Controller
 {
     public function __invoke(): Response
     {
-        $sections = config('site.sections');
-        $urls = [];
-
-        foreach ($sections as $section) {
-            if (empty($section['path'])) {
-                continue;
-            }
-            $urls[] = [
-                'loc' => url($section['path']),
-                'changefreq' => $section['id'] === 'home' ? 'weekly' : 'monthly',
-                'priority' => $section['id'] === 'home' ? '1.0' : '0.8',
-            ];
-        }
+        // Every section route renders the same one-page document (see HomeController),
+        // so only the homepage is listed here — the section routes are self-canonicalized
+        // to '/' and would otherwise be indexed as duplicate content.
+        $urls = [
+            [
+                'loc' => url('/'),
+                'changefreq' => 'weekly',
+                'priority' => '1.0',
+            ],
+        ];
 
         $xml = view('sitemap', ['urls' => $urls])->render();
 
