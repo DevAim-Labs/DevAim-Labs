@@ -77,7 +77,7 @@
 
         <!-- Sub-copy -->
         <p data-gsap="hero-sub" class="hero-sub mb-10 sm:mb-10" style="color: var(--color-text-muted);">
-            Adminpanelen, KPI-dashboards, landingspagina's, Stripe- en Mollie-integraties en API-koppelingen — afgestemd op jouw proces.
+            Adminpanelen, KPI-dashboards, landingspagina's, Payment services-integraties en API-koppelingen. Afgestemd op jouw goals.
         </p>
 
         <!-- CTAs -->

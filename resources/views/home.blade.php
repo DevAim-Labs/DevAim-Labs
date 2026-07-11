@@ -17,6 +17,6 @@
 <script nonce="{{ $cspNonce ?? '' }}">
     window.__INITIAL_SECTION__ = @json($initialSection ?? null);
     window.__ANALYTICS_SECTIONS__ = @json($analyticsSections ?? []);
-    window.__GA_MEASUREMENT_ID__ = 'G-WY86R8VE0V';
+    window.__GA_MEASUREMENT_ID__ = 'G-4DGM3LBT0E';
 </script>
 @endpush

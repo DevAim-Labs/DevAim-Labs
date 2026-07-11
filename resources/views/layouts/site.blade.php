@@ -2,12 +2,12 @@
 <html lang="nl" class="scroll-smooth" data-theme="dark">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY86R8VE0V"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGM3LBT0E"></script>
     <script nonce="{{ $cspNonce ?? '' }}">
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-WY86R8VE0V');
+        gtag('config', 'G-4DGM3LBT0E');
     </script>
 
     <meta charset="utf-8">
