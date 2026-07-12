@@ -4,7 +4,6 @@
         <div class="max-w-6xl mx-auto px-6 py-24">
         <div class="mb-16">
             <p class="section-eyebrow mb-3">Eigen projecten</p>
-            <h2 class="text-4xl section-title">Gebouwd voor de leuk</h2>
         </div>
 
         <div v-if="personal.length" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
