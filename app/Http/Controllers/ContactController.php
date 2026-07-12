@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormSubmission;
+use App\Models\ContactSubmission;
 
 class ContactController extends Controller
 {
@@ -23,8 +24,17 @@ class ContactController extends Controller
             'message.max'      => 'Je bericht mag maximaal 2000 tekens bevatten.',
         ]);
 
-        Mail::to(config('mail.from.address'))
-            ->send(new ContactFormSubmission($validated));
+        ContactSubmission::create($validated + [
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+        ]);
+
+        try {
+            Mail::to(config('mail.from.address'))
+                ->send(new ContactFormSubmission($validated));
+        } catch (\Throwable $e) {
+            report($e);
+        }
 
         return response()->json(['message' => 'Verzonden.'], 200);
     }
