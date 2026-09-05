@@ -15,7 +15,7 @@ return [
     ],
     [
         'q' => 'Wie is eigenaar van de code?',
-        'a' => 'Jij. Je ontvangt de broncode en documentatie die nodig is om het product te draaien en uit te breiden.',
+        'a' => 'Jij. Je ontvangt de broncode en documentatie die nodig is om het product te draaien en uit te breiden.\nHet is ook mogelijk dat wij de code behouden en hiervoor updates geven tegen een maandelijkse prijs. ',
     ],
     [
         'q' => 'Regelen jullie betalingen en abonnementen?',
@@ -23,6 +23,6 @@ return [
     ],
     [
         'q' => 'Bieden jullie onderhoud na oplevering?',
-        'a' => 'Ja. Klanten houden ons aan voor fixes, nieuwe features en updates aan integraties.',
+        'a' => 'Ja. Wij zorgen voor fixes, nieuwe features en updates tegen een prijs. Er kan besproken worden wat precies nodig is.',
     ],
 ];

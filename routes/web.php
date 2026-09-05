@@ -17,6 +17,16 @@ Route::get('/robots.txt', function () {
 Route::post('/contact', [ContactController::class, 'store'])
     ->middleware('throttle:5,1');
 
+Route::view('/privacyverklaring', 'privacy', [
+    'pageTitle' => 'Privacyverklaring — DevAim Labs',
+    'pageDescription' => 'Hoe DevAim Labs omgaat met persoonsgegevens: welke gegevens we verwerken, waarom, hoe lang we ze bewaren en welke rechten je hebt.',
+    'canonicalUrl' => url('/privacyverklaring'),
+    'breadcrumbs' => [
+        ['name' => 'Home', 'path' => '/'],
+        ['name' => 'Privacyverklaring', 'path' => '/privacyverklaring'],
+    ],
+])->name('privacy');
+
 foreach (config('site.redirects', []) as $from => $to) {
     Route::redirect($from, $to, 301);
 }

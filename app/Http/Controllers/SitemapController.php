@@ -22,6 +22,12 @@ class SitemapController extends Controller
             ->values()
             ->all();
 
+        $urls[] = [
+            'loc' => url('/privacyverklaring'),
+            'changefreq' => 'yearly',
+            'priority' => '0.3',
+        ];
+
         $xml = view('sitemap', ['urls' => $urls])->render();
 
         return response($xml, 200)->header('Content-Type', 'application/xml');

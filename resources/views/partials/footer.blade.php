@@ -20,8 +20,9 @@
         </div>
     </div>
     <div style="border-top: 1px solid var(--color-border);">
-        <p class="max-w-6xl mx-auto px-6 py-4 text-sm text-[var(--color-text-muted)]">
-            &copy; {{ date('Y') }} DevAim Labs. Alle rechten voorbehouden.
-        </p>
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-[var(--color-text-muted)]">
+            <p>&copy; {{ date('Y') }} DevAim Labs. Alle rechten voorbehouden.</p>
+            <a href="/privacyverklaring" class="hover:text-[var(--color-text)] transition-colors duration-200">Privacyverklaring</a>
+        </div>
     </div>
 </footer>
