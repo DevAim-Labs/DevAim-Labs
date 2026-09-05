@@ -10,7 +10,7 @@
             <article
                 v-for="project in personal"
                 :key="project.id"
-                class="card-glow group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-1)] overflow-hidden hover:border-[var(--color-accent)]/30 transition-all duration-300"
+                class="card-glow group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-1)] overflow-hidden hover:border-[var(--color-text-dim)] transition-all duration-300"
             >
                 <div class="aspect-video bg-[var(--color-surface-2)] flex items-center justify-center relative overflow-hidden">
                     <div class="absolute inset-0 bg-grid opacity-40"></div>

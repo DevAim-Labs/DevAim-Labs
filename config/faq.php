@@ -2,7 +2,7 @@
 
 return [
     [
-        'q' => 'Welke maatwerksoftware bouwen jullie?',
+        'q' => 'Welke software bouwen jullie?',
         'a' => 'Adminpanelen, KPI-dashboards, websites, REST API\'s, koppelingen met CRM en boekhouding, en betaalstromen. Meestal met Laravel, Vue, en aanbieders zoals Stripe of Mollie.',
     ],
     [

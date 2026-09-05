@@ -12,8 +12,8 @@
                     v-for="service in services"
                     :key="service.id"
                     :class="service.featured
-                        ? 'sm:col-span-2 p-8 border-[var(--color-accent)]/30 hover:border-[var(--color-accent)]/50'
-                        : 'p-6 border-[var(--color-border)] hover:border-[var(--color-accent)]/30'"
+                        ? 'sm:col-span-2 p-8 border-[var(--color-border)] hover:border-[var(--color-text-dim)]'
+                        : 'p-6 border-[var(--color-border)] hover:border-[var(--color-text-dim)]'"
                     class="card-glow group relative rounded-xl border bg-[var(--color-surface)] transition-all duration-300 cursor-pointer select-none flex flex-col"
                     @click="selectService(service)"
                 >

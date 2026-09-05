@@ -61,22 +61,16 @@ html[data-theme="light"] {
     }
 
     .glow-accent {
-        box-shadow: 0 0 0 1px var(--color-border), 0 0 20px var(--color-accent-glow);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -14px rgba(0, 0, 0, 0.5);
     }
 
     .card-glow {
-        box-shadow:
-            0 0 0 1px color-mix(in srgb, var(--color-accent) 18%, transparent),
-            0 0 28px color-mix(in srgb, var(--color-accent) 10%, transparent),
-            inset 0 1px 0 color-mix(in srgb, var(--color-accent) 10%, transparent);
-        transition: box-shadow 0.3s ease;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -14px rgba(0, 0, 0, 0.5);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .card-glow:hover {
-        box-shadow:
-            0 0 0 1px color-mix(in srgb, var(--color-accent) 45%, transparent),
-            0 0 40px color-mix(in srgb, var(--color-accent) 25%, transparent),
-            0 0 80px color-mix(in srgb, var(--color-accent) 10%, transparent),
-            inset 0 1px 0 color-mix(in srgb, var(--color-accent) 18%, transparent);
+        transform: translateY(-3px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 20px 40px -14px rgba(0, 0, 0, 0.55);
     }
 
     .reveal-hidden {
@@ -163,19 +157,13 @@ html[data-theme="light"] {
     }
 }
 
-/* ── Hero orb ── */
-@keyframes orb-pulse {
-    0%, 100% { opacity: 0.45; transform: translateY(-50%) scale(1); }
-    50%       { opacity: 0.85; transform: translateY(-50%) scale(1.22); }
-}
-
+/* ── Hero orb (static, no pulse) ── */
 .hero-orb {
     width: 540px;
     height: 540px;
     border-radius: 50%;
-    background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 22%, transparent) 0%, color-mix(in srgb, var(--color-accent) 6%, transparent) 50%, transparent 70%);
+    background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 14%, transparent) 0%, color-mix(in srgb, var(--color-accent) 4%, transparent) 50%, transparent 70%);
     filter: blur(72px);
-    animation: orb-pulse 7s ease-in-out infinite;
 }
 
 /* ── Floating shape keyframes ── */

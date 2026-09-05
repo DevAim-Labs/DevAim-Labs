@@ -27,10 +27,8 @@
                             :href="client.href"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="card-glow shrink-0 flex flex-col items-center justify-center gap-4 py-10 px-6 rounded-xl border bg-[var(--color-surface)] transition-colors duration-200"
-                            :style="{ width: itemWidth, borderColor: 'var(--color-border)' }"
-                            @mouseover="$event.currentTarget.style.borderColor = 'var(--color-accent)'"
-                            @mouseleave="$event.currentTarget.style.borderColor = 'var(--color-border)'"
+                            class="card-glow shrink-0 flex flex-col items-center justify-center gap-4 py-10 px-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-text-dim)] transition-colors duration-200"
+                            :style="{ width: itemWidth }"
                         >
                             <img
                                 v-if="client.logo"

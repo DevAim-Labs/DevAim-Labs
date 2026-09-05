@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $pageTitle ?? trim($__env->yieldContent('title')) ?: 'DevAim Labs' }}</title>
-    <meta name="description" content="{{ $pageDescription ?? trim($__env->yieldContent('meta_description')) ?: 'Maatwerksoftware voor bedrijven — adminpanelen, KPI-dashboards, websites, API-koppelingen en betaalstromen.' }}">
+    <meta name="description" content="{{ $pageDescription ?? trim($__env->yieldContent('meta_description')) ?: 'Maatwerksoftware voor bedrijven: adminpanelen, KPI-dashboards, websites, API-koppelingen en betaalstromen.' }}">
     <link rel="canonical" href="{{ $canonicalUrl ?? url('/') }}">
     <meta name="robots" content="index, follow">
 

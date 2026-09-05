@@ -11,7 +11,7 @@ return [
             'id' => 'home',
             'slug' => null,
             'path' => '/',
-            'title' => 'DevAim Labs — Maatwerksoftware ontwikkeling',
+            'title' => 'DevAim Labs',
             'description' => 'Maatwerksoftware en custom software ontwikkeling voor bedrijven: adminpanelen, KPI-dashboards, landingspagina\'s, Stripe en Mollie integraties en API-koppelingen.',
             'keywords' => 'maatwerksoftware laten bouwen, custom software ontwikkeling, landingspagina laten maken',
             'indexable' => true,

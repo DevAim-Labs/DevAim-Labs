@@ -63,6 +63,25 @@
     </div>
 
     <div class="hero-content relative">
+        @if(!empty($breadcrumbs) && count($breadcrumbs) > 1)
+        <nav aria-label="Breadcrumb" class="mb-4 sm:mb-5">
+            <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+                @foreach($breadcrumbs as $i => $crumb)
+                    @if($i > 0)
+                        <li aria-hidden="true" style="color: var(--color-text-dim);">/</li>
+                    @endif
+                    <li>
+                        @if($i === count($breadcrumbs) - 1)
+                            <span aria-current="page" style="color: var(--color-text-muted);">{{ $crumb['name'] }}</span>
+                        @else
+                            <a href="{{ $crumb['path'] }}" class="hover:underline" style="color: var(--color-text-dim);">{{ $crumb['name'] }}</a>
+                        @endif
+                    </li>
+                @endforeach
+            </ol>
+        </nav>
+        @endif
+
         <!-- Eyebrow -->
         <div data-gsap="hero-eyebrow" class="hero-eyebrow inline-flex items-center gap-2 sm:gap-3 uppercase mb-6 sm:mb-8" style="color: var(--color-accent);">
             <span class="w-4 h-px shrink-0" style="background: var(--color-accent);"></span>
@@ -71,13 +90,13 @@
 
         <!-- Headline -->
         <h1 data-gsap="hero-headline" class="hero-headline font-bold mb-6 sm:mb-6" style="color: var(--color-text);">
-            Maatwerksoftware.<br>
-            <span class="text-gradient-accent">Zonder tussenpersonen.</span>
+            DevAim Labs.<br>
+            <span class="text-gradient-accent">Maatwerksoftware voor jou.</span>
         </h1>
 
         <!-- Sub-copy -->
         <p data-gsap="hero-sub" class="hero-sub mb-10 sm:mb-10" style="color: var(--color-text-muted);">
-            Je hebt rechtstreeks contact met het team dat bouwt, niet met een accountmanager. Van eerste gesprek tot livegang dezelfde mensen, met reactie binnen 24 uur.
+            Rechtstreeks contact met de developers. Van eerste gesprek tot livegang dezelfde mensen, met reactie binnen 24 uur.
         </p>
 
         <!-- CTAs -->

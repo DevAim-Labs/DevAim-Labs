@@ -5,6 +5,7 @@
             <p class="text-sm text-[var(--color-text)] mt-1 max-w-xs">Software dat bij jou past.<br></p>
         </div>
         <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-[var(--color-text-muted)]">
+            <a href="/over-ons" class="hover:text-[var(--color-text)] transition-colors duration-200">Over ons</a>
             <a href="/diensten" class="hover:text-[var(--color-text)] transition-colors duration-200">Diensten</a>
             <a href="/werkwijze" class="hover:text-[var(--color-text)] transition-colors duration-200">Werkwijze</a>
             <a href="/klantwerk" class="hover:text-[var(--color-text)] transition-colors duration-200">Klantwerk</a>
