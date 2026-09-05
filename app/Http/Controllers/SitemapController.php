@@ -8,16 +8,19 @@ class SitemapController extends Controller
 {
     public function __invoke(): Response
     {
-        // Every section route renders the same one-page document (see HomeController),
-        // so only the homepage is listed here — the section routes are self-canonicalized
-        // to '/' and would otherwise be indexed as duplicate content.
-        $urls = [
-            [
-                'loc' => url('/'),
-                'changefreq' => 'weekly',
-                'priority' => '1.0',
-            ],
-        ];
+        // Every section route renders the same one-page document (see HomeController).
+        // Routes without their own unique content self-canonicalize to '/' and are left
+        // out here; only sections marked `indexable` in config/site.php (i.e. ones that
+        // actually render distinct content, see home.blade.php) get their own entry.
+        $urls = collect(config('site.sections'))
+            ->filter(fn (array $s) => $s['indexable'] ?? false)
+            ->map(fn (array $s) => [
+                'loc' => url($s['path']),
+                'changefreq' => $s['id'] === 'home' ? 'weekly' : 'monthly',
+                'priority' => $s['id'] === 'home' ? '1.0' : '0.8',
+            ])
+            ->values()
+            ->all();
 
         $xml = view('sitemap', ['urls' => $urls])->render();
 

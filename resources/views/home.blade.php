@@ -3,13 +3,18 @@
 @section('content')
 @include('partials.nav')
 @include('partials.hero')
-@include('partials.about')
     <div id="services-mount" data-section-id="services"></div>
+    @if(($initialSection ?? null) === 'services')
+        @include('partials.diensten-verdieping')
+    @endif
     <div id="process-mount" data-section-id="process"></div>
     <div id="client-work-mount" data-section-id="client-work"></div>
-    <div id="personal-projects-mount" data-section-id="personal-projects"></div>
-    <div id="contact-mount" data-section-id="contact"></div>
+@include('partials.about')
     @include('partials.faq')
+    <div id="contact-mount" data-section-id="contact"></div>
+    @if(($initialSection ?? null) === 'personal-projects')
+        <div id="personal-projects-mount" data-section-id="personal-projects"></div>
+    @endif
     @include('partials.footer')
 @endsection
 

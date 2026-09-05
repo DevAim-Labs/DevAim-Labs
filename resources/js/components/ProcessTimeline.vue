@@ -85,10 +85,10 @@
 
 <script setup>
 const steps = [
-    { id: 1, number: 1, title: 'Kennismaking', body: 'We bespreken je idee, doelen en randvoorwaarden. Zo checken we of maatwerksoftware de juiste keuze is.' },
-    { id: 2, number: 2, title: 'Scope & planning', body: 'Heldere milestones, planning en wat succes betekent — voordat we beginnen met bouwen.' },
-    { id: 3, number: 3, title: 'Bouwen', body: 'Iteratief ontwikkelen met demos om de twee weken.' },
-    { id: 4, number: 4, title: 'Oplevering', body: 'Deployen, overdragen en documenteren zodat je team het vanaf dag één kan gebruiken.' },
-    { id: 5, number: 5, title: 'Doorontwikkeling', body: 'Verbeteringen, nieuwe features en ondersteuning terwijl je product groeit.' },
+    { id: 1, number: 1, title: 'Kennismaking', body: 'We bespreken je idee, doelen en randvoorwaarden, en checken of maatwerksoftware de juiste keuze is.' },
+    { id: 2, number: 2, title: 'Scope en planning', body: 'Heldere milestones en een duidelijke planning, zodat je vooraf weet wat succes betekent.' },
+    { id: 3, number: 3, title: 'Bouwen', body: 'We ontwikkelen iteratief, met demo\'s om de twee weken.' },
+    { id: 4, number: 4, title: 'Oplevering', body: 'We deployen, dragen over en documenteren, zodat je team het vanaf dag één kan gebruiken.' },
+    { id: 5, number: 5, title: 'Doorontwikkeling', body: 'We blijven beschikbaar voor verbeteringen, nieuwe features en ondersteuning terwijl je product groeit.' },
 ]
 </script>

@@ -1,4 +1,4 @@
-const NAV_SECTION_IDS = ['services', 'process', 'client-work', 'contact', 'faq']
+const NAV_SECTION_IDS = ['services', 'process', 'client-work', 'faq', 'contact']
 
 let activeSectionId = null
 let indicatorEl = null

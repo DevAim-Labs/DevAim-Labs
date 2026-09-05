@@ -9,8 +9,8 @@
             <a href="/diensten" class="nav-pill relative z-[1]" data-section="services">Diensten</a>
             <a href="/werkwijze" class="nav-pill relative z-[1]" data-section="process">Werkwijze</a>
             <a href="/klantwerk" class="nav-pill relative z-[1]" data-section="client-work">Klantwerk</a>
-            <a href="/contact" class="nav-pill relative z-[1]" data-section="contact">Contact</a>
             <a href="/veelgestelde-vragen" class="nav-pill relative z-[1]" data-section="faq">FAQ</a>
+            <a href="/contact" class="nav-pill relative z-[1]" data-section="contact">Contact</a>
         </div>
 
         <div class="hidden md:flex items-center gap-3">

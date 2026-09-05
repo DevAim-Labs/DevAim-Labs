@@ -61,7 +61,7 @@ class HomeController extends Controller
             'analyticsSections' => $sections,
             'pageTitle' => $active['title'],
             'pageDescription' => $active['description'],
-            'canonicalUrl' => url('/'),
+            'canonicalUrl' => ($active['indexable'] ?? false) ? url($canonicalPath) : url('/'),
             'breadcrumbs' => $breadcrumbs,
         ]);
     }

@@ -2,7 +2,8 @@
     <section id="client-work">
         <div class="section-card">
         <div class="max-w-6xl mx-auto px-6 py-20">
-            <p class="section-eyebrow text-center mb-3">Eerdere klanten</p>
+            <p class="section-eyebrow text-center mb-2">Vertrouwd door</p>
+            <p class="text-center text-sm mb-10" style="color: var(--color-text-muted);">Een greep uit opgeleverde projecten.</p>
 
             <div class="relative flex items-center gap-4">
                 <button
@@ -17,7 +18,7 @@
                 <div ref="track" class="flex-1 overflow-hidden">
                     <div
                         ref="inner"
-                        class="flex transition-transform duration-500 ease-in-out"
+                        class="flex gap-4 transition-transform duration-500 ease-in-out"
                         :style="{ transform: `translateX(-${currentIndex * slidePercent}%)` }"
                     >
                         <a
@@ -26,10 +27,10 @@
                             :href="client.href"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="shrink-0 flex items-center justify-center py-10 px-6 transition-opacity duration-300"
-                            :style="{ width: itemWidth, opacity: '0.45' }"
-                            @mouseover="$event.currentTarget.style.opacity = '1'; $event.currentTarget.querySelector('img') && ($event.currentTarget.querySelector('img').style.filter = 'none')"
-                            @mouseleave="$event.currentTarget.style.opacity = '0.45'; $event.currentTarget.querySelector('img') && ($event.currentTarget.querySelector('img').style.filter = '')"
+                            class="card-glow shrink-0 flex flex-col items-center justify-center gap-4 py-10 px-6 rounded-xl border bg-[var(--color-surface)] transition-colors duration-200"
+                            :style="{ width: itemWidth, borderColor: 'var(--color-border)' }"
+                            @mouseover="$event.currentTarget.style.borderColor = 'var(--color-accent)'"
+                            @mouseleave="$event.currentTarget.style.borderColor = 'var(--color-border)'"
                         >
                             <img
                                 v-if="client.logo"
@@ -39,11 +40,12 @@
                                 :height="client.logoHeight"
                                 loading="lazy"
                                 decoding="async"
-                                class="client-logo-img max-h-20 max-w-full object-contain"
+                                class="max-h-16 max-w-full object-contain"
                             >
                             <span v-else class="font-semibold text-xl tracking-tight" style="color: var(--color-text)">
                                 {{ client.name }}
                             </span>
+                            <span class="text-xs" style="color: var(--color-text-dim)">{{ client.name }}</span>
                         </a>
                     </div>
                 </div>

@@ -21,7 +21,7 @@
     <!-- Pulsing orb (right side, behind shapes) -->
     <div class="hero-orb absolute pointer-events-none" style="right: -60px; top: 50%; transform: translateY(-50%);"></div>
 
-    <!-- Floating 3D cubes — desktop only -->
+    <!-- Floating 3D cubes, desktop only -->
     <div class="absolute inset-0 pointer-events-none hidden md:block" aria-hidden="true">
 
         <!-- Large cyan cube, top right -->
@@ -71,13 +71,13 @@
 
         <!-- Headline -->
         <h1 data-gsap="hero-headline" class="hero-headline font-bold mb-6 sm:mb-6" style="color: var(--color-text);">
-            Maatwerksoftware<br>
-            <span class="text-gradient-accent">gebouwd voor jou.</span>
+            Maatwerksoftware.<br>
+            <span class="text-gradient-accent">Zonder tussenpersonen.</span>
         </h1>
 
         <!-- Sub-copy -->
         <p data-gsap="hero-sub" class="hero-sub mb-10 sm:mb-10" style="color: var(--color-text-muted);">
-            Adminpanelen, KPI-dashboards, landingspagina's, Payment services-integraties en API-koppelingen. Afgestemd op jouw goals.
+            Je hebt rechtstreeks contact met het team dat bouwt, niet met een accountmanager. Van eerste gesprek tot livegang dezelfde mensen, met reactie binnen 24 uur.
         </p>
 
         <!-- CTAs -->
@@ -85,8 +85,8 @@
             <a href="/contact" class="btn-primary inline-flex items-center px-6 py-3 rounded-md font-semibold text-sm" data-track="cta_click" data-track-label="Start een project" data-track-location="hero">
                 Start een project
             </a>
-            <a href="/diensten" class="btn-outline inline-flex items-center px-6 py-3 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Bekijk diensten" data-track-location="hero">
-                Bekijk diensten →
+            <a href="/werkwijze" class="btn-outline inline-flex items-center px-6 py-3 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Bekijk werkwijze" data-track-location="hero">
+                Bekijk werkwijze →
             </a>
         </div>
     </div>

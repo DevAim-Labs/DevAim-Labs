@@ -9,7 +9,7 @@ Route::get('/', [HomeController::class, 'show'])->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::get('/robots.txt', function () {
-    $body = "User-agent: *\nAllow: /\n\nSitemap: ".url('/sitemap.xml')."\n";
+    $body = "User-agent: *\nAllow: /\nDisallow: /demo/\n\nSitemap: ".url('/sitemap.xml')."\n";
 
     return response($body, 200)->header('Content-Type', 'text/plain; charset=UTF-8');
 });

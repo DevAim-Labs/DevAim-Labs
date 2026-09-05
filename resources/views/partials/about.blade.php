@@ -4,32 +4,32 @@
         <div>
             <p class="section-eyebrow mb-4">Over ons</p>
             <h2 class="text-3xl md:text-4xl section-title mb-6">
-                Software die past.<br>
+                Korte lijnen, van gesprek tot livegang.
             </h2>
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-4">
-                Wij bouwen maatwerksoftware voor bedrijven met duidelijke doelen. <br> Van interne tools en KPI-dashboards tot landingspagina's en betaalstromen.
+                Wij zijn het team dat jouw adminpaneel, dashboard of integratie bouwt, zonder accountmanager en zonder wisselende contactpersonen ertussen. Wat je met ons bespreekt, is ook precies wat er gebouwd wordt.
             </p>
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-8">
-                Je werkt direct met de developer die jouw product bouwt. Heldere communicatie, met software die aansluit op hoe jij werkt.
+                Dat betekent kortere lijnen, sneller schakelen als iets verandert, en een vaste scope en planning voordat we beginnen. Geen verrassingen halverwege.
             </p>
             <a
                 href="/contact"
                 class="btn-primary hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
                 data-track="cta_click"
-                data-track-label="Meer informatie"
+                data-track-label="Praat met ons"
                 data-track-location="about"
             >
-                Meer informatie →
+                Praat met ons →
             </a>
         </div>
 
         <div>
-            <p class="flex mb-7 text-xl font-bold justify-center items-center flex-wrap">Onze specialisaties</p>
-            <div class="grid grid-cols-3 gap-3">
-                @foreach(['Laravel', 'C#', 'React', 'Python', 'Java & TypeScript', 'Inertia', 'REST API\'s', 'Stripe & Mollie', 'Tailwind CSS'] as $tech)
-                <div class="card-glow flex items-center justify-center px-3 py-2.5 rounded-md border border-[var(--color-border)] text-xs text-[var(--color-text-muted)] hover:border-[var(--color-accent)]/30 hover:text-[var(--color-text)] transition-all duration-200 text-center">
+            <p class="text-sm font-semibold mb-4" style="color: var(--color-text-muted);">Werkt met</p>
+            <div class="flex flex-wrap gap-2">
+                @foreach(['Laravel', 'C#', 'React', 'Python', 'Java', 'TypeScript', 'Inertia', 'REST API\'s', 'Stripe', 'Mollie', 'Tailwind CSS'] as $tech)
+                <span class="px-3 py-1.5 rounded-full border text-xs" style="border-color: var(--color-border); color: var(--color-text-dim);">
                     {{ $tech }}
-                </div>
+                </span>
                 @endforeach
             </div>
         </div>
@@ -39,10 +39,10 @@
                 href="/contact"
                 class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
                 data-track="cta_click"
-                data-track-label="Meer informatie"
+                data-track-label="Praat met ons"
                 data-track-location="about"
             >
-                Meer informatie →
+                Praat met ons →
             </a>
         </div>
 

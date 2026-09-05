@@ -9,7 +9,7 @@
             <div>
                 <div v-if="success" class="rounded-xl border border-[var(--color-accent)]/30 p-6" style="background: rgba(11,133,152,0.08);">
                     <p class="font-semibold text-[var(--color-text)] mb-1">Bericht ontvangen.</p>
-                    <p class="text-sm text-[var(--color-text-muted)]">Ik neem binnen 24 uur contact met je op.</p>
+                    <p class="text-sm text-[var(--color-text-muted)]">We nemen binnen 24 uur contact met je op.</p>
                 </div>
 
                 <form v-else @submit.prevent="submit" class="space-y-5" novalidate>
