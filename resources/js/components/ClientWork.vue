@@ -3,7 +3,7 @@
         <div class="section-card">
         <div class="max-w-6xl mx-auto px-6 py-20">
             <p class="section-eyebrow text-center mb-2">Vertrouwd door</p>
-            <p class="text-center text-sm mb-10" style="color: var(--color-text-muted);">Een greep uit opgeleverde projecten.</p>
+            <p class="text-center text-sm mb-10" style="color: var(--color-text-muted);">Een blik in voorgaande projecten.</p>
 
             <div class="relative flex items-center gap-4">
                 <button
@@ -68,6 +68,7 @@ import lokantaLogo from '../../assets/lokanta.webp'
 import slowdownLogo from '../../assets/slowdown.webp'
 
 const visibleCount = 4
+const GAP_PX = 16 // matches gap-4 on the track
 
 const clients = [
     {
@@ -91,7 +92,7 @@ const clients = [
 const currentIndex = ref(0)
 
 const cols = computed(() => Math.min(clients.length, visibleCount))
-const itemWidth = computed(() => `${100 / cols.value}%`)
+const itemWidth = computed(() => `calc((100% - ${(cols.value - 1) * GAP_PX}px) / ${cols.value})`)
 const slidePercent = computed(() => 100 / cols.value)
 const showArrows = computed(() => clients.length > visibleCount)
 
