@@ -3,7 +3,13 @@
     "allow": [
       "WebFetch(domain:devaimlabs.com)",
       "Bash(gh repo view:*)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "WebFetch(domain:godly.design)",
+      "WebFetch(domain:www.awwwards.com)"
     ]
+  },
+  "enabledPlugins": {
+    "web-designer@web-designer-marketplace": true
   }
 }

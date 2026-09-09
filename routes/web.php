@@ -56,12 +56,12 @@ Route::get('/llms.txt', function () {
 DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developers die bouwen, geen account managers. Reactie binnen 24 uur.
 
 ## Diensten
-- Custom websites
-- Adminpanelen en dashboards
-- Betaalintegraties
-- API-koppelingen
-- CRM en boekhoudkoppelingen
-- Maatwerk webapplicaties
+- Maatwerksoftware op maat
+- Websites en portfolio's
+- KPI-dashboards en rapportages
+- Adminpanelen en interne tools
+- Betaalintegraties (Stripe & Mollie)
+- API-koppelingen en webhooks
 
 ## Doelgroep
 Particulieren en bedrijven die op zoek zijn naar custom websites, systemen of integraties

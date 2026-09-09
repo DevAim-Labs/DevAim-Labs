@@ -35,6 +35,12 @@
 
     <link rel="icon" type="image/png" sizes="144x144" href="{{ asset('IMG_144.png') }}">
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('IMG_144.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css" rel="stylesheet">
     <link rel="preload" as="image" href="/heroimage-768.webp" type="image/webp" media="(max-width: 768px)">
     <link rel="preload" as="image" href="/heroimage.webp" type="image/webp" media="(min-width: 769px)">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
@@ -82,10 +88,12 @@
                         '@type' => 'OfferCatalog',
                         'name' => 'Software Development Services',
                         'itemListElement' => [
-                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Adminpaneel Ontwikkeling']],
+                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Maatwerksoftware Ontwikkeling']],
+                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Website en Portfolio Ontwikkeling']],
                             ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'KPI Dashboard Ontwikkeling']],
-                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'API Integraties']],
+                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Adminpaneel Ontwikkeling']],
                             ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Betalingssysteem Integratie']],
+                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'API Integraties']],
                         ],
                     ],
                 ],
@@ -115,7 +123,7 @@
     <script type="application/ld+json">@json($structured)</script>
     @stack('structured_data')
 </head>
-<body style="background:var(--color-surface);color:var(--color-text)" class="font-sans antialiased overflow-x-hidden">
+<body style="background:var(--color-surface);color:var(--color-text);font-family:var(--font-body)" class="antialiased overflow-x-hidden">
 
     <main id="main-content">
         @yield('content')

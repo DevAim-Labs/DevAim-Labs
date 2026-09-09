@@ -1,52 +1,77 @@
 <template>
-    <section class="reveal-hidden py-16 overflow-hidden">
+    <section class="reveal-hidden py-16 md:py-20 overflow-hidden" style="background: var(--color-surface);">
         <div class="max-w-6xl mx-auto px-6">
-            <p v-if="title" class="section-eyebrow mb-8 text-center">{{ title }}</p>
+            <p v-if="title" class="section-eyebrow mb-10 text-center">{{ title }}</p>
 
-            <Carousel
-                :items-to-show="visibleItems"
-                :wrap-around="true"
-                :autoplay="3000"
-                :pause-autoplay-on-hover="true"
-                :transition="500"
-                class="logo-carousel"
+            <!-- Horizontal Loop Marquee -->
+            <div
+                ref="marqueeContainer"
+                class="marquee-container"
             >
-                <Slide v-for="(logo, index) in logos" :key="index">
-                    <div class="logo-slide">
+                <div ref="marqueeTrack" class="marquee-track">
+                    <!-- First set of logos -->
+                    <div
+                        v-for="(logo, index) in logos"
+                        :key="'a-' + index"
+                        class="logo-item"
+                    >
                         <img
                             :src="logo.src"
                             :alt="logo.alt"
-                            class="h-10 md:h-14 w-auto max-w-[120px] object-contain opacity-50 hover:opacity-100 transition-opacity duration-300"
-                            :style="{ filter: grayscale ? 'grayscale(1)' : 'none' }"
+                            class="logo-img"
+                            :class="{ 'grayscale hover:grayscale-0': grayscale }"
+                            loading="lazy"
                         />
                     </div>
-                </Slide>
-            </Carousel>
+                    <!-- Duplicate set for seamless infinite loop -->
+                    <div
+                        v-for="(logo, index) in logos"
+                        :key="'b-' + index"
+                        class="logo-item"
+                    >
+                        <img
+                            :src="logo.src"
+                            :alt="logo.alt"
+                            class="logo-img"
+                            :class="{ 'grayscale hover:grayscale-0': grayscale }"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Carousel, Slide } from 'vue3-carousel'
-import 'vue3-carousel/dist/carousel.css'
+import { gsap } from 'gsap'
 
-// Import existing assets
+// Import logo assets
 import lokantaLogo from '../../assets/lokanta.webp'
 import slowdownLogo from '../../assets/slowdown.webp'
 
 const props = defineProps({
     title: {
         type: String,
-        default: 'Onze klanten'
+        default: 'Vertrouwd door'
     },
     grayscale: {
         type: Boolean,
         default: true
+    },
+    speed: {
+        type: Number,
+        default: 40 // pixels per second
+    },
+    direction: {
+        type: String,
+        default: 'left', // 'left' or 'right'
+        validator: (value) => ['left', 'right'].includes(value)
     }
 })
 
-// Default logos using existing assets
+// Logo data - add your logos here
 const logos = [
     { src: lokantaLogo, alt: 'Lokanta' },
     { src: slowdownLogo, alt: 'Slowdown' },
@@ -56,44 +81,144 @@ const logos = [
     { src: slowdownLogo, alt: 'Slowdown' },
 ]
 
-// Responsive items count
-const visibleItems = ref(5)
-
-function updateVisibleItems() {
-    if (window.innerWidth < 640) {
-        visibleItems.value = 2
-    } else if (window.innerWidth < 1024) {
-        visibleItems.value = 3
-    } else {
-        visibleItems.value = 5
-    }
-}
+const marqueeContainer = ref(null)
+const marqueeTrack = ref(null)
+let animation = null
 
 onMounted(() => {
-    updateVisibleItems()
-    window.addEventListener('resize', updateVisibleItems)
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (!marqueeTrack.value) return
+
+    const track = marqueeTrack.value
+    const trackWidth = track.scrollWidth / 2
+    const duration = trackWidth / props.speed
+
+    // Create infinite loop animation
+    animation = gsap.to(track, {
+        x: props.direction === 'left' ? -trackWidth : trackWidth,
+        duration,
+        ease: 'none',
+        repeat: -1,
+    })
+
+    // Set initial position for right direction
+    if (props.direction === 'right') {
+        gsap.set(track, { x: -trackWidth })
+    }
+
+    // Pause on hover for better UX
+    const container = marqueeContainer.value
+    const handleMouseEnter = () => animation?.pause()
+    const handleMouseLeave = () => animation?.play()
+
+    container?.addEventListener('mouseenter', handleMouseEnter)
+    container?.addEventListener('mouseleave', handleMouseLeave)
 })
 
 onUnmounted(() => {
-    window.removeEventListener('resize', updateVisibleItems)
+    animation?.kill()
 })
 </script>
 
 <style scoped>
-.logo-carousel {
-    --vc-pgn-width: 0;
-    --vc-pgn-height: 0;
-    --vc-nav-width: 0;
+.marquee-container {
+    overflow: hidden;
+    /* Smooth fade edges */
+    mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
 }
 
-.logo-carousel :deep(.carousel__viewport) {
-    overflow: visible;
+.marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 4rem;
 }
 
-.logo-slide {
+.logo-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 1.5rem;
+    flex-shrink: 0;
+    /* No background - transparent */
+}
+
+.logo-img {
+    height: 2.5rem;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    /* Ensure transparent background is visible */
+    background: transparent;
+}
+
+.logo-img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Light theme adjustment */
+html[data-theme="light"] .logo-img {
+    filter: brightness(0.2);
+}
+
+html[data-theme="light"] .logo-img:hover {
+    filter: brightness(0);
+}
+
+html[data-theme="light"] .logo-img.grayscale {
+    filter: brightness(0.2) grayscale(1);
+}
+
+html[data-theme="light"] .logo-img.grayscale:hover {
+    filter: brightness(0) grayscale(0);
+}
+
+@media (min-width: 768px) {
+    .marquee-track {
+        gap: 5rem;
+    }
+
+    .logo-img {
+        height: 3rem;
+        max-width: 160px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .marquee-track {
+        gap: 6rem;
+    }
+
+    .logo-img {
+        height: 3.5rem;
+        max-width: 180px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none !important;
+    }
+
+    .logo-img {
+        transition: none;
+    }
 }
 </style>

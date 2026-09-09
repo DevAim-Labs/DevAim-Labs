@@ -55,11 +55,11 @@
 
     <div id="mobile-menu" class="hidden md:hidden border-t backdrop-blur-md" style="border-color: var(--color-border-dim);">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm" style="color: var(--color-text-muted);">
-            <a href="/diensten" class="transition-colors hover:text-white">Diensten</a>
-            <a href="/werkwijze" class="transition-colors hover:text-white">Werkwijze</a>
-            <a href="/klantwerk" class="transition-colors hover:text-white">Klantwerk</a>
-            <a href="/contact" class="transition-colors hover:text-white">Contact</a>
-            <a href="/veelgestelde-vragen" class="transition-colors hover:text-white">FAQ</a>
+            <a href="/diensten" class="transition-colors hover:text-[var(--color-text)]">Diensten</a>
+            <a href="/werkwijze" class="transition-colors hover:text-[var(--color-text)]">Werkwijze</a>
+            <a href="/klantwerk" class="transition-colors hover:text-[var(--color-text)]">Klantwerk</a>
+            <a href="/contact" class="transition-colors hover:text-[var(--color-text)]">Contact</a>
+            <a href="/veelgestelde-vragen" class="transition-colors hover:text-[var(--color-text)]">FAQ</a>
             <div class="flex justify-center items-center">
                 <a href="/contact" class="btn-outline-accent inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium" data-track="cta_click" data-track-label="Laten we praten" data-track-location="nav">
                     Laten we praten

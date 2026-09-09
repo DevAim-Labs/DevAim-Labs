@@ -3,7 +3,7 @@
 return [
     [
         'q' => 'Welke software bouwen jullie?',
-        'a' => 'Adminpanelen, KPI-dashboards, websites, REST API\'s, koppelingen met CRM en boekhouding, en betaalstromen. Meestal met Laravel, Vue, en aanbieders zoals Stripe of Mollie.',
+        'a' => 'Adminpanelen, KPI-dashboards, websites, portfolio\'s, REST API\'s, koppelingen met CRM en boekhouding, en betaalstromen. Meestal met Laravel, Vue, en aanbieders zoals Stripe of Mollie.',
     ],
     [
         'q' => 'Kunnen jullie koppelen met onze bestaande systemen?',
@@ -15,14 +15,22 @@ return [
     ],
     [
         'q' => 'Wie is eigenaar van de code?',
-        'a' => 'Jij. Je ontvangt de broncode en documentatie die nodig is om het product te draaien en uit te breiden.\nHet is ook mogelijk dat wij de code behouden en hiervoor updates geven tegen een maandelijkse prijs. ',
+        'a' => 'Jij bent eigenaar. Na oplevering ontvang je de volledige broncode en alle documentatie die nodig is om het product zelf te draaien en uit te breiden. De code is van jou, zonder beperkingen.',
+    ],
+    [
+        'q' => 'Hoe werkt doorlopende ondersteuning en updates?',
+        'a' => 'Na oplevering kun je kiezen voor een maandelijks supportpakket. Hiermee krijg je snelle reactietijden voor kleine aanpassingen, bugfixes en updates. Voor grotere nieuwe features maken we een aparte offerte.',
+    ],
+    [
+        'q' => 'Wat kost doorlopende support?',
+        'a' => 'Het maandelijkse supportpakket is afhankelijk van de omvang van je project. Kleine fixes en updates vallen binnen het pakket. Grotere features worden apart geprijsd na overleg.',
     ],
     [
         'q' => 'Regelen jullie betalingen en abonnementen?',
-        'a' => 'Ja. Checkout, abonnementen, facturatie en webhooks met Stripe en Mollie, inclusief foutafhandeling.',
+        'a' => 'Ja. Checkout, abonnementen, facturatie en webhooks met Stripe en Mollie, inclusief foutafhandeling en retries.',
     ],
     [
-        'q' => 'Bieden jullie onderhoud na oplevering?',
-        'a' => 'Ja. Wij zorgen voor fixes, nieuwe features en updates tegen een prijs. Er kan besproken worden wat precies nodig is.',
+        'q' => 'Kan ik een gesprek inplannen?',
+        'a' => 'Ja, je kunt direct een videogesprek inplannen via onze agenda. Het eerste kennismakingsgesprek is vrijblijvend en gratis.',
     ],
 ];

@@ -1,106 +1,178 @@
 <template>
     <section id="client-work">
         <div class="section-card">
-        <div class="max-w-6xl mx-auto px-6 py-20">
-            <p class="section-eyebrow text-center mb-2">Vertrouwd door</p>
-            <p class="text-center text-sm mb-10" style="color: var(--color-text-muted);">Een blik in voorgaande projecten.</p>
+            <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 overflow-hidden">
+                <p class="section-eyebrow text-center mb-3">Vertrouwd door</p>
+                <p class="text-center text-sm mb-12" style="color: var(--color-text-muted);">
+                    Een blik in voorgaande projecten.
+                </p>
 
-            <div class="relative flex items-center gap-4">
-                <button
-                    v-if="showArrows"
-                    @click="prev"
-                    class="shrink-0 w-8 h-8 flex items-center justify-center rounded border text-lg transition-opacity duration-200"
-                    style="border-color: var(--color-border); color: var(--color-text-dim)"
-                    :style="{ opacity: currentIndex === 0 ? '0.25' : '1', cursor: currentIndex === 0 ? 'default' : 'pointer' }"
-                >‹</button>
-                <div v-else class="w-8 shrink-0"></div>
-
-                <div ref="track" class="flex-1 overflow-hidden">
-                    <div
-                        ref="inner"
-                        class="flex gap-4 transition-transform duration-500 ease-in-out"
-                        :style="{ transform: `translateX(-${currentIndex * slidePercent}%)` }"
-                    >
+                <!-- Horizontal Loop Carousel -->
+                <div class="marquee-container" @mouseenter="isPaused = true" @mouseleave="isPaused = false">
+                    <div class="marquee-track" :class="{ 'paused': isPaused }">
+                        <!-- First set -->
                         <a
                             v-for="client in clients"
-                            :key="client.id"
+                            :key="'a-' + client.id"
                             :href="client.href"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="card-glow shrink-0 flex flex-col items-center justify-center gap-4 py-10 px-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-text-dim)] transition-colors duration-200"
-                            :style="{ width: itemWidth }"
+                            class="logo-link"
                         >
                             <img
-                                v-if="client.logo"
                                 :src="client.logo"
                                 :alt="client.name"
-                                :width="client.logoWidth"
-                                :height="client.logoHeight"
+                                class="logo-img"
                                 loading="lazy"
-                                decoding="async"
-                                class="max-h-16 max-w-full object-contain"
-                            >
-                            <span v-else class="font-semibold text-xl tracking-tight" style="color: var(--color-text)">
-                                {{ client.name }}
-                            </span>
-                            <span class="text-xs" style="color: var(--color-text-dim)">{{ client.name }}</span>
+                            />
+                        </a>
+                        <!-- Duplicate set for seamless loop -->
+                        <a
+                            v-for="client in clients"
+                            :key="'b-' + client.id"
+                            :href="client.href"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="logo-link"
+                        >
+                            <img
+                                :src="client.logo"
+                                :alt="client.name"
+                                class="logo-img"
+                                loading="lazy"
+                            />
                         </a>
                     </div>
                 </div>
-
-                <button
-                    v-if="showArrows"
-                    @click="next"
-                    class="shrink-0 w-8 h-8 flex items-center justify-center rounded border text-lg transition-opacity duration-200"
-                    style="border-color: var(--color-border); color: var(--color-text-dim)"
-                    :style="{ opacity: currentIndex >= clients.length - visibleCount ? '0.25' : '1', cursor: currentIndex >= clients.length - visibleCount ? 'default' : 'pointer' }"
-                >›</button>
-                <div v-else class="w-8 shrink-0"></div>
             </div>
-        </div>
         </div>
     </section>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import lokantaLogo from '../../assets/lokanta.webp'
 import slowdownLogo from '../../assets/slowdown.webp'
 
-const visibleCount = 4
-const GAP_PX = 16 // matches gap-4 on the track
+const isPaused = ref(false)
 
 const clients = [
     {
         id: 1,
         name: 'Lokanta Proeflokaal',
         logo: lokantaLogo,
-        logoWidth: 200,
-        logoHeight: 71,
         href: 'https://lokanta-proeflokaal.nl',
     },
     {
         id: 2,
         name: 'Slowdown Store',
         logo: slowdownLogo,
-        logoWidth: 125,
-        logoHeight: 65,
         href: 'https://slowdownstore.com',
     },
 ]
-
-const currentIndex = ref(0)
-
-const cols = computed(() => Math.min(clients.length, visibleCount))
-const itemWidth = computed(() => `calc((100% - ${(cols.value - 1) * GAP_PX}px) / ${cols.value})`)
-const slidePercent = computed(() => 100 / cols.value)
-const showArrows = computed(() => clients.length > visibleCount)
-
-function prev() {
-    if (currentIndex.value > 0) currentIndex.value -= 1
-}
-
-function next() {
-    if (currentIndex.value < clients.length - visibleCount) currentIndex.value += 1
-}
 </script>
+
+<style scoped>
+.marquee-container {
+    overflow: hidden;
+    /* Fade edges */
+    mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 6rem;
+    animation: scroll 20s linear infinite;
+}
+
+.marquee-track.paused {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+}
+
+.logo-img {
+    height: 3rem;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    background: transparent;
+}
+
+.logo-link:hover .logo-img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Light mode - invert logos for visibility */
+:global(html[data-theme="light"]) .logo-img {
+    filter: brightness(0.3);
+    opacity: 0.6;
+}
+
+:global(html[data-theme="light"]) .logo-link:hover .logo-img {
+    filter: brightness(0);
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .marquee-track {
+        gap: 8rem;
+    }
+
+    .logo-img {
+        height: 3.5rem;
+        max-width: 200px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .marquee-track {
+        gap: 10rem;
+    }
+
+    .logo-img {
+        height: 4rem;
+        max-width: 220px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+}
+</style>
