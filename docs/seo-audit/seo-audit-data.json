@@ -1,0 +1,161 @@
+{
+  "domain": "devaimlabs.com",
+  "audit_date": "2026-09-09",
+  "business_type": "Software Development Agency",
+  "overall_score": 62,
+  "categories": {
+    "technical_seo": {
+      "score": 70,
+      "weight": 22,
+      "findings": [
+        {"severity": "good", "item": "HTTPS enabled"},
+        {"severity": "good", "item": "robots.txt configured correctly"},
+        {"severity": "good", "item": "XML sitemap present"},
+        {"severity": "good", "item": "Canonical tags implemented"},
+        {"severity": "good", "item": "Mobile viewport configured"},
+        {"severity": "good", "item": "Clean URL structure"},
+        {"severity": "medium", "item": "Security headers missing (HSTS, CSP, X-Frame-Options)"},
+        {"severity": "medium", "item": "Sitemap incomplete (3/8 pages)"},
+        {"severity": "medium", "item": "React SPA - verify Googlebot rendering"},
+        {"severity": "low", "item": "Render-blocking JavaScript detected"}
+      ]
+    },
+    "content_quality": {
+      "score": 62,
+      "weight": 23,
+      "eeat_scores": {
+        "experience": 18,
+        "expertise": 32,
+        "authoritativeness": 28,
+        "trustworthiness": 74
+      },
+      "findings": [
+        {"severity": "high", "item": "No case studies or portfolio details"},
+        {"severity": "high", "item": "No team profiles or credentials"},
+        {"severity": "high", "item": "Content too thin (1,590 words deficit)"},
+        {"severity": "medium", "item": "No blog or knowledge base"},
+        {"severity": "medium", "item": "Gmail email instead of professional domain"},
+        {"severity": "good", "item": "KvK and BTW registration visible"}
+      ]
+    },
+    "on_page_seo": {
+      "score": 58,
+      "weight": 20,
+      "findings": [
+        {"severity": "high", "item": "Meta description missing"},
+        {"severity": "high", "item": "Title tag too short (11 characters)"},
+        {"severity": "high", "item": "No pricing transparency (75% competitors show prices)"},
+        {"severity": "high", "item": "Only 2 client logos (competitors: 6-12)"},
+        {"severity": "medium", "item": "No numbered differentiators section"},
+        {"severity": "good", "item": "H1 structure correct"},
+        {"severity": "good", "item": "Internal linking present"}
+      ]
+    },
+    "schema": {
+      "score": 85,
+      "weight": 10,
+      "findings": [
+        {"severity": "good", "item": "ProfessionalService schema implemented"},
+        {"severity": "good", "item": "FAQPage schema with 6 Q&As"},
+        {"severity": "info", "item": "FAQPage no longer provides rich results (May 2026)"},
+        {"severity": "medium", "item": "Missing address in Organization schema"},
+        {"severity": "medium", "item": "Missing sameAs social profiles"},
+        {"severity": "low", "item": "No Service schema per service"},
+        {"severity": "low", "item": "No BreadcrumbList schema"}
+      ]
+    },
+    "performance": {
+      "score": 70,
+      "weight": 10,
+      "findings": [
+        {"severity": "good", "item": "Site loads quickly"},
+        {"severity": "medium", "item": "36 inline styles (CLS risk)"},
+        {"severity": "medium", "item": "1 render-blocking script"},
+        {"severity": "info", "item": "Field data not available (CrUX)"}
+      ]
+    },
+    "ai_search_readiness": {
+      "score": 58,
+      "weight": 10,
+      "findings": [
+        {"severity": "good", "item": "AI crawlers not blocked"},
+        {"severity": "high", "item": "llms.txt missing"},
+        {"severity": "high", "item": "Passages too short for citation (18 words vs 134-167 optimal)"},
+        {"severity": "medium", "item": "No YouTube presence (strongest AI signal)"},
+        {"severity": "medium", "item": "No question-based headings"},
+        {"severity": "medium", "item": "Missing specific metrics/statistics"}
+      ]
+    }
+  },
+  "priority_actions": {
+    "critical": [],
+    "high": [
+      {
+        "action": "Add meta description",
+        "effort": "15 min",
+        "impact": "+5% CTR",
+        "recommendation": "<meta name=\"description\" content=\"DevAim Labs bouwt maatwerksoftware: adminpanelen, KPI-dashboards, API-integraties. Direct contact met developers, geen account managers.\">"
+      },
+      {
+        "action": "Expand sitemap to all pages",
+        "effort": "30 min",
+        "impact": "Better crawl coverage",
+        "recommendation": "Add: /over-ons, /werkwijze, /klantwerk, /personal-projects, /veelgestelde-vragen, /contact"
+      },
+      {
+        "action": "Add pricing transparency",
+        "effort": "2-4 hours",
+        "impact": "+30% qualified leads",
+        "recommendation": "Add section with ranges: Adminpanelen €8k-€25k, Dashboards €5k-€20k"
+      },
+      {
+        "action": "Create 3 case studies",
+        "effort": "8-12 hours",
+        "impact": "+25% conversion",
+        "recommendation": "Problem/Solution/Outcome format with measurable results"
+      }
+    ],
+    "medium": [
+      {"action": "Add security headers", "effort": "30 min"},
+      {"action": "Expand title tag to 50-60 chars", "effort": "10 min"},
+      {"action": "Add team profiles", "effort": "4-6 hours"},
+      {"action": "Expand content (+1,590 words)", "effort": "8-12 hours"},
+      {"action": "Start blog with 5 articles", "effort": "20-30 hours"},
+      {"action": "Switch to professional email", "effort": "1 hour"},
+      {"action": "Add defer to scripts", "effort": "15 min"},
+      {"action": "Create llms.txt", "effort": "15 min"}
+    ],
+    "low": [
+      {"action": "Implement IndexNow"},
+      {"action": "Add video content"},
+      {"action": "Create downloadable resources"},
+      {"action": "Add AggregateRating schema"}
+    ]
+  },
+  "sxo_analysis": {
+    "page_type_match": "MISMATCH",
+    "current": "Portfolio Homepage (1,400 words)",
+    "expected": "Service Landing Page (2,200+ words)",
+    "persona_scores": {
+      "cto": 58,
+      "business_owner": 61,
+      "project_manager": 74
+    }
+  },
+  "competitor_comparison": {
+    "devaimlabs": {
+      "word_count": 1400,
+      "client_logos": 2,
+      "case_studies": 0,
+      "pricing": false,
+      "team_profiles": false
+    },
+    "competitor_average": {
+      "word_count": 2600,
+      "client_logos": 8,
+      "case_studies": 4,
+      "pricing": true,
+      "team_profiles": true
+    }
+  }
+}

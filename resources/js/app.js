@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initThemeToggle()
 
     await Promise.all([
+        mountSection('logo-slider-mount', () => import('./components/LogoSlider.vue')),
         mountSection('services-mount', () => import('./components/ServicesGrid.vue')),
         mountSection('process-mount', () => import('./components/ProcessTimeline.vue')),
     ])

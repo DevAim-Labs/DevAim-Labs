@@ -11,8 +11,8 @@ return [
             'id' => 'home',
             'slug' => null,
             'path' => '/',
-            'title' => 'DevAim Labs',
-            'description' => 'Maatwerksoftware en custom software ontwikkeling voor bedrijven: adminpanelen, KPI-dashboards, landingspagina\'s, Stripe en Mollie integraties en API-koppelingen.',
+            'title' => 'DevAim Labs — Maatwerksoftware & Custom Development',
+            'description' => 'DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developers die bouwen, geen account managers.',
             'keywords' => 'maatwerksoftware laten bouwen, custom software ontwikkeling, landingspagina laten maken',
             'indexable' => true,
         ],
@@ -23,6 +23,7 @@ return [
             'title' => 'Over ons — DevAim Labs',
             'description' => 'Werk direct met het team dat bouwt. Maatwerksoftware die past bij hoe jouw bedrijf werkt.',
             'keywords' => 'custom software ontwikkeling, maatwerksoftware voor bedrijven',
+            'indexable' => true,
         ],
         'services' => [
             'id' => 'services',
@@ -40,6 +41,7 @@ return [
             'title' => 'Werkwijze — Van kennismaking tot oplevering',
             'description' => 'Ons heldere proces voor maatwerksoftware, stap voor stap: kennismaking, scope, bouwen, oplevering en doorontwikkeling.',
             'keywords' => 'werkwijze maatwerksoftware, custom software ontwikkeling',
+            'indexable' => true,
         ],
         'client-work' => [
             'id' => 'client-work',
@@ -48,6 +50,7 @@ return [
             'title' => 'Klantwerk — DevAim Labs',
             'description' => 'Voorbeelden van maatwerksoftware en projecten voor eerdere klanten.',
             'keywords' => 'maatwerksoftware portfolio, software projecten',
+            'indexable' => true,
         ],
         'personal-projects' => [
             'id' => 'personal-projects',
@@ -64,6 +67,7 @@ return [
             'title' => 'Veelgestelde vragen — Maatwerksoftware',
             'description' => 'Antwoorden over maatwerksoftware, doorlooptijd, eigendom van code, betalingen en onderhoud.',
             'keywords' => 'maatwerksoftware vragen, software ontwikkeling faq',
+            'indexable' => true,
         ],
         'contact' => [
             'id' => 'contact',
@@ -72,6 +76,7 @@ return [
             'title' => 'Contact — Start je project',
             'description' => 'Neem contact op voor maatwerksoftware. Offerte, kennismakingsgesprek of bericht via het formulier.',
             'keywords' => 'maatwerksoftware offerte, software ontwikkeling contact',
+            'indexable' => true,
         ],
     ],
 

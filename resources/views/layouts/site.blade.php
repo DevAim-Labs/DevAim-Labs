@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $pageTitle ?? trim($__env->yieldContent('title')) ?: 'DevAim Labs' }}</title>
-    <meta name="description" content="{{ $pageDescription ?? trim($__env->yieldContent('meta_description')) ?: 'Maatwerksoftware voor bedrijven: adminpanelen, KPI-dashboards, websites, API-koppelingen en betaalstromen.' }}">
+    <meta name="description" content="{{ $pageDescription ?? trim($__env->yieldContent('meta_description')) ?: 'Custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developers.' }}">
     <link rel="canonical" href="{{ $canonicalUrl ?? url('/') }}">
     <meta name="robots" content="index, follow">
 
@@ -57,11 +57,46 @@
                     '@id' => url('/') . '#organization',
                     'name' => $org['name'],
                     'url' => url('/'),
-                    'logo' => asset($org['logo']),
+                    'logo' => [
+                        '@type' => 'ImageObject',
+                        'url' => asset($org['logo']),
+                        'width' => 144,
+                        'height' => 144,
+                    ],
+                    'image' => asset('og-image.png'),
                     'email' => $org['email'],
                     'telephone' => $org['phone'],
-                    'areaServed' => 'NL',
-                    'description' => $pageDescription ?? 'Maatwerksoftware en custom software ontwikkeling.',
+                    'areaServed' => [
+                        '@type' => 'Country',
+                        'name' => 'Nederland',
+                    ],
+                    'address' => [
+                        '@type' => 'PostalAddress',
+                        'addressCountry' => 'NL',
+                    ],
+                    'vatID' => 'NL005458933B79',
+                    'description' => $pageDescription ?? 'Custom websites, systemen en integraties voor particulieren en bedrijven.',
+                    'priceRange' => '€€€',
+                    'knowsLanguage' => ['nl', 'en'],
+                    'hasOfferCatalog' => [
+                        '@type' => 'OfferCatalog',
+                        'name' => 'Software Development Services',
+                        'itemListElement' => [
+                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Adminpaneel Ontwikkeling']],
+                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'KPI Dashboard Ontwikkeling']],
+                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'API Integraties']],
+                            ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Betalingssysteem Integratie']],
+                        ],
+                    ],
+                ],
+                [
+                    '@type' => 'WebSite',
+                    '@id' => url('/') . '#website',
+                    'url' => url('/'),
+                    'name' => $org['name'],
+                    'description' => 'Custom websites, systemen en integraties voor particulieren en bedrijven',
+                    'publisher' => ['@id' => url('/') . '#organization'],
+                    'inLanguage' => 'nl-NL',
                 ],
             ],
         ];

@@ -3,6 +3,7 @@
 @section('content')
 @include('partials.nav')
 @include('partials.hero')
+    <div id="logo-slider-mount"></div>
     <div id="services-mount" data-section-id="services"></div>
     @if(($initialSection ?? null) === 'services')
         @include('partials.diensten-verdieping')
