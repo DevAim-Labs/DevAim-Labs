@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" class="scroll-smooth" data-theme="dark">
+<html lang="{{ $locale ?? 'nl' }}" class="scroll-smooth" data-theme="dark">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGM3LBT0E"></script>
@@ -16,6 +16,12 @@
     <title>{{ $pageTitle ?? trim($__env->yieldContent('title')) ?: 'DevAim Labs' }}</title>
     <meta name="description" content="{{ $pageDescription ?? trim($__env->yieldContent('meta_description')) ?: 'Custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developers.' }}">
     <link rel="canonical" href="{{ $canonicalUrl ?? url('/') }}">
+    @if(!empty($alternateUrls))
+        @foreach($alternateUrls as $lang => $url)
+    <link rel="alternate" hreflang="{{ $lang }}" href="{{ $url }}">
+        @endforeach
+    <link rel="alternate" hreflang="x-default" href="{{ $alternateUrls['nl'] ?? url('/') }}">
+    @endif
     <meta name="robots" content="index, follow">
 
     <meta property="og:type" content="website">
@@ -26,7 +32,7 @@
     <meta property="og:image" content="{{ asset('og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="nl_NL">
+    <meta property="og:locale" content="{{ ($locale ?? 'nl') === 'en' ? 'en_US' : 'nl_NL' }}">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $pageTitle ?? 'DevAim Labs' }}">
@@ -45,12 +51,11 @@
     <link rel="preload" as="image" href="/heroimage.webp" type="image/webp" media="(min-width: 769px)">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
     <script nonce="{{ $cspNonce ?? '' }}">
-        (function() {
-            var t = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', t);
-        })();
+        // Dark mode only - theme switching disabled
+        document.documentElement.setAttribute('data-theme', 'dark');
     </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
     @stack('scripts')
 
     @php

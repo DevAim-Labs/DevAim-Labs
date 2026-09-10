@@ -129,7 +129,7 @@ Payments: Stripe, Mollie
 Styling: Tailwind CSS
 
 # Key Differentiators
-- Direct developer contact (no account managers)
+- Direct developer contact (no tussenpersoon)
 - Same team from initial conversation to launch
 - 24-hour response time guarantee
 - Fixed scope and planning before project start

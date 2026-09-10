@@ -519,7 +519,7 @@ Red flags for custom software vendors:
 2. Vague timelines without milestones → Should have clear deliverables every 2 weeks
 3. No fixed price quote → Always get scope + price upfront
 4. Won't show previous work → Ask for portfolio or client references
-5. Account managers instead of direct developer contact → Slows everything down
+5. tussenpersoon instead of direct developer contact → Slows everything down
 
 We always deliver full source code + docs specifically to avoid vendor lock-in. Client should be able to hand it to any developer to maintain.
 

@@ -368,7 +368,7 @@ Without seeing competitor sites, typical Dutch dev agencies excel at:
 
 ### Differentiation Opportunity
 DevAim Labs emphasizes "rechtstreeks contact met de developers" - this is a strong unique value proposition, but needs more evidence:
-- Show the team to prove "no account managers"
+- Show the team to prove "no tussenpersoon"
 - Demonstrate response time (< 24 hours) with testimonial quotes
 - Compare to typical agency model in a transparent way
 

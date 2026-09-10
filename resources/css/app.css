@@ -31,6 +31,33 @@
     --tracking-tighter: -0.04em;
 
     /* ══════════════════════════════════════════════════════════════════════════
+       VARIED BORDER RADIUS — Anti-pattern fix: avoid uniform roundness
+       ══════════════════════════════════════════════════════════════════════════ */
+    --radius-sm: 0.375rem;    /* 6px - inputs, small chips */
+    --radius-md: 0.5rem;      /* 8px - buttons, badges */
+    --radius-lg: 0.75rem;     /* 12px - cards */
+    --radius-xl: 1rem;        /* 16px - large cards, modals */
+    --radius-2xl: 1.25rem;    /* 20px - hero elements */
+    --radius-full: 9999px;    /* pills */
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       SHADOW SCALE — Clean elevation system (no glows)
+       ══════════════════════════════════════════════════════════════════════════ */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 12px 32px -8px rgba(0, 0, 0, 0.25), 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 50px -12px rgba(0, 0, 0, 0.35), 0 8px 16px rgba(0, 0, 0, 0.1);
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       TIMING FUNCTIONS — Anti-pattern fix: varied easing
+       ══════════════════════════════════════════════════════════════════════════ */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-in-out-smooth: cubic-bezier(0.45, 0, 0.55, 1);
+    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* ══════════════════════════════════════════════════════════════════════════
        COLOR PALETTE — "Midnight Aurora" with Cyan + Violet accents
        Geïnspireerd door godly.design research
        ══════════════════════════════════════════════════════════════════════════ */
@@ -73,6 +100,24 @@
 :root {
     --color-section: var(--color-surface-1);
     --color-input:   var(--color-surface);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SMOOTH THEME TRANSITION — Prevents blank flash during theme switch
+   Only applies to key layout elements for performance
+   ══════════════════════════════════════════════════════════════════════════ */
+
+html.theme-transition,
+html.theme-transition body,
+html.theme-transition main,
+html.theme-transition header,
+html.theme-transition footer,
+html.theme-transition section,
+html.theme-transition .section-card,
+html.theme-transition .hero-section,
+html.theme-transition .hero-bg-block,
+html.theme-transition nav {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
 }
 
 html[data-theme="light"] {
@@ -248,11 +293,9 @@ html[data-theme="light"] {
     }
 
     .code-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-2px);
         border-color: var(--color-border);
-        box-shadow:
-            0 20px 40px -15px rgba(0, 0, 0, 0.3),
-            0 0 0 1px var(--color-border-glow);
+        box-shadow: var(--shadow-lg);
     }
 
     .code-card-header {
@@ -299,9 +342,7 @@ html[data-theme="light"] {
     }
 
     html[data-theme="light"] .code-card:hover {
-        box-shadow:
-            0 12px 32px -12px rgba(0, 0, 0, 0.12),
-            0 0 0 1px var(--color-border-glow);
+        box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.12);
     }
 
     html[data-theme="light"] .code-card-header {
@@ -309,53 +350,25 @@ html[data-theme="light"] {
     }
 
     /* ══════════════════════════════════════════════════════════════════════════
-       SPOTLIGHT EFFECTS
+       CARD ELEVATION — Clean shadows without glows
        ══════════════════════════════════════════════════════════════════════════ */
 
-    .spotlight-container {
-        position: relative;
-        overflow: hidden;
+    .card-elevated {
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
-    .spotlight-glow {
-        position: absolute;
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        transform: translate(-50%, -50%);
+    .card-elevated:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
     }
 
-    .spotlight-container:hover .spotlight-glow {
-        opacity: 1;
+    html[data-theme="light"] .card-elevated {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px -4px rgba(0, 0, 0, 0.08);
     }
 
-    .glow-accent {
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -14px rgba(0, 0, 0, 0.5);
-    }
-
-    .card-glow {
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -14px rgba(0, 0, 0, 0.5);
-        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-    .card-glow:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 20px 40px -14px rgba(0, 0, 0, 0.55);
-    }
-
-    /* Light mode shadows - much softer */
-    html[data-theme="light"] .glow-accent {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px -12px rgba(0, 0, 0, 0.15);
-    }
-
-    html[data-theme="light"] .card-glow {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px -12px rgba(0, 0, 0, 0.1);
-    }
-
-    html[data-theme="light"] .card-glow:hover {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 16px 32px -12px rgba(0, 0, 0, 0.15);
+    html[data-theme="light"] .card-elevated:hover {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 8px 20px -6px rgba(0, 0, 0, 0.12);
     }
 
     .reveal-hidden {
@@ -463,20 +476,16 @@ html[data-theme="light"] {
     }
 
     .card-lift {
-        transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card-lift:hover {
-        transform: translateY(-8px);
-        box-shadow:
-            0 20px 40px -15px rgba(0, 0, 0, 0.3),
-            0 0 0 1px var(--color-border-glow);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
     }
 
     html[data-theme="light"] .card-lift:hover {
-        box-shadow:
-            0 16px 32px -12px rgba(0, 0, 0, 0.12),
-            0 0 0 1px var(--color-border-glow);
+        box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.15);
     }
 
     /* ══════════════════════════════════════════════════════════════════════════
@@ -520,6 +529,132 @@ html[data-theme="light"] {
         .bento-span-row-2 {
             grid-row: span 1;
         }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       ANTI-PATTERN FIXES: Varied micro-interactions
+       ══════════════════════════════════════════════════════════════════════════ */
+
+    /* Subtle noise texture overlay for depth */
+    .texture-noise::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+    }
+
+    /* Varied input focus styles */
+    .input-focus-accent:focus {
+        outline: none;
+        border-color: var(--color-accent);
+    }
+
+    .input-focus-underline {
+        border: none;
+        border-bottom: 2px solid var(--color-border-dim);
+        border-radius: 0;
+        background: transparent;
+        transition: border-color 0.3s var(--ease-out-expo);
+    }
+
+    .input-focus-underline:focus {
+        outline: none;
+        border-bottom-color: var(--color-accent);
+    }
+
+    /* Varied hover effects */
+    .hover-lift-sm:hover {
+        transform: translateY(-2px);
+        transition: transform 0.25s var(--ease-out-back);
+    }
+
+    .hover-lift-md:hover {
+        transform: translateY(-4px);
+        transition: transform 0.3s var(--ease-out-back);
+    }
+
+    .hover-lift-lg:hover {
+        transform: translateY(-8px);
+        transition: transform 0.35s var(--ease-out-back);
+    }
+
+    .hover-scale-subtle:hover {
+        transform: scale(1.02);
+        transition: transform 0.25s var(--ease-out-expo);
+    }
+
+    /* Border animation on hover */
+    .hover-border-accent {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hover-border-accent::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-accent), var(--color-violet));
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    .hover-border-accent:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    /* Stagger animation delays for lists */
+    .stagger-1 { --stagger-delay: 0.05s; }
+    .stagger-2 { --stagger-delay: 0.1s; }
+    .stagger-3 { --stagger-delay: 0.15s; }
+    .stagger-4 { --stagger-delay: 0.2s; }
+    .stagger-5 { --stagger-delay: 0.25s; }
+    .stagger-6 { --stagger-delay: 0.3s; }
+
+    /* Button with icon slide effect */
+    .btn-icon-slide {
+        overflow: hidden;
+    }
+
+    .btn-icon-slide .icon {
+        transition: transform 0.3s var(--ease-out-expo);
+    }
+
+    .btn-icon-slide:hover .icon {
+        transform: translateX(4px);
+    }
+
+    /* Card with gradient border on hover */
+    .card-gradient-border {
+        position: relative;
+        background: var(--color-surface-1);
+        border: 1px solid transparent;
+        background-clip: padding-box;
+    }
+
+    .card-gradient-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, var(--color-border-dim), var(--color-border-dim));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        transition: background 0.4s ease;
+    }
+
+    .card-gradient-border:hover::before {
+        background: linear-gradient(135deg, var(--color-accent), var(--color-violet));
     }
 
     /* ══════════════════════════════════════════════════════════════════════════
@@ -583,7 +718,6 @@ html[data-theme="light"] {
     .input-float:focus {
         outline: none;
         border-color: var(--color-accent);
-        box-shadow: 0 0 0 3px var(--color-accent-glow);
     }
 
     .input-float-label {
@@ -735,6 +869,32 @@ html[data-theme="light"] {
 
 html[data-theme="light"] .section-card {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px -4px rgba(0, 0, 0, 0.06);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   NAVIGATION — 3-Column Grid Layout
+   Nav pills centered between logo and right actions
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    width: 100%;
+    max-width: 76rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 4rem;
+}
+
+/* Center column is centered within its space */
+.nav-grid > *:nth-child(2) {
+    justify-self: center;
+}
+
+/* Right column aligns to end */
+.nav-grid > *:nth-child(3) {
+    justify-self: end;
 }
 
 /* ── Pill nav ── */

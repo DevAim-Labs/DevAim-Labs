@@ -5,7 +5,29 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
+// Dutch routes (default)
 Route::get('/', [HomeController::class, 'show'])->name('home');
+
+// English routes
+Route::prefix('en')->group(function () {
+    Route::get('/', [HomeController::class, 'showEn'])->name('home.en');
+
+    // Contact page must come before catch-all
+    Route::get('/contact', [HomeController::class, 'showContactEn'])->name('contact.en');
+
+    $configEn = config('site-en');
+    $routeSlugsEn = collect($configEn['sections'])
+        ->pluck('slug')
+        ->filter()
+        ->reject(fn ($slug) => $slug === 'contact') // Contact has its own route
+        ->merge(array_keys($configEn['aliases'] ?? []))
+        ->unique()
+        ->implode('|');
+
+    Route::get('/{section}', [HomeController::class, 'showEn'])
+        ->where('section', $routeSlugsEn);
+});
+
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::get('/robots.txt', function () {
@@ -46,6 +68,9 @@ ROBOTS;
 Route::post('/contact', [ContactController::class, 'store'])
     ->middleware('throttle:5,1');
 
+// Contact page (NL) - must come before catch-all
+Route::get('/contact', [HomeController::class, 'showContact'])->name('contact');
+
 Route::get('/llms.txt', function () {
     $org = config('site.organization');
     $body = <<<LLMS
@@ -53,7 +78,7 @@ Route::get('/llms.txt', function () {
 > Custom websites, systemen en integraties
 
 ## Over
-DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developers die bouwen, geen account managers. Reactie binnen 24 uur.
+DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developers die bouwen, geen tussenpersoon. Reactie binnen 24 uur.
 
 ## Diensten
 - Maatwerksoftware op maat
@@ -78,7 +103,7 @@ Laravel, Vue.js, React, TypeScript, Inertia.js, REST APIs, Tailwind CSS
 
 ## Waarom DevAim Labs
 - Direct contact met de developers die bouwen
-- Geen account managers ertussen
+- Geen tussenpersoon ertussen
 - Demo's elke 2 weken tijdens ontwikkeling
 - Volledige eigendom van de code
 - Onderhoud en doorontwikkeling na oplevering
@@ -88,7 +113,7 @@ LLMS;
 });
 
 Route::view('/privacyverklaring', 'privacy', [
-    'pageTitle' => 'Privacyverklaring — DevAim Labs',
+    'pageTitle' => 'Privacyverklaring | DevAim Labs',
     'pageDescription' => 'Hoe DevAim Labs omgaat met persoonsgegevens: welke gegevens we verwerken, waarom, hoe lang we ze bewaren en welke rechten je hebt.',
     'canonicalUrl' => url('/privacyverklaring'),
     'breadcrumbs' => [
@@ -105,6 +130,7 @@ $config = config('site');
 $routeSlugs = collect($config['sections'])
     ->pluck('slug')
     ->filter()
+    ->reject(fn ($slug) => $slug === 'contact') // Contact has its own route
     ->merge(array_keys($config['aliases']))
     ->unique()
     ->implode('|');
