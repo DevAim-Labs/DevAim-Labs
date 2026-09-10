@@ -119,11 +119,15 @@ const t = computed(() => isEn ? {
 
                 <!-- CTA -->
                 <div class="pricing-cta">
-                    <a :href="t.ctaPath" class="pricing-cta-btn">
-                        {{ t.ctaText }}
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
+                    <a :href="t.ctaPath" class="btn-hover btn-hover-primary">
+                        <span class="btn-hover__dot" aria-hidden="true"></span>
+                        <span class="btn-hover__label">{{ t.ctaText }}</span>
+                        <span class="btn-hover__reveal" aria-hidden="true">
+                            <span>{{ t.ctaText }}</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </span>
                     </a>
                 </div>
             </div>
@@ -291,33 +295,10 @@ const t = computed(() => isEn ? {
     text-align: center;
 }
 
-.pricing-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.15s ease;
-}
-
-.pricing-cta-btn:hover {
-    background: var(--color-accent-dim);
-    transform: translateY(-1px);
-}
-
-.pricing-cta-btn:active {
-    transform: translateY(0);
-}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .pricing-card:hover,
-    .pricing-cta-btn:hover {
+    .pricing-card:hover {
         transform: none;
     }
 }

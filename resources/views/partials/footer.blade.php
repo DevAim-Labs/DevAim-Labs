@@ -79,16 +79,19 @@
                 </div>
                 <a
                     href="{{ $isEn ? '/en/contact' : '/contact' }}"
-                    class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold self-start sm:self-center group"
-                    style="box-shadow: 0 8px 24px -8px var(--color-accent-glow);"
+                    class="btn-hover btn-hover-primary self-start sm:self-center"
                     data-track="cta_click"
                     data-track-label="{{ $t['footer_cta'] ?? 'Start een project' }}"
                     data-track-location="footer"
                 >
-                    {{ $t['footer_cta'] ?? 'Start een project' }}
-                    <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                    <span class="btn-hover__dot" aria-hidden="true"></span>
+                    <span class="btn-hover__label">{{ $t['footer_cta'] ?? 'Start een project' }}</span>
+                    <span class="btn-hover__reveal" aria-hidden="true">
+                        <span>{{ $t['footer_cta'] ?? 'Start een project' }}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </span>
                 </a>
             </div>
         </div>

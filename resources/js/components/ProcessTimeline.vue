@@ -118,12 +118,19 @@
                 <div class="mt-12 md:mt-14 text-center">
                     <a
                         :href="contactPath"
-                        class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
+                        class="btn-hover btn-hover-primary"
                         data-track="cta_click"
                         :data-track-label="header.cta"
                         data-track-location="process"
                     >
-                        {{ header.cta }} →
+                        <span class="btn-hover__dot" aria-hidden="true"></span>
+                        <span class="btn-hover__label">{{ header.cta }}</span>
+                        <span class="btn-hover__reveal" aria-hidden="true">
+                            <span>{{ header.cta }}</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </span>
                     </a>
                 </div>
             </div>
@@ -213,7 +220,7 @@ const stepsEn = [
         number: 1,
         icon: 'handshake',
         title: 'Introduction',
-        highlight: 'Free consultation',
+        highlight: 'Ideas and goals',
         body: 'I discuss your idea, goals and requirements, and check if custom software is the right choice.',
     },
     {
@@ -221,8 +228,8 @@ const stepsEn = [
         number: 2,
         icon: 'calendar_month',
         title: 'Scope & Planning',
-        highlight: 'Fixed price',
-        body: 'Clear milestones and a transparent timeline, so you know what success looks like upfront.',
+        highlight: 'Plan of approach',
+        body: 'Clear milestones and a transparent timeline, so you know what to expect.',
     },
     {
         id: 3,
@@ -230,14 +237,14 @@ const stepsEn = [
         icon: 'construction',
         title: 'Build',
         highlight: 'Demos every 2 weeks',
-        body: 'I develop iteratively, with demos every two weeks.',
+        body: 'I develop iteratively, with demos every 1 to 2 weeks. With this I can obtain feedback and change features',
     },
     {
         id: 4,
         number: 4,
         icon: 'computer',
         title: 'Delivery',
-        highlight: 'You own the code',
+        highlight: 'Transfer',
         body: 'I deploy, hand over and document, so your team can use it from day one.',
     },
     {

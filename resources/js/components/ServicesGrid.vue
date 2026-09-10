@@ -17,79 +17,66 @@
                     </p>
                 </header>
 
-                <!-- Featured Service -->
-                <article
-                    v-if="featuredService"
-                    ref="featuredRef"
-                    class="featured-card"
-                    @mouseenter="isHeroHovered = true"
-                    @mouseleave="isHeroHovered = false"
-                >
-                    <div class="featured-content">
-                        <div class="featured-left">
-                            <span class="featured-badge">{{ isEn ? 'Most requested' : 'Meest gevraagd' }}</span>
-                            <h3 class="featured-title">{{ featuredService.title }}</h3>
-                            <p class="featured-description">{{ featuredService.description }}</p>
-                        </div>
-                        <div class="featured-right">
-                            <div class="featured-features">
-                                <span v-for="feature in featuredService.features" :key="feature" class="featured-feature">
-                                    {{ feature }}
-                                </span>
+                <!-- Hover/tap-to-expand service list -->
+                <div ref="listRef" class="services-list">
+                    <div class="services-list-rule" aria-hidden="true"></div>
+                    <template v-for="(service, i) in localizedServices" :key="service.id">
+                        <div
+                            class="service-row"
+                            :class="{ 'is-active': activeId === service.id, 'is-dimmed': activeId !== null && activeId !== service.id }"
+                            @mouseenter="onHoverStart(service.id)"
+                            @mouseleave="onHoverEnd(service.id)"
+                            @click="onRowClick(service.id)"
+                        >
+                            <div class="service-row-media" aria-hidden="true">
+                                <img
+                                    v-if="service.image"
+                                    :src="service.image"
+                                    alt=""
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                                <div v-else-if="service.beam" class="service-row-media-beam">
+                                    <IntegrationsBeam />
+                                </div>
+                                <div v-else class="service-row-media-fallback">
+                                    <span v-html="ICONS[service.icon]"></span>
+                                </div>
+                                <div class="service-row-overlay"></div>
+                            </div>
+
+                            <div class="service-row-content">
+                                <div class="service-row-info">
+                                    <span class="service-row-index">{{ String(i + 1).padStart(2, '0') }}</span>
+                                    <span class="service-row-title">{{ service.title }}</span>
+                                    <span v-if="service.featured" class="service-row-badge">{{ isEn ? 'Most requested' : 'Meest gevraagd' }}</span>
+                                    <span class="service-row-desc">{{ service.description }}</span>
+                                </div>
+
+                                <a
+                                    :href="service.demoUrl"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn-hover btn-hover-primary service-row-cta"
+                                    data-track="cta_click"
+                                    :data-track-label="isEn ? 'Check out demo' : 'Bekijk demo'"
+                                    :data-track-location="'services_' + service.id"
+                                    :aria-label="(isEn ? 'Check out demo: ' : 'Bekijk demo: ') + service.title"
+                                    @click.stop
+                                >
+                                    <span class="btn-hover__dot" aria-hidden="true"></span>
+                                    <span class="btn-hover__label" aria-hidden="true">{{ isEn ? 'Check out demo' : 'Bekijk demo' }}</span>
+                                    <span class="btn-hover__reveal" aria-hidden="true">
+                                        <span>{{ isEn ? 'Check out demo' : 'Bekijk demo' }}</span>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </span>
+                                </a>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Hover reveal -->
-                    <div class="featured-reveal" :class="{ 'is-active': isHeroHovered }">
-                        <p class="reveal-text">{{ featuredService.detail }}</p>
-                        <a :href="contactPath" class="reveal-cta">
-                            <span>{{ t.services_cta }}</span>
-                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Secondary Services Grid -->
-                <div ref="gridRef" class="services-grid">
-                    <article
-                        v-for="(service, index) in secondaryServices"
-                        :key="service.id"
-                        class="service-card"
-                        @mouseenter="hoveredId = service.id"
-                        @mouseleave="hoveredId = null"
-                    >
-                        <!-- Default state -->
-                        <div class="card-content" :class="{ 'is-hidden': hoveredId === service.id }">
-                            <h3 class="card-title">{{ service.title }}</h3>
-                            <p class="card-description">{{ service.description }}</p>
-                            <div class="card-features">
-                                <span v-for="feature in service.features" :key="feature">{{ feature }}</span>
-                            </div>
-                        </div>
-
-                        <!-- Hover state -->
-                        <div class="card-hover" :class="{ 'is-visible': hoveredId === service.id }">
-                            <p class="hover-detail">{{ service.detail }}</p>
-                            <a
-                                :href="service.demoUrl"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="hover-cta"
-                                data-track="cta_click"
-                                :data-track-label="isEn ? 'Check out demo' : 'Bekijk demo'"
-                                :data-track-location="'services_' + service.id"
-                                :aria-label="(isEn ? 'Check out demo: ' : 'Bekijk demo: ') + service.title"
-                            >
-                                <span aria-hidden="true">{{ isEn ? 'Check out demo' : 'Bekijk demo' }}</span>
-                                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
+                        <div class="services-list-rule" aria-hidden="true"></div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -100,6 +87,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import IntegrationsBeam from './ui/IntegrationsBeam.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -107,12 +95,29 @@ const locale = window.__LOCALE__ || 'nl'
 const isEn = locale === 'en'
 const translations = window.__TRANSLATIONS__ || {}
 const t = computed(() => translations[locale] || translations['nl'] || {})
-const contactPath = isEn ? '/en/contact' : '/contact'
 
-const hoveredId = ref(null)
-const isHeroHovered = ref(false)
-const gridRef = ref(null)
-const featuredRef = ref(null)
+const listRef = ref(null)
+const activeId = ref(null)
+
+function hoverCapable() {
+    return window.matchMedia('(hover: hover)').matches
+}
+
+function onHoverStart(id) {
+    if (hoverCapable()) activeId.value = id
+}
+
+function onHoverEnd(id) {
+    if (hoverCapable() && activeId.value === id) activeId.value = null
+}
+
+function onRowClick(id) {
+    // Hover-capable devices already get this via mouseenter/mouseleave —
+    // a click there is just a click, not a toggle. Touch devices have no
+    // hover, so tapping a row is how they open/close it.
+    if (hoverCapable()) return
+    activeId.value = activeId.value === id ? null : id
+}
 
 const ICONS = {
     language: '<svg viewBox="0 -960 960 960" fill="currentColor" width="1em" height="1em"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z"/></svg>',
@@ -129,9 +134,8 @@ const servicesNl = [
         icon: 'language',
         featured: true,
         title: "Websites en portfolio's",
-        description: "Snelle, SEO-vriendelijke websites en portfolio's die converteren. Mobile-first en geoptimaliseerd voor Core Web Vitals.",
-        detail: "Landingspagina's, bedrijfswebsites, portfolio's en campagnepagina's met goede semantiek, Core Web Vitals en duidelijke call-to-actions. Gebouwd om te presteren en te converteren.",
-        features: ['SEO-geoptimaliseerd', 'Mobile-first', 'Snelle laadtijden'],
+        description: "Snelle, SEO-vriendelijke websites die converteren.",
+        image: '/service-previews/website.webp',
         demoUrl: '/demo/website.html',
     },
     {
@@ -139,8 +143,7 @@ const servicesNl = [
         icon: 'admin_panel_settings',
         title: 'Adminpanelen',
         description: 'Vervang spreadsheets door echte tooling met rollen en rechten.',
-        detail: 'Adminpanelen met rollen en rechten, goedkeuringsflows, voorraad en operationele tooling die past bij hoe je bedrijf werkt.',
-        features: ['Rollen & rechten', 'Goedkeuringsflows', 'Audit trail'],
+        image: '/service-previews/adminpaneel.webp',
         demoUrl: '/demo/adminpaneel.html',
     },
     {
@@ -148,8 +151,7 @@ const servicesNl = [
         icon: 'monitoring',
         title: 'KPI-dashboards',
         description: 'Realtime inzicht in je bedrijfsdata met live cijfers en alerts.',
-        detail: 'Dashboards met live data uit je stack. Filters, grafieken, PDF- of Excel-export en meldingen wanneer KPI\'s drempels passeren.',
-        features: ['Live data', 'Exports', 'Slimme alerts'],
+        image: '/service-previews/kpi.webp',
         demoUrl: '/demo/kpi-dashboard.html',
     },
     {
@@ -157,8 +159,7 @@ const servicesNl = [
         icon: 'payments',
         title: 'Betaalintegraties',
         description: 'Stripe en Mollie voor checkout, abonnementen en facturatie.',
-        detail: 'Eenmalige betalingen, abonnementen, usage-based billing, klantportalen en webhook-afhandeling met retries.',
-        features: ['Stripe & Mollie', 'Abonnementen', 'Facturatie'],
+        image: '/service-previews/betaal.webp',
         demoUrl: '/demo/betaalsysteem.html',
     },
     {
@@ -166,8 +167,8 @@ const servicesNl = [
         icon: 'hub',
         title: 'API-koppelingen',
         description: "REST API's, webhooks en synchronisaties tussen je systemen.",
-        detail: "REST API's, webhooks en syncjobs tussen custom backends. Zodat je later van leverancier kunt wisselen zonder alles opnieuw te bouwen.",
-        features: ["REST API's", 'Webhooks', 'Toekomstbestendig'],
+        image: null,
+        beam: true,
         demoUrl: '/demo/',
     },
 ]
@@ -178,9 +179,8 @@ const servicesEn = [
         icon: 'language',
         featured: true,
         title: 'Websites and Portfolios',
-        description: 'Fast, SEO-friendly websites and portfolios that convert. Mobile-first and optimized for Core Web Vitals.',
-        detail: 'Landing pages, company websites, portfolios and campaign pages with solid semantics, Core Web Vitals and clear call-to-actions. Built to perform and convert.',
-        features: ['SEO optimized', 'Mobile-first', 'Fast load times'],
+        description: 'Fast, SEO-friendly websites that convert.',
+        image: '/service-previews/website.webp',
         demoUrl: '/demo/website.html',
     },
     {
@@ -188,8 +188,7 @@ const servicesEn = [
         icon: 'admin_panel_settings',
         title: 'Admin Panels',
         description: 'Replace spreadsheets with real tooling with roles and permissions.',
-        detail: 'Admin panels with roles and permissions, approval workflows, inventory and operational tooling that fits how your business works.',
-        features: ['Roles & permissions', 'Workflows', 'Audit trail'],
+        image: '/service-previews/adminpaneel.webp',
         demoUrl: '/demo/adminpaneel.html',
     },
     {
@@ -197,8 +196,7 @@ const servicesEn = [
         icon: 'monitoring',
         title: 'KPI Dashboards',
         description: 'Real-time insight into your business data with live metrics and alerts.',
-        detail: 'Dashboards with live data from your stack. Filters, charts, PDF or Excel exports and notifications when KPIs cross thresholds.',
-        features: ['Live data', 'Exports', 'Smart alerts'],
+        image: '/service-previews/kpi.webp',
         demoUrl: '/demo/kpi-dashboard.html',
     },
     {
@@ -206,8 +204,7 @@ const servicesEn = [
         icon: 'payments',
         title: 'Payment Integrations',
         description: 'Stripe and Mollie for checkout, subscriptions and invoicing.',
-        detail: 'One-time payments, subscriptions, usage-based billing, customer portals and webhook handling with retries.',
-        features: ['Stripe & Mollie', 'Subscriptions', 'Invoicing'],
+        image: '/service-previews/betaal.webp',
         demoUrl: '/demo/betaalsysteem.html',
     },
     {
@@ -215,58 +212,29 @@ const servicesEn = [
         icon: 'hub',
         title: 'API Integrations',
         description: 'REST APIs, webhooks and synchronizations between your systems.',
-        detail: 'REST APIs, webhooks and sync jobs between custom backends. So you can switch vendors later without rebuilding everything.',
-        features: ['REST APIs', 'Webhooks', 'Future-proof'],
+        image: null,
+        beam: true,
         demoUrl: '/demo/',
     },
 ]
 
 const localizedServices = computed(() => isEn ? servicesEn : servicesNl)
-const featuredService = computed(() => localizedServices.value.find(s => s.featured))
-const secondaryServices = computed(() => localizedServices.value.filter(s => !s.featured))
-
-const iconColors = [
-    'var(--color-violet)',
-    'var(--color-accent)',
-    'var(--color-warm)',
-    'var(--color-violet)',
-]
-
-function getIconColor(index) {
-    return iconColors[index % iconColors.length]
-}
 
 onMounted(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    if (featuredRef.value) {
-        gsap.fromTo(featuredRef.value,
-            { opacity: 0, y: 30 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: featuredRef.value,
-                    start: 'top 85%',
-                },
-            }
-        )
-    }
-
-    const cards = gridRef.value?.querySelectorAll('.service-card')
-    if (cards?.length) {
-        gsap.fromTo(cards,
-            { opacity: 0, y: 25 },
+    const rows = listRef.value?.querySelectorAll('.service-row')
+    if (rows?.length) {
+        gsap.fromTo(rows,
+            { opacity: 0, y: 20 },
             {
                 opacity: 1,
                 y: 0,
                 duration: 0.5,
-                stagger: 0.08,
+                stagger: 0.06,
                 ease: 'power2.out',
                 scrollTrigger: {
-                    trigger: gridRef.value,
+                    trigger: listRef.value,
                     start: 'top 85%',
                 },
             }
@@ -292,7 +260,7 @@ html[data-theme="light"] .section-card {
 }
 
 .services-inner {
-    max-width: 72rem;
+    max-width: 60rem;
     margin: 0 auto;
 }
 
@@ -322,320 +290,212 @@ html[data-theme="light"] .section-card {
     color: var(--color-text-muted);
 }
 
-/* Featured Card */
-.featured-card {
-    position: relative;
-    background: var(--color-surface-2);
-    border: 1px solid var(--color-accent);
-    border-radius: 16px;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
-    margin-bottom: 1.5rem;
-    overflow: hidden;
-    min-height: 180px;
-}
-
-.featured-content {
+/* ── Hover/tap-to-expand list ── */
+.services-list {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
-    transition: opacity 0.25s ease;
+    flex-direction: column;
 }
 
-@media (hover: hover) {
-    .featured-card:hover .featured-content {
-        opacity: 0;
+.services-list-rule {
+    border-top: 1px solid var(--color-border-dim);
+}
+
+.service-row {
+    position: relative;
+    overflow: hidden;
+    height: 4.5rem;
+    cursor: pointer;
+    transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+.service-row.is-active {
+    height: 20rem;
+}
+
+.service-row.is-dimmed {
+    opacity: 0.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-row {
+        transition: opacity 0.2s ease;
     }
 }
 
-.featured-left {
-    flex: 1;
-    max-width: 32rem;
+/* Background media */
+.service-row-media {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.featured-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+.service-row.is-active .service-row-media {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.service-row-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.service-row-media-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface-2);
+}
+
+.service-row-media-beam {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-surface-2);
+}
+
+.service-row-media-fallback span {
+    display: block;
+    width: 4rem;
+    height: 4rem;
     color: var(--color-accent);
-    margin-bottom: 1rem;
+    opacity: 0.25;
 }
 
-.featured-icon svg {
+.service-row-media-fallback span :deep(svg) {
     width: 100%;
     height: 100%;
 }
 
-.featured-badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
+.service-row-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.25) 55%, transparent);
+}
+
+/* Foreground content, bottom-anchored in both states */
+.service-row-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.25rem 0.25rem;
+}
+
+.service-row-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.service-row-index {
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-dim);
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+.service-row.is-active .service-row-index {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.service-row-title {
+    font-size: clamp(1.0625rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.service-row.is-active .service-row-title {
+    color: #fff;
+}
+
+.service-row-badge {
+    flex-shrink: 0;
+    padding: 0.2rem 0.625rem;
+    border-radius: 999px;
     font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    border-radius: 4px;
-    margin-bottom: 0.875rem;
-}
-
-.featured-title {
-    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0 0 0.625rem;
-    letter-spacing: -0.01em;
-}
-
-.featured-description {
-    font-size: 0.9375rem;
-    line-height: 1.65;
-    color: var(--color-text-muted);
-    margin: 0;
-}
-
-.featured-right {
-    flex-shrink: 0;
-}
-
-.featured-features {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.featured-feature {
-    padding: 0.375rem 0.875rem;
-    background: transparent;
-    border: 1px solid var(--color-accent);
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--color-accent);
-    white-space: nowrap;
-    text-align: center;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-@media (hover: hover) {
-    .featured-feature:hover {
-        background: var(--color-accent);
-        color: var(--color-on-accent);
-    }
-}
-
-/* Featured hover reveal */
-.featured-reveal {
-    position: absolute;
-    inset: 0;
-    background: var(--color-surface-2);
-    padding: clamp(1.5rem, 3vw, 2.5rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.featured-reveal.is-active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.reveal-text {
-    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
-    line-height: 1.7;
-    color: var(--color-text);
-    max-width: 42rem;
-    margin: 0 0 1.5rem;
-}
-
-.reveal-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
+    letter-spacing: 0.03em;
     background: var(--color-accent);
     color: var(--color-on-accent);
+}
+
+.service-row-desc {
+    color: rgba(255, 255, 255, 0.75);
     font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 8px;
-    width: fit-content;
-    transition: gap 0.2s ease, transform 0.2s ease;
-}
-
-.reveal-cta:hover {
-    gap: 0.75rem;
-    transform: translateY(-1px);
-}
-
-/* Secondary Services Grid */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-}
-
-@media (max-width: 1024px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .featured-content {
-        flex-direction: column;
-    }
-
-    .featured-right {
-        width: 100%;
-    }
-
-    .featured-features {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 640px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Service Card */
-.service-card {
-    position: relative;
-    background: var(--color-surface-2);
-    border: 1px solid var(--color-border-dim);
-    border-radius: 12px;
-    padding: 1.5rem;
-    min-height: 220px;
-    overflow: hidden;
-    transition: border-color 0.2s ease;
-}
-
-@media (hover: hover) {
-    .service-card:hover {
-        border-color: var(--color-border);
-    }
-}
-
-/* Card content */
-.card-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: opacity 0.2s ease;
-}
-
-.card-content.is-hidden {
     opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.card-icon {
-    width: 1.75rem;
-    height: 1.75rem;
-    margin-bottom: 1rem;
+.service-row.is-active .service-row-desc {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.card-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-.card-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0 0 0.5rem;
-}
-
-.card-description {
+.service-row-cta {
+    flex-shrink: 0;
+    padding: 0.625rem 1.25rem;
     font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--color-text-muted);
-    margin: 0 0 auto;
-    padding-bottom: 1rem;
-}
-
-.card-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem;
-    margin-top: auto;
-}
-
-.card-features span {
-    padding: 0.25rem 0.5rem;
-    background: var(--color-surface-1);
-    border: 1px solid var(--color-border-dim);
-    border-radius: 4px;
-    font-size: 0.6875rem;
-    color: var(--color-text-dim);
-}
-
-/* Card hover state */
-.card-hover {
-    position: absolute;
-    inset: 0;
-    background: var(--color-surface-2);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.25s ease, color 0.25s ease;
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.card-hover.is-visible {
+.service-row.is-active .service-row-cta {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-.hover-detail {
-    font-size: 0.8125rem;
-    line-height: 1.7;
-    color: var(--color-text-muted);
-    margin: 0;
-}
-
-.hover-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    margin-top: auto;
-    padding: 0.5rem 0.875rem;
-    background: transparent;
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 6px;
-    width: fit-content;
-    transition: all 0.2s ease;
-}
-
-.hover-cta:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-on-accent);
-}
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .featured-reveal,
-    .card-hover {
-        transition: opacity 0.15s ease;
-        transform: none;
+    .service-row-media,
+    .service-row-index,
+    .service-row-title,
+    .service-row-desc,
+    .service-row-cta {
+        transition: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .service-row.is-active {
+        height: 17rem;
     }
 
-    .featured-reveal.is-active,
-    .card-hover.is-visible {
-        transform: none;
+    .service-row-content {
+        align-items: flex-end;
+    }
+
+    .service-row-info {
+        gap: 0.5rem;
+    }
+
+    .service-row-desc {
+        display: block;
+        width: 100%;
+        margin-top: 0.25rem;
+    }
+
+    .service-row-cta {
+        padding: 0.5rem 1rem;
     }
 }
 </style>

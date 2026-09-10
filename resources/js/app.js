@@ -6,6 +6,7 @@ import LanguageSwitcher from './components/ui/LanguageSwitcher.vue'
 import LanguageToggle from './components/ui/LanguageToggle.vue'
 import AvailabilityBadge from './components/ui/AvailabilityBadge.vue'
 import TextLoop from './components/ui/TextLoop.vue'
+import GlyphMatrix from './components/ui/GlyphMatrix.vue'
 import HeroContactForm from './components/HeroContactForm.vue'
 import ContactPageForm from './components/ContactPageForm.vue'
 import { initHeroAnimation } from './animations.js'
@@ -146,6 +147,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Mount Hero components
+    const heroGlyphMatrixMount = document.getElementById('hero-glyph-matrix-mount')
+    if (heroGlyphMatrixMount) {
+        createApp(GlyphMatrix, { color: '--color-accent' }).mount(heroGlyphMatrixMount)
+    }
+
     const heroAvailabilityMount = document.getElementById('hero-availability-mount')
     if (heroAvailabilityMount) {
         createApp({

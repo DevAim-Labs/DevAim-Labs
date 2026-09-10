@@ -13,7 +13,9 @@
 <section id="home" class="hero-section">
     <div class="hero-container">
         <!-- Solid background block -->
-        <div class="hero-bg-block" aria-hidden="true"></div>
+        <div class="hero-bg-block" aria-hidden="true">
+            <div id="hero-glyph-matrix-mount" class="hero-glyph-matrix"></div>
+        </div>
         <!-- LEFT COLUMN: Content -->
         <div class="hero-content">
             @if(!empty($breadcrumbs) && count($breadcrumbs) > 1)
@@ -51,25 +53,33 @@
             <!-- CTAs -->
             <div data-gsap="hero-cta" class="hero-actions">
                 <a href="{{ $contactPath }}"
-                   class="hero-btn-primary"
+                   class="btn-hover btn-hover-primary"
                    data-track="cta_click"
                    data-track-label="{{ $isEn ? 'Start project' : 'Start project' }}"
                    data-track-location="hero">
-                    {{ $isEn ? 'Start a project' : 'Start een project' }}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                    <span class="btn-hover__dot" aria-hidden="true"></span>
+                    <span class="btn-hover__label">{{ $isEn ? 'Start a project' : 'Start een project' }}</span>
+                    <span class="btn-hover__reveal" aria-hidden="true">
+                        <span>{{ $isEn ? 'Start a project' : 'Start een project' }}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </span>
                 </a>
                 <a href="#services"
-                   class="hero-btn-secondary"
+                   class="btn-hover"
                    data-smooth-scroll
                    data-track="cta_click"
                    data-track-label="{{ $isEn ? 'Learn more' : 'Meer weten' }}"
                    data-track-location="hero">
-                    {{ $isEn ? 'Learn more' : 'Meer weten' }}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                    <span class="btn-hover__dot" aria-hidden="true"></span>
+                    <span class="btn-hover__label">{{ $isEn ? 'Learn more' : 'Meer weten' }}</span>
+                    <span class="btn-hover__reveal" aria-hidden="true">
+                        <span>{{ $isEn ? 'Learn more' : 'Meer weten' }}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
                 </a>
             </div>
 
@@ -127,7 +137,14 @@
     height: calc(100% + 6rem);
     background: var(--color-surface-1);
     border-radius: 24px;
+    overflow: hidden;
     z-index: -1;
+}
+
+.hero-glyph-matrix {
+    position: absolute;
+    inset: 0;
+    opacity: 0.6;
 }
 
 html[data-theme="light"] .hero-bg-block {
@@ -195,49 +212,6 @@ html[data-theme="light"] .hero-bg-block {
     flex-wrap: wrap;
     gap: 0.875rem;
     margin-bottom: 2.5rem;
-}
-
-.hero-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.hero-btn-primary:hover {
-    background: var(--color-accent-dim);
-    transform: translateY(-1px);
-}
-
-.hero-btn-primary:active {
-    transform: translateY(0);
-}
-
-.hero-btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
-    background: transparent;
-    color: var(--color-text-muted);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.hero-btn-secondary:hover {
-    border-color: var(--color-text-muted);
-    color: var(--color-text);
 }
 
 /* Trust signals */
@@ -342,11 +316,4 @@ html[data-theme="light"] .hero-bg-block {
     }
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .hero-btn-primary:hover,
-    .hero-btn-secondary:hover {
-        transform: none;
-    }
-}
 </style>

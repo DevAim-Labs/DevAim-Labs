@@ -461,6 +461,127 @@ html[data-theme="light"] {
     }
 
     /* ══════════════════════════════════════════════════════════════════════════
+       INTERACTIVE HOVER BUTTON — shared dot-expand + text-swap mechanic.
+       Markup shape required on every instance:
+         <a class="btn-hover(-primary)">
+             <span class="btn-hover__dot" aria-hidden="true"></span>
+             <span class="btn-hover__label">Label</span>
+             <span class="btn-hover__reveal" aria-hidden="true">
+                 <span>Label</span>
+                 <svg>...</svg>
+             </span>
+         </a>
+       The reveal layer is aria-hidden and duplicates the label text — the
+       real accessible name comes from .btn-hover__label alone.
+       ══════════════════════════════════════════════════════════════════════════ */
+    .btn-hover {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.625rem;
+        overflow: hidden;
+        border-radius: 9999px;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        background: transparent;
+        color: var(--color-text-muted);
+        border: 1px solid var(--color-border);
+        transition: border-color 0.25s ease, color 0.25s ease;
+    }
+    .btn-hover:hover,
+    .btn-hover:focus-visible {
+        border-color: var(--color-accent);
+        color: var(--color-text);
+    }
+
+    .btn-hover__dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--color-accent);
+        flex-shrink: 0;
+        transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .btn-hover:hover .btn-hover__dot,
+    .btn-hover:focus-visible .btn-hover__dot {
+        /* Dot sits left-of-center in the flex layout (it precedes the
+           centered label), so it grows from an off-center point. A large
+           scale keeps the circle big enough to still reach every edge of
+           wide/full-width buttons (e.g. .form-submit) despite that offset
+           — any overshoot past the pill's own edge is invisible, since
+           .btn-hover clips overflow. */
+        transform: scale(160);
+    }
+
+    .btn-hover__label {
+        display: inline-block;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .btn-hover:hover .btn-hover__label,
+    .btn-hover:focus-visible .btn-hover__label {
+        transform: translateX(2.5rem);
+        opacity: 0;
+    }
+
+    .btn-hover__reveal {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: var(--color-on-accent);
+        transform: translateX(2.5rem);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .btn-hover__reveal svg {
+        width: 1em;
+        height: 1em;
+    }
+    .btn-hover:hover .btn-hover__reveal,
+    .btn-hover:focus-visible .btn-hover__reveal {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    /* Filled variant (was .btn-primary): accent bg at rest, inverts on hover */
+    .btn-hover-primary {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: var(--color-on-accent);
+    }
+    .btn-hover-primary:hover,
+    .btn-hover-primary:focus-visible {
+        border-color: var(--color-accent);
+        color: var(--color-on-accent);
+    }
+    .btn-hover-primary .btn-hover__dot {
+        background: var(--color-on-accent);
+    }
+    .btn-hover-primary .btn-hover__reveal {
+        color: var(--color-accent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .btn-hover__dot,
+        .btn-hover__label,
+        .btn-hover__reveal {
+            transition: none;
+        }
+        .btn-hover:hover .btn-hover__dot,
+        .btn-hover:focus-visible .btn-hover__dot {
+            transform: none;
+        }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════
        3D CARD EFFECTS
        ══════════════════════════════════════════════════════════════════════════ */
 

@@ -194,11 +194,15 @@ async function submitForm() {
             <p v-if="errorMsg" class="form-error">{{ errorMsg }}</p>
 
             <!-- Submit -->
-            <button type="submit" class="form-submit" :disabled="isSubmitting || isOverLimit">
-                {{ isSubmitting ? t.sending : t.submit }}
-                <svg v-if="!isSubmitting" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+            <button type="submit" class="btn-hover btn-hover-primary form-submit" :disabled="isSubmitting || isOverLimit">
+                <span class="btn-hover__dot" aria-hidden="true"></span>
+                <span class="btn-hover__label">{{ isSubmitting ? t.sending : t.submit }}</span>
+                <span class="btn-hover__reveal" aria-hidden="true">
+                    <span>{{ isSubmitting ? t.sending : t.submit }}</span>
+                    <svg v-if="!isSubmitting" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </span>
             </button>
 
             <!-- Cal.com link -->
@@ -388,34 +392,16 @@ async function submitForm() {
 
 /* Submit */
 .form-submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
     width: 100%;
-    padding: 0.875rem 1.5rem;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
     border: none;
-    border-radius: 8px;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.15s ease;
-}
-
-.form-submit:hover:not(:disabled) {
-    background: var(--color-accent-dim);
-    transform: translateY(-1px);
-}
-
-.form-submit:active:not(:disabled) {
-    transform: translateY(0);
 }
 
 .form-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+.form-submit:disabled .btn-hover__dot {
+    transform: none !important;
 }
 
 /* Schedule link */
@@ -472,10 +458,4 @@ async function submitForm() {
     margin: 0;
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .form-submit:hover {
-        transform: none;
-    }
-}
 </style>

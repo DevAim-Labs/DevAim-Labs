@@ -62,15 +62,19 @@
                 </p>
                 <a
                     href="{{ $contactPath }}"
-                    class="btn-outline inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium"
+                    class="btn-hover"
                     data-track="cta_click"
                     data-track-label="{{ $isEn ? 'Get in touch' : 'Neem contact op' }}"
                     data-track-location="faq"
                 >
-                    {{ $isEn ? 'Get in touch' : 'Neem contact op' }}
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                    <span class="btn-hover__dot" aria-hidden="true"></span>
+                    <span class="btn-hover__label">{{ $isEn ? 'Get in touch' : 'Neem contact op' }}</span>
+                    <span class="btn-hover__reveal" aria-hidden="true">
+                        <span>{{ $isEn ? 'Get in touch' : 'Neem contact op' }}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </span>
                 </a>
             </div>
         </div>

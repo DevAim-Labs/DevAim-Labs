@@ -61,15 +61,12 @@ function closeDropdown() {
 }
 
 onMounted(() => {
-    const storedLang = localStorage.getItem('preferred-language')
-    if (storedLang) {
-        currentLang.value = storedLang
-    } else {
-        // Detect from URL or browser
-        if (window.location.pathname.startsWith('/en')) {
-            currentLang.value = 'en'
-        }
-    }
+    // The URL is the source of truth for the currently rendered page's
+    // language (a fresh server-render happens on every navigation, including
+    // manual URL entry), so always derive from it and keep localStorage in
+    // sync rather than trusting a possibly stale stored preference.
+    currentLang.value = window.location.pathname.startsWith('/en') ? 'en' : 'nl'
+    localStorage.setItem('preferred-language', currentLang.value)
 
     // Close on outside click — scoped to this instance's own root element,
     // since the toggle is mounted twice on the page (desktop + mobile) and

@@ -199,11 +199,15 @@ function resetForm() {
             <p v-if="errorMsg" class="form-error">{{ errorMsg }}</p>
 
             <!-- Submit -->
-            <button type="submit" class="form-submit" :disabled="isSubmitting">
-                {{ isSubmitting ? t.sending : t.submit }}
-                <svg v-if="!isSubmitting" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+            <button type="submit" class="btn-hover btn-hover-primary form-submit" :disabled="isSubmitting">
+                <span class="btn-hover__dot" aria-hidden="true"></span>
+                <span class="btn-hover__label">{{ isSubmitting ? t.sending : t.submit }}</span>
+                <span class="btn-hover__reveal" aria-hidden="true">
+                    <span>{{ isSubmitting ? t.sending : t.submit }}</span>
+                    <svg v-if="!isSubmitting" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </span>
             </button>
 
             <!-- Privacy note -->
@@ -351,36 +355,17 @@ function resetForm() {
 
 /* Submit — Prominent */
 .form-submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.625rem;
     width: 100%;
-    padding: 1.125rem 2rem;
     margin-top: 0.5rem;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
     border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-.form-submit:hover:not(:disabled) {
-    background: var(--color-accent-dim);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px -8px rgba(23, 199, 188, 0.4);
-}
-
-.form-submit:active:not(:disabled) {
-    transform: translateY(0);
 }
 
 .form-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+.form-submit:disabled .btn-hover__dot {
+    transform: none !important;
 }
 
 /* Privacy Note */
@@ -455,11 +440,4 @@ function resetForm() {
     color: var(--color-accent);
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .form-submit:hover {
-        transform: none;
-        box-shadow: none;
-    }
-}
 </style>

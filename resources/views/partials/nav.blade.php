@@ -29,11 +29,15 @@
                 <!-- Language Toggle Desktop -->
                 <div id="lang-toggle-mount"></div>
 
-                <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="btn-outline-accent inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium group" data-track="cta_click" data-track-label="{{ $t['nav_cta'] ?? 'Laten we praten' }}" data-track-location="nav">
-                    {{ $t['nav_cta'] ?? 'Laten we praten' }}
-                    <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="btn-hover" data-track="cta_click" data-track-label="{{ $t['nav_cta'] ?? 'Laten we praten' }}" data-track-location="nav">
+                    <span class="btn-hover__dot" aria-hidden="true"></span>
+                    <span class="btn-hover__label">{{ $t['nav_cta'] ?? 'Laten we praten' }}</span>
+                    <span class="btn-hover__reveal" aria-hidden="true">
+                        <span>{{ $t['nav_cta'] ?? 'Laten we praten' }}</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </span>
                 </a>
             </div>
 
@@ -72,11 +76,15 @@
                 <a href="{{ $isEn ? '/en/contact' : '/contact' }}" data-mobile-menu-link>{{ $t['nav_contact'] ?? 'Contact' }}</a>
             </nav>
 
-            <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="btn-outline-accent mobile-menu-cta inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md text-sm font-medium group" data-mobile-menu-link data-track="cta_click" data-track-label="{{ $t['nav_cta'] ?? 'Laten we praten' }}" data-track-location="nav">
-                {{ $t['nav_cta'] ?? 'Laten we praten' }}
-                <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+            <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="btn-hover btn-hover-primary mobile-menu-cta" data-mobile-menu-link data-track="cta_click" data-track-label="{{ $t['nav_cta'] ?? 'Laten we praten' }}" data-track-location="nav">
+                <span class="btn-hover__dot" aria-hidden="true"></span>
+                <span class="btn-hover__label">{{ $t['nav_cta'] ?? 'Laten we praten' }}</span>
+                <span class="btn-hover__reveal" aria-hidden="true">
+                    <span>{{ $t['nav_cta'] ?? 'Laten we praten' }}</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </span>
             </a>
         </div>
     </div>
