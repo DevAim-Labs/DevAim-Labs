@@ -107,7 +107,7 @@
 .hero-container {
     position: relative;
     width: 100%;
-    max-width: 84rem;
+    max-width: 75rem;
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
