@@ -49,30 +49,49 @@
                                 <div class="service-row-info">
                                     <span class="service-row-index">{{ String(i + 1).padStart(2, '0') }}</span>
                                     <span class="service-row-title">{{ service.title }}</span>
-                                    <span v-if="service.featured" class="service-row-badge">{{ isEn ? 'Most requested' : 'Meest gevraagd' }}</span>
                                     <span class="service-row-desc">{{ service.description }}</span>
                                 </div>
 
-                                <a
-                                    :href="service.demoUrl"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="btn-hover btn-hover-primary service-row-cta"
-                                    data-track="cta_click"
-                                    :data-track-label="isEn ? 'Check out demo' : 'Bekijk demo'"
-                                    :data-track-location="'services_' + service.id"
-                                    :aria-label="(isEn ? 'Check out demo: ' : 'Bekijk demo: ') + service.title"
-                                    @click.stop
-                                >
-                                    <span class="btn-hover__dot" aria-hidden="true"></span>
-                                    <span class="btn-hover__label" aria-hidden="true">{{ isEn ? 'Check out demo' : 'Bekijk demo' }}</span>
-                                    <span class="btn-hover__reveal" aria-hidden="true">
-                                        <span>{{ isEn ? 'Check out demo' : 'Bekijk demo' }}</span>
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <div class="service-row-actions">
+                                    <a
+                                        :href="service.pageUrl"
+                                        class="btn-hover service-row-cta"
+                                        data-track="link_click"
+                                        :data-track-label="isEn ? 'Learn more' : 'Meer info'"
+                                        :data-track-location="'services_' + service.id"
+                                        :aria-label="(isEn ? 'Learn more about: ' : 'Meer info over: ') + service.title"
+                                        @click.stop
+                                    >
+                                        <span class="btn-hover__dot" aria-hidden="true"></span>
+                                        <span class="btn-hover__label">{{ isEn ? 'Learn more' : 'Meer info' }}</span>
+                                        <span class="btn-hover__reveal" aria-hidden="true">
+                                            <span>{{ isEn ? 'Learn more' : 'Meer info' }}</span>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <a
+                                        :href="service.demoUrl"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="btn-hover btn-hover-primary service-row-cta"
+                                        data-track="cta_click"
+                                        :data-track-label="isEn ? 'Check out demo' : 'Bekijk demo'"
+                                        :data-track-location="'services_' + service.id"
+                                        :aria-label="(isEn ? 'Check out demo: ' : 'Bekijk demo: ') + service.title"
+                                        @click.stop
+                                    >
+                                        <span class="btn-hover__dot" aria-hidden="true"></span>
+                                        <span class="btn-hover__label" aria-hidden="true">{{ isEn ? 'Check out demo' : 'Bekijk demo' }}</span>
+                                        <span class="btn-hover__reveal" aria-hidden="true">
+                                            <span>{{ isEn ? 'Check out demo' : 'Bekijk demo' }}</span>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="services-list-rule" aria-hidden="true"></div>
@@ -137,6 +156,7 @@ const servicesNl = [
         description: "Snelle, SEO-vriendelijke websites die converteren.",
         image: '/service-previews/website.webp',
         demoUrl: '/demo/website.html',
+        pageUrl: '/diensten/websites',
     },
     {
         id: 2,
@@ -145,6 +165,7 @@ const servicesNl = [
         description: 'Vervang spreadsheets door echte tooling met rollen en rechten.',
         image: '/service-previews/adminpaneel.webp',
         demoUrl: '/demo/adminpaneel.html',
+        pageUrl: '/diensten/adminpanelen',
     },
     {
         id: 3,
@@ -153,6 +174,7 @@ const servicesNl = [
         description: 'Realtime inzicht in je bedrijfsdata met live cijfers en alerts.',
         image: '/service-previews/kpi.webp',
         demoUrl: '/demo/kpi-dashboard.html',
+        pageUrl: '/diensten/dashboards',
     },
     {
         id: 4,
@@ -161,6 +183,7 @@ const servicesNl = [
         description: 'Stripe en Mollie voor checkout, abonnementen en facturatie.',
         image: '/service-previews/betaal.webp',
         demoUrl: '/demo/betaalsysteem.html',
+        pageUrl: '/diensten/betalingen',
     },
     {
         id: 5,
@@ -170,6 +193,7 @@ const servicesNl = [
         image: null,
         beam: true,
         demoUrl: '/demo/',
+        pageUrl: '/diensten/api-integraties',
     },
 ]
 
@@ -182,6 +206,7 @@ const servicesEn = [
         description: 'Fast, SEO-friendly websites that convert.',
         image: '/service-previews/website.webp',
         demoUrl: '/demo/website.html',
+        pageUrl: '/en/services/websites',
     },
     {
         id: 2,
@@ -190,6 +215,7 @@ const servicesEn = [
         description: 'Replace spreadsheets with real tooling with roles and permissions.',
         image: '/service-previews/adminpaneel.webp',
         demoUrl: '/demo/adminpaneel.html',
+        pageUrl: '/en/services/admin-panels',
     },
     {
         id: 3,
@@ -198,6 +224,7 @@ const servicesEn = [
         description: 'Real-time insight into your business data with live metrics and alerts.',
         image: '/service-previews/kpi.webp',
         demoUrl: '/demo/kpi-dashboard.html',
+        pageUrl: '/en/services/dashboards',
     },
     {
         id: 4,
@@ -206,6 +233,7 @@ const servicesEn = [
         description: 'Stripe and Mollie for checkout, subscriptions and invoicing.',
         image: '/service-previews/betaal.webp',
         demoUrl: '/demo/betaalsysteem.html',
+        pageUrl: '/en/services/payments',
     },
     {
         id: 5,
@@ -215,6 +243,7 @@ const servicesEn = [
         image: null,
         beam: true,
         demoUrl: '/demo/',
+        pageUrl: '/en/services/api-integrations',
     },
 ]
 
@@ -294,6 +323,7 @@ html[data-theme="light"] .section-card {
 .services-list {
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
 }
 
 .services-list-rule {
@@ -379,16 +409,21 @@ html[data-theme="light"] .section-card {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.25) 55%, transparent);
 }
 
-/* Foreground content, bottom-anchored in both states */
+/* Foreground content */
 .service-row-content {
     position: relative;
     z-index: 1;
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     gap: 1.25rem;
+    padding: 0 0.25rem;
+}
+
+.service-row.is-active .service-row-content {
+    align-items: flex-end;
     padding: 1.25rem 0.25rem;
 }
 
@@ -449,20 +484,28 @@ html[data-theme="light"] .section-card {
     transform: translateX(0);
 }
 
+.service-row-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    margin-right: 0.5rem;
+}
+
+.service-row.is-active .service-row-actions {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 .service-row-cta {
     flex-shrink: 0;
     padding: 0.625rem 1.25rem;
     font-size: 0.8125rem;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.25s ease, color 0.25s ease;
-    pointer-events: none;
-}
-
-.service-row.is-active .service-row-cta {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -470,6 +513,7 @@ html[data-theme="light"] .section-card {
     .service-row-index,
     .service-row-title,
     .service-row-desc,
+    .service-row-actions,
     .service-row-cta {
         transition: none;
     }
@@ -478,10 +522,6 @@ html[data-theme="light"] .section-card {
 @media (max-width: 640px) {
     .service-row.is-active {
         height: 17rem;
-    }
-
-    .service-row-content {
-        align-items: flex-end;
     }
 
     .service-row-info {
@@ -494,8 +534,16 @@ html[data-theme="light"] .section-card {
         margin-top: 0.25rem;
     }
 
+    .service-row-actions {
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+        margin-right: 0;
+    }
+
     .service-row-cta {
-        padding: 0.5rem 1rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
     }
 }
 </style>

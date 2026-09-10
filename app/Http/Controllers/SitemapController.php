@@ -28,6 +28,28 @@ class SitemapController extends Controller
             'priority' => '0.3',
         ];
 
+        // Service pages (Dutch)
+        $servicePages = [
+            ['slug' => 'websites', 'en_slug' => 'websites'],
+            ['slug' => 'adminpanelen', 'en_slug' => 'admin-panels'],
+            ['slug' => 'dashboards', 'en_slug' => 'dashboards'],
+            ['slug' => 'betalingen', 'en_slug' => 'payments'],
+            ['slug' => 'api-integraties', 'en_slug' => 'api-integrations'],
+        ];
+
+        foreach ($servicePages as $service) {
+            $urls[] = [
+                'loc' => url('/diensten/'.$service['slug']),
+                'changefreq' => 'monthly',
+                'priority' => '0.7',
+            ];
+            $urls[] = [
+                'loc' => url('/en/services/'.$service['en_slug']),
+                'changefreq' => 'monthly',
+                'priority' => '0.7',
+            ];
+        }
+
         $xml = view('sitemap', ['urls' => $urls])->render();
 
         return response($xml, 200)->header('Content-Type', 'application/xml');

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,11 @@ Route::prefix('en')->group(function () {
 
     // Contact page must come before catch-all
     Route::get('/contact', [HomeController::class, 'showContactEn'])->name('contact.en');
+
+    // Service detail pages (English)
+    Route::get('/services/{service}', [ServiceController::class, 'showEn'])
+        ->where('service', 'websites|admin-panels|dashboards|payments|api-integrations')
+        ->name('service.show.en');
 
     $configEn = config('site-en');
     $routeSlugsEn = collect($configEn['sections'])
@@ -70,6 +76,11 @@ Route::post('/contact', [ContactController::class, 'store'])
 
 // Contact page (NL) - must come before catch-all
 Route::get('/contact', [HomeController::class, 'showContact'])->name('contact');
+
+// Service detail pages (Dutch)
+Route::get('/diensten/{service}', [ServiceController::class, 'show'])
+    ->where('service', 'websites|adminpanelen|dashboards|betalingen|api-integraties')
+    ->name('service.show');
 
 Route::get('/llms.txt', function () {
     $org = config('site.organization');

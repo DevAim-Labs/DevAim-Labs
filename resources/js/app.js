@@ -9,6 +9,7 @@ import TextLoop from './components/ui/TextLoop.vue'
 import GlyphMatrix from './components/ui/GlyphMatrix.vue'
 import HeroContactForm from './components/HeroContactForm.vue'
 import ContactPageForm from './components/ContactPageForm.vue'
+import ServicePageScroll from './components/ServicePageScroll.vue'
 import { initHeroAnimation } from './animations.js'
 import { initAnalytics } from './analytics.js'
 // Theme toggle disabled - dark mode only for now
@@ -190,6 +191,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                 locale: contactPageFormMount.dataset.locale || 'nl'
             })
         }).mount(contactPageFormMount)
+    }
+
+    // Mount Service Page Scroll component (for /diensten/* and /en/services/* pages)
+    const serviceScrollMount = document.getElementById('service-scroll-mount')
+    if (serviceScrollMount) {
+        createApp({
+            render: () => h(ServicePageScroll, {
+                service: serviceScrollMount.dataset.service || 'websites',
+                locale: serviceScrollMount.dataset.locale || 'nl'
+            })
+        }).mount(serviceScrollMount)
     }
 
     initHeroAnimation()

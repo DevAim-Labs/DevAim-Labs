@@ -569,6 +569,23 @@ html[data-theme="light"] {
         color: var(--color-accent);
     }
 
+    /* Outline variant: transparent bg, subtle border, teal hover (same as default btn-hover) */
+    .btn-hover-outline {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #fff;
+    }
+    .btn-hover-outline:hover,
+    .btn-hover-outline:focus-visible {
+        border-color: var(--color-accent);
+    }
+    .btn-hover-outline .btn-hover__dot {
+        background: var(--color-accent);
+    }
+    .btn-hover-outline .btn-hover__reveal {
+        color: var(--color-accent);
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .btn-hover__dot,
         .btn-hover__label,

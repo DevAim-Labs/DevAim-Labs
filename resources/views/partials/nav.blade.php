@@ -8,18 +8,18 @@
 <header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-[background,backdrop-filter,box-shadow] duration-300">
     <nav class="nav-grid">
         <!-- Logo - left column -->
-        <a href="{{ $prefix }}/" class="font-bold tracking-tight text-lg" style="color: var(--color-text);">
+        <a href="{{ url($prefix . '/') }}" class="font-bold tracking-tight text-lg" style="color: var(--color-text);">
             DevAim<span style="color: var(--color-accent);">.</span>
         </a>
 
         <!-- Nav pills - centered between logo and right actions -->
         <div class="nav-pills-track hidden lg:flex items-center rounded-full p-1 justify-self-center" style="background: var(--color-surface-1);">
             <span data-nav-pill-indicator class="nav-pill-indicator" aria-hidden="true"></span>
-            <a href="{{ $prefix }}/#services" class="nav-pill relative z-[1]" data-section="services">{{ $t['nav_services'] ?? 'Diensten' }}</a>
-            <a href="{{ $prefix }}/#process" class="nav-pill relative z-[1]" data-section="process">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
-            <a href="{{ $prefix }}/#pricing" class="nav-pill relative z-[1]" data-section="pricing">{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
-            <a href="{{ $prefix }}/#faq" class="nav-pill relative z-[1]" data-section="faq">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
-            <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="nav-pill relative z-[1]" data-section="contact">{{ $t['nav_contact'] ?? 'Contact' }}</a>
+            <a href="{{ url($prefix . '/') }}#services" class="nav-pill relative z-[1]" data-section="services">{{ $t['nav_services'] ?? 'Diensten' }}</a>
+            <a href="{{ url($prefix . '/') }}#process" class="nav-pill relative z-[1]" data-section="process">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
+            <a href="{{ url($prefix . '/') }}#pricing" class="nav-pill relative z-[1]" data-section="pricing">{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
+            <a href="{{ url($prefix . '/') }}#faq" class="nav-pill relative z-[1]" data-section="faq">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
+            <a href="{{ url($isEn ? '/en/contact' : '/contact') }}" class="nav-pill relative z-[1]" data-section="contact">{{ $t['nav_contact'] ?? 'Contact' }}</a>
         </div>
 
         <!-- Right actions - right column (contains both desktop and mobile variants) -->
@@ -58,7 +58,7 @@
     <div id="mobile-menu" class="mobile-menu-panel lg:hidden" aria-hidden="true">
         <div class="mobile-menu-inner">
             <div class="mobile-menu-header">
-                <a href="{{ $prefix }}/" class="font-bold tracking-tight text-lg" style="color: var(--color-text);">
+                <a href="{{ url($prefix . '/') }}" class="font-bold tracking-tight text-lg" style="color: var(--color-text);">
                     DevAim<span style="color: var(--color-accent);">.</span>
                 </a>
                 <button id="mobile-menu-close" class="mobile-menu-close" aria-label="{{ $isEn ? 'Close menu' : 'Menu sluiten' }}" style="color: var(--color-text-muted);">
@@ -69,11 +69,11 @@
             </div>
 
             <nav class="mobile-menu-links">
-                <a href="{{ $prefix }}/#services" data-mobile-menu-link>{{ $t['nav_services'] ?? 'Diensten' }}</a>
-                <a href="{{ $prefix }}/#process" data-mobile-menu-link>{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
-                <a href="{{ $prefix }}/#pricing" data-mobile-menu-link>{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
-                <a href="{{ $prefix }}/#faq" data-mobile-menu-link>{{ $t['nav_faq'] ?? 'FAQ' }}</a>
-                <a href="{{ $isEn ? '/en/contact' : '/contact' }}" data-mobile-menu-link>{{ $t['nav_contact'] ?? 'Contact' }}</a>
+                <a href="{{ url($prefix . '/') }}#services" data-mobile-menu-link>{{ $t['nav_services'] ?? 'Diensten' }}</a>
+                <a href="{{ url($prefix . '/') }}#process" data-mobile-menu-link>{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
+                <a href="{{ url($prefix . '/') }}#pricing" data-mobile-menu-link>{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
+                <a href="{{ url($prefix . '/') }}#faq" data-mobile-menu-link>{{ $t['nav_faq'] ?? 'FAQ' }}</a>
+                <a href="{{ url($isEn ? '/en/contact' : '/contact') }}" data-mobile-menu-link>{{ $t['nav_contact'] ?? 'Contact' }}</a>
             </nav>
 
             <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="btn-hover btn-hover-primary mobile-menu-cta" data-mobile-menu-link data-track="cta_click" data-track-label="{{ $t['nav_cta'] ?? 'Laten we praten' }}" data-track-location="nav">
