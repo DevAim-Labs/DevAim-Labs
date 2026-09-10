@@ -1,3 +1,6 @@
+// In-page sections tracked while scrolling the homepage
+const NAV_SECTION_IDS = ['services', 'process', 'pricing', 'faq']
+
 // Only show indicator on these separate pages (not homepage sections)
 const SEPARATE_PAGES = {
     '/contact': 'contact',
@@ -7,6 +10,7 @@ const SEPARATE_PAGES = {
 let indicatorEl = null
 let currentSection = null
 let isInitialLoad = true
+let scrollTicking = false
 
 export function updateNavPillActive(sectionId) {
     const pills = document.querySelectorAll('.nav-pill[data-section]')
@@ -73,22 +77,74 @@ function detectSectionFromPath() {
     return SEPARATE_PAGES[path] || null
 }
 
-export function initNavPillScrollSpy() {
-    // Detect active section from current URL path (only for separate pages)
-    const section = detectSectionFromPath()
+function detectActiveScrollSection() {
+    let bestId = null
+    let bestScore = -Infinity
+    const line = window.innerHeight * 0.32
 
-    // Small delay to ensure nav is rendered properly
+    for (const id of NAV_SECTION_IDS) {
+        const el = document.getElementById(id)
+        if (!el) continue
+
+        const rect = el.getBoundingClientRect()
+        if (rect.bottom < 0 || rect.top > window.innerHeight) continue
+
+        const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
+        const score = visible - Math.abs(rect.top - line) * 0.5
+
+        if (score > bestScore) {
+            bestScore = score
+            bestId = id
+        }
+    }
+
+    return bestId
+}
+
+function evaluateScrollSection() {
+    const id = detectActiveScrollSection()
+
+    if (id !== currentSection) {
+        updateNavPillActive(id)
+    } else if (id) {
+        moveIndicator()
+    }
+}
+
+function onScrollOrResize() {
+    if (scrollTicking) return
+    scrollTicking = true
     requestAnimationFrame(() => {
-        updateNavPillActive(section)
+        scrollTicking = false
+        evaluateScrollSection()
     })
+}
 
-    // Update indicator position on resize
-    window.addEventListener('resize', () => {
-        requestAnimationFrame(moveIndicator)
-    }, { passive: true })
+export function initNavPillScrollSpy() {
+    // Separate pages (e.g. /contact) have no in-page sections to spy on;
+    // just highlight the matching pill statically from the URL.
+    const pathSection = detectSectionFromPath()
+    if (pathSection) {
+        requestAnimationFrame(() => {
+            updateNavPillActive(pathSection)
+        })
+        window.addEventListener('resize', () => {
+            requestAnimationFrame(moveIndicator)
+        }, { passive: true })
+        return
+    }
+
+    // Homepage: track which in-page section is active while scrolling.
+    window.addEventListener('scroll', onScrollOrResize, { passive: true })
+    window.addEventListener('resize', onScrollOrResize, { passive: true })
+    requestAnimationFrame(evaluateScrollSection)
 }
 
 export function refreshNavPillScrollSpy() {
-    const section = detectSectionFromPath()
-    updateNavPillActive(section)
+    const pathSection = detectSectionFromPath()
+    if (pathSection) {
+        updateNavPillActive(pathSection)
+        return
+    }
+    requestAnimationFrame(evaluateScrollSection)
 }
