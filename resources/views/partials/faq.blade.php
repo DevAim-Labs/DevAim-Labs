@@ -41,8 +41,8 @@
                         <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-sm font-semibold transition-colors duration-200 [&::-webkit-details-marker]:hidden hover:bg-[var(--color-surface-2)]" style="color: var(--color-text);">
                             <span class="flex-1">{{ $faq['q'] }}</span>
                             <span class="faq-icon relative w-6 h-6 shrink-0 flex items-center justify-center rounded-full transition-all duration-300" style="background: var(--color-accent-glow);">
-                                <span class="absolute w-3 h-0.5 rounded-full transition-transform duration-300 group-open:rotate-90" style="background: var(--color-accent);"></span>
-                                <span class="absolute w-3 h-0.5 rounded-full transition-transform duration-300 group-open:rotate-180" style="background: var(--color-accent);"></span>
+                                <span class="absolute w-3 h-0.5 rounded-full rotate-90 transition-transform duration-300 group-open:rotate-0" style="background: var(--color-accent);"></span>
+                                <span class="absolute w-3 h-0.5 rounded-full transition-transform duration-300" style="background: var(--color-accent);"></span>
                             </span>
                         </summary>
                         <div class="faq-content px-6 pb-5">
