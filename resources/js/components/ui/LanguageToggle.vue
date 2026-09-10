@@ -6,8 +6,8 @@ const isOpen = ref(false)
 const rootEl = ref(null)
 
 const languages = [
-    { code: 'nl', label: 'NL', fullLabel: 'Nederlands', flag: '🇳🇱' },
-    { code: 'en', label: 'EN', fullLabel: 'English', flag: '🇬🇧' }
+    { code: 'nl', label: 'NL', fullLabel: 'Nederlands' },
+    { code: 'en', label: 'EN', fullLabel: 'English' }
 ]
 
 function selectLanguage(lang) {
@@ -120,14 +120,10 @@ const currentLanguage = () => languages.find(l => l.code === currentLang.value)
                     :key="lang.code"
                     @click="selectLanguage(lang.code)"
                     class="w-full flex items-center gap-3 px-3 py-2 text-left text-sm transition-colors duration-150"
-                    :style="{
-                        color: currentLang === lang.code ? 'var(--color-accent)' : 'var(--color-text)',
-                        background: currentLang === lang.code ? 'var(--color-accent-glow)' : 'transparent'
-                    }"
-                    @mouseover="$event.target.style.background = currentLang === lang.code ? 'var(--color-accent-glow)' : 'var(--color-surface-2)'"
-                    @mouseleave="$event.target.style.background = currentLang === lang.code ? 'var(--color-accent-glow)' : 'transparent'"
+                    style="color: var(--color-text); background: transparent;"
+                    @mouseover="$event.target.style.background = 'var(--color-surface-2)'"
+                    @mouseleave="$event.target.style.background = 'transparent'"
                 >
-                    <span class="text-base">{{ lang.flag }}</span>
                     <span class="font-medium">{{ lang.fullLabel }}</span>
                     <svg
                         v-if="currentLang === lang.code"
