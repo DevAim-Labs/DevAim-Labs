@@ -99,8 +99,8 @@ const t = computed(() => isEn ? {
                     <!-- Maintenance Card -->
                     <article class="pricing-card pricing-card-accent">
                         <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L6.75 2.906m12.004 14.88l-1.15-.964M5.106 6.214l-1.15-.964m17.59 5.13l-1.41-.513M5.954 15.436l-1.41-.514"/>
+                            <svg viewBox="0 -960 960 960" fill="currentColor">
+                                <path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z"/>
                             </svg>
                         </div>
                         <h3 class="card-title">{{ t.maintTitle }}</h3>
@@ -238,8 +238,8 @@ const t = computed(() => isEn ? {
 
 .options-list li {
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.125rem;
     font-size: 0.9375rem;
 }
 
@@ -249,13 +249,8 @@ const t = computed(() => isEn ? {
 }
 
 .opt-desc {
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
-}
-
-.opt-desc::before {
-    content: '—';
-    margin-right: 0.5rem;
-    color: var(--color-text-dim);
 }
 
 /* Features List (Maintenance card) */

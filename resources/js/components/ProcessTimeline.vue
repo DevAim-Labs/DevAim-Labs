@@ -66,14 +66,14 @@
                 </ol>
 
                 <!-- Mobile Timeline -->
-                <ol class="md:hidden list-none m-0 p-0 space-y-8">
+                <ol ref="mobileTimelineRef" class="md:hidden list-none m-0 p-0 space-y-8">
                     <li
                         v-for="(step, i) in steps"
                         :key="'m-' + step.id"
-                        class="relative flex gap-5 pl-1"
+                        class="relative flex gap-5 pl-1 mobile-step-item"
                     >
                         <div class="flex flex-col items-center shrink-0">
-                            <div class="relative">
+                            <div class="relative mobile-step-circle">
                                 <div
                                     class="flex h-14 w-14 items-center justify-center rounded-full border-2"
                                     style="border-color: var(--color-accent); background: var(--color-section);"
@@ -90,8 +90,8 @@
                             </div>
                             <div
                                 v-if="i < steps.length - 1"
-                                class="mt-2 w-px flex-1 min-h-[2rem]"
-                                style="background: var(--color-border);"
+                                class="mobile-step-line mt-2 w-px flex-1 min-h-[2rem]"
+                                style="background: var(--color-border); transform-origin: top center;"
                                 aria-hidden="true"
                             ></div>
                         </div>
@@ -251,9 +251,51 @@ const steps = computed(() => isEn ? stepsEn : stepsNl)
 
 const timelineRef = ref(null)
 const lineRef = ref(null)
+const mobileTimelineRef = ref(null)
 
 onMounted(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    // Mobile timeline: staggered entrance for each step and its connecting line.
+    // Runs regardless of viewport size (the desktop <ol> is hidden via CSS on
+    // mobile, so it can't drive this — the mobile-only <ol> needs its own trigger).
+    if (mobileTimelineRef.value) {
+        const mobileItems = mobileTimelineRef.value.querySelectorAll('.mobile-step-item')
+        if (mobileItems.length) {
+            gsap.fromTo(mobileItems,
+                { opacity: 0, y: 24 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: 0.15,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: mobileTimelineRef.value,
+                        start: 'top 85%',
+                    },
+                }
+            )
+        }
+
+        const mobileLines = mobileTimelineRef.value.querySelectorAll('.mobile-step-line')
+        if (mobileLines.length) {
+            gsap.fromTo(mobileLines,
+                { scaleY: 0 },
+                {
+                    scaleY: 1,
+                    duration: 0.4,
+                    stagger: 0.15,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: mobileTimelineRef.value,
+                        start: 'top 85%',
+                    },
+                }
+            )
+        }
+    }
+
     if (!timelineRef.value) return
 
     // Animate connecting line
