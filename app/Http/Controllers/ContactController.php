@@ -29,22 +29,20 @@ class ContactController extends Controller
         //     'user_agent' => $request->userAgent(),
         // ]);
 
-        // No queue worker runs in production, so respond to the browser
-        // immediately and only then do the slow SMTP send — otherwise the
-        // visitor sits waiting for the full mail round-trip.
-        $response = response()->json(['message' => 'Verzonden.'], 200);
-        $response->send();
-        if (function_exists('fastcgi_finish_request')) {
-            fastcgi_finish_request();
-        }
-
+        // Mail now goes out via Resend's HTTP API (fast, no blocking SMTP
+        // round-trip), so we can wait for the actual result and report a
+        // real failure instead of always answering 200.
         try {
             Mail::to(config('mail.from.address'))
                 ->send(new ContactFormSubmission($validated));
         } catch (\Throwable $e) {
             report($e);
+
+            return response()->json([
+                'message' => 'Verzenden is mislukt. Probeer het later opnieuw of mail rechtstreeks.',
+            ], 500);
         }
 
-        return $response;
+        return response()->json(['message' => 'Verzonden.'], 200);
     }
 }
