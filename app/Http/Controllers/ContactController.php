@@ -29,6 +29,15 @@ class ContactController extends Controller
         //     'user_agent' => $request->userAgent(),
         // ]);
 
+        // No queue worker runs in production, so respond to the browser
+        // immediately and only then do the slow SMTP send — otherwise the
+        // visitor sits waiting for the full mail round-trip.
+        $response = response()->json(['message' => 'Verzonden.'], 200);
+        $response->send();
+        if (function_exists('fastcgi_finish_request')) {
+            fastcgi_finish_request();
+        }
+
         try {
             Mail::to(config('mail.from.address'))
                 ->send(new ContactFormSubmission($validated));
@@ -36,6 +45,6 @@ class ContactController extends Controller
             report($e);
         }
 
-        return response()->json(['message' => 'Verzonden.'], 200);
+        return $response;
     }
 }
