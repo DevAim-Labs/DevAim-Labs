@@ -136,7 +136,7 @@ Styling: Tailwind CSS
 - Client code ownership
 
 # Contact
-Email: devaimlabs@gmail.com
+Email: contact@devaimlabs.com
 Phone: +31 6385230999
 KvK: 42051464
 
@@ -764,7 +764,7 @@ Most competitors also lack:
     "name": "DevAim Labs",
     "url": "https://devaimlabs.com",
     "logo": "https://devaimlabs.com/DevAim_IMG.png",
-    "email": "devaimlabs@gmail.com",
+    "email": "contact@devaimlabs.com",
     "telephone": "+316385230999",
     "areaServed": "NL",
     "description": "Maatwerksoftware en custom software ontwikkeling voor bedrijven: adminpanelen, KPI-dashboards, landingspagina's, Stripe en Mollie integraties en API-koppelingen."

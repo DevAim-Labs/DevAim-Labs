@@ -156,7 +156,7 @@ DevAim Labs presents a clean, well-structured website with good technical implem
 - Clear pricing transparency hints (mentions "vaste scope")
 
 #### Weaknesses
-- Gmail address (devaimlabs@gmail.com) instead of professional @devaimlabs.com
+- Gmail address (contact@devaimlabs.com) instead of professional @devaimlabs.com
 - No physical address displayed on website (only via KvK lookup)
 - No company history or founding story
 - Privacy policy not analyzed (needs review for GDPR compliance)

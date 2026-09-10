@@ -44,7 +44,7 @@
                 </p>
                 <p class="mt-3">
                     DevAim Labs is de functionaris gegevensbescherming van DevAim Labs en is te bereiken via
-                    <a href="mailto:devaimlabs@gmail.com" class="hover:underline" style="color: var(--color-accent);">devaimlabs@gmail.com</a>.
+                    <a href="mailto:contact@devaimlabs.com" class="hover:underline" style="color: var(--color-accent);">contact@devaimlabs.com</a>.
                 </p>
             </div>
 
@@ -70,7 +70,7 @@
                     bij de online activiteiten van hun kinderen, om zo te voorkomen dat er gegevens over kinderen
                     verzameld worden zonder ouderlijke toestemming. Als u er van overtuigd bent dat ik zonder die
                     toestemming persoonlijke gegevens heb verzameld over een minderjarige, neem dan contact met
-                    mij op via <a href="mailto:devaimlabs@gmail.com" class="hover:underline" style="color: var(--color-accent);">devaimlabs@gmail.com</a>,
+                    mij op via <a href="mailto:contact@devaimlabs.com" class="hover:underline" style="color: var(--color-accent);">contact@devaimlabs.com</a>,
                     dan verwijder ik deze informatie.
                 </p>
             </div>
@@ -132,7 +132,7 @@
                 <p class="mb-3">
                     U kunt een verzoek tot inzage, correctie, verwijdering, gegevensoverdraging van uw
                     persoonsgegevens of verzoek tot intrekking van uw toestemming of bezwaar op de verwerking van uw
-                    persoonsgegevens sturen naar <a href="mailto:devaimlabs@gmail.com" class="hover:underline" style="color: var(--color-accent);">devaimlabs@gmail.com</a>.
+                    persoonsgegevens sturen naar <a href="mailto:contact@devaimlabs.com" class="hover:underline" style="color: var(--color-accent);">contact@devaimlabs.com</a>.
                 </p>
                 <p class="mb-3">
                     Om er zeker van te zijn dat het verzoek tot inzage door u is gedaan, vraag ik u een kopie van
@@ -154,7 +154,7 @@
                     DevAim Labs neemt de bescherming van uw gegevens serieus en neemt passende maatregelen om
                     misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging
                     tegen te gaan. Als u de indruk heeft dat uw gegevens niet goed beveiligd zijn of er aanwijzingen
-                    zijn van misbruik, neem dan contact op via <a href="mailto:devaimlabs@gmail.com" class="hover:underline" style="color: var(--color-accent);">devaimlabs@gmail.com</a>.
+                    zijn van misbruik, neem dan contact op via <a href="mailto:contact@devaimlabs.com" class="hover:underline" style="color: var(--color-accent);">contact@devaimlabs.com</a>.
                 </p>
             </div>
         </div>

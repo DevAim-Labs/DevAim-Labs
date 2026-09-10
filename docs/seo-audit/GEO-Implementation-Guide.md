@@ -85,7 +85,7 @@ APIs: RESTful architecture, webhooks, synchronization jobs
 - Alternative SaaS model available with monthly updates
 
 # Contact Information
-Email: devaimlabs@gmail.com
+Email: contact@devaimlabs.com
 Phone: +31 6385230999
 KvK: 42051464
 BTW-nr: NL005458933B79
@@ -434,7 +434,7 @@ Onze aanpak:
 
 Tech stack: Laravel | React | Vue | Python | TypeScript
 
-📧 devaimlabs@gmail.com
+📧 contact@devaimlabs.com
 📞 +31 6385230999
 🌐 devaimlabs.com
 ```
@@ -465,7 +465,7 @@ Voor een klant in de horeca bouwden we een dashboard dat:
 
 Resultaat: 15 uur per week tijdsbesparing en 99%+ voorraadnauwkeurigheid.
 
-Herken je dit probleem? Laten we praten: devaimlabs@gmail.com
+Herken je dit probleem? Laten we praten: contact@devaimlabs.com
 
 #Horeca #Automatisering #Dashboard
 ```

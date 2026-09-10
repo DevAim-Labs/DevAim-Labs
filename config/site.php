@@ -112,7 +112,7 @@ return [
 
     'organization' => [
         'name' => 'DevAim Labs',
-        'email' => 'devaimlabs@gmail.com',
+        'email' => 'contact@devaimlabs.com',
         'phone' => '+316385230999',
         'logo' => '/DevAim_IMG.png',
     ],

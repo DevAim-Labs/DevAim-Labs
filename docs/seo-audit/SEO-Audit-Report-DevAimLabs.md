@@ -93,7 +93,7 @@ add_header X-Content-Type-Options "nosniff" always;
    - Include measurable results (time saved, revenue increase)
 
 3. **Switch to Professional Email** (1 hour)
-   - Change devaimlabs@gmail.com to info@devaimlabs.com
+   - Change contact@devaimlabs.com to info@devaimlabs.com
 
 ---
 
@@ -184,7 +184,7 @@ add_header X-Content-Type-Options "nosniff" always;
 - Custom web applications
 
 ## Contact
-- Email: devaimlabs@gmail.com
+- Email: contact@devaimlabs.com
 - Phone: +31 6 38 52 30 99
 - KvK: 42051464
 

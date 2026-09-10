@@ -370,7 +370,7 @@ Responstijden voor support: binnen 24 uur voor normale issues, binnen 4 uur voor
 
 **Contact Page:**
 ```html
-<meta name="description" content="Start je custom software project met DevAim Labs. Gratis initieel consult, vaste prijsofferte binnen 48 uur, direct contact met developers. Email: devaimlabs@gmail.com, Tel: +31 6385230999.">
+<meta name="description" content="Start je custom software project met DevAim Labs. Gratis initieel consult, vaste prijsofferte binnen 48 uur, direct contact met developers. Email: contact@devaimlabs.com, Tel: +31 6385230999.">
 ```
 
 ---
@@ -400,7 +400,7 @@ Typische projecten:
 • Dashboard met integraties: 2-4 maanden
 • Gemiddelde tijdsbesparing: 10-15 uur/week
 
-📧 devaimlabs@gmail.com
+📧 contact@devaimlabs.com
 📞 +31 6385230999
 🌐 devaimlabs.com
 🏢 KvK: 42051464
@@ -447,7 +447,7 @@ Resultaat na 8 weken implementatie:
 Tech stack: Laravel + Vue + Tailwind CSS
 
 Herken je dit probleem bij jouw bedrijf?
-📧 devaimlabs@gmail.com
+📧 contact@devaimlabs.com
 
 #Horeca #Automatisering #Dashboard #Laravel
 ```
@@ -552,11 +552,11 @@ In deze video laten we zien hoe we een custom admin panel bouwen met Laravel en 
 
 🔗 Links:
 Website: https://devaimlabs.com
-Contact: devaimlabs@gmail.com
+Contact: contact@devaimlabs.com
 GitHub: [indien van toepassing]
 
 📧 Wil je een custom admin panel laten bouwen?
-Email ons voor een gratis offerte: devaimlabs@gmail.com
+Email ons voor een gratis offerte: contact@devaimlabs.com
 
 #Laravel #VueJS #AdminPanel #WebDevelopment #CustomSoftware #Nederlands
 
@@ -596,7 +596,7 @@ Laravel, Vue, Tailwind CSS, MySQL
 ⏱️ Project timeline: 8 weken van kickoff tot livegang
 
 🔗 Wil je weten wat custom software voor jouw bedrijf kan betekenen?
-Vraag een gratis offerte: devaimlabs@gmail.com
+Vraag een gratis offerte: contact@devaimlabs.com
 
 Website: https://devaimlabs.com
 
@@ -622,7 +622,7 @@ Developer | DevAim Labs
 Custom Software Ontwikkeling
 Admin Panels • Dashboards • API Integraties
 
-📧 devaimlabs@gmail.com
+📧 contact@devaimlabs.com
 📞 +31 6385230999
 🌐 devaimlabs.com
 
