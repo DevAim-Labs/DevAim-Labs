@@ -26,17 +26,17 @@
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="DevAim Labs">
-    <meta property="og:title" content="{{ $pageTitle ?? 'DevAim Labs' }}">
-    <meta property="og:description" content="{{ $pageDescription ?? '' }}">
+    <meta property="og:title" content="{{ $ogTitle ?? $pageTitle ?? 'DevAim Labs' }}">
+    <meta property="og:description" content="{{ $ogDescription ?? $pageDescription ?? '' }}">
     <meta property="og:url" content="{{ $canonicalUrl ?? url('/') }}">
     <meta property="og:image" content="{{ asset('og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="{{ ($locale ?? 'nl') === 'en' ? 'en_US' : 'nl_NL' }}">
+    <meta property="og:locale" content="{{ $ogLocale ?? (($locale ?? 'nl') === 'en' ? 'en_US' : 'nl_NL') }}">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $pageTitle ?? 'DevAim Labs' }}">
-    <meta name="twitter:description" content="{{ $pageDescription ?? '' }}">
+    <meta name="twitter:title" content="{{ $ogTitle ?? $pageTitle ?? 'DevAim Labs' }}">
+    <meta name="twitter:description" content="{{ $ogDescription ?? $pageDescription ?? '' }}">
     <meta name="twitter:image" content="{{ asset('og-image.png') }}">
 
     <link rel="icon" type="image/png" sizes="144x144" href="{{ asset('IMG_144.png') }}">

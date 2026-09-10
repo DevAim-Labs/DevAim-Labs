@@ -118,6 +118,7 @@ class HomeController extends Controller
 
         // Alternate language URLs for SEO
         $alternateUrls = [];
+        $enSection = null;
         if ($locale === 'nl') {
             $enConfig = config('site-en');
             $enSection = $enConfig['sections'][$sectionId] ?? null;
@@ -134,11 +135,26 @@ class HomeController extends Controller
             $alternateUrls['en'] = url($canonicalPath);
         }
 
+        // The homepage's social-share preview (og:/twitter: tags) is kept in
+        // English regardless of locale — the link gets shared across an
+        // international audience even though the Dutch page itself stays Dutch.
+        $ogTitle = $active['title'];
+        $ogDescription = $active['description'];
+        $ogLocale = $locale === 'en' ? 'en_US' : 'nl_NL';
+        if ($locale === 'nl' && $sectionId === 'home' && $enSection) {
+            $ogTitle = $enSection['title'];
+            $ogDescription = $enSection['description'];
+            $ogLocale = 'en_US';
+        }
+
         return view('home', [
             'initialSection' => $sectionId === 'home' ? null : $sectionId,
             'analyticsSections' => $sections,
             'pageTitle' => $active['title'],
             'pageDescription' => $active['description'],
+            'ogTitle' => $ogTitle,
+            'ogDescription' => $ogDescription,
+            'ogLocale' => $ogLocale,
             'canonicalUrl' => ($active['indexable'] ?? false) ? url($canonicalPath) : url($homePath),
             'breadcrumbs' => $breadcrumbs,
             'locale' => $locale,
