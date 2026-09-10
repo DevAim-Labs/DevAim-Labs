@@ -28,7 +28,7 @@
                 <p class="section-eyebrow mb-3">FAQ</p>
                 <h2 class="text-3xl md:text-4xl section-title mb-3">{{ $isEn ? 'Frequently asked questions' : 'Veelgestelde vragen' }}</h2>
                 <p class="text-sm md:text-base" style="color: var(--color-text-muted);">
-                    {{ $isEn ? 'Answers to the most common questions about our services.' : 'Antwoorden op de meest gestelde vragen over onze diensten.' }}
+                    {{ $isEn ? 'Answers to the most common questions about my services.' : 'Antwoorden op de meest gestelde vragen over mijn diensten.' }}
                 </p>
             </header>
 
@@ -58,7 +58,7 @@
 
             <div class="mt-12 text-center">
                 <p class="text-sm mb-4" style="color: var(--color-text-muted);">
-                    {{ $isEn ? 'Still have questions? We\'re happy to help.' : 'Nog vragen? We helpen je graag verder.' }}
+                    {{ $isEn ? 'Still have questions? I\'m happy to help.' : 'Nog vragen? Ik help je graag verder.' }}
                 </p>
                 <a
                     href="{{ $contactPath }}"

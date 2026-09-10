@@ -168,7 +168,7 @@ const stepsNl = [
         icon: 'handshake',
         title: 'Kennismaking',
         highlight: 'Gratis gesprek',
-        body: 'We bespreken je idee, doelen en randvoorwaarden, en checken of maatwerksoftware de juiste keuze is.',
+        body: 'Ik bespreek je idee, doelen en randvoorwaarden, en check of maatwerksoftware de juiste keuze is.',
     },
     {
         id: 2,
@@ -184,7 +184,7 @@ const stepsNl = [
         icon: 'construction',
         title: 'Bouwen',
         highlight: "Demo's elke 2 weken",
-        body: 'We ontwikkelen iteratief, met demo\'s om de twee weken.',
+        body: 'Ik ontwikkel iteratief, met demo\'s om de twee weken.',
     },
     {
         id: 4,
@@ -192,7 +192,7 @@ const stepsNl = [
         icon: 'computer',
         title: 'Oplevering',
         highlight: 'Code is van jou',
-        body: 'We deployen, dragen over en documenteren, zodat je team het vanaf dag één kan gebruiken.',
+        body: 'Ik deploy, draag over en documenteer, zodat je team het vanaf dag één kan gebruiken.',
     },
     {
         id: 5,
@@ -200,7 +200,7 @@ const stepsNl = [
         icon: 'trending_up',
         title: 'Doorontwikkeling',
         highlight: 'Flexibele support',
-        body: 'We blijven beschikbaar voor verbeteringen, nieuwe features en ondersteuning terwijl je product groeit.',
+        body: 'Ik blijf beschikbaar voor verbeteringen, nieuwe features en ondersteuning terwijl je product groeit.',
     },
 ]
 
@@ -211,7 +211,7 @@ const stepsEn = [
         icon: 'handshake',
         title: 'Introduction',
         highlight: 'Free consultation',
-        body: 'We discuss your idea, goals and requirements, and check if custom software is the right choice.',
+        body: 'I discuss your idea, goals and requirements, and check if custom software is the right choice.',
     },
     {
         id: 2,
@@ -227,7 +227,7 @@ const stepsEn = [
         icon: 'construction',
         title: 'Build',
         highlight: 'Demos every 2 weeks',
-        body: 'We develop iteratively, with demos every two weeks.',
+        body: 'I develop iteratively, with demos every two weeks.',
     },
     {
         id: 4,
@@ -235,7 +235,7 @@ const stepsEn = [
         icon: 'computer',
         title: 'Delivery',
         highlight: 'You own the code',
-        body: 'We deploy, hand over and document, so your team can use it from day one.',
+        body: 'I deploy, hand over and document, so your team can use it from day one.',
     },
     {
         id: 5,
@@ -243,7 +243,7 @@ const stepsEn = [
         icon: 'trending_up',
         title: 'Growth',
         highlight: 'Flexible support',
-        body: 'We remain available for improvements, new features and support as your product grows.',
+        body: 'I remain available for improvements, new features and support as your product grows.',
     },
 ]
 

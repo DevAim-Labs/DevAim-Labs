@@ -7,21 +7,21 @@ const isEn = locale === 'en'
 const t = computed(() => isEn ? {
     eyebrow: 'Pricing',
     title: 'Transparent pricing, tailored to your project.',
-    subtitle: 'Every project is unique. We determine the best pricing model together based on complexity and scope.',
+    subtitle: "Every project is unique. I'll figure out the best pricing model with you, based on complexity and scope.",
 
     // Development section
     devTitle: 'Development',
-    devDesc: 'Depending on the size and complexity of your project, we work with:',
+    devDesc: 'Depending on the size and complexity of your project, I work with:',
     devOptions: [
         { label: 'Fixed price', desc: 'for well-defined projects' },
         { label: 'Per phase', desc: 'for projects that evolve' },
         { label: 'Hourly rate', desc: 'for flexible collaboration' },
     ],
-    devNote: 'We discuss the best approach in our free introductory call.',
+    devNote: 'I discuss the best approach in my free introductory call.',
 
     // Maintenance section
     maintTitle: 'Maintenance & Support',
-    maintDesc: 'After delivery, we can continue to maintain and improve your software with a monthly agreement:',
+    maintDesc: 'After delivery, I can continue to maintain and improve your software with a monthly agreement:',
     maintFeatures: [
         'Bug fixes and security updates',
         'Small adjustments and improvements',
@@ -35,21 +35,21 @@ const t = computed(() => isEn ? {
 } : {
     eyebrow: 'Tarieven',
     title: 'Transparante tarieven, afgestemd op jouw project.',
-    subtitle: 'Elk project is uniek. We bepalen samen het beste model op basis van complexiteit en scope.',
+    subtitle: 'Elk project is uniek. Ik bepaal samen met jou het beste model op basis van complexiteit en scope.',
 
     // Development section
     devTitle: 'Ontwikkeling',
-    devDesc: 'Afhankelijk van de grootte en complexiteit van je project werken we met:',
+    devDesc: 'Afhankelijk van de grootte en complexiteit van je project werk ik met:',
     devOptions: [
         { label: 'Vaste prijs', desc: 'voor afgebakende projecten' },
         { label: 'Per fase', desc: 'voor projecten die evolueren' },
         { label: 'Uurtarief', desc: 'voor flexibele samenwerking' },
     ],
-    devNote: 'We bespreken de beste aanpak in ons gratis kennismakingsgesprek.',
+    devNote: 'Ik bespreek de beste aanpak in mijn gratis kennismakingsgesprek.',
 
     // Maintenance section
     maintTitle: 'Onderhoud & Support',
-    maintDesc: 'Na oplevering kunnen we je software blijven onderhouden en verbeteren met een maandelijkse afspraak:',
+    maintDesc: 'Na oplevering kan ik je software blijven onderhouden en verbeteren met een maandelijkse afspraak:',
     maintFeatures: [
         'Bugfixes en security updates',
         'Kleine aanpassingen en verbeteringen',

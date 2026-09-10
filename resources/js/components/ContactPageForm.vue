@@ -12,7 +12,7 @@ const locale = props.locale || window.__LOCALE__ || 'nl'
 const isEn = locale === 'en'
 
 const t = computed(() => ({
-    title: isEn ? 'Send us a message' : 'Stuur ons een bericht',
+    title: isEn ? 'Send me a message' : 'Stuur mij een bericht',
     name: isEn ? 'Name' : 'Naam',
     namePlaceholder: 'John Doe',
     company: isEn ? 'Company' : 'Bedrijf',
@@ -35,14 +35,14 @@ const t = computed(() => ({
         { value: 'mvp', label: 'MVP / Prototype' },
         { value: 'other', label: 'Iets anders' },
     ],
-    message: isEn ? 'Tell us more about your project (optional)' : 'Vertel meer over je project (optioneel)',
+    message: isEn ? 'Tell me more about your project (optional)' : 'Vertel me meer over je project (optioneel)',
     messagePlaceholder: isEn ? 'Describe your project, goals, timeline...' : 'Beschrijf je project, doelen, planning...',
     submit: isEn ? 'Send message' : 'Verstuur bericht',
     sending: isEn ? 'Sending...' : 'Versturen...',
     success: isEn ? 'Message sent successfully!' : 'Bericht succesvol verzonden!',
-    successSub: isEn ? "We'll get back to you within 24 hours." : 'We nemen binnen 24 uur contact met je op.',
+    successSub: isEn ? "I'll get back to you within 24 hours." : 'Ik neem binnen 24 uur contact met je op.',
     error: isEn ? 'Something went wrong. Please try again.' : 'Er ging iets mis. Probeer het opnieuw.',
-    privacy: isEn ? 'Your data is safe. Read our' : 'Je gegevens zijn veilig. Lees onze',
+    privacy: isEn ? 'Your data is safe. Read my' : 'Je gegevens zijn veilig. Lees mijn',
     privacyLink: isEn ? 'privacy policy' : 'privacyverklaring',
 }))
 

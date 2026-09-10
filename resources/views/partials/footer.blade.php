@@ -17,7 +17,7 @@
                     DevAim Labs<span style="color: var(--color-accent);">.</span>
                 </p>
                 <p class="text-sm leading-relaxed mb-6" style="color: var(--color-text-muted);">
-                    {{ $t['footer_tagline'] ?? 'Custom software, websites en integraties. Direct contact met de developers.' }}
+                    {{ $t['footer_tagline'] ?? 'Custom software, websites en integraties. Direct contact met de developer.' }}
                 </p>
             </div>
 
@@ -25,7 +25,7 @@
             <div>
                 <p class="text-xs uppercase tracking-wider font-semibold mb-5" style="color: var(--color-text-dim);">{{ $t['footer_nav'] ?? 'Navigatie' }}</p>
                 <nav class="flex flex-col gap-3 text-sm" style="color: var(--color-text-muted);">
-                    <a href="{{ $isEn ? '/en/about' : '/over-ons' }}" class="hover:text-[var(--color-accent)] transition-colors duration-200">{{ $isEn ? 'About' : 'Over ons' }}</a>
+                    <a href="{{ $isEn ? '/en/about' : '/over-ons' }}" class="hover:text-[var(--color-accent)] transition-colors duration-200">{{ $isEn ? 'About' : 'Over mij' }}</a>
                     <a href="{{ $isEn ? '/en/services' : '/diensten' }}" class="hover:text-[var(--color-accent)] transition-colors duration-200">{{ $t['nav_services'] ?? 'Diensten' }}</a>
                     <a href="{{ $isEn ? '/en/process' : '/werkwijze' }}" class="hover:text-[var(--color-accent)] transition-colors duration-200">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
                     <a href="{{ $isEn ? '/en/work' : '/klantwerk' }}" class="hover:text-[var(--color-accent)] transition-colors duration-200">{{ $t['nav_work'] ?? 'Klantwerk' }}</a>

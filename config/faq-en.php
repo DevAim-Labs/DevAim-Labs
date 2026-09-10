@@ -7,7 +7,7 @@ return [
     ],
     [
         'q' => 'Can you integrate with our existing systems?',
-        'a' => 'Yes. Integrations are core to our work. Webhooks, APIs, and sync jobs so you\'re not locked into one vendor forever.',
+        'a' => 'Yes. Integrations are core to my work. Webhooks, APIs, and sync jobs so you\'re not locked into one vendor forever.',
     ],
     [
         'q' => 'How long does an average project take?',
@@ -19,7 +19,7 @@ return [
     ],
     [
         'q' => 'How does ongoing support and updates work?',
-        'a' => 'After delivery, you can opt for a monthly support package. This gives you fast response times for small adjustments, bug fixes, and updates. For larger new features, we create a separate quote.',
+        'a' => 'After delivery, you can opt for a monthly support package. This gives you fast response times for small adjustments, bug fixes, and updates. For larger new features, I create a separate quote.',
     ],
     [
         'q' => 'What does ongoing support cost?',
@@ -31,6 +31,6 @@ return [
     ],
     [
         'q' => 'Can I schedule a call?',
-        'a' => 'Yes, you can schedule a video call directly through our calendar. The first introductory call is free and without obligation.',
+        'a' => 'Yes, you can schedule a video call directly through my calendar. The first introductory call is free and without obligation.',
     ],
 ];

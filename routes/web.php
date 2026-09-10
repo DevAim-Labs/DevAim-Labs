@@ -78,7 +78,7 @@ Route::get('/llms.txt', function () {
 > Custom websites, systemen en integraties
 
 ## Over
-DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developers die bouwen, geen tussenpersoon. Reactie binnen 24 uur.
+DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developer die bouwt, geen tussenpersoon. Reactie binnen 24 uur.
 
 ## Diensten
 - Maatwerksoftware op maat
@@ -102,7 +102,7 @@ Particulieren en bedrijven die op zoek zijn naar custom websites, systemen of in
 Laravel, Vue.js, React, TypeScript, Inertia.js, REST APIs, Tailwind CSS
 
 ## Waarom DevAim Labs
-- Direct contact met de developers die bouwen
+- Direct contact met de developer die bouwt
 - Geen tussenpersoon ertussen
 - Demo's elke 2 weken tijdens ontwikkeling
 - Volledige eigendom van de code
@@ -114,7 +114,7 @@ LLMS;
 
 Route::view('/privacyverklaring', 'privacy', [
     'pageTitle' => 'Privacyverklaring | DevAim Labs',
-    'pageDescription' => 'Hoe DevAim Labs omgaat met persoonsgegevens: welke gegevens we verwerken, waarom, hoe lang we ze bewaren en welke rechten je hebt.',
+    'pageDescription' => 'Hoe DevAim Labs omgaat met persoonsgegevens: welke gegevens ik verwerk, waarom, hoe lang ik ze bewaar en welke rechten je hebt.',
     'canonicalUrl' => url('/privacyverklaring'),
     'breadcrumbs' => [
         ['name' => 'Home', 'path' => '/'],

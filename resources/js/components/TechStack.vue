@@ -40,12 +40,12 @@ const fallbackTranslations = {
     nl: {
         techstack_eyebrow: 'Tech Stack',
         techstack_title: 'Gebouwd met moderne technologie',
-        techstack_subtitle: 'De tools en frameworks die we dagelijks gebruiken.',
+        techstack_subtitle: 'De tools en frameworks die ik dagelijks gebruik.',
     },
     en: {
         techstack_eyebrow: 'Tech Stack',
         techstack_title: 'Built with modern technology',
-        techstack_subtitle: 'The tools and frameworks we use daily.',
+        techstack_subtitle: 'The tools and frameworks I use daily.',
     }
 }
 

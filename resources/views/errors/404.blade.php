@@ -95,7 +95,7 @@
     <div class="container">
         <p class="code">404</p>
         <h1>Deze pagina bestaat niet (meer).</h1>
-        <p>De link klopt niet, of de pagina is verplaatst. Ga terug naar home, of bekijk direct wat we bouwen.</p>
+        <p>De link klopt niet, of de pagina is verplaatst. Ga terug naar home of neem contact op.</p>
 
         <div class="links">
             <a href="/" class="btn-primary">← Terug naar home</a>

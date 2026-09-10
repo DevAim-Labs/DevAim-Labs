@@ -15,7 +15,7 @@
         <div class="contact-info-col">
             <p class="section-eyebrow">{{ $t['contact_eyebrow'] ?? 'Contact' }}</p>
             <h1 class="contact-headline">{{ $t['contact_title'] ?? "Laten we samen bouwen." }}</h1>
-            <p class="contact-lead">{{ $t['contact_subtitle'] ?? 'Vertel ons over je project. We reageren binnen 24 uur.' }}</p>
+            <p class="contact-lead">{{ $t['contact_subtitle'] ?? 'Vertel me over je project. Ik reageer binnen 24 uur.' }}</p>
 
             <!-- Combined Info Card -->
             <div class="info-card-combined">

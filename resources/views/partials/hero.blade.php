@@ -38,13 +38,13 @@
 
             <!-- Headline with Text Loop -->
             <h1 data-gsap="hero-headline" class="hero-headline">
-                <span class="hero-headline-prefix">{{ $isEn ? 'We build' : 'Wij bouwen' }}</span>
+                <span class="hero-headline-prefix">{{ $isEn ? 'Building' : 'Bouwen van' }}</span>
                 <span id="hero-text-loop-mount" data-words="{{ json_encode($loopWords) }}" data-locale="{{ $locale }}"></span>
             </h1>
 
             <!-- Sub-copy -->
             <p data-gsap="hero-sub" class="hero-subtitle">
-                {{ $t['hero_sub_1'] ?? 'Direct contact met de developers die bouwen.' }}
+                {{ $t['hero_sub_1'] ?? 'Direct contact met de developer die bouwt.' }}
                 {{ $t['hero_sub_2'] ?? 'Geen tussenpersoon. Reactie binnen 24 uur.' }}
             </p>
 

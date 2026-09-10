@@ -2,11 +2,11 @@
 
 return [
     [
-        'q' => 'Welke software bouwen jullie?',
+        'q' => 'Welke software bouw je?',
         'a' => 'Adminpanelen, KPI-dashboards, websites, portfolio\'s, REST API\'s, koppelingen met CRM en boekhouding, en betaalstromen. Meestal met Laravel, Vue, en aanbieders zoals Stripe of Mollie.',
     ],
     [
-        'q' => 'Kunnen jullie koppelen met onze bestaande systemen?',
+        'q' => 'Kun je koppelen met onze bestaande systemen?',
         'a' => 'Ja. Integraties horen bij de kern van het werk. Webhooks, API\'s en synchronisatiejobs zodat je niet voor altijd vastzit aan één leverancier.',
     ],
     [
@@ -19,18 +19,18 @@ return [
     ],
     [
         'q' => 'Hoe werkt doorlopende ondersteuning en updates?',
-        'a' => 'Na oplevering kun je kiezen voor een maandelijks supportpakket. Hiermee krijg je snelle reactietijden voor kleine aanpassingen, bugfixes en updates. Voor grotere nieuwe features maken we een aparte offerte.',
+        'a' => 'Na oplevering kun je kiezen voor een maandelijks supportpakket. Hiermee krijg je snelle reactietijden voor kleine aanpassingen, bugfixes en updates. Voor grotere nieuwe features maak ik een aparte offerte.',
     ],
     [
         'q' => 'Wat kost doorlopende support?',
         'a' => 'Het maandelijkse supportpakket is afhankelijk van de omvang van je project. Kleine fixes en updates vallen binnen het pakket. Grotere features worden apart geprijsd na overleg.',
     ],
     [
-        'q' => 'Regelen jullie betalingen en abonnementen?',
+        'q' => 'Regel je betalingen en abonnementen?',
         'a' => 'Ja. Checkout, abonnementen, facturatie en webhooks met Stripe en Mollie, inclusief foutafhandeling en retries.',
     ],
     [
         'q' => 'Kan ik een gesprek inplannen?',
-        'a' => 'Ja, je kunt direct een videogesprek inplannen via onze agenda. Het eerste kennismakingsgesprek is vrijblijvend en gratis.',
+        'a' => 'Ja, je kunt direct een videogesprek inplannen via mijn agenda. Het eerste kennismakingsgesprek is vrijblijvend en gratis.',
     ],
 ];

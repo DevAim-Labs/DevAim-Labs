@@ -121,7 +121,7 @@
 
         <p class="eyebrow">DevAim Labs</p>
         <h1>Server under<br>maintenance.</h1>
-        <p>We're making some improvements behind the scenes.<br>Everything will be back up shortly.</p>
+        <p>Making some improvements behind the scenes.<br>Everything will be back up shortly.</p>
 
         <a href="/" class="back-link">← Try again</a>
 
