@@ -126,12 +126,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     createApp(ScrollProgress).mount(progressMount)
 
     // Mount Language Switcher popup (shows on first visit)
-    const langSwitcherMount = document.createElement('div')
-    langSwitcherMount.id = 'language-switcher-mount'
-    document.body.appendChild(langSwitcherMount)
-    createApp({
-        render: () => h(LanguageSwitcher, { showPopup: true })
-    }).mount(langSwitcherMount)
+    // Disabled for now — re-enable by uncommenting this block.
+    // const langSwitcherMount = document.createElement('div')
+    // langSwitcherMount.id = 'language-switcher-mount'
+    // document.body.appendChild(langSwitcherMount)
+    // createApp({
+    //     render: () => h(LanguageSwitcher, { showPopup: true })
+    // }).mount(langSwitcherMount)
 
     // Mount Language Toggle in nav (desktop and mobile)
     const langToggleMount = document.getElementById('lang-toggle-mount')

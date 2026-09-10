@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 
 const currentLang = ref('nl')
 const isOpen = ref(false)
+const rootEl = ref(null)
 
 const languages = [
     { code: 'nl', label: 'NL', fullLabel: 'Nederlands', flag: '🇳🇱' },
@@ -70,10 +71,11 @@ onMounted(() => {
         }
     }
 
-    // Close on outside click
+    // Close on outside click — scoped to this instance's own root element,
+    // since the toggle is mounted twice on the page (desktop + mobile) and
+    // a global `.lang-toggle` query would always match the first one.
     document.addEventListener('click', (e) => {
-        const toggle = document.querySelector('.lang-toggle')
-        if (toggle && !toggle.contains(e.target)) {
+        if (rootEl.value && !rootEl.value.contains(e.target)) {
             isOpen.value = false
         }
     })
@@ -83,7 +85,7 @@ const currentLanguage = () => languages.find(l => l.code === currentLang.value)
 </script>
 
 <template>
-    <div class="lang-toggle relative">
+    <div class="lang-toggle relative" ref="rootEl">
         <!-- Toggle button -->
         <button
             @click="toggleDropdown"
