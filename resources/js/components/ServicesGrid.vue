@@ -7,7 +7,7 @@
                     <p class="section-eyebrow">{{ t.services_eyebrow }}</p>
                     <h2 class="services-title">
                         {{ isEn ? 'Custom software,' : 'Maatwerksoftware' }}
-                        <span class="title-accent">{{ isEn ? ' tailored to you.' : ' op maat.' }}</span>
+                        <span class="title-accent">{{ isEn ? ' tailored to you.' : ' voor jou.' }}</span>
                     </h2>
                     <p class="services-subtitle">
                         {{ isEn
@@ -27,7 +27,6 @@
                 >
                     <div class="featured-content">
                         <div class="featured-left">
-                            <div class="featured-icon" v-html="ICONS[featuredService.icon]"></div>
                             <span class="featured-badge">{{ isEn ? 'Most requested' : 'Meest gevraagd' }}</span>
                             <h3 class="featured-title">{{ featuredService.title }}</h3>
                             <p class="featured-description">{{ featuredService.description }}</p>
@@ -64,7 +63,6 @@
                     >
                         <!-- Default state -->
                         <div class="card-content" :class="{ 'is-hidden': hoveredId === service.id }">
-                            <div class="card-icon" :style="{ color: getIconColor(index) }" v-html="ICONS[service.icon]"></div>
                             <h3 class="card-title">{{ service.title }}</h3>
                             <p class="card-description">{{ service.description }}</p>
                             <div class="card-features">

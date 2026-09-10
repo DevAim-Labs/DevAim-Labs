@@ -26,7 +26,7 @@ return [
         'services_view_live' => 'Bekijk live',
 
         // Service items
-        'service_1_title' => 'Maatwerksoftware op maat',
+        'service_1_title' => 'Maatwerksoftware voor jou',
         'service_1_desc' => 'Van idee tot werkende applicatie. Software die precies doet wat jouw bedrijf nodig heeft, gebouwd door de developer die je direct spreekt.',
         'service_1_detail' => 'Ik bouw software die past bij hoe jouw bedrijf werkt. Geen kant-en-klare pakketten met functies die je niet gebruikt, maar applicaties die precies doen wat nodig is.',
         'service_2_title' => 'Websites en portfolio\'s',

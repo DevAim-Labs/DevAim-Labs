@@ -272,6 +272,7 @@ function resetForm() {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
+    text-align: left;
 }
 
 .form-field label {

@@ -72,7 +72,16 @@
                         :key="'m-' + step.id"
                         class="relative flex gap-5 pl-1 mobile-step-item"
                     >
-                        <div class="flex flex-col items-center shrink-0">
+                        <!-- Connecting line: positioned absolute against the <li>, so its
+                             horizontal offset never depends on a sibling's computed width. -->
+                        <div
+                            v-if="i < steps.length - 1"
+                            class="mobile-step-line absolute w-px"
+                            style="left: 2rem; top: 3.5rem; bottom: -2rem; transform-origin: top center; background: var(--color-border);"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="w-14 shrink-0 flex flex-col items-center">
                             <div class="relative mobile-step-circle">
                                 <div
                                     class="flex h-14 w-14 items-center justify-center rounded-full border-2"
@@ -88,12 +97,6 @@
                                     {{ step.number }}
                                 </span>
                             </div>
-                            <div
-                                v-if="i < steps.length - 1"
-                                class="mobile-step-line mt-2 w-px flex-1 min-h-[2rem]"
-                                style="background: var(--color-border); transform-origin: top center;"
-                                aria-hidden="true"
-                            ></div>
                         </div>
                         <div class="pt-1 pb-2">
                             <h3 class="text-base font-semibold section-title leading-snug">

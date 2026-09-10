@@ -263,6 +263,7 @@ async function submitForm() {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    text-align: left;
 }
 
 .form-field label {

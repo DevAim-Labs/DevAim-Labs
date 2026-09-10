@@ -81,7 +81,7 @@ Route::get('/llms.txt', function () {
 DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developer die bouwt, geen tussenpersoon. Reactie binnen 24 uur.
 
 ## Diensten
-- Maatwerksoftware op maat
+- Maatwerksoftware voor jou
 - Websites en portfolio's
 - KPI-dashboards en rapportages
 - Adminpanelen en interne tools
