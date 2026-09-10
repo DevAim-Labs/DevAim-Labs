@@ -13,14 +13,24 @@ export default defineConfig({
                 bunny('Space Grotesk', {
                     weights: [400, 500, 600, 700],
                 }),
+                // display: 'optional' — the plugin's automatic metric-matched
+                // fallback generation (via fontaine) doesn't work in this setup
+                // (verified: fontaine.readMetrics() returns null even for a
+                // valid local font file), so a 'swap' here would cause a large
+                // layout shift once the real font arrives. 'optional' either
+                // uses the font immediately (already cached) or keeps the
+                // fallback for this page view — no late, shifting swap.
                 bunny('Inter', {
                     weights: [400, 500, 600, 700],
+                    display: 'optional',
                 }),
                 bunny('Geist', {
                     weights: [400, 500, 600, 700],
+                    display: 'optional',
                 }),
                 bunny('Geist Mono', {
                     weights: [400, 500],
+                    display: 'optional',
                 }),
             ],
         }),
