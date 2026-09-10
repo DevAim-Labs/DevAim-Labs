@@ -73,8 +73,8 @@
                         <!-- Hover state -->
                         <div class="card-hover" :class="{ 'is-visible': hoveredId === service.id }">
                             <p class="hover-detail">{{ service.detail }}</p>
-                            <a :href="contactPath" class="hover-cta">
-                                {{ isEn ? 'Learn more' : 'Meer info' }}
+                            <a :href="service.demoUrl" target="_blank" rel="noopener noreferrer" class="hover-cta" data-track="cta_click" :data-track-label="isEn ? 'Check out demo' : 'Bekijk demo'" :data-track-location="'services_' + service.id">
+                                {{ isEn ? 'Check out demo' : 'Bekijk demo' }}
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
@@ -123,6 +123,7 @@ const servicesNl = [
         description: "Snelle, SEO-vriendelijke websites en portfolio's die converteren. Mobile-first en geoptimaliseerd voor Core Web Vitals.",
         detail: "Landingspagina's, bedrijfswebsites, portfolio's en campagnepagina's met goede semantiek, Core Web Vitals en duidelijke call-to-actions. Gebouwd om te presteren en te converteren.",
         features: ['SEO-geoptimaliseerd', 'Mobile-first', 'Snelle laadtijden'],
+        demoUrl: '/demo/website.html',
     },
     {
         id: 2,
@@ -131,6 +132,7 @@ const servicesNl = [
         description: 'Vervang spreadsheets door echte tooling met rollen en rechten.',
         detail: 'Adminpanelen met rollen en rechten, goedkeuringsflows, voorraad en operationele tooling die past bij hoe je bedrijf werkt.',
         features: ['Rollen & rechten', 'Goedkeuringsflows', 'Audit trail'],
+        demoUrl: '/demo/adminpaneel.html',
     },
     {
         id: 3,
@@ -139,6 +141,7 @@ const servicesNl = [
         description: 'Realtime inzicht in je bedrijfsdata met live cijfers en alerts.',
         detail: 'Dashboards met live data uit je stack. Filters, grafieken, PDF- of Excel-export en meldingen wanneer KPI\'s drempels passeren.',
         features: ['Live data', 'Exports', 'Slimme alerts'],
+        demoUrl: '/demo/kpi-dashboard.html',
     },
     {
         id: 4,
@@ -147,6 +150,7 @@ const servicesNl = [
         description: 'Stripe en Mollie voor checkout, abonnementen en facturatie.',
         detail: 'Eenmalige betalingen, abonnementen, usage-based billing, klantportalen en webhook-afhandeling met retries.',
         features: ['Stripe & Mollie', 'Abonnementen', 'Facturatie'],
+        demoUrl: '/demo/betaalsysteem.html',
     },
     {
         id: 5,
@@ -155,6 +159,7 @@ const servicesNl = [
         description: "REST API's, webhooks en synchronisaties tussen je systemen.",
         detail: "REST API's, webhooks en syncjobs tussen custom backends. Zodat je later van leverancier kunt wisselen zonder alles opnieuw te bouwen.",
         features: ["REST API's", 'Webhooks', 'Toekomstbestendig'],
+        demoUrl: '/demo/',
     },
 ]
 
@@ -167,6 +172,7 @@ const servicesEn = [
         description: 'Fast, SEO-friendly websites and portfolios that convert. Mobile-first and optimized for Core Web Vitals.',
         detail: 'Landing pages, company websites, portfolios and campaign pages with solid semantics, Core Web Vitals and clear call-to-actions. Built to perform and convert.',
         features: ['SEO optimized', 'Mobile-first', 'Fast load times'],
+        demoUrl: '/demo/website.html',
     },
     {
         id: 2,
@@ -175,6 +181,7 @@ const servicesEn = [
         description: 'Replace spreadsheets with real tooling with roles and permissions.',
         detail: 'Admin panels with roles and permissions, approval workflows, inventory and operational tooling that fits how your business works.',
         features: ['Roles & permissions', 'Workflows', 'Audit trail'],
+        demoUrl: '/demo/adminpaneel.html',
     },
     {
         id: 3,
@@ -183,6 +190,7 @@ const servicesEn = [
         description: 'Real-time insight into your business data with live metrics and alerts.',
         detail: 'Dashboards with live data from your stack. Filters, charts, PDF or Excel exports and notifications when KPIs cross thresholds.',
         features: ['Live data', 'Exports', 'Smart alerts'],
+        demoUrl: '/demo/kpi-dashboard.html',
     },
     {
         id: 4,
@@ -191,6 +199,7 @@ const servicesEn = [
         description: 'Stripe and Mollie for checkout, subscriptions and invoicing.',
         detail: 'One-time payments, subscriptions, usage-based billing, customer portals and webhook handling with retries.',
         features: ['Stripe & Mollie', 'Subscriptions', 'Invoicing'],
+        demoUrl: '/demo/betaalsysteem.html',
     },
     {
         id: 5,
@@ -199,6 +208,7 @@ const servicesEn = [
         description: 'REST APIs, webhooks and synchronizations between your systems.',
         detail: 'REST APIs, webhooks and sync jobs between custom backends. So you can switch vendors later without rebuilding everything.',
         features: ['REST APIs', 'Webhooks', 'Future-proof'],
+        demoUrl: '/demo/',
     },
 ]
 

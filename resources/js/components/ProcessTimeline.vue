@@ -170,7 +170,7 @@ const stepsNl = [
         number: 1,
         icon: 'handshake',
         title: 'Kennismaking',
-        highlight: 'Gratis gesprek',
+        highlight: 'Idee en doelen',
         body: 'Ik bespreek je idee, doelen en randvoorwaarden, en check of maatwerksoftware de juiste keuze is.',
     },
     {
@@ -178,8 +178,8 @@ const stepsNl = [
         number: 2,
         icon: 'calendar_month',
         title: 'Scope en planning',
-        highlight: 'Vaste prijs',
-        body: 'Heldere milestones en een duidelijke planning, zodat je vooraf weet wat succes betekent.',
+        highlight: 'Plan van aanpak',
+        body: 'Heldere milestones en een duidelijke planning, zodat je vooraf weet wat er te verwachten staat.',
     },
     {
         id: 3,
@@ -187,14 +187,14 @@ const stepsNl = [
         icon: 'construction',
         title: 'Bouwen',
         highlight: "Demo's elke 2 weken",
-        body: 'Ik ontwikkel iteratief, met demo\'s om de twee weken.',
+        body: 'Ik ontwikkel iteratief, met demo\'s om de 1 tot 2 weken. Hierbij kan ik feedback krijgen en hierop verbeteringen uitvoeren.',
     },
     {
         id: 4,
         number: 4,
         icon: 'computer',
         title: 'Oplevering',
-        highlight: 'Code is van jou',
+        highlight: 'Overdraging',
         body: 'Ik deploy, draag over en documenteer, zodat je team het vanaf dag één kan gebruiken.',
     },
     {
@@ -203,7 +203,7 @@ const stepsNl = [
         icon: 'trending_up',
         title: 'Doorontwikkeling',
         highlight: 'Flexibele support',
-        body: 'Ik blijf beschikbaar voor verbeteringen, nieuwe features en ondersteuning terwijl je product groeit.',
+        body: 'Onder overleg kan ik beschikbaar blijven voor verbeteringen, nieuwe features en ondersteuning voor je product.',
     },
 ]
 
