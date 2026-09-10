@@ -23,7 +23,7 @@
 
             <!-- Navigation -->
             <div>
-                <p class="text-xs uppercase tracking-wider font-semibold mb-5" style="color: var(--color-text-dim);">{{ $t['footer_nav'] ?? 'Navigatie' }}</p>
+                <p class="text-xs uppercase tracking-wider font-semibold mb-5" style="color: var(--color-text-muted);">{{ $t['footer_nav'] ?? 'Navigatie' }}</p>
                 <nav class="flex flex-col gap-3 text-sm" style="color: var(--color-text-muted);">
                     <a href="{{ $isEn ? '/en/about' : '/over-ons' }}" class="hover:text-[var(--color-accent)] transition-colors duration-200">{{ $isEn ? 'About' : 'Over mij' }}</a>
                     <a href="{{ $isEn ? '/en/services' : '/diensten' }}" class="hover:text-[var(--color-accent)] transition-colors duration-200">{{ $t['nav_services'] ?? 'Diensten' }}</a>
@@ -34,7 +34,7 @@
 
             <!-- Resources -->
             <div>
-                <p class="text-xs uppercase tracking-wider font-semibold mb-5" style="color: var(--color-text-dim);">{{ $t['footer_resources'] ?? 'Resources' }}</p>
+                <p class="text-xs uppercase tracking-wider font-semibold mb-5" style="color: var(--color-text-muted);">{{ $t['footer_resources'] ?? 'Resources' }}</p>
                 <nav class="flex flex-col gap-3 text-sm" style="color: var(--color-text-muted);">
                     <a href="{{ $isEn ? '/en/faq' : '/veelgestelde-vragen' }}" class="hover:text-[var(--color-accent)] transition-colors duration-200">FAQ</a>
                     <a href="/privacyverklaring" class="hover:text-[var(--color-accent)] transition-colors duration-200">{{ $isEn ? 'Privacy Policy' : 'Privacyverklaring' }}</a>
@@ -44,7 +44,7 @@
 
             <!-- Contact info -->
             <div>
-                <p class="text-xs uppercase tracking-wider font-semibold mb-5" style="color: var(--color-text-dim);">{{ $t['footer_contact'] ?? 'Contact' }}</p>
+                <p class="text-xs uppercase tracking-wider font-semibold mb-5" style="color: var(--color-text-muted);">{{ $t['footer_contact'] ?? 'Contact' }}</p>
                 <div class="space-y-4 text-sm" style="color: var(--color-text-muted);">
                     <a href="mailto:devaimlabs@gmail.com" class="flex items-center gap-3 hover:text-[var(--color-accent)] transition-colors duration-200">
                         <svg class="w-4 h-4 shrink-0" style="color: var(--color-accent);" viewBox="0 -960 960 960" fill="currentColor">
@@ -58,7 +58,7 @@
                         </svg>
                         +31 6 38523099
                     </a>
-                    <div class="pt-2 space-y-1 text-xs" style="color: var(--color-text-dim);">
+                    <div class="pt-2 space-y-1 text-xs" style="color: var(--color-text-muted);">
                         <p>KvK: 42051464</p>
                         <p>BTW: NL005458933B79</p>
                     </div>
@@ -97,7 +97,7 @@
     <!-- Bottom bar -->
     <div style="background: var(--color-surface-1); border-top: 1px solid var(--color-border-dim);">
         <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-xs" style="color: var(--color-text-dim);">
+            <p class="text-xs" style="color: var(--color-text-muted);">
                 &copy; {{ date('Y') }} DevAim Labs. {{ $t['footer_copyright'] ?? 'Alle rechten voorbehouden.' }}
             </p>
         </div>

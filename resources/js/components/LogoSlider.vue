@@ -18,6 +18,8 @@
                         <img
                             :src="logo.src"
                             :alt="logo.alt"
+                            :width="logo.width"
+                            :height="logo.height"
                             class="logo-img"
                             :class="{ 'grayscale hover:grayscale-0': grayscale }"
                             loading="lazy"
@@ -32,6 +34,8 @@
                         <img
                             :src="logo.src"
                             :alt="logo.alt"
+                            :width="logo.width"
+                            :height="logo.height"
                             class="logo-img"
                             :class="{ 'grayscale hover:grayscale-0': grayscale }"
                             loading="lazy"
@@ -80,12 +84,12 @@ const displayTitle = computed(() => props.title || defaultTitle.value)
 
 // Logo data - add your logos here
 const logos = [
-    { src: lokantaLogo, alt: 'Lokanta' },
-    { src: slowdownLogo, alt: 'Slowdown' },
-    { src: lokantaLogo, alt: 'Lokanta' },
-    { src: slowdownLogo, alt: 'Slowdown' },
-    { src: lokantaLogo, alt: 'Lokanta' },
-    { src: slowdownLogo, alt: 'Slowdown' },
+    { src: lokantaLogo, alt: 'Lokanta', width: 200, height: 71 },
+    { src: slowdownLogo, alt: 'Slowdown', width: 125, height: 65 },
+    { src: lokantaLogo, alt: 'Lokanta', width: 200, height: 71 },
+    { src: slowdownLogo, alt: 'Slowdown', width: 125, height: 65 },
+    { src: lokantaLogo, alt: 'Lokanta', width: 200, height: 71 },
+    { src: slowdownLogo, alt: 'Slowdown', width: 125, height: 65 },
 ]
 
 const marqueeContainer = ref(null)

@@ -135,8 +135,9 @@ function resetForm() {
         <form v-else class="form-body" @submit.prevent="submitForm">
             <!-- Name -->
             <div class="form-field">
-                <label>{{ t.name }} <span class="required">*</span></label>
+                <label for="contact-name">{{ t.name }} <span class="required">*</span></label>
                 <input
+                    id="contact-name"
                     v-model="form.name"
                     type="text"
                     :placeholder="t.namePlaceholder"
@@ -146,8 +147,9 @@ function resetForm() {
 
             <!-- Company -->
             <div class="form-field">
-                <label>{{ t.company }} <span class="required">*</span></label>
+                <label for="contact-company">{{ t.company }} <span class="required">*</span></label>
                 <input
+                    id="contact-company"
                     v-model="form.company"
                     type="text"
                     :placeholder="t.companyPlaceholder"
@@ -157,8 +159,9 @@ function resetForm() {
 
             <!-- Email -->
             <div class="form-field">
-                <label>{{ t.email }} <span class="required">*</span></label>
+                <label for="contact-email">{{ t.email }} <span class="required">*</span></label>
                 <input
+                    id="contact-email"
                     v-model="form.email"
                     type="email"
                     :placeholder="t.emailPlaceholder"
@@ -168,8 +171,8 @@ function resetForm() {
 
             <!-- Project Type -->
             <div class="form-field">
-                <label>{{ t.projectType }} <span class="required">*</span></label>
-                <select v-model="form.projectType" required>
+                <label for="contact-project-type">{{ t.projectType }} <span class="required">*</span></label>
+                <select id="contact-project-type" v-model="form.projectType" required>
                     <option
                         v-for="opt in t.projectTypes"
                         :key="opt.value"
@@ -183,8 +186,9 @@ function resetForm() {
 
             <!-- Message -->
             <div class="form-field">
-                <label>{{ t.message }}</label>
+                <label for="contact-message">{{ t.message }}</label>
                 <textarea
+                    id="contact-message"
                     v-model="form.message"
                     :placeholder="t.messagePlaceholder"
                     rows="5"

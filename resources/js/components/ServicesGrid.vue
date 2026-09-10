@@ -44,8 +44,8 @@
                     <div class="featured-reveal" :class="{ 'is-active': isHeroHovered }">
                         <p class="reveal-text">{{ featuredService.detail }}</p>
                         <a :href="contactPath" class="reveal-cta">
-                            {{ t.services_cta }}
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <span>{{ t.services_cta }}</span>
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>
                         </a>
@@ -73,9 +73,18 @@
                         <!-- Hover state -->
                         <div class="card-hover" :class="{ 'is-visible': hoveredId === service.id }">
                             <p class="hover-detail">{{ service.detail }}</p>
-                            <a :href="service.demoUrl" target="_blank" rel="noopener noreferrer" class="hover-cta" data-track="cta_click" :data-track-label="isEn ? 'Check out demo' : 'Bekijk demo'" :data-track-location="'services_' + service.id">
-                                {{ isEn ? 'Check out demo' : 'Bekijk demo' }}
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <a
+                                :href="service.demoUrl"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="hover-cta"
+                                data-track="cta_click"
+                                :data-track-label="isEn ? 'Check out demo' : 'Bekijk demo'"
+                                :data-track-location="'services_' + service.id"
+                                :aria-label="(isEn ? 'Check out demo: ' : 'Bekijk demo: ') + service.title"
+                            >
+                                <span aria-hidden="true">{{ isEn ? 'Check out demo' : 'Bekijk demo' }}</span>
+                                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
                             </a>

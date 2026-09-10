@@ -93,7 +93,8 @@ const currentLanguage = () => languages.find(l => l.code === currentLang.value)
             style="background: var(--color-surface-2); border: 1px solid var(--color-border-dim); color: var(--color-text-muted);"
             :style="isOpen ? 'border-color: var(--color-accent); color: var(--color-text);' : ''"
             aria-label="Taal wisselen"
-            aria-expanded="isOpen"
+            aria-haspopup="listbox"
+            :aria-expanded="isOpen"
         >
             <span>{{ currentLanguage()?.label }}</span>
             <svg

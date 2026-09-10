@@ -165,6 +165,7 @@
 }
 
 .info-indicator {
+    position: relative;
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -173,13 +174,20 @@
 
 .info-indicator.available {
     background: #22C55E;
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
-    animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.info-indicator.available::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #22C55E;
+    animation: pulse-subtle 2s ease-out infinite;
 }
 
 @keyframes pulse-subtle {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2); }
-    50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.1); }
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(2.5); opacity: 0; }
 }
 
 .info-icon-small {
@@ -372,8 +380,9 @@
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .info-indicator.available {
+    .info-indicator.available::after {
         animation: none;
+        opacity: 0;
     }
 
     .schedule-card:hover {

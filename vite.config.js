@@ -13,6 +13,15 @@ export default defineConfig({
                 bunny('Space Grotesk', {
                     weights: [400, 500, 600, 700],
                 }),
+                bunny('Inter', {
+                    weights: [400, 500, 600, 700],
+                }),
+                bunny('Geist', {
+                    weights: [400, 500, 600, 700],
+                }),
+                bunny('Geist Mono', {
+                    weights: [400, 500],
+                }),
             ],
         }),
         tailwindcss(),

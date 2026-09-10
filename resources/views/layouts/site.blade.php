@@ -41,14 +41,6 @@
 
     <link rel="icon" type="image/png" sizes="144x144" href="{{ asset('IMG_144.png') }}">
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('IMG_144.png') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css" rel="stylesheet">
-    <link rel="preload" as="image" href="/heroimage-768.webp" type="image/webp" media="(max-width: 768px)">
-    <link rel="preload" as="image" href="/heroimage.webp" type="image/webp" media="(min-width: 769px)">
     <noscript><style>.reveal-hidden { opacity: 1 !important; transform: none !important; }</style></noscript>
     <script nonce="{{ $cspNonce ?? '' }}">
         // Dark mode only - theme switching disabled
