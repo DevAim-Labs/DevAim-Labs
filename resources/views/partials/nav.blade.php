@@ -15,10 +15,10 @@
         <!-- Nav pills - centered between logo and right actions -->
         <div class="nav-pills-track hidden lg:flex items-center rounded-full p-1 justify-self-center" style="background: var(--color-surface-1);">
             <span data-nav-pill-indicator class="nav-pill-indicator" aria-hidden="true"></span>
-            <a href="{{ $isEn ? '/en/services' : '/diensten' }}" class="nav-pill relative z-[1]" data-section="services">{{ $t['nav_services'] ?? 'Diensten' }}</a>
-            <a href="{{ $isEn ? '/en/process' : '/werkwijze' }}" class="nav-pill relative z-[1]" data-section="process">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
-            <a href="{{ $isEn ? '/en/work' : '/klantwerk' }}" class="nav-pill relative z-[1]" data-section="client-work">{{ $t['nav_work'] ?? 'Klantwerk' }}</a>
-            <a href="{{ $isEn ? '/en/faq' : '/veelgestelde-vragen' }}" class="nav-pill relative z-[1]" data-section="faq">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
+            <a href="{{ $prefix }}/#services" class="nav-pill relative z-[1]" data-section="services">{{ $t['nav_services'] ?? 'Diensten' }}</a>
+            <a href="{{ $prefix }}/#process" class="nav-pill relative z-[1]" data-section="process">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
+            <a href="{{ $prefix }}/#pricing" class="nav-pill relative z-[1]" data-section="pricing">{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
+            <a href="{{ $prefix }}/#faq" class="nav-pill relative z-[1]" data-section="faq">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
             <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="nav-pill relative z-[1]" data-section="contact">{{ $t['nav_contact'] ?? 'Contact' }}</a>
         </div>
 
@@ -53,11 +53,11 @@
 
     <div id="mobile-menu" class="hidden lg:hidden border-t backdrop-blur-md" style="border-color: var(--color-border-dim);">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm" style="color: var(--color-text-muted);">
-            <a href="{{ $isEn ? '/en/services' : '/diensten' }}" class="transition-colors hover:text-[var(--color-text)]">{{ $t['nav_services'] ?? 'Diensten' }}</a>
-            <a href="{{ $isEn ? '/en/process' : '/werkwijze' }}" class="transition-colors hover:text-[var(--color-text)]">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
-            <a href="{{ $isEn ? '/en/work' : '/klantwerk' }}" class="transition-colors hover:text-[var(--color-text)]">{{ $t['nav_work'] ?? 'Klantwerk' }}</a>
+            <a href="{{ $prefix }}/#services" class="transition-colors hover:text-[var(--color-text)]">{{ $t['nav_services'] ?? 'Diensten' }}</a>
+            <a href="{{ $prefix }}/#process" class="transition-colors hover:text-[var(--color-text)]">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
+            <a href="{{ $prefix }}/#pricing" class="transition-colors hover:text-[var(--color-text)]">{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
+            <a href="{{ $prefix }}/#faq" class="transition-colors hover:text-[var(--color-text)]">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
             <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="transition-colors hover:text-[var(--color-text)]">{{ $t['nav_contact'] ?? 'Contact' }}</a>
-            <a href="{{ $isEn ? '/en/faq' : '/veelgestelde-vragen' }}" class="transition-colors hover:text-[var(--color-text)]">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
             <div class="flex justify-center items-center">
                 <a href="{{ $isEn ? '/en/contact' : '/contact' }}" class="btn-outline-accent inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium group" data-track="cta_click" data-track-label="{{ $t['nav_cta'] ?? 'Laten we praten' }}" data-track-location="nav">
                     {{ $t['nav_cta'] ?? 'Laten we praten' }}

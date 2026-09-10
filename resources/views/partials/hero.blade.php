@@ -107,12 +107,12 @@
 .hero-container {
     position: relative;
     width: 100%;
-    max-width: 76rem;
+    max-width: 84rem;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     display: grid;
     grid-template-columns: 1fr 440px;
-    gap: 5rem;
+    gap: 6rem;
     align-items: center;
 }
 
@@ -122,8 +122,8 @@
     top: -3rem;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% + 16rem);
-    max-width: 92rem;
+    width: calc(100% + 12rem);
+    max-width: 100rem;
     height: calc(100% + 6rem);
     background: var(--color-surface-1);
     border-radius: 24px;
@@ -269,7 +269,14 @@ html[data-theme="light"] .hero-bg-block {
    RESPONSIVE
    ═══════════════════════════════════════════════════════════════════════════ */
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
+    .hero-container {
+        grid-template-columns: 1fr 420px;
+        gap: 4rem;
+    }
+}
+
+@media (max-width: 1100px) {
     .hero-container {
         grid-template-columns: 1fr 400px;
         gap: 3rem;

@@ -98,7 +98,7 @@ return [
         'hero_headline_1' => 'Custom Software.',
         'hero_headline_2' => 'From idea to production.',
         'hero_sub_1' => 'Direct contact with the developers who build.',
-        'hero_sub_2' => 'No tussenpersoon. Response within 24 hours.',
+        'hero_sub_2' => 'No middleman. Response within 24 hours.',
         'hero_cta_primary' => 'Start a project',
         'hero_cta_secondary' => 'View process',
         'hero_scroll' => 'Scroll',

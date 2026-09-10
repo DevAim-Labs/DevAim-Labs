@@ -3,10 +3,10 @@
         <div class="section-card">
             <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
                 <header class="mb-12 md:mb-16 max-w-2xl">
-                    <p class="section-eyebrow mb-3">Werkwijze</p>
-                    <h2 class="text-3xl md:text-4xl section-title">Maatwerksoftware, stap voor stap.</h2>
+                    <p class="section-eyebrow mb-3">{{ header.eyebrow }}</p>
+                    <h2 class="text-3xl md:text-4xl section-title">{{ header.title }}</h2>
                     <p class="text-sm md:text-base text-[var(--color-text-muted)] mt-3 leading-relaxed">
-                        Van het eerste gesprek tot oplevering en daarna.
+                        {{ header.subtitle }}
                     </p>
                 </header>
 
@@ -114,13 +114,13 @@
 
                 <div class="mt-12 md:mt-14 text-center">
                     <a
-                        href="/contact"
+                        :href="contactPath"
                         class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
                         data-track="cta_click"
-                        data-track-label="Bespreek je project"
+                        :data-track-label="header.cta"
                         data-track-location="process"
                     >
-                        Bespreek je project →
+                        {{ header.cta }} →
                     </a>
                 </div>
             </div>
@@ -129,22 +129,39 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const locale = window.__LOCALE__ || 'nl'
+const isEn = locale === 'en'
+const contactPath = isEn ? '/en/contact' : '/contact'
+
+// Header translations
+const header = computed(() => isEn ? {
+    eyebrow: 'Process',
+    title: 'Custom software, step by step.',
+    subtitle: 'From the first conversation to delivery and beyond.',
+    cta: 'Discuss your project'
+} : {
+    eyebrow: 'Werkwijze',
+    title: 'Maatwerksoftware, stap voor stap.',
+    subtitle: 'Van het eerste gesprek tot oplevering en daarna.',
+    cta: 'Bespreek je project'
+})
 
 // Material Symbols (Outlined, 24px)
 const ICONS = {
     handshake: '<svg viewBox="0 -960 960 960" fill="currentColor" width="1em" height="1em"><path d="M475-140q5 0 11.5-2.5T497-149l337-337q13-13 19.5-29.5T860-552q0-20-6.5-37.5T834-618L654-798q-11-11-27.5-17.5T590-822q-20 0-36.5 6.5T524-796L380-652q-14 14-14 34.5t14 34.5l56 56q6 6 14 6t14-6q6-6 6-14t-6-14l-56-56 144-144 180 180-338 338q-8 8-12.5 18t-4.5 22q0 25 17.5 42.5T432-138h43Zm3-60h-46l302-302-56-56-302 302v46l102-102 56 56-56 56ZM100-180v-304q0-26 9.5-49t27.5-42l174-174q11-11 27.5-17.5T375-773q20 0 36.5 6.5T441-749l50 50-56 56-50-50-174 174v232h-32q-13 0-21.5 8.5T149-257v17l31 60h-80Zm314-164 56-56-56-56-56 56 56 56Z"/></svg>',
     calendar_month: '<svg viewBox="0 -960 960 960" fill="currentColor" width="1em" height="1em"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-320Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-320Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-320ZM480-160q-17 0-28.5-11.5T440-200q0-17 11.5-28.5T480-240q17 0 28.5 11.5T520-200q0 17-11.5 28.5T480-160Zm-160 0q-17 0-28.5-11.5T280-200q0-17 11.5-28.5T320-240q17 0 28.5 11.5T360-200q0 17-11.5 28.5T320-160Zm320 0q-17 0-28.5-11.5T600-200q0-17 11.5-28.5T640-240q17 0 28.5 11.5T680-200q0 17-11.5 28.5T640-160Z"/></svg>',
     construction: '<svg viewBox="0 -960 960 960" fill="currentColor" width="1em" height="1em"><path d="M756-120 537-339l84-84 219 219-84 84Zm-552 0-84-84 276-276-68-68-28 28-51-51v82l-28 28-121-121 28-28h82l-50-50 142-142q20-20 43-29t47-9q24 0 47 9t43 29l-92 92 50 50-28 28 68 68 90-90q-4-11-6.5-23t-2.5-24q0-59 40.5-99.5T701-841q15 0 28.5 3t27.5 9l-99 99 72 72 99-99q7 14 9.5 27.5T841-701q0 59-40.5 99.5T701-561q-12 0-24-2t-23-7L204-120Z"/></svg>',
-    rocket_launch: '<svg viewBox="0 -960 960 960" fill="currentColor" width="1em" height="1em"><path d="M240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-605l53 196-196-53q-28 28-64 44t-77 18v320h-80v-200h-80v200h-80v-200H240v200h-80Zm240-400q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0-80Z"/></svg>',
+    computer: '<svg viewBox="0 -960 960 960" fill="currentColor" width="1em" height="1em"><path d="M40-120v-80h880v80H40Zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg>',
     trending_up: '<svg viewBox="0 -960 960 960" fill="currentColor" width="1em" height="1em"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg>',
 }
 
-const steps = [
+const stepsNl = [
     {
         id: 1,
         number: 1,
@@ -172,7 +189,7 @@ const steps = [
     {
         id: 4,
         number: 4,
-        icon: 'rocket_launch',
+        icon: 'computer',
         title: 'Oplevering',
         highlight: 'Code is van jou',
         body: 'We deployen, dragen over en documenteren, zodat je team het vanaf dag één kan gebruiken.',
@@ -186,6 +203,51 @@ const steps = [
         body: 'We blijven beschikbaar voor verbeteringen, nieuwe features en ondersteuning terwijl je product groeit.',
     },
 ]
+
+const stepsEn = [
+    {
+        id: 1,
+        number: 1,
+        icon: 'handshake',
+        title: 'Introduction',
+        highlight: 'Free consultation',
+        body: 'We discuss your idea, goals and requirements, and check if custom software is the right choice.',
+    },
+    {
+        id: 2,
+        number: 2,
+        icon: 'calendar_month',
+        title: 'Scope & Planning',
+        highlight: 'Fixed price',
+        body: 'Clear milestones and a transparent timeline, so you know what success looks like upfront.',
+    },
+    {
+        id: 3,
+        number: 3,
+        icon: 'construction',
+        title: 'Build',
+        highlight: 'Demos every 2 weeks',
+        body: 'We develop iteratively, with demos every two weeks.',
+    },
+    {
+        id: 4,
+        number: 4,
+        icon: 'computer',
+        title: 'Delivery',
+        highlight: 'You own the code',
+        body: 'We deploy, hand over and document, so your team can use it from day one.',
+    },
+    {
+        id: 5,
+        number: 5,
+        icon: 'trending_up',
+        title: 'Growth',
+        highlight: 'Flexible support',
+        body: 'We remain available for improvements, new features and support as your product grows.',
+    },
+]
+
+const steps = computed(() => isEn ? stepsEn : stepsNl)
 
 const timelineRef = ref(null)
 const lineRef = ref(null)

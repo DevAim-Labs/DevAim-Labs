@@ -6,12 +6,10 @@
     <div id="logo-slider-mount"></div>
     <div id="services-mount" data-section-id="services" data-locale="{{ $locale ?? 'nl' }}"></div>
     <div id="process-mount" data-section-id="process" data-locale="{{ $locale ?? 'nl' }}"></div>
+@include('partials.about', ['locale' => $locale ?? 'nl', 't' => $translations ?? []])
     <div id="pricing-mount" data-section-id="pricing" data-locale="{{ $locale ?? 'nl' }}"></div>
     <div id="techstack-mount"></div>
-    <div id="client-work-mount" data-section-id="client-work"></div>
-@include('partials.about', ['locale' => $locale ?? 'nl', 't' => $translations ?? []])
     @include('partials.faq', ['locale' => $locale ?? 'nl', 't' => $translations ?? []])
-    <!-- <div id="contact-mount" data-section-id="contact" data-locale="{{ $locale ?? 'nl' }}"></div> -->
     @if(($initialSection ?? null) === 'personal-projects')
         <div id="personal-projects-mount" data-section-id="personal-projects"></div>
     @endif

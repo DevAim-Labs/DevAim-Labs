@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormSubmission;
-use App\Models\ContactSubmission;
 
 class ContactController extends Controller
 {
@@ -24,10 +23,11 @@ class ContactController extends Controller
             'message.max'      => 'Je bericht mag maximaal 2000 tekens bevatten.',
         ]);
 
-        ContactSubmission::create($validated + [
-            'ip_address' => $request->ip(),
-            'user_agent' => $request->userAgent(),
-        ]);
+        // TODO: Re-enable database storage when Supabase is configured
+        // ContactSubmission::create($validated + [
+        //     'ip_address' => $request->ip(),
+        //     'user_agent' => $request->userAgent(),
+        // ]);
 
         try {
             Mail::to(config('mail.from.address'))

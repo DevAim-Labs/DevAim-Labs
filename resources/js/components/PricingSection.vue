@@ -4,84 +4,63 @@ import { computed } from 'vue'
 const locale = window.__LOCALE__ || 'nl'
 const isEn = locale === 'en'
 
-const t = computed(() => ({
-    eyebrow: isEn ? 'Pricing' : 'Tarieven',
-    title: isEn ? 'Flexible pricing, tailored to your project.' : 'Flexibele tarieven, afgestemd op jouw project.',
-    subtitle: isEn
-        ? 'Every project is unique. We work with you to find the pricing model that fits best.'
-        : 'Elk project is uniek. We bepalen samen welk model het beste past bij jouw situatie.',
-    negotiable: isEn ? 'Pricing negotiable per project' : 'Prijs in overleg per project',
-    ctaText: isEn ? 'Discuss your project' : 'Bespreek je project',
-    ctaPath: isEn ? '/en/contact' : '/contact',
-}))
+const t = computed(() => isEn ? {
+    eyebrow: 'Pricing',
+    title: 'Transparent pricing, tailored to your project.',
+    subtitle: 'Every project is unique. We determine the best pricing model together based on complexity and scope.',
 
-const pricingModels = computed(() => isEn ? [
-    {
-        id: 'fixed',
-        icon: 'package',
-        title: 'Fixed Price',
-        description: 'Complete project for a fixed amount. Clear scope, clear price. Ideal for well-defined projects with a clear end goal.',
-        benefits: ['Budget certainty', 'Clear milestones', 'No surprises'],
-        highlight: 'Most popular'
-    },
-    {
-        id: 'phased',
-        icon: 'layers',
-        title: 'Per Phase',
-        description: 'Pay per milestone or sprint. Flexible approach where you only commit to the next phase. Perfect for projects that may evolve.',
-        benefits: ['Flexibility', 'Lower initial investment', 'Iterative development'],
-        highlight: null
-    },
-    {
-        id: 'hourly',
-        icon: 'clock',
-        title: 'Hourly Rate',
-        description: 'Pay for actual hours worked. Ideal for ongoing support, maintenance, or projects with changing requirements.',
-        benefits: ['Maximum flexibility', 'Scale up or down', 'Transparent billing'],
-        highlight: null
-    }
-] : [
-    {
-        id: 'fixed',
-        icon: 'package',
-        title: 'Vaste Prijs',
-        description: 'Compleet project voor een vast bedrag. Duidelijke scope, duidelijke prijs. Ideaal voor goed afgebakende projecten met een helder einddoel.',
-        benefits: ['Budgetzekerheid', 'Duidelijke milestones', 'Geen verrassingen'],
-        highlight: 'Meest gekozen'
-    },
-    {
-        id: 'phased',
-        icon: 'layers',
-        title: 'Per Fase',
-        description: 'Betaal per milestone of sprint. Flexibele aanpak waarbij je steeds alleen de volgende fase afneemt. Perfect voor projecten die kunnen evolueren.',
-        benefits: ['Flexibiliteit', 'Lagere initiële investering', 'Iteratief ontwikkelen'],
-        highlight: null
-    },
-    {
-        id: 'hourly',
-        icon: 'clock',
-        title: 'Uurtarief',
-        description: 'Betaal voor daadwerkelijk gewerkte uren. Ideaal voor doorlopende ondersteuning, onderhoud, of projecten met wisselende eisen.',
-        benefits: ['Maximale flexibiliteit', 'Op- en afschalen', 'Transparante facturatie'],
-        highlight: null
-    }
-])
+    // Development section
+    devTitle: 'Development',
+    devDesc: 'Depending on the size and complexity of your project, we work with:',
+    devOptions: [
+        { label: 'Fixed price', desc: 'for well-defined projects' },
+        { label: 'Per phase', desc: 'for projects that evolve' },
+        { label: 'Hourly rate', desc: 'for flexible collaboration' },
+    ],
+    devNote: 'We discuss the best approach in our free introductory call.',
 
-const ICONS = {
-    package: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-        <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
-    </svg>`,
-    layers: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-        <polyline points="2 17 12 22 22 17"/>
-        <polyline points="2 12 12 17 22 12"/>
-    </svg>`,
-    clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
-    </svg>`
-}
+    // Maintenance section
+    maintTitle: 'Maintenance & Support',
+    maintDesc: 'After delivery, we can continue to maintain and improve your software with a monthly agreement:',
+    maintFeatures: [
+        'Bug fixes and security updates',
+        'Small adjustments and improvements',
+        'Priority support',
+        'Hosting management (optional)',
+    ],
+    maintNote: 'Monthly fee based on scope. Cancel anytime.',
+
+    ctaText: 'Discuss your project',
+    ctaPath: '/en/contact',
+} : {
+    eyebrow: 'Tarieven',
+    title: 'Transparante tarieven, afgestemd op jouw project.',
+    subtitle: 'Elk project is uniek. We bepalen samen het beste model op basis van complexiteit en scope.',
+
+    // Development section
+    devTitle: 'Ontwikkeling',
+    devDesc: 'Afhankelijk van de grootte en complexiteit van je project werken we met:',
+    devOptions: [
+        { label: 'Vaste prijs', desc: 'voor afgebakende projecten' },
+        { label: 'Per fase', desc: 'voor projecten die evolueren' },
+        { label: 'Uurtarief', desc: 'voor flexibele samenwerking' },
+    ],
+    devNote: 'We bespreken de beste aanpak in ons gratis kennismakingsgesprek.',
+
+    // Maintenance section
+    maintTitle: 'Onderhoud & Support',
+    maintDesc: 'Na oplevering kunnen we je software blijven onderhouden en verbeteren met een maandelijkse afspraak:',
+    maintFeatures: [
+        'Bugfixes en security updates',
+        'Kleine aanpassingen en verbeteringen',
+        'Prioriteit support',
+        'Hosting beheer (optioneel)',
+    ],
+    maintNote: 'Maandelijks bedrag op basis van scope. Maandelijks opzegbaar.',
+
+    ctaText: 'Bespreek je project',
+    ctaPath: '/contact',
+})
 </script>
 
 <template>
@@ -95,38 +74,46 @@ const ICONS = {
                     <p class="pricing-subtitle">{{ t.subtitle }}</p>
                 </header>
 
-                <!-- Pricing Models -->
+                <!-- Two-column layout -->
                 <div class="pricing-grid">
-                    <article
-                        v-for="model in pricingModels"
-                        :key="model.id"
-                        class="pricing-card"
-                        :class="{ 'pricing-card-featured': model.highlight }"
-                    >
-                        <!-- Highlight badge -->
-                        <span v-if="model.highlight" class="pricing-badge">
-                            {{ model.highlight }}
-                        </span>
+                    <!-- Development Card -->
+                    <article class="pricing-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">{{ t.devTitle }}</h3>
+                        <p class="card-desc">{{ t.devDesc }}</p>
 
-                        <!-- Icon -->
-                        <div class="pricing-icon" v-html="ICONS[model.icon]"></div>
-
-                        <!-- Title -->
-                        <h3 class="pricing-title">{{ model.title }}</h3>
-
-                        <!-- Description -->
-                        <p class="pricing-description">{{ model.description }}</p>
-
-                        <!-- Benefits -->
-                        <ul class="pricing-benefits">
-                            <li v-for="benefit in model.benefits" :key="benefit">
-                                <span class="benefit-check">✓</span>
-                                {{ benefit }}
+                        <ul class="options-list">
+                            <li v-for="opt in t.devOptions" :key="opt.label">
+                                <span class="opt-label">{{ opt.label }}</span>
+                                <span class="opt-desc">{{ opt.desc }}</span>
                             </li>
                         </ul>
 
-                        <!-- Price note -->
-                        <p class="pricing-note">{{ t.negotiable }}</p>
+                        <p class="card-note">{{ t.devNote }}</p>
+                    </article>
+
+                    <!-- Maintenance Card -->
+                    <article class="pricing-card pricing-card-accent">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L6.75 2.906m12.004 14.88l-1.15-.964M5.106 6.214l-1.15-.964m17.59 5.13l-1.41-.513M5.954 15.436l-1.41-.514"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">{{ t.maintTitle }}</h3>
+                        <p class="card-desc">{{ t.maintDesc }}</p>
+
+                        <ul class="features-list">
+                            <li v-for="feature in t.maintFeatures" :key="feature">
+                                <span class="check-icon">✓</span>
+                                {{ feature }}
+                            </li>
+                        </ul>
+
+                        <p class="card-note">{{ t.maintNote }}</p>
                     </article>
                 </div>
 
@@ -150,7 +137,7 @@ const ICONS = {
 }
 
 .pricing-container {
-    max-width: 72rem;
+    max-width: 60rem;
     margin: 0 auto;
     padding: 5rem 1.5rem;
 }
@@ -159,7 +146,7 @@ const ICONS = {
 .pricing-header {
     text-align: center;
     max-width: 40rem;
-    margin: 0 auto 4rem;
+    margin: 0 auto 3.5rem;
 }
 
 .pricing-subtitle {
@@ -169,123 +156,138 @@ const ICONS = {
     margin-top: 1rem;
 }
 
-/* Grid */
+/* Grid - 2 columns */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin-bottom: 3rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .pricing-grid {
         grid-template-columns: 1fr;
-        max-width: 28rem;
-        margin-left: auto;
-        margin-right: auto;
     }
 }
 
 /* Cards */
 .pricing-card {
-    position: relative;
     background: var(--color-surface-1);
     border: 1px solid var(--color-border-dim);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease;
 }
 
 .pricing-card:hover {
     border-color: var(--color-border);
-    transform: translateY(-2px);
 }
 
-.pricing-card-featured {
-    border-color: var(--color-accent);
+.pricing-card-accent {
+    border-color: var(--color-violet);
 }
 
-.pricing-card-featured:hover {
-    border-color: var(--color-accent);
+.pricing-card-accent:hover {
+    border-color: var(--color-violet-bright);
 }
 
-/* Badge */
-.pricing-badge {
-    position: absolute;
-    top: -0.75rem;
-    left: 1.5rem;
-    padding: 0.25rem 0.75rem;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 4px;
-}
-
-/* Icon */
-.pricing-icon {
+/* Card Icon */
+.card-icon {
     width: 2.5rem;
     height: 2.5rem;
+    margin-bottom: 1.25rem;
     color: var(--color-accent);
-    margin-bottom: 1.5rem;
 }
 
-.pricing-icon svg {
+.pricing-card-accent .card-icon {
+    color: var(--color-violet);
+}
+
+.card-icon svg {
     width: 100%;
     height: 100%;
 }
 
-/* Title */
-.pricing-title {
+/* Card Title */
+.card-title {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-text);
     margin: 0 0 0.75rem;
 }
 
-/* Description */
-.pricing-description {
+/* Card Description */
+.card-desc {
     font-size: 0.9375rem;
     line-height: 1.6;
     color: var(--color-text-muted);
     margin: 0 0 1.5rem;
-    flex-grow: 1;
 }
 
-/* Benefits */
-.pricing-benefits {
+/* Options List (Development card) */
+.options-list {
     list-style: none;
     padding: 0;
     margin: 0 0 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
-.pricing-benefits li {
+.options-list li {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 0.5rem;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
+}
+
+.opt-label {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.opt-desc {
     color: var(--color-text-muted);
 }
 
-.benefit-check {
-    color: var(--color-accent);
-    font-weight: 600;
+.opt-desc::before {
+    content: '—';
+    margin-right: 0.5rem;
+    color: var(--color-text-dim);
 }
 
-/* Price note */
-.pricing-note {
+/* Features List (Maintenance card) */
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+}
+
+.check-icon {
+    color: var(--color-violet);
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* Card Note */
+.card-note {
     font-size: 0.8125rem;
     color: var(--color-text-dim);
-    font-style: italic;
-    margin: 0;
-    padding-top: 1rem;
+    margin: auto 0 0;
+    padding-top: 1.25rem;
     border-top: 1px solid var(--color-border-dim);
 }
 

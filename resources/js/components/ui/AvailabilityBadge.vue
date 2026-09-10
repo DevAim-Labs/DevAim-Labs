@@ -1,8 +1,14 @@
 <script setup>
-defineProps({
+import { computed } from 'vue'
+
+const locale = window.__LOCALE__ || 'nl'
+const isEn = locale === 'en'
+const defaultText = computed(() => isEn ? 'Available for projects' : 'Beschikbaar voor projecten')
+
+const props = defineProps({
   text: {
     type: String,
-    default: 'Beschikbaar voor projecten'
+    default: null
   },
   size: {
     type: String,
@@ -10,6 +16,8 @@ defineProps({
     validator: (value) => ['small', 'default', 'large'].includes(value)
   }
 })
+
+const displayText = computed(() => props.text || defaultText.value)
 </script>
 
 <template>
@@ -21,7 +29,7 @@ defineProps({
       <span class="availability-dot-ping"></span>
       <span class="availability-dot-core"></span>
     </span>
-    <span class="availability-text">{{ text }}</span>
+    <span class="availability-text">{{ displayText }}</span>
   </div>
 </template>
 

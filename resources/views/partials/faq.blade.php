@@ -1,5 +1,7 @@
 @php
-    $faqs = config('faq');
+    $locale = $locale ?? 'nl';
+    $isEn = $locale === 'en';
+    $faqs = config($isEn ? 'faq-en' : 'faq') ?? config('faq');
     $faqSchema = [
         '@context' => 'https://schema.org',
         '@type' => 'FAQPage',
@@ -12,6 +14,7 @@
             ],
         ])->all(),
     ];
+    $contactPath = $isEn ? '/en/contact' : '/contact';
 @endphp
 
 @push('structured_data')
@@ -23,9 +26,9 @@
         <div class="max-w-3xl mx-auto px-6 py-24">
             <header class="mb-12">
                 <p class="section-eyebrow mb-3">FAQ</p>
-                <h2 class="text-3xl md:text-4xl section-title mb-3">Veelgestelde vragen</h2>
+                <h2 class="text-3xl md:text-4xl section-title mb-3">{{ $isEn ? 'Frequently asked questions' : 'Veelgestelde vragen' }}</h2>
                 <p class="text-sm md:text-base" style="color: var(--color-text-muted);">
-                    Antwoorden op de meest gestelde vragen over onze diensten.
+                    {{ $isEn ? 'Answers to the most common questions about our services.' : 'Antwoorden op de meest gestelde vragen over onze diensten.' }}
                 </p>
             </header>
 
@@ -55,16 +58,16 @@
 
             <div class="mt-12 text-center">
                 <p class="text-sm mb-4" style="color: var(--color-text-muted);">
-                    Nog vragen? We helpen je graag verder.
+                    {{ $isEn ? 'Still have questions? We\'re happy to help.' : 'Nog vragen? We helpen je graag verder.' }}
                 </p>
                 <a
-                    href="/contact"
+                    href="{{ $contactPath }}"
                     class="btn-outline inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium"
                     data-track="cta_click"
-                    data-track-label="Neem contact op"
+                    data-track-label="{{ $isEn ? 'Get in touch' : 'Neem contact op' }}"
                     data-track-location="faq"
                 >
-                    Neem contact op
+                    {{ $isEn ? 'Get in touch' : 'Neem contact op' }}
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>

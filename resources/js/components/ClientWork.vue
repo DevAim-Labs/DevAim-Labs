@@ -2,9 +2,9 @@
     <section id="client-work">
         <div class="section-card">
             <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 overflow-hidden">
-                <p class="section-eyebrow text-center mb-3">Vertrouwd door</p>
+                <p class="section-eyebrow text-center mb-3">{{ t.eyebrow }}</p>
                 <p class="text-center text-sm mb-12" style="color: var(--color-text-muted);">
-                    Een blik in voorgaande projecten.
+                    {{ t.subtitle }}
                 </p>
 
                 <!-- Horizontal Loop Carousel -->
@@ -50,9 +50,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import lokantaLogo from '../../assets/lokanta.webp'
 import slowdownLogo from '../../assets/slowdown.webp'
+
+const locale = window.__LOCALE__ || 'nl'
+const isEn = locale === 'en'
+
+const t = computed(() => isEn ? {
+    eyebrow: 'Trusted by',
+    subtitle: 'A look at past projects.'
+} : {
+    eyebrow: 'Vertrouwd door',
+    subtitle: 'Een blik in voorgaande projecten.'
+})
 
 const isPaused = ref(false)
 

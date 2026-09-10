@@ -1,7 +1,7 @@
 <template>
-    <section class="reveal-hidden py-16 md:py-20 overflow-hidden" style="background: var(--color-surface);">
+    <section class="py-12 md:py-16 overflow-hidden" style="background: var(--color-surface);">
         <div class="max-w-6xl mx-auto px-6">
-            <p v-if="title" class="section-eyebrow mb-10 text-center">{{ title }}</p>
+            <p v-if="displayTitle" class="section-eyebrow mb-8 text-center">{{ displayTitle }}</p>
 
             <!-- Horizontal Loop Marquee -->
             <div
@@ -44,17 +44,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 
 // Import logo assets
 import lokantaLogo from '../../assets/lokanta.webp'
 import slowdownLogo from '../../assets/slowdown.webp'
 
+const locale = window.__LOCALE__ || 'nl'
+const isEn = locale === 'en'
+
+const defaultTitle = computed(() => isEn ? 'Trusted by' : 'Vertrouwd door')
+
 const props = defineProps({
     title: {
         type: String,
-        default: 'Vertrouwd door'
+        default: null
     },
     grayscale: {
         type: Boolean,
@@ -70,6 +75,8 @@ const props = defineProps({
         validator: (value) => ['left', 'right'].includes(value)
     }
 })
+
+const displayTitle = computed(() => props.title || defaultTitle.value)
 
 // Logo data - add your logos here
 const logos = [
