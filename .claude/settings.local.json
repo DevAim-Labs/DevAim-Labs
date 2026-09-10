@@ -6,7 +6,8 @@
       "WebFetch(domain:github.com)",
       "WebSearch",
       "WebFetch(domain:godly.design)",
-      "WebFetch(domain:www.awwwards.com)"
+      "WebFetch(domain:www.awwwards.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   },
   "enabledPlugins": {
