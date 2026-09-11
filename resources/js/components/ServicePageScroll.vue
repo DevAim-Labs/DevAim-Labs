@@ -111,9 +111,14 @@
                 :class="{ 'is-active': currentPhase === 3 }"
                 :style="phaseStyle(3)"
             >
+                <!-- Demo gradient background -->
+                <div class="phase-bg phase-bg-demo" :class="`accent-bg-${content.accent}`"></div>
                 <div class="phase-content phase-content-centered">
                     <span class="phase-eyebrow">{{ isEn ? 'See It In Action' : 'Bekijk Het In Actie' }}</span>
-                    <div class="demo-preview-container">
+                    <h2 class="phase-demo-headline">{{ content.title }}</h2>
+
+                    <!-- Show iframe demo for services with valid demo URL -->
+                    <div v-if="hasValidDemo" class="demo-preview-container">
                         <div class="demo-browser-frame">
                             <div class="demo-browser-bar">
                                 <div class="demo-browser-dots">
@@ -146,6 +151,39 @@
                                 </svg>
                             </span>
                         </a>
+                    </div>
+
+                    <!-- Show SVG illustration for services without demo (API integrations) -->
+                    <div v-else class="demo-illustration-container">
+                        <div class="demo-illustration api-beam-illustration">
+                            <!-- API Integration Network - Using Material Symbols like homepage -->
+                            <svg viewBox="0 0 520 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="api-network-svg">
+                                <!-- Curved connection paths -->
+                                <path v-for="node in apiNodes" :key="'wire-' + node.id" :d="node.path" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+
+                                <!-- Animated traveling pulses -->
+                                <g class="data-pulses" v-if="!reducedMotion">
+                                    <circle v-for="(node, i) in apiNodes" :key="'pulse-' + node.id" r="4" fill="var(--color-accent)">
+                                        <animateMotion :path="node.path" :dur="`${2.6 + i * 0.35}s`" :begin="`${i * 0.5}s`" repeatCount="indefinite"/>
+                                    </circle>
+                                </g>
+
+                                <!-- Endpoint nodes with Material Symbols icons -->
+                                <g v-for="node in apiNodes" :key="'node-' + node.id">
+                                    <circle :cx="node.x" :cy="node.y" r="24" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+                                    <path :d="API_ICONS[node.icon]" fill="rgba(255,255,255,0.85)" :transform="iconTransform(node.x, node.y, 26)"/>
+                                </g>
+
+                                <!-- Central hub -->
+                                <g class="central-hub">
+                                    <circle :cx="apiHub.x" :cy="apiHub.y" r="30" fill="var(--color-accent)"/>
+                                    <path :d="API_ICONS.hub" fill="var(--color-on-accent)" :transform="iconTransform(apiHub.x, apiHub.y, 30)"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <p class="demo-illustration-caption">
+                            {{ isEn ? 'Your systems, connected seamlessly' : 'Jouw systemen, naadloos verbonden' }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -254,6 +292,41 @@ const content = computed(() => getServiceContent(props.service, props.locale) ||
     cta: { headline: '', label: '', link: '/' },
     accent: 'teal',
 })
+
+// Check if service has a valid demo URL (ends with .html)
+const hasValidDemo = computed(() => {
+    const demoUrl = content.value.demoUrl
+    return demoUrl && demoUrl.endsWith('.html')
+})
+
+// API Integration illustration data (matching homepage IntegrationsBeam style)
+// Hub: center at y=50, radius 30 → bottom edge at y=80
+// Nodes: center at y=210, radius 24 → top edge at y=186
+const apiHub = { x: 260, y: 50 }
+
+const apiNodes = [
+    { id: 'webhook', icon: 'webhook', x: 60, y: 210, path: 'M260,80 C260,140 60,130 60,186' },
+    { id: 'person', icon: 'person', x: 160, y: 210, path: 'M260,80 C260,140 160,130 160,186' },
+    { id: 'database', icon: 'database', x: 260, y: 210, path: 'M260,80 C260,140 260,130 260,186' },
+    { id: 'payment', icon: 'payments', x: 360, y: 210, path: 'M260,80 C260,140 360,130 360,186' },
+    { id: 'cloud', icon: 'cloud', x: 460, y: 210, path: 'M260,80 C260,140 460,130 460,186' },
+]
+
+// Material Symbols icon paths (viewBox 0 -960 960 960)
+const API_ICONS = {
+    hub: 'M240-40q-50 0-85-35t-35-85q0-50 35-85t85-35q14 0 26 3t23 8l57-71q-28-31-39-70t-5-78l-81-27q-17 25-43 40t-58 15q-50 0-85-35T0-580q0-50 35-85t85-35q50 0 85 35t35 85v8l81 28q20-36 53.5-61t75.5-32v-87q-39-11-64.5-42.5T360-840q0-50 35-85t85-35q50 0 85 35t35 85q0 42-26 73.5T510-724v87q42 7 75.5 32t53.5 61l81-28v-8q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-32 0-58.5-15T739-515l-81 27q6 39-5 77.5T614-340l57 70q11-5 23-7.5t26-2.5q50 0 85 35t35 85q0 50-35 85t-85 35q-50 0-85-35t-35-85q0-20 6.5-38.5T624-232l-57-71q-41 23-87.5 23T392-303l-56 71q11 15 17.5 33.5T360-160q0 50-35 85t-85 35ZM120-540q17 0 28.5-11.5T160-580q0-17-11.5-28.5T120-620q-17 0-28.5 11.5T80-580q0 17 11.5 28.5T120-540Zm120 420q17 0 28.5-11.5T280-160q0-17-11.5-28.5T240-200q-17 0-28.5 11.5T200-160q0 17 11.5 28.5T240-120Zm240-680q17 0 28.5-11.5T520-840q0-17-11.5-28.5T480-880q-17 0-28.5 11.5T440-840q0 17 11.5 28.5T480-800Zm0 440q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Zm240 240q17 0 28.5-11.5T760-160q0-17-11.5-28.5T720-200q-17 0-28.5 11.5T680-160q0 17 11.5 28.5T720-120Zm120-420q17 0 28.5-11.5T880-580q0-17-11.5-28.5T840-620q-17 0-28.5 11.5T800-580q0 17 11.5 28.5T840-540ZM480-840ZM120-580Zm360 120Zm360-120ZM240-160Zm480 0Z',
+    webhook: 'M280-120q-83 0-141.5-58.5T80-320q0-73 45.5-127.5T240-516v83q-35 12-57.5 43T160-320q0 50 35 85t85 35q50 0 85-35t35-85v-40h235q8-9 19.5-14.5T680-380q25 0 42.5 17.5T740-320q0 25-17.5 42.5T680-260q-14 0-25.5-5.5T635-280H476q-14 69-68.5 114.5T280-120Zm400 0q-56 0-101.5-27.5T507-220h107q14 10 31 15t35 5q50 0 85-35t35-85q0-50-35-85t-85-35q-20 0-37 5.5T611-418L489-621q-21-4-35-20t-14-39q0-25 17.5-42.5T500-740q25 0 42.5 17.5T560-680v8.5q0 3.5-2 8.5l87 146q8-2 17-2.5t18-.5q83 0 141.5 58.5T880-320q0 83-58.5 141.5T680-120ZM280-260q-25 0-42.5-17.5T220-320q0-22 14-38t34-21l94-156q-29-27-45.5-64.5T300-680q0-83 58.5-141.5T500-880q83 0 141.5 58.5T700-680h-80q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 43 26 75.5t66 41.5L337-338q2 5 2.5 9t.5 9q0 25-17.5 42.5T280-260Z',
+    person: 'M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z',
+    database: 'M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z',
+    payments: 'M560-440q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM280-320q-33 0-56.5-23.5T200-400v-320q0-33 23.5-56.5T280-800h560q33 0 56.5 23.5T920-720v320q0 33-23.5 56.5T840-320H280Zm80-80h400q0-33 23.5-56.5T840-480v-160q-33 0-56.5-23.5T760-720H360q0 33-23.5 56.5T280-640v160q33 0 56.5 23.5T360-400Zm440 240H120q-33 0-56.5-23.5T40-240v-440h80v440h680v80ZM280-400v-320 320Z',
+    cloud: 'M260-160q-91 0-155.5-63T40-377q0-78 47-139t123-78q25-92 100-149t170-57q117 0 198.5 81.5T760-520q69 8 114.5 59.5T920-340q0 75-52.5 127.5T740-160H260Zm0-80h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-40q0-83-58.5-141.5T480-680q-83 0-141.5 58.5T280-480h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z',
+}
+
+// Transform function to center Material Symbols icons (viewBox 960x960, origin at 0,-960)
+function iconTransform(cx, cy, size) {
+    const s = size / 960
+    return `translate(${cx},${cy}) scale(${s}) translate(-480,480)`
+}
 
 const containerRef = ref(null)
 const viewportRef = ref(null)
@@ -463,6 +536,22 @@ onUnmounted(() => {
     background: radial-gradient(ellipse 70% 50% at 80% 20%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
 }
 
+.phase-bg-demo {
+    background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(45, 212, 191, 0.05) 0%, transparent 60%);
+}
+
+.phase-bg-demo.accent-bg-violet {
+    background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
+}
+
+.phase-bg-demo.accent-bg-green {
+    background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(52, 211, 153, 0.05) 0%, transparent 60%);
+}
+
+.phase-bg-demo.accent-bg-blue {
+    background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(96, 165, 250, 0.05) 0%, transparent 60%);
+}
+
 .phase-bg-cta {
     background:
         radial-gradient(ellipse 50% 40% at 30% 60%, rgba(45, 212, 191, 0.05) 0%, transparent 60%),
@@ -551,6 +640,14 @@ onUnmounted(() => {
 }
 
 /* Demo Preview phase */
+.phase-demo-headline {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
 .demo-preview-container {
     display: flex;
     flex-direction: column;
@@ -623,27 +720,84 @@ onUnmounted(() => {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 62.5%; /* 16:10 aspect ratio - taller to show more content */
     background: var(--color-surface);
+    overflow: hidden;
 }
 
 .demo-iframe {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 177.78%; /* Scale up to show desktop layout */
+    height: 177.78%;
     border: none;
     background: #fff;
+    transform: scale(0.5625); /* Scale back down to fit */
+    transform-origin: top left;
+    pointer-events: none; /* Disable interaction in preview */
 }
 
 .demo-cta {
     margin-top: 0.5rem;
 }
 
+/* Demo illustration for services without iframe demo */
+.demo-illustration-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 40rem;
+}
+
+.demo-illustration {
+    width: 100%;
+    aspect-ratio: 5/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.api-beam-illustration {
+    background: var(--color-surface-1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border-dim);
+}
+
+.api-network-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.demo-illustration-caption {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+/* Hide data pulses when reduced motion is preferred */
+@media (prefers-reduced-motion: reduce) {
+    .data-pulses {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .demo-iframe-wrapper {
-        padding-bottom: 75%; /* Taller on mobile */
+        padding-bottom: 80%; /* Taller on mobile */
+    }
+
+    .demo-iframe {
+        width: 200%;
+        height: 200%;
+        transform: scale(0.5);
+    }
+
+    .demo-illustration-container {
+        max-width: 100%;
     }
 }
 

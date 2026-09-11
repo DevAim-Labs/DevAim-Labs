@@ -15,10 +15,10 @@
         <!-- Nav pills - centered between logo and right actions -->
         <div class="nav-pills-track hidden lg:flex items-center rounded-full p-1 justify-self-center" style="background: var(--color-surface-1);">
             <span data-nav-pill-indicator class="nav-pill-indicator" aria-hidden="true"></span>
-            <a href="{{ url($prefix . '/') }}#services" class="nav-pill relative z-[1]" data-section="services">{{ $t['nav_services'] ?? 'Diensten' }}</a>
-            <a href="{{ url($prefix . '/') }}#process" class="nav-pill relative z-[1]" data-section="process">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
-            <a href="{{ url($prefix . '/') }}#pricing" class="nav-pill relative z-[1]" data-section="pricing">{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
-            <a href="{{ url($prefix . '/') }}#faq" class="nav-pill relative z-[1]" data-section="faq">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
+            <a href="{{ url($prefix . '/') }}" class="nav-pill relative z-[1]" data-section="services" data-scroll-to="services">{{ $t['nav_services'] ?? 'Diensten' }}</a>
+            <a href="{{ url($prefix . '/') }}" class="nav-pill relative z-[1]" data-section="process" data-scroll-to="process">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
+            <a href="{{ url($prefix . '/') }}" class="nav-pill relative z-[1]" data-section="pricing" data-scroll-to="pricing">{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
+            <a href="{{ url($prefix . '/') }}" class="nav-pill relative z-[1]" data-section="faq" data-scroll-to="faq">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
             <a href="{{ url($isEn ? '/en/contact' : '/contact') }}" class="nav-pill relative z-[1]" data-section="contact">{{ $t['nav_contact'] ?? 'Contact' }}</a>
         </div>
 
@@ -69,10 +69,10 @@
             </div>
 
             <nav class="mobile-menu-links">
-                <a href="{{ url($prefix . '/') }}#services" data-mobile-menu-link>{{ $t['nav_services'] ?? 'Diensten' }}</a>
-                <a href="{{ url($prefix . '/') }}#process" data-mobile-menu-link>{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
-                <a href="{{ url($prefix . '/') }}#pricing" data-mobile-menu-link>{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
-                <a href="{{ url($prefix . '/') }}#faq" data-mobile-menu-link>{{ $t['nav_faq'] ?? 'FAQ' }}</a>
+                <a href="{{ url($prefix . '/') }}" data-mobile-menu-link data-scroll-to="services">{{ $t['nav_services'] ?? 'Diensten' }}</a>
+                <a href="{{ url($prefix . '/') }}" data-mobile-menu-link data-scroll-to="process">{{ $t['nav_process'] ?? 'Werkwijze' }}</a>
+                <a href="{{ url($prefix . '/') }}" data-mobile-menu-link data-scroll-to="pricing">{{ $isEn ? 'Pricing' : 'Prijzen' }}</a>
+                <a href="{{ url($prefix . '/') }}" data-mobile-menu-link data-scroll-to="faq">{{ $t['nav_faq'] ?? 'FAQ' }}</a>
                 <a href="{{ url($isEn ? '/en/contact' : '/contact') }}" data-mobile-menu-link>{{ $t['nav_contact'] ?? 'Contact' }}</a>
             </nav>
 
@@ -192,5 +192,34 @@
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && menuPanel.classList.contains('is-open')) closeMenu();
         });
+
+        // Smooth scroll navigation without hash in URL
+        document.querySelectorAll('[data-scroll-to]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                var sectionId = this.getAttribute('data-scroll-to');
+                var section = document.getElementById(sectionId);
+                var isHomePage = window.location.pathname === '/' || window.location.pathname === '/en' || window.location.pathname === '/en/';
+
+                if (section && isHomePage) {
+                    e.preventDefault();
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else if (!isHomePage) {
+                    // If not on homepage, navigate to homepage with section stored
+                    sessionStorage.setItem('scrollToSection', sectionId);
+                }
+            });
+        });
+
+        // Check if we need to scroll to a section after page load
+        var scrollToSection = sessionStorage.getItem('scrollToSection');
+        if (scrollToSection) {
+            sessionStorage.removeItem('scrollToSection');
+            setTimeout(function () {
+                var section = document.getElementById(scrollToSection);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
     })();
 </script>

@@ -1,0 +1,36 @@
+# DevAim Labs
+> Custom software development studio based in the Netherlands. Direct contact with developers who build.
+
+## Services
+
+### Website & Portfolio Development
+Fast, SEO-friendly websites and portfolios that convert. Built with Laravel, Vue.js, and modern web technologies.
+URL: /diensten/websites
+
+### Admin Panel Development
+Replace spreadsheets with real tooling. Custom admin panels with roles, permissions, and audit logging.
+URL: /diensten/adminpanelen
+
+### KPI Dashboard Development
+Real-time insight into your business data with live metrics, charts, and automated alerts.
+URL: /diensten/dashboards
+
+### Payment Integration
+Stripe and Mollie integrations for checkout, subscriptions, and automatic invoicing.
+URL: /diensten/betalingen
+
+### API Integrations
+REST APIs, webhooks, and synchronizations between your systems. Connect everything.
+URL: /diensten/api-integraties
+
+## Contact
+- Email: hello@devaimlabs.nl
+- Website: https://devaimlabs.nl
+- Location: Netherlands
+
+## Key Differentiators
+- Direct contact with developers (no account managers)
+- Response within 24 hours
+- Code ownership transferred to client
+- Fixed pricing available
+- Dutch and English support

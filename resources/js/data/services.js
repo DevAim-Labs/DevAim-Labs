@@ -168,8 +168,8 @@ export const servicesData = {
             id: 'api-integrations',
             title: 'API-koppelingen',
             tagline: 'Koppel al je systemen aan elkaar.',
-            demoUrl: '/demo/',
-            demoLabel: 'Bekijk live demo',
+            demoUrl: null,
+            demoLabel: null,
             problem: {
                 headline: 'Je systemen praten niet met elkaar',
                 description: 'Handmatig data overzetten tussen tools. Fouten door dubbele invoer. Geen single source of truth. Frustratie bij je team.',
@@ -370,8 +370,8 @@ export const servicesData = {
             id: 'api-integrations',
             title: 'API Integrations',
             tagline: 'Connect all your systems together.',
-            demoUrl: '/demo/',
-            demoLabel: 'View live demo',
+            demoUrl: null,
+            demoLabel: null,
             problem: {
                 headline: "Your systems don't talk to each other",
                 description: 'Manually transferring data between tools. Errors from double entry. No single source of truth. Frustration for your team.',
