@@ -12,11 +12,11 @@ const locale = props.locale || window.__LOCALE__ || 'nl'
 const isEn = locale === 'en'
 
 const t = computed(() => ({
-    title: isEn ? 'Start your project' : 'Start je project',
+    title: isEn ? 'Start your project' : 'Start uw project',
     name: isEn ? 'Name' : 'Naam',
     namePlaceholder: 'John Doe',
     company: isEn ? 'Company' : 'Bedrijf',
-    companyPlaceholder: isEn ? 'Your company' : 'Je bedrijf',
+    companyPlaceholder: isEn ? 'Your company' : 'Uw bedrijf',
     email: isEn ? 'Email' : 'E-mail',
     emailPlaceholder: 'john@example.com',
     projectType: isEn ? 'Type of project' : 'Type project',
@@ -35,8 +35,8 @@ const t = computed(() => ({
         { value: 'mvp', label: 'MVP / Prototype' },
         { value: 'other', label: 'Iets anders' },
     ],
-    message: isEn ? 'Tell me about your project' : 'Vertel me over je project',
-    messagePlaceholder: isEn ? 'Briefly describe your idea, goals, or questions...' : 'Beschrijf kort je idee, doelen of vragen...',
+    message: isEn ? 'Tell me about your project' : 'Vertel me over uw project',
+    messagePlaceholder: isEn ? 'Briefly describe your idea, goals, or questions...' : 'Beschrijf kort uw idee, doelen of vragen...',
     submit: isEn ? 'Get in touch' : 'Neem contact op',
     sending: isEn ? 'Sending...' : 'Versturen...',
     success: isEn ? 'Message sent!' : 'Bericht verzonden!',

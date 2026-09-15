@@ -6,7 +6,7 @@
                     <p class="section-eyebrow mb-3">Contact</p>
                     <h2 class="section-title mb-4">{{ isEn ? "Let's build something." : 'Laten we iets bouwen.' }}</h2>
                     <p class="text-sm md:text-base" style="color: var(--color-text-muted);">
-                        {{ isEn ? "Tell us about your project and we'll get back to you within 24 hours." : 'Vertel ons over je project en we nemen binnen 24 uur contact op.' }}
+                        {{ isEn ? "Tell us about your project and we'll get back to you within 24 hours." : 'Vertel ons over uw project en we nemen binnen 24 uur contact op.' }}
                     </p>
                 </header>
 
@@ -208,7 +208,7 @@ const t = computed(() => isEn ? {
     submit: 'Verstuur bericht',
     sending: 'Versturen...',
     successTitle: 'Bericht ontvangen!',
-    successDesc: 'We nemen binnen 24 uur contact met je op.',
+    successDesc: 'We nemen binnen 24 uur contact met u op.',
     error: 'Er ging iets mis. Probeer het opnieuw.',
     scheduleTitle: 'Plan een gesprek',
     scheduleDesc: 'Liever even bellen? Boek direct een (video)gesprek.',

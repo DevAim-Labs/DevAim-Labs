@@ -92,7 +92,7 @@ Route::get('/llms.txt', function () {
 DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developer die bouwt, geen tussenpersoon. Reactie binnen 24 uur.
 
 ## Diensten
-- Maatwerksoftware voor jou
+- Maatwerksoftware voor u
 - Websites en portfolio's
 - KPI-dashboards en rapportages
 - Adminpanelen en interne tools
@@ -125,7 +125,7 @@ LLMS;
 
 Route::view('/privacyverklaring', 'privacy', [
     'pageTitle' => 'Privacyverklaring | DevAim Labs',
-    'pageDescription' => 'Hoe DevAim Labs omgaat met persoonsgegevens: welke gegevens ik verwerk, waarom, hoe lang ik ze bewaar en welke rechten je hebt.',
+    'pageDescription' => 'Hoe DevAim Labs omgaat met persoonsgegevens: welke gegevens ik verwerk, waarom, hoe lang ik ze bewaar en welke rechten u heeft.',
     'canonicalUrl' => url('/privacyverklaring'),
     'breadcrumbs' => [
         ['name' => 'Home', 'path' => '/'],

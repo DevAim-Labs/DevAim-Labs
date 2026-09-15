@@ -58,7 +58,7 @@
 
             <div class="mt-12 text-center">
                 <p class="text-sm mb-4" style="color: var(--color-text-muted);">
-                    {{ $isEn ? 'Still have questions? I\'m happy to help.' : 'Nog vragen? Ik help je graag verder.' }}
+                    {{ $isEn ? 'Still have questions? I\'m happy to help.' : 'Nog vragen? Ik help u graag verder.' }}
                 </p>
                 <a
                     href="{{ $contactPath }}"

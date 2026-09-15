@@ -11,11 +11,11 @@ export const servicesData = {
             demoUrl: '/demo/website.html',
             demoLabel: 'Bekijk live demo',
             problem: {
-                headline: 'Je huidige website werkt tegen je',
-                description: 'Trage laadtijden, slechte mobiele ervaring, onvindbaar in Google. Bezoekers haken af voordat ze je verhaal horen. Je mist klanten aan concurrenten met betere websites.',
+                headline: 'Uw huidige website werkt tegen u',
+                description: 'Trage laadtijden, slechte mobiele ervaring, onvindbaar in Google. Bezoekers haken af voordat ze uw verhaal horen. U mist klanten aan concurrenten met betere websites.',
             },
             solution: {
-                headline: 'Een website die voor je werkt',
+                headline: 'Een website die voor u werkt',
                 description: 'Ik bouw websites die razendsnel laden, perfect werken op elk apparaat en hoog scoren in zoekmachines. Van portfolio tot bedrijfssite — elke pixel telt.',
             },
             features: [
@@ -33,7 +33,7 @@ export const servicesData = {
                 },
                 {
                     title: 'Eenvoudig te beheren',
-                    description: 'CMS-integratie zodat je zelf content kunt aanpassen.',
+                    description: 'CMS-integratie zodat u zelf content kunt aanpassen.',
                 },
             ],
             cta: {
@@ -51,12 +51,12 @@ export const servicesData = {
             demoUrl: '/demo/adminpaneel.html',
             demoLabel: 'Bekijk live demo',
             problem: {
-                headline: 'Spreadsheets groeien je boven het hoofd',
+                headline: 'Spreadsheets groeien u boven het hoofd',
                 description: 'Excel-bestanden vol formules die niemand begrijpt. Handmatig kopiëren tussen systemen. Geen overzicht, geen controle, geen audit trail.',
             },
             solution: {
                 headline: 'Een adminpaneel op maat',
-                description: 'Ik bouw interne tools die precies doen wat jij nodig hebt. Met rollen en rechten, zoekfuncties, bulk-acties en complete audit logs.',
+                description: 'Ik bouw interne tools die precies doen wat u nodig heeft. Met rollen en rechten, zoekfuncties, bulk-acties en complete audit logs.',
             },
             features: [
                 {
@@ -65,7 +65,7 @@ export const servicesData = {
                 },
                 {
                     title: 'Krachtig zoeken & filteren',
-                    description: 'Vind direct wat je zoekt. Geavanceerde filters en full-text search.',
+                    description: 'Vind direct wat u zoekt. Geavanceerde filters en full-text search.',
                 },
                 {
                     title: 'Bulk-acties',
@@ -87,16 +87,16 @@ export const servicesData = {
         dashboards: {
             id: 'dashboards',
             title: 'KPI-dashboards',
-            tagline: 'Realtime inzicht in je bedrijfsdata.',
+            tagline: 'Realtime inzicht in uw bedrijfsdata.',
             demoUrl: '/demo/kpi-dashboard.html',
             demoLabel: 'Bekijk live demo',
             problem: {
-                headline: 'Je data zit verspreid en verouderd',
+                headline: 'Uw data zit verspreid en verouderd',
                 description: 'Rapporten die dagen oud zijn. Data in verschillende systemen die niet praten. Beslissingen nemen op gevoel in plaats van feiten.',
             },
             solution: {
-                headline: 'Live dashboards met je KPIs',
-                description: 'Ik bouw dashboards die realtime data tonen uit al je bronnen. Grafieken, alerts en exports — alles wat je nodig hebt voor data-gedreven beslissingen.',
+                headline: 'Live dashboards met uw KPIs',
+                description: 'Ik bouw dashboards die realtime data tonen uit al uw bronnen. Grafieken, alerts en exports — alles wat u nodig heeft voor data-gedreven beslissingen.',
             },
             features: [
                 {
@@ -131,7 +131,7 @@ export const servicesData = {
             demoUrl: '/demo/betaalsysteem.html',
             demoLabel: 'Bekijk live demo',
             problem: {
-                headline: 'Betalingen kosten je tijd en geld',
+                headline: 'Betalingen kosten u tijd en geld',
                 description: 'Handmatig facturen versturen. Achter wanbetalers aan moeten. Geen inzicht in recurring revenue. Checkout die klanten afschrikt.',
             },
             solution: {
@@ -167,16 +167,16 @@ export const servicesData = {
         'api-integrations': {
             id: 'api-integrations',
             title: 'API-koppelingen',
-            tagline: 'Koppel al je systemen aan elkaar.',
+            tagline: 'Koppel al uw systemen aan elkaar.',
             demoUrl: null,
             demoLabel: null,
             problem: {
-                headline: 'Je systemen praten niet met elkaar',
-                description: 'Handmatig data overzetten tussen tools. Fouten door dubbele invoer. Geen single source of truth. Frustratie bij je team.',
+                headline: 'Uw systemen praten niet met elkaar',
+                description: 'Handmatig data overzetten tussen tools. Fouten door dubbele invoer. Geen single source of truth. Frustratie bij uw team.',
             },
             solution: {
                 headline: 'Systemen die samenwerken',
-                description: "Ik bouw API-koppelingen die je systemen verbinden. REST API's, webhooks en synchronisaties — zodat data automatisch stroomt waar het moet zijn.",
+                description: "Ik bouw API-koppelingen die uw systemen verbinden. REST API's, webhooks en synchronisaties — zodat data automatisch stroomt waar het moet zijn.",
             },
             features: [
                 {
@@ -185,7 +185,7 @@ export const servicesData = {
                 },
                 {
                     title: 'Webhooks',
-                    description: 'Realtime events die direct actie triggeren in je systemen.',
+                    description: 'Realtime events die direct actie triggeren in uw systemen.',
                 },
                 {
                     title: 'Data synchronisatie',
@@ -197,7 +197,7 @@ export const servicesData = {
                 },
             ],
             cta: {
-                headline: 'Klaar om je systemen te verbinden?',
+                headline: 'Klaar om uw systemen te verbinden?',
                 label: 'Start een project',
                 link: '/contact',
             },

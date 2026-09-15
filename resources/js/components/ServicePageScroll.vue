@@ -182,7 +182,7 @@
                             </svg>
                         </div>
                         <p class="demo-illustration-caption">
-                            {{ isEn ? 'Your systems, connected seamlessly' : 'Jouw systemen, naadloos verbonden' }}
+                            {{ isEn ? 'Your systems, connected seamlessly' : 'Uw systemen, naadloos verbonden' }}
                         </p>
                     </div>
                 </div>
@@ -197,7 +197,7 @@
                 <!-- Features gradient background -->
                 <div class="phase-bg phase-bg-features" :class="`accent-bg-${content.accent}`"></div>
                 <div class="phase-content">
-                    <span class="phase-eyebrow">{{ isEn ? 'What You Get' : 'Wat Je Krijgt' }}</span>
+                    <span class="phase-eyebrow">{{ isEn ? 'What You Get' : 'Wat U Krijgt' }}</span>
                     <div class="features-grid">
                         <div
                             v-for="(feature, index) in content.features"

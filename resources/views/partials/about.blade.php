@@ -15,7 +15,7 @@
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-4 max-w-2xl mx-auto">
                 {{ $isEn
                     ? "I'm the developer who builds your admin panel, dashboard or integration. No account manager, no changing contacts. What you discuss with me is exactly what gets built."
-                    : 'Ik ben de developer die jouw adminpaneel, dashboard of integratie bouwt. Geen accountmanager, geen wisselende contactpersonen. Wat je met mij bespreekt, is ook precies wat er gebouwd wordt.'
+                    : 'Ik ben de developer die uw adminpaneel, dashboard of integratie bouwt. Geen accountmanager, geen wisselende contactpersonen. Wat u met mij bespreekt, is ook precies wat er gebouwd wordt.'
                 }}
             </p>
             <p class="text-[var(--color-text-muted)] leading-relaxed mb-8 max-w-2xl mx-auto">

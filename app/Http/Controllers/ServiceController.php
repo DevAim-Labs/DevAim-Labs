@@ -25,7 +25,7 @@ class ServiceController extends Controller
         'dashboards' => [
             'id' => 'dashboards',
             'title' => 'KPI-dashboards | DevAim Labs',
-            'description' => 'Realtime inzicht in je bedrijfsdata met live cijfers, grafieken en alerts.',
+            'description' => 'Realtime inzicht in uw bedrijfsdata met live cijfers, grafieken en alerts.',
             'keywords' => 'KPI dashboard, data visualisatie, business intelligence, realtime metrics',
         ],
         'betalingen' => [
@@ -37,7 +37,7 @@ class ServiceController extends Controller
         'api-integraties' => [
             'id' => 'api-integrations',
             'title' => 'API-koppelingen | DevAim Labs',
-            'description' => "REST API's, webhooks en synchronisaties tussen je systemen. Koppel alles aan elkaar.",
+            'description' => "REST API's, webhooks en synchronisaties tussen uw systemen. Koppel alles aan elkaar.",
             'keywords' => 'API integratie, REST API, webhooks, systeem koppeling, data sync',
         ],
     ];

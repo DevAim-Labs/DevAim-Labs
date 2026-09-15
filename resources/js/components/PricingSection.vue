@@ -34,12 +34,12 @@ const t = computed(() => isEn ? {
     ctaPath: '/en/contact',
 } : {
     eyebrow: 'Tarieven',
-    title: 'Transparante tarieven, afgestemd op jouw project.',
-    subtitle: 'Elk project is uniek. Ik bepaal samen met jou het beste model op basis van complexiteit en scope.',
+    title: 'Transparante tarieven, afgestemd op uw project.',
+    subtitle: 'Elk project is uniek. Ik bepaal samen met u het beste model op basis van complexiteit en scope.',
 
     // Development section
     devTitle: 'Ontwikkeling',
-    devDesc: 'Afhankelijk van de grootte en complexiteit van je project werk ik met:',
+    devDesc: 'Afhankelijk van de grootte en complexiteit van uw project werk ik met:',
     devOptions: [
         { label: 'Vaste prijs', desc: 'voor afgebakende projecten' },
         { label: 'Per fase', desc: 'voor projecten die evolueren' },
@@ -49,7 +49,7 @@ const t = computed(() => isEn ? {
 
     // Maintenance section
     maintTitle: 'Onderhoud & Support',
-    maintDesc: 'Na oplevering kan ik je software blijven onderhouden en verbeteren met een maandelijkse afspraak:',
+    maintDesc: 'Na oplevering kan ik uw software blijven onderhouden en verbeteren met een maandelijkse afspraak:',
     maintFeatures: [
         'Bugfixes en security updates',
         'Kleine aanpassingen en verbeteringen',
@@ -58,7 +58,7 @@ const t = computed(() => isEn ? {
     ],
     maintNote: 'Maandelijks bedrag op basis van scope. Maandelijks opzegbaar.',
 
-    ctaText: 'Bespreek je project',
+    ctaText: 'Bespreek uw project',
     ctaPath: '/contact',
 })
 </script>

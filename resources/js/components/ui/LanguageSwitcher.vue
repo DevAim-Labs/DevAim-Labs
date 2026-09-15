@@ -129,10 +129,10 @@ defineExpose({ currentLang, languages, selectLanguage })
                             </svg>
                         </div>
                         <h2 class="text-lg font-semibold mb-1" style="color: var(--color-text);">
-                            Kies je taal / Choose language
+                            Kies uw taal / Choose language
                         </h2>
                         <p class="text-sm" style="color: var(--color-text-muted);">
-                            Selecteer je voorkeurstaal
+                            Selecteer uw voorkeurstaal
                         </p>
                     </div>
 

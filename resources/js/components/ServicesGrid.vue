@@ -7,12 +7,12 @@
                     <p class="section-eyebrow">{{ t.services_eyebrow }}</p>
                     <h2 class="services-title">
                         {{ isEn ? 'Custom software,' : 'Maatwerksoftware' }}
-                        <span class="title-accent">{{ isEn ? ' tailored to you.' : ' voor jou.' }}</span>
+                        <span class="title-accent">{{ isEn ? ' tailored to you.' : ' voor u.' }}</span>
                     </h2>
                     <p class="services-subtitle">
                         {{ isEn
                             ? 'From idea to working application. Software that does exactly what your business needs, built by developers you speak to directly.'
-                            : 'Van idee tot werkende applicatie. Software die precies doet wat jouw bedrijf nodig heeft, gebouwd door developers die je direct spreekt.'
+                            : 'Van idee tot werkende applicatie. Software die precies doet wat uw bedrijf nodig heeft, gebouwd door developers die u direct spreekt.'
                         }}
                     </p>
                 </header>
@@ -171,7 +171,7 @@ const servicesNl = [
         id: 3,
         icon: 'monitoring',
         title: 'KPI-dashboards',
-        description: 'Realtime inzicht in je bedrijfsdata met live cijfers en alerts.',
+        description: 'Realtime inzicht in uw bedrijfsdata met live cijfers en alerts.',
         image: '/service-previews/kpi.webp',
         demoUrl: '/demo/kpi-dashboard.html',
         pageUrl: '/diensten/dashboards',
@@ -189,7 +189,7 @@ const servicesNl = [
         id: 5,
         icon: 'hub',
         title: 'API-koppelingen',
-        description: "REST API's, webhooks en synchronisaties tussen je systemen.",
+        description: "REST API's, webhooks en synchronisaties tussen uw systemen.",
         image: null,
         beam: true,
         demoUrl: '/demo/',

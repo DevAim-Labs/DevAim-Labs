@@ -17,8 +17,8 @@ return [
 
         // Services
         'services_eyebrow' => 'Maatwerksoftware',
-        'services_title' => 'Wat ik voor je kan bouwen',
-        'services_subtitle' => 'Software die past bij hoe jouw bedrijf werkt.',
+        'services_title' => 'Wat ik voor u kan bouwen',
+        'services_subtitle' => 'Software die past bij hoe uw bedrijf werkt.',
         'services_more_info' => 'Meer info',
         'services_back' => 'Terug naar overzicht',
         'services_cta' => 'Start een project',
@@ -26,30 +26,30 @@ return [
         'services_view_live' => 'Bekijk live',
 
         // Service items
-        'service_1_title' => 'Maatwerksoftware voor jou',
-        'service_1_desc' => 'Van idee tot werkende applicatie. Software die precies doet wat jouw bedrijf nodig heeft, gebouwd door de developer die je direct spreekt.',
-        'service_1_detail' => 'Ik bouw software die past bij hoe jouw bedrijf werkt. Geen kant-en-klare pakketten met functies die je niet gebruikt, maar applicaties die precies doen wat nodig is.',
+        'service_1_title' => 'Maatwerksoftware voor u',
+        'service_1_desc' => 'Van idee tot werkende applicatie. Software die precies doet wat uw bedrijf nodig heeft, gebouwd door de developer die u direct spreekt.',
+        'service_1_detail' => 'Ik bouw software die past bij hoe uw bedrijf werkt. Geen kant-en-klare pakketten met functies die u niet gebruikt, maar applicaties die precies doen wat nodig is.',
         'service_2_title' => 'Websites en portfolio\'s',
         'service_2_desc' => 'Snelle, SEO-vriendelijke websites en portfolio\'s die converteren.',
         'service_3_title' => 'KPI-dashboards',
-        'service_3_desc' => 'Realtime inzicht in je bedrijfsdata met live cijfers en alerts.',
+        'service_3_desc' => 'Realtime inzicht in uw bedrijfsdata met live cijfers en alerts.',
         'service_4_title' => 'Adminpanelen',
         'service_4_desc' => 'Vervang spreadsheets door echte tooling met rollen en rechten.',
         'service_5_title' => 'Betaalintegraties',
         'service_5_desc' => 'Stripe en Mollie voor checkout, abonnementen en facturatie.',
         'service_6_title' => 'API-koppelingen',
-        'service_6_desc' => 'REST API\'s, webhooks en synchronisaties tussen je systemen.',
+        'service_6_desc' => 'REST API\'s, webhooks en synchronisaties tussen uw systemen.',
 
         // Process
         'process_eyebrow' => 'Werkwijze',
         'process_title' => 'Maatwerksoftware, stap voor stap.',
         'process_subtitle' => 'Van het eerste gesprek tot oplevering en daarna.',
-        'process_cta' => 'Bespreek je project',
+        'process_cta' => 'Bespreek uw project',
 
         // Contact
         'contact_eyebrow' => 'Contact',
         'contact_title' => 'Laten we iets bouwen.',
-        'contact_subtitle' => 'Vertel me over je project en ik neem binnen 24 uur contact op.',
+        'contact_subtitle' => 'Vertel me over uw project en ik neem binnen 24 uur contact op.',
         'contact_schedule' => 'Plan een gesprek',
         'contact_schedule_desc' => 'Liever even bellen? Boek direct een (video)gesprek.',
         'contact_book' => 'Boek een gesprek',
@@ -64,7 +64,7 @@ return [
         'contact_submit' => 'Verstuur bericht',
         'contact_sending' => 'Versturen...',
         'contact_success_title' => 'Bericht ontvangen!',
-        'contact_success_desc' => 'Ik neem binnen 24 uur contact met je op.',
+        'contact_success_desc' => 'Ik neem binnen 24 uur contact met u op.',
 
         // Navigation
         'nav_services' => 'Diensten',

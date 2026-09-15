@@ -159,7 +159,7 @@ const header = computed(() => isEn ? {
     eyebrow: 'Werkwijze',
     title: 'Maatwerksoftware, stap voor stap.',
     subtitle: 'Van het eerste gesprek tot oplevering en daarna.',
-    cta: 'Bespreek je project'
+    cta: 'Bespreek uw project'
 })
 
 // Material Symbols (Outlined, 24px)
@@ -178,7 +178,7 @@ const stepsNl = [
         icon: 'handshake',
         title: 'Kennismaking',
         highlight: 'Idee en doelen',
-        body: 'Ik bespreek je idee, doelen en randvoorwaarden, en check of maatwerksoftware de juiste keuze is.',
+        body: 'Ik bespreek uw idee, doelen en randvoorwaarden, en check of maatwerksoftware de juiste keuze is.',
     },
     {
         id: 2,
@@ -186,7 +186,7 @@ const stepsNl = [
         icon: 'calendar_month',
         title: 'Scope en planning',
         highlight: 'Plan van aanpak',
-        body: 'Heldere milestones en een duidelijke planning, zodat je vooraf weet wat er te verwachten staat.',
+        body: 'Heldere milestones en een duidelijke planning, zodat u vooraf weet wat er te verwachten staat.',
     },
     {
         id: 3,
@@ -202,7 +202,7 @@ const stepsNl = [
         icon: 'computer',
         title: 'Oplevering',
         highlight: 'Overdraging',
-        body: 'Ik deploy, draag over en documenteer, zodat je team het vanaf dag één kan gebruiken.',
+        body: 'Ik deploy, draag over en documenteer, zodat uw team het vanaf dag één kan gebruiken.',
     },
     {
         id: 5,
@@ -210,7 +210,7 @@ const stepsNl = [
         icon: 'trending_up',
         title: 'Doorontwikkeling',
         highlight: 'Flexibele support',
-        body: 'Onder overleg kan ik beschikbaar blijven voor verbeteringen, nieuwe features en ondersteuning voor je product.',
+        body: 'Onder overleg kan ik beschikbaar blijven voor verbeteringen, nieuwe features en ondersteuning voor uw product.',
     },
 ]
 

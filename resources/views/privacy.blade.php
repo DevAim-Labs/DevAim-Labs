@@ -77,7 +77,7 @@
 
             <div>
                 <h2 class="text-lg font-semibold mb-3" style="color: var(--color-text);">Doeleinden van de verwerking</h2>
-                <p class="mb-3">DevAim Labs verwerkt jouw persoonsgegevens voor de volgende doelen:</p>
+                <p class="mb-3">DevAim Labs verwerkt uw persoonsgegevens voor de volgende doelen:</p>
                 <ul class="list-disc pl-5 space-y-1">
                     <li>U te kunnen bellen of e-mailen indien dit nodig is om mijn dienstverlening uit te kunnen voeren</li>
                 </ul>
