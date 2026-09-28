@@ -1,130 +1,135 @@
 <!DOCTYPE html>
-<html lang="nl" data-theme="dark">
+<html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Voorbeelden — DevAim Labs</title>
+<meta name="color-scheme" content="light dark">
+<title>Live voorbeelden · DevAim Labs</title>
 <style>
   :root {
-    --color-surface:     #0A0C10;
-    --color-surface-1:   #10131A;
-    --color-surface-2:   #171B24;
-    --color-border:      #232833;
-    --color-text:        #F1F4F8;
-    --color-text-muted:  #8D96A6;
-    --color-text-dim:    #5C6472;
-    --color-accent:      #17C7BC;
-    --color-accent-glow: rgba(23, 199, 188, 0.18);
-    --color-on-accent:   #08201E;
+    --bg: #FBF7F0; --surface: #FFFFFF; --ink: #1F1A14; --muted: #5E5548;
+    --border: #E7DED0; --primary: #0F5F46; --cta: #C2410C;
+    --shadow: 0 1px 2px rgba(31,26,20,.06), 0 12px 32px rgba(31,26,20,.08);
   }
-  html[data-theme="light"] {
-    --color-surface:     #F7F8FA;
-    --color-surface-1:   #FFFFFF;
-    --color-surface-2:   #EEF1F5;
-    --color-border:      #DDE2E9;
-    --color-text:        #10141C;
-    --color-text-muted:  #57616F;
-    --color-text-dim:    #6C7684;
-    --color-accent:      #0E8F86;
-    --color-accent-glow: rgba(14, 143, 134, 0.12);
-    --color-on-accent:   #FFFFFF;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15120E; --surface: #1E1A15; --ink: #F3EDE3; --muted: #B5AA99;
+      --border: #3A3228; --primary: #6FC2A0; --shadow: 0 12px 32px rgba(0,0,0,.35);
+    }
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0; background: var(--color-surface); color: var(--color-text);
-    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-    line-height: 1.55; -webkit-font-smoothing: antialiased;
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding-inline: max(20px, env(safe-area-inset-left));
   }
-  a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
-
-  header { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid var(--color-border); }
-  .logo { font-weight: 700; font-size: 17px; letter-spacing: -.01em; }
-  .logo span { color: var(--color-accent); }
-  .back { font-size: 13px; color: var(--color-text-muted); font-weight: 500; }
-  .back:hover { color: var(--color-text); }
-
-  .hero { padding: 56px 0 40px; }
-  .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--color-accent); font-weight: 600; margin-bottom: 14px; }
-  h1 { font-size: clamp(26px, 4vw, 36px); font-weight: 700; letter-spacing: -.01em; margin: 0 0 14px; max-width: 18ch; }
-  .hero p { font-size: 15.5px; color: var(--color-text-muted); max-width: 56ch; margin: 0; }
-
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding-bottom: 70px; }
-  @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
-
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1040px; margin-inline: auto; }
+  header, footer {
+    display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between;
+    padding-block: 20px; border-bottom: 1px solid var(--border);
+  }
+  footer { border-bottom: 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 15px; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+  .logo { font: 600 1.25rem/1 Georgia, "Times New Roman", serif; text-decoration: none; }
+  .logo i { font-weight: 400; }
+  .back { color: var(--muted); font-size: 15px; text-decoration: none; }
+  .back:hover { color: var(--ink); }
+  .hero { padding-block: clamp(40px, 7vw, 80px) 32px; display: grid; gap: 14px; }
+  .eyebrow { margin: 0; font: 600 12px/1 ui-monospace, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--primary); }
+  h1 { margin: 0; font: 400 clamp(2rem, 1.4rem + 3vw, 3.25rem)/1.08 Georgia, "Times New Roman", serif; letter-spacing: -.01em; max-width: 20ch; text-wrap: balance; }
+  .hero p { margin: 0; color: var(--muted); max-width: 60ch; }
+  .grid { list-style: none; margin: 0; padding: 0 0 72px; display: grid; gap: 16px; }
+  @media (min-width: 720px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .card {
-    background: var(--color-surface-1); border: 1px solid var(--color-border); border-radius: 14px;
-    padding: 24px; display: flex; flex-direction: column; gap: 10px;
-    transition: border-color .15s, box-shadow .15s;
+    display: grid; grid-template-rows: auto 1fr; height: 100%;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    overflow: hidden; box-shadow: var(--shadow); text-decoration: none;
+    transition: translate 200ms cubic-bezier(.23,1,.32,1), box-shadow 200ms ease;
   }
-  .card:hover { border-color: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent), 0 0 24px var(--color-accent-glow); }
-  .card .ic { font-size: 22px; }
-  .card h2 { font-size: 16.5px; font-weight: 700; margin: 0; }
-  .card p { font-size: 13.5px; color: var(--color-text-muted); margin: 0; flex: 1; }
-  .card .tag { font-size: 11px; color: var(--color-text-dim); }
-  .card .go { font-size: 13px; font-weight: 600; color: var(--color-accent); margin-top: 4px; }
-
-  footer { border-top: 1px solid var(--color-border); padding: 26px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12.5px; color: var(--color-text-dim); }
-  footer a { color: var(--color-accent); font-weight: 600; }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card:hover { translate: 0 -3px; }
+  }
+  .card img { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 956; object-fit: cover; border-bottom: 1px solid var(--border); background: var(--border); }
+  .card__body { display: grid; gap: 6px; padding: 18px 20px 20px; align-content: start; }
+  .card h2 { margin: 0; font: 600 1.25rem/1.2 Georgia, "Times New Roman", serif; }
+  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .tag { font: 12px/1.4 ui-monospace, Menlo, monospace; color: var(--muted); letter-spacing: .02em; }
+  .go { margin-top: 6px; font-weight: 600; font-size: 15px; color: var(--primary); }
+  .btn {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px;
+    border-radius: 999px; background: var(--cta); color: #fff; font-weight: 600; text-decoration: none;
+  }
 </style>
 </head>
 <body>
-
-<header>
-  <a class="logo" href="/">DevAim<span>.</span></a>
-  <a class="back" href="/">← Terug naar devaimlabs.com</a>
-</header>
-
 <div class="wrap">
-  <div class="hero">
-    <p class="eyebrow">Voorbeelden</p>
-    <h1>Zie hoe het eruitziet, voordat we het voor jou bouwen.</h1>
-    <p>Vier voorbeeldproducten met fictieve bedrijven en nepdata, zodat je een concreet beeld hebt van wat een KPI-dashboard, betaalsysteem, adminpaneel of website kan worden.</p>
-  </div>
+  <header>
+    <a class="logo" href="/">DevAim <i>Labs</i></a>
+    <a class="back" href="/">← Terug naar de website</a>
+  </header>
 
-  <div class="grid">
-    <a class="card" href="/demo/kpi-dashboard.html">
-      <span class="ic">📊</span>
-      <h2>KPI-dashboard</h2>
-      <p>Omzet, bestellingen en kanalen in één live overzicht, met filters en grafieken.</p>
-      <span class="tag">Havenwerf, fictief logistiekbedrijf</span>
-      <span class="go">Bekijk voorbeeld →</span>
-    </a>
-    <a class="card" href="/demo/betaalsysteem.html">
-      <span class="ic">💳</span>
-      <h2>Betaalsysteem</h2>
-      <p>Abonnement kiezen, betaalgegevens invullen en facturen terugvinden.</p>
-      <span class="tag">Lumen Studio, fictief abonnement</span>
-      <span class="go">Bekijk voorbeeld →</span>
-    </a>
-    <a class="card" href="/demo/adminpaneel.html">
-      <span class="ic">🗂️</span>
-      <h2>Adminpaneel</h2>
-      <p>Reserveringen beheren, goedkeuren of afwijzen, met een detailpaneel per klant.</p>
-      <span class="tag">Kroonveld, fictieve horecazaak</span>
-      <span class="go">Bekijk voorbeeld →</span>
-    </a>
-    <a class="card" href="/demo/website.html">
-      <span class="ic">🏛️</span>
-      <h2>Bedrijfswebsite</h2>
-      <p>Een gewone marketingsite met projecten, werkwijze en een contactsectie.</p>
-      <span class="tag">Studio Wolfshoek, fictief architectenbureau</span>
-      <span class="go">Bekijk voorbeeld →</span>
-    </a>
-  </div>
+  <main>
+    <div class="hero">
+      <p class="eyebrow">Live voorbeelden</p>
+      <h1>Zie hoe het werkt, voordat ik het voor u bouw.</h1>
+      <p>Vier werkende voorbeelden met fictieve bedrijven en voorbeelddata. Klik rond, filter, betaal met een testkaart: zo voelt de software die ik oplever. Dezelfde aanpak werkt voor elk type bedrijf.</p>
+    </div>
+
+    <ul class="grid">
+      <li>
+        <a class="card" href="/demo/website.html">
+          <img src="/service-previews/website.webp" width="1600" height="956" alt="" loading="lazy" decoding="async">
+          <div class="card__body">
+            <h2>Website en webshop</h2>
+            <p>Een webshop met filters, snelle weergave per artikel en een werkende winkelmand.</p>
+            <span class="tag">Atelier Noord · fictief kledingmerk</span>
+            <span class="go">Open het voorbeeld →</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="/demo/adminpaneel.html">
+          <img src="/service-previews/adminpaneel.webp" width="1600" height="956" alt="" loading="lazy" decoding="async">
+          <div class="card__body">
+            <h2>Adminpaneel</h2>
+            <p>Werkorders, planning en rechten, met zoeken via Ctrl+K, bulkacties en een detailpaneel.</p>
+            <span class="tag">Vonkel · fictief installatiebedrijf</span>
+            <span class="go">Open het voorbeeld →</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="/demo/kpi-dashboard.html">
+          <img src="/service-previews/kpi.webp" width="1600" height="956" alt="" loading="lazy" decoding="async">
+          <div class="card__body">
+            <h2>KPI-dashboard</h2>
+            <p>Omzet, conversie en vestigingen in één overzicht, met periodekeuze en een melding bij afwijkingen.</p>
+            <span class="tag">Zevenster Fietsen · fictieve winkelketen</span>
+            <span class="go">Open het voorbeeld →</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="/demo/betaalsysteem.html">
+          <img src="/service-previews/betaal.webp" width="1600" height="956" alt="" loading="lazy" decoding="async">
+          <div class="card__body">
+            <h2>Betaalsysteem</h2>
+            <p>Een checkout met iDEAL en creditcard, kortingscode, btw en factuur. Testmodus: er wordt niets afgeschreven.</p>
+            <span class="tag">Ovenlicht Keramiekstudio · fictieve studio</span>
+            <span class="go">Open het voorbeeld →</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    <span>Alle voorbeelden zijn fictief: geen echte klanten of gegevens.</span>
+    <a class="btn" href="/contact">Bespreek uw project</a>
+  </footer>
 </div>
-
-<footer>
-  <span>Alle voorbeelden zijn fictief, geen echte klanten of data.</span>
-  <a href="/contact">Bespreek jouw project →</a>
-</footer>
-
-<script>
-  (function () {
-    var t = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', t);
-  })();
-</script>
 </body>
 </html>

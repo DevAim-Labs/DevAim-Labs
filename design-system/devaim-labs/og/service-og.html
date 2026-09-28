@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+  OG image concepts for the service pages (1200 x 630, spec only).
+  Art direction: "editorial + tech panel", the site's own B/A mix. Warm
+  paper left (Fraunces H1, search-intent title), dark tech panel right
+  with the service's demo screenshot (or the data-flow motif for API).
+  Safe zone: all copy inside x 72-1128, y 64-566. One label, no CTA
+  button (OG images are not clickable), brand mark bottom left.
+
+  To produce PNGs: open this file, screenshot each .og at 1200x630 and
+  save as public/og/service-{key}.png, then set `og_image` per service
+  (the layout already accepts an `ogImage` URL). Not wired up yet.
+  Demo screenshots show fictional businesses: keep the
+  "Voorbeelddata · fictief bedrijf" tag on the image.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Service OG concepts</title>
+<style>
+  body { margin: 0; padding: 40px; background: #ddd; display: grid; gap: 40px; font-family: Inter, system-ui, sans-serif; }
+  .og { position: relative; width: 1200px; height: 630px; overflow: hidden; background: #FBF7F0; color: #1F1A14;
+        display: grid; grid-template-columns: 560px 1fr; }
+  .og__copy { padding: 64px 0 64px 72px; display: flex; flex-direction: column; gap: 20px; }
+  .og__eyebrow { font: 600 20px/1 Inter, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #0F5F46; }
+  .og__title { margin: 0; font: 400 76px/1.02 Fraunces, Georgia, serif; letter-spacing: -.02em; }
+  .og__title em { color: #0F5F46; }
+  .og__sub { font-size: 24px; line-height: 1.4; color: #5E5548; max-width: 26ch; }
+  .og__brand { margin-top: auto; display: flex; align-items: center; gap: 12px; font: 600 26px Fraunces, serif; }
+  .og__brand i { width: 40px; height: 40px; border-radius: 999px 999px 8px 8px; background: #0F5F46; color: #FBF7F0;
+                 display: grid; place-items: center; font-style: normal; }
+  .og__panel { margin: 64px 72px 64px 0; border-radius: 20px; background: #0B0D12; border: 1px solid #2A3140;
+               padding: 18px; display: grid; grid-template-rows: auto 1fr; gap: 14px; }
+  .og__tag { justify-self: start; font: 500 15px/1 "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .04em;
+             color: #A9C6FF; background: rgba(79,140,255,.16); padding: 7px 12px; border-radius: 999px; }
+  .og__shot { border-radius: 10px; background: #151922 center top / cover no-repeat; border: 1px solid #2A3140; }
+  .og__flow { display: flex; align-items: center; justify-content: center; gap: 18px; color: #F4F6FA; font-weight: 600; font-size: 20px;
+              background: radial-gradient(circle at 1px 1px, rgba(154,163,178,.18) 1px, transparent 0) 0 0 / 18px 18px, #151922; border-radius: 10px; }
+  .og__flow span { padding: 16px 18px; border: 1px solid #2A3140; border-radius: 12px; background: #0B0D12; }
+  .og__flow span.hub { border-color: rgba(94,234,212,.5); color: #5EEAD4; }
+  .og__flow b { width: 40px; height: 2px; background: repeating-linear-gradient(90deg, #2A3140 0 6px, transparent 6px 10px); position: relative; }
+  .og__flow b::after { content: ""; position: absolute; left: 14px; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: #5EEAD4; }
+</style>
+</head>
+<body>
+  <!-- websites -->
+  <div class="og"><div class="og__copy"><p class="og__eyebrow">Websites</p><h1 class="og__title">Website <em>laten maken</em></h1>
+    <p class="og__sub">Snel, vindbaar en gemaakt om aanvragen binnen te halen.</p><p class="og__brand"><i>D</i>DevAim Labs</p></div>
+    <div class="og__panel"><span class="og__tag">Voorbeelddata · fictief bedrijf</span><div class="og__shot" style="background-image:url(../../../public/service-previews/website.webp)"></div></div></div>
+
+  <!-- admin-panels -->
+  <div class="og"><div class="og__copy"><p class="og__eyebrow">Adminpanelen</p><h1 class="og__title">Adminpaneel <em>laten maken</em></h1>
+    <p class="og__sub">Klanten, orders en planning op één plek, niet in losse lijsten.</p><p class="og__brand"><i>D</i>DevAim Labs</p></div>
+    <div class="og__panel"><span class="og__tag">Voorbeelddata · fictief bedrijf</span><div class="og__shot" style="background-image:url(../../../public/service-previews/adminpaneel.webp)"></div></div></div>
+
+  <!-- dashboards -->
+  <div class="og"><div class="og__copy"><p class="og__eyebrow">KPI-dashboards</p><h1 class="og__title">KPI-dashboard <em>laten maken</em></h1>
+    <p class="og__sub">Uw cijfers op één scherm, automatisch bijgewerkt.</p><p class="og__brand"><i>D</i>DevAim Labs</p></div>
+    <div class="og__panel"><span class="og__tag">Voorbeelddata · fictief bedrijf</span><div class="og__shot" style="background-image:url(../../../public/service-previews/kpi.webp)"></div></div></div>
+
+  <!-- payments -->
+  <div class="og"><div class="og__copy"><p class="og__eyebrow">Betalingen</p><h1 class="og__title">Betaalsysteem <em>laten maken</em></h1>
+    <p class="og__sub">Mollie of Stripe, abonnementen en facturen die kloppen.</p><p class="og__brand"><i>D</i>DevAim Labs</p></div>
+    <div class="og__panel"><span class="og__tag">Voorbeelddata · fictief bedrijf</span><div class="og__shot" style="background-image:url(../../../public/service-previews/betaal.webp)"></div></div></div>
+
+  <!-- api-integrations: no screenshot, the data-flow motif -->
+  <div class="og"><div class="og__copy"><p class="og__eyebrow">API-koppelingen</p><h1 class="og__title">API-koppeling <em>laten maken</em></h1>
+    <p class="og__sub">Uw systemen praten met elkaar. Geen dubbel overtypen meer.</p><p class="og__brand"><i>D</i>DevAim Labs</p></div>
+    <div class="og__panel"><span class="og__tag">Voorbeelddata</span><div class="og__flow"><span>Webshop</span><b></b><span class="hub">Koppeling</span><b></b><span>Boekhouding</span></div></div></div>
+</body>
+</html>

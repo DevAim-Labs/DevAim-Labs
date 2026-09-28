@@ -1,0 +1,50 @@
+{
+  "source": {
+    "url": "https://stripe.com/nl",
+    "extractedAt": "2026-09-28T15:36:24.800Z",
+    "extractor": "dembrandt"
+  },
+  "colors": {
+    "primary": "rgb(83, 58, 253)",
+    "secondary": "rgba(255, 255, 255, 0)",
+    "palette": [
+      "rgba(255, 255, 255, 0)",
+      "rgb(83, 58, 253)"
+    ],
+    "cssVariables": {}
+  },
+  "typography": {
+    "headingFont": "sohne-var",
+    "bodyFont": "sohne-var"
+  },
+  "spacing": {
+    "scale": [
+      "1px",
+      "2px",
+      "4px",
+      "6px",
+      "8px",
+      "10px",
+      "11px",
+      "12px",
+      "14px",
+      "14.5px",
+      "15.5px",
+      "16px",
+      "16.5px",
+      "18px",
+      "20px",
+      "24px",
+      "32px",
+      "40px",
+      "64px",
+      "96px"
+    ]
+  },
+  "radius": {
+    "scale": []
+  },
+  "shadows": {
+    "scale": []
+  }
+}

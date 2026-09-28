@@ -1,0 +1,50 @@
+{
+  "source": {
+    "url": "https://linear.app/",
+    "extractedAt": "2026-09-28T15:36:30.792Z",
+    "extractor": "dembrandt"
+  },
+  "colors": {
+    "primary": "rgb(247, 248, 248)",
+    "secondary": "rgba(255, 255, 255, 0.05)",
+    "palette": [
+      "rgb(247, 248, 248)",
+      "rgba(255, 255, 255, 0.05)"
+    ],
+    "cssVariables": {}
+  },
+  "typography": {
+    "headingFont": "Inter Variable",
+    "bodyFont": "Inter Variable"
+  },
+  "spacing": {
+    "scale": [
+      "1px",
+      "3px",
+      "4px",
+      "5px",
+      "6px",
+      "7px",
+      "8px",
+      "10px",
+      "11px",
+      "12px",
+      "14px",
+      "16px",
+      "19px",
+      "24px",
+      "28px",
+      "30px",
+      "35px",
+      "48px",
+      "80px",
+      "128px"
+    ]
+  },
+  "radius": {
+    "scale": []
+  },
+  "shadows": {
+    "scale": []
+  }
+}
