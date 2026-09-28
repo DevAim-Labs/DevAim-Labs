@@ -8,14 +8,18 @@
 
 @theme {
     /* ══════════════════════════════════════════════════════════════════════════
-       TYPOGRAPHY — Geist (Display) + Inter (Body)
-       Geïnspireerd door Linear/Vercel's systematic approach
+       TYPOGRAPHY — Plus Jakarta Sans (Display/Body) + JetBrains Mono (labels/code)
+       "Blueprint Cyan v2" — sitewide, self-hosted (CSP font-src 'self')
        ══════════════════════════════════════════════════════════════════════════ */
-    --font-sans: 'Geist', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    /* "Ink & Signal" editorial display face — headlines only, generates the
+       `font-display` Tailwind utility (Tailwind v4 auto-derives a utility
+       per --font-* theme key). */
+    --font-display: 'Fraunces', 'Georgia', ui-serif, serif;
 
     /* Fluid typography scale */
     --text-hero:    clamp(2.5rem, 8vw, 5rem);
@@ -58,43 +62,49 @@
     --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     /* ══════════════════════════════════════════════════════════════════════════
-       COLOR PALETTE — "Midnight Aurora" with Cyan + Violet accents
-       Geïnspireerd door godly.design research
+       COLOR PALETTE — "Ink & Signal", sitewide default (dark only)
+       Editorial/brutalist: near-black ink, warm paper-white text, one
+       high-signal accent, visibly-contrasted structural borders (this style
+       leans on real borders instead of blur, so they must actually be
+       visible — contrast-checked below, not the ~1.3:1 the old borders had).
+       All text pairs verified ≥4.5:1, --color-border-strong ≥3:1 (WCAG
+       1.4.11 non-text/UI-component contrast). No longer tied to the logo's
+       cyan — chosen fresh for this pattern per the approved redesign.
        ══════════════════════════════════════════════════════════════════════════ */
+    --color-surface:       #0B0B0C;
+    --color-surface-1:     #141415;
+    --color-surface-2:     #1C1C1E;
+    --color-surface-3:     #242426;
+    --color-surface-glass: rgba(20, 20, 21, 0.7);
 
-    /* Dark theme surfaces — deeper midnight tones */
-    --color-surface:     #0A0A0F;
-    --color-surface-1:   #12121A;
-    --color-surface-2:   #1A1A24;
-    --color-surface-3:   #22222E;
-    --color-surface-glass: rgba(18, 18, 26, 0.8);
+    --color-border:        #3A3A3C;  /* 1.7:1 — subtle internal hairlines */
+    --color-border-dim:    #2A2A2C;
+    --color-border-strong: #63615B;  /* 3.2:1 — the visible structural grid lines */
+    --color-border-glow:   rgba(255, 90, 31, 0.25);
 
-    --color-border:      #2D2D3A;
-    --color-border-dim:  #1E1E28;
-    --color-border-glow: rgba(23, 199, 188, 0.25);
+    --color-text:        #F3F1EA;  /* 17.4:1 — warm paper white, not pure white */
+    --color-text-muted:  #B9B6AC;  /* 9.7:1 */
+    --color-text-dim:    #8A8780;  /* 5.5:1 — was 3.8-4.4:1 under the old palette */
 
-    --color-text:        #FAFAFA;
-    --color-text-muted:  #A1A1AA;
-    --color-text-dim:    #71717A;
+    /* Primary: Signal orange — the one accent, used sparingly */
+    --color-accent:        #FF5A1F;
+    --color-accent-dim:    #D6470F;
+    --color-accent-glow:   rgba(255, 90, 31, 0.18);
+    --color-accent-bright: #FF7A47;
+    --color-on-accent:     #0B0B0C;  /* 6.3:1 on accent */
 
-    /* Primary: Cyan */
-    --color-accent:      #17C7BC;
-    --color-accent-dim:  #0E9B92;
-    --color-accent-glow: rgba(23, 199, 188, 0.18);
-    --color-accent-bright: #6FF5EA;
-    --color-on-accent:   #07090D;
+    /* Secondary: kept for links/graphs that need a second hue, muted so the
+       orange stays the one loud color */
+    --color-violet:        #7C8AA5;
+    --color-violet-dim:    #626E85;
+    --color-violet-glow:   rgba(124, 138, 165, 0.18);
+    --color-violet-bright: #9AA6BC;
 
-    /* Secondary: Violet */
-    --color-violet:      #8B5CF6;
-    --color-violet-dim:  #7C3AED;
-    --color-violet-glow: rgba(139, 92, 246, 0.18);
-    --color-violet-bright: #A78BFA;
-
-    /* Warm: Amber */
-    --color-warm:        #F5A623;
-    --color-warm-dim:    #D4890E;
-    --color-warm-glow:   rgba(245, 166, 35, 0.18);
-    --color-warm-bright: #FFC857;
+    /* Status: kept semantic (form feedback), not part of the brand palette */
+    --color-warm:        #34D399;
+    --color-warm-dim:    #10B981;
+    --color-warm-glow:   rgba(52, 211, 153, 0.18);
+    --color-warm-bright: #6EE7B7;
 }
 
 :root {
@@ -102,60 +112,54 @@
     --color-input:   var(--color-surface);
 }
 
-/* ══════════════════════════════════════════════════════════════════════════
-   SMOOTH THEME TRANSITION — Prevents blank flash during theme switch
-   Only applies to key layout elements for performance
-   ══════════════════════════════════════════════════════════════════════════ */
-
-html.theme-transition,
-html.theme-transition body,
-html.theme-transition main,
-html.theme-transition header,
-html.theme-transition footer,
-html.theme-transition section,
-html.theme-transition .section-card,
-html.theme-transition .hero-section,
-html.theme-transition .hero-bg-block,
-html.theme-transition nav {
-    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+/* Visible keyboard focus (Tailwind's preflight otherwise suppresses the
+   default outline) — sharp corner, no radius, matching the brutalist
+   language (a soft rounded ring reads as a leftover from the old theme). */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
 }
 
-html[data-theme="light"] {
-    --color-surface:     #FAFAFA;
-    --color-surface-1:   #FFFFFF;
-    --color-surface-2:   #F4F4F5;
-    --color-surface-3:   #E4E4E7;
-    --color-surface-glass: rgba(255, 255, 255, 0.8);
+/* Signal grid backdrop: faint hairline grid. Decorative only (aria-hidden
+   where used), so it's exempt from prefers-reduced-motion — it never
+   animates; the actual motion lives in the three.js canvas layered above it. */
+.grid-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(var(--color-border-dim) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-border-dim) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 90%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 90%);
+}
 
-    --color-border:      #D4D4D8;
-    --color-border-dim:  #E4E4E7;
-    --color-border-glow: rgba(14, 155, 146, 0.25);
+/* Structural block — the editorial/brutalist replacement for the old
+   .glass/.glass-card blur treatment: a hard, visible border instead of a
+   blurred surface. Sharp corners throughout (no --radius-* rounding). */
+.block-border {
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-border-strong);
+}
 
-    --color-text:        #18181B;
-    --color-text-muted:  #52525B;
-    --color-text-dim:    #71717A;
+/* A block that should read as "active"/current (the highlighted pricing
+   plan, the current workflow step) — same hard edge, accent-colored. */
+.block-border--accent {
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-accent);
+}
 
-    /* Primary: Cyan (adjusted for light) */
-    --color-accent:      #0E9B92;
-    --color-accent-dim:  #0A7A73;
-    --color-accent-glow: rgba(14, 155, 146, 0.12);
-    --color-accent-bright: #17C7BC;
-    --color-on-accent:   #FFFFFF;
-
-    /* Secondary: Violet */
-    --color-violet:      #7C3AED;
-    --color-violet-dim:  #6D28D9;
-    --color-violet-glow: rgba(124, 58, 237, 0.12);
-    --color-violet-bright: #8B5CF6;
-
-    /* Warm: Amber */
-    --color-warm:        #D4890E;
-    --color-warm-dim:    #B87308;
-    --color-warm-glow:   rgba(212, 137, 14, 0.12);
-    --color-warm-bright: #F5A623;
-
-    --color-section:     var(--color-surface-2);
-    --color-input:       var(--color-surface-1);
+/* Werkwijze — vertical line that "draws" itself via scrub (see
+   LandingWorkflow.vue); reduced-motion renders it fully drawn from the start. */
+.workflow-line {
+    transform-origin: top center;
+    transform: scaleY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+    .workflow-line {
+        transform: scaleY(1);
+    }
 }
 
 @layer utilities {
@@ -286,8 +290,8 @@ html[data-theme="light"] {
 
     .code-card {
         background: var(--color-surface-1);
-        border: 1px solid var(--color-border-dim);
-        border-radius: 0.75rem;
+        border: 1px solid var(--color-border-strong);
+        border-radius: 2px;
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
@@ -481,7 +485,7 @@ html[data-theme="light"] {
         justify-content: center;
         gap: 0.625rem;
         overflow: hidden;
-        border-radius: 9999px;
+        border-radius: 0;
         padding: 0.75rem 1.5rem;
         font-size: 0.9375rem;
         font-weight: 600;
@@ -489,8 +493,11 @@ html[data-theme="light"] {
         cursor: pointer;
         background: transparent;
         color: var(--color-text-muted);
-        border: 1px solid var(--color-border);
-        transition: border-color 0.25s ease, color 0.25s ease;
+        border: 1px solid var(--color-border-strong);
+        /* Hover/color change is a fast, ungated state toggle, not an
+           entrance/exit — "ease" at 150ms per the animate skill's table,
+           not the softer 250ms this carried under the old glass theme. */
+        transition: border-color 0.15s ease, color 0.15s ease;
     }
     .btn-hover:hover,
     .btn-hover:focus-visible {

@@ -22,7 +22,7 @@
         @endforeach
     <link rel="alternate" hreflang="x-default" href="{{ $alternateUrls['nl'] ?? url('/') }}">
     @endif
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="{{ ($isIndexable ?? true) ? 'index, follow' : 'noindex, follow' }}">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="DevAim Labs">
@@ -101,7 +101,7 @@
                     'name' => $org['name'],
                     'description' => 'Custom websites, systemen en integraties voor particulieren en bedrijven',
                     'publisher' => ['@id' => url('/') . '#organization'],
-                    'inLanguage' => 'nl-NL',
+                    'inLanguage' => ($locale ?? 'nl') === 'en' ? 'en-US' : 'nl-NL',
                 ],
             ],
         ];

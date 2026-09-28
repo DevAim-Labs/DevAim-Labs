@@ -15,7 +15,8 @@ import { initAnalytics } from './analytics.js'
 // Theme toggle disabled - dark mode only for now
 // import { initThemeToggle } from './theme.js'
 import { initNavPillScrollSpy, refreshNavPillScrollSpy } from './navPills.js'
-import { initSmoothScroll, scrollTo } from './smoothScroll.js'
+import { initSmoothScroll, scrollTo, setupAnchorScrolling } from './smoothScroll.js'
+import { initLandingInteractions } from './landingInteractions.js'
 
 function isNearViewport(el) {
     const rect = el.getBoundingClientRect()
@@ -66,24 +67,6 @@ function mountWhenVisible(id, loader) {
     }, 2500)
 }
 
-/**
- * Setup smooth scroll for anchor links using Lenis.
- */
-function setupAnchorScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            const href = anchor.getAttribute('href')
-            if (!href || href === '#') return
-
-            const target = document.querySelector(href)
-            if (target) {
-                e.preventDefault()
-                scrollTo(target, { offset: -80 })
-            }
-        })
-    })
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
     // Initialize Lenis smooth scroll FIRST (before any scrolling operations)
     initSmoothScroll()
@@ -92,6 +75,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupAnchorScrolling()
 
     // initThemeToggle() // Disabled - dark mode only for now
+
+    // "Blueprint Cyan" pages: real content is server-rendered Blade
+    // (resources/views/partials/landing/*.blade.php); these are just the
+    // small interactive/animated pieces layered on top.
+    initLandingInteractions()
+
+    const heroGradientMount = document.getElementById('hero-gradient-mount')
+    if (heroGradientMount) {
+        const { default: HeroGradientCanvas } = await import('./components/shared/HeroGradientCanvas.vue')
+        createApp(HeroGradientCanvas).mount(heroGradientMount)
+    }
+
+    const contactFormMount = document.getElementById('contact-form-mount')
+    if (contactFormMount) {
+        const { default: ContactCardForm } = await import('./components/shared/ContactCardForm.vue')
+        createApp(ContactCardForm).mount(contactFormMount)
+    }
 
     await Promise.all([
         mountSection('logo-slider-mount', () => import('./components/LogoSlider.vue')),
@@ -166,10 +166,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (heroTextLoopMount) {
         const words = JSON.parse(heroTextLoopMount.dataset.words || '[]')
         createApp({
+            // "Ink & Signal" theme: one flat accent color reads truer to the
+            // brutalist/editorial language than a blended gradient — the
+            // color itself comes from the wrapping element's own CSS.
             render: () => h(TextLoop, {
                 words: words,
                 interval: 3000,
-                gradient: true
+                gradient: false
             })
         }).mount(heroTextLoopMount)
     }

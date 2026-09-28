@@ -32,6 +32,24 @@ export default defineConfig({
                     weights: [400, 500],
                     display: 'optional',
                 }),
+                // Landing page ("Blueprint Cyan" theme) typography — self-hosted
+                // via Bunny like the fonts above, so it stays inside the
+                // production CSP's font-src 'self' instead of calling out to
+                // Google Fonts.
+                bunny('Plus Jakarta Sans', {
+                    weights: [400, 500, 600, 700, 800],
+                    display: 'optional',
+                }),
+                bunny('JetBrains Mono', {
+                    weights: [400, 500, 600],
+                    display: 'optional',
+                }),
+                // "Ink & Signal" theme's editorial display face — self-hosted
+                // like the fonts above (CSP font-src 'self').
+                bunny('Fraunces', {
+                    weights: [600, 700, 900],
+                    display: 'optional',
+                }),
             ],
         }),
         tailwindcss(),

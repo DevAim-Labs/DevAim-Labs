@@ -14,6 +14,9 @@ class ContactController extends Controller
             'name'    => ['required', 'string', 'max:100'],
             'email'   => ['required', 'email', 'max:255'],
             'message' => ['required', 'string', 'min:20', 'max:2000'],
+            // Honeypot: a real visitor never sees or fills this field (it's
+            // visually hidden in the form), so any value here means a bot.
+            'website_url' => ['nullable', 'string', 'max:255'],
         ], [
             'name.required'    => 'Vul uw naam in.',
             'email.required'   => 'Vul uw e-mailadres in.',
@@ -22,6 +25,13 @@ class ContactController extends Controller
             'message.min'      => 'Uw bericht moet minimaal 20 tekens bevatten.',
             'message.max'      => 'Uw bericht mag maximaal 2000 tekens bevatten.',
         ]);
+
+        if (filled($validated['website_url'] ?? null)) {
+            // Silently pretend success so the bot doesn't learn it was caught.
+            return response()->json(['message' => 'Verzonden.'], 200);
+        }
+
+        unset($validated['website_url']);
 
         // TODO: Re-enable database storage when Supabase is configured
         // ContactSubmission::create($validated + [
