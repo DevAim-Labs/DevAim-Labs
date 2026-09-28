@@ -1,40 +1,37 @@
 <?php
 
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
+use App\Support\LegacyRedirects;
+use App\Support\ServiceCatalog;
 use Illuminate\Support\Facades\Route;
 
-// Dutch routes (default)
-Route::get('/', [HomeController::class, 'show'])->name('home');
+// Pages (view data: App\Support\SitePage)
+Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/en', [PageController::class, 'home'])->defaults('locale', 'en')->name('home.en');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/en/contact', [PageController::class, 'contact'])->defaults('locale', 'en')->name('contact.en');
+Route::get('/privacyverklaring', [PageController::class, 'privacy'])->name('privacy');
 
-// English routes
-Route::prefix('en')->group(function () {
-    Route::get('/', [HomeController::class, 'showEn'])->name('home.en');
+// Service detail pages (content: config/site-v2-services.php via ServiceCatalog)
+Route::get('/diensten/{service}', [PageController::class, 'service'])
+    ->where('service', ServiceCatalog::slugPattern('nl'))
+    ->name('service.show');
+Route::get('/en/services/{service}', [PageController::class, 'service'])
+    ->where('service', ServiceCatalog::slugPattern('en'))
+    ->defaults('locale', 'en')
+    ->name('service.show.en');
 
-    // Contact page must come before catch-all
-    Route::get('/contact', [HomeController::class, 'showContactEn'])->name('contact.en');
+// Old one-page section URLs, their aliases and the /v2 preview: one 301
+// hop to the matching service page or home anchor (e.g. /tarieven -> /#tarieven,
+// /kpi-dashboard -> /diensten/dashboards).
+foreach (LegacyRedirects::all() as $from => $to) {
+    Route::permanentRedirect($from, $to);
+}
 
-    // Service detail pages (English)
-    Route::get('/services/{service}', [ServiceController::class, 'showEn'])
-        ->where('service', 'websites|admin-panels|dashboards|payments|api-integrations')
-        ->name('service.show.en');
-
-    $configEn = config('site-en');
-    $routeSlugsEn = collect($configEn['sections'])
-        ->pluck('slug')
-        ->filter()
-        ->reject(fn ($slug) => $slug === 'contact') // Contact has its own route
-        ->merge(array_keys($configEn['aliases'] ?? []))
-        ->unique()
-        ->implode('|');
-
-    Route::get('/{section}', [HomeController::class, 'showEn'])
-        ->where('section', $routeSlugsEn);
-});
-
-Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+// Rate limiters (web, crawler, contact): see AppServiceProvider.
+Route::get('/sitemap.xml', SitemapController::class)->middleware('throttle:crawler')->name('sitemap');
 
 Route::get('/robots.txt', function () {
     $sitemapUrl = url('/sitemap.xml');
@@ -69,35 +66,44 @@ Sitemap: {$sitemapUrl}
 ROBOTS;
 
     return response($body, 200)->header('Content-Type', 'text/plain; charset=UTF-8');
-});
+})->middleware('throttle:crawler');
 
 Route::post('/contact', [ContactController::class, 'store'])
-    ->middleware('throttle:5,1');
-
-// Contact page (NL) - must come before catch-all
-Route::get('/contact', [HomeController::class, 'showContact'])->name('contact');
-
-// Service detail pages (Dutch)
-Route::get('/diensten/{service}', [ServiceController::class, 'show'])
-    ->where('service', 'websites|adminpanelen|dashboards|betalingen|api-integraties')
-    ->name('service.show');
+    ->middleware('throttle:contact');
 
 Route::get('/llms.txt', function () {
     $org = config('site.organization');
+    $company = config('site-v2.company');
+    $home = url('/');
+    $homeEn = url('/en');
+    $contact = url('/contact');
+    $contactEn = url('/en/contact');
+    $servicePages = collect(ServiceCatalog::keys())
+        ->map(fn (string $key) => '- '.config("site-v2-services.services.{$key}.nl.name").': '.ServiceCatalog::url($key, 'nl').' (EN: '.ServiceCatalog::url($key, 'en').')')
+        ->implode("\n");
     $body = <<<LLMS
 # DevAim Labs
 > Custom websites, systemen en integraties
 
 ## Over
-DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developer die bouwt, geen tussenpersoon. Reactie binnen 24 uur.
+DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developer die bouwt, geen tussenpersoon. Reactie binnen 1 werkdag.
 
 ## Diensten
 - Maatwerksoftware voor u
-- Websites en portfolio's
+- Websites en webshops
 - KPI-dashboards en rapportages
 - Adminpanelen en interne tools
 - Betaalintegraties (Stripe & Mollie)
 - API-koppelingen en webhooks
+
+## Pagina's
+- Home (NL): {$home}
+- Home (EN): {$homeEn}
+- Contact (NL): {$contact}
+- Contact (EN): {$contactEn}
+
+## Dienstpagina's (met live demo's)
+{$servicePages}
 
 ## Doelgroep
 Particulieren en bedrijven die op zoek zijn naar custom websites, systemen of integraties
@@ -105,8 +111,8 @@ Particulieren en bedrijven die op zoek zijn naar custom websites, systemen of in
 ## Contact
 - Email: {$org['email']}
 - Telefoon: {$org['phone']}
-- KvK: 42051464
-- BTW: NL005458933B79
+- KvK: {$company['kvk']}
+- BTW: {$company['btw']}
 - Website: https://devaimlabs.com
 
 ## Tech Stack
@@ -121,30 +127,4 @@ Laravel, Vue.js, React, TypeScript, Inertia.js, REST APIs, Tailwind CSS
 LLMS;
 
     return response($body, 200)->header('Content-Type', 'text/plain; charset=UTF-8');
-});
-
-Route::view('/privacyverklaring', 'privacy', [
-    'pageTitle' => 'Privacyverklaring | DevAim Labs',
-    'pageDescription' => 'Hoe DevAim Labs omgaat met persoonsgegevens: welke gegevens ik verwerk, waarom, hoe lang ik ze bewaar en welke rechten u heeft.',
-    'canonicalUrl' => url('/privacyverklaring'),
-    'breadcrumbs' => [
-        ['name' => 'Home', 'path' => '/'],
-        ['name' => 'Privacyverklaring', 'path' => '/privacyverklaring'],
-    ],
-])->name('privacy');
-
-foreach (config('site.redirects', []) as $from => $to) {
-    Route::redirect($from, $to, 301);
-}
-
-$config = config('site');
-$routeSlugs = collect($config['sections'])
-    ->pluck('slug')
-    ->filter()
-    ->reject(fn ($slug) => $slug === 'contact') // Contact has its own route
-    ->merge(array_keys($config['aliases']))
-    ->unique()
-    ->implode('|');
-
-Route::get('/{section}', [HomeController::class, 'show'])
-    ->where('section', $routeSlugs);
+})->middleware('throttle:crawler');

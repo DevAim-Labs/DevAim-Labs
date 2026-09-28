@@ -1,0 +1,26 @@
+:root {
+  --color-primary: rgb(83, 58, 253);
+  --color-secondary: rgba(255, 255, 255, 0);
+  --font-heading: sohne-var;
+  --font-body: sohne-var;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-7: 11px;
+  --space-8: 12px;
+  --space-9: 14px;
+  --space-10: 14.5px;
+  --space-11: 15.5px;
+  --space-12: 16px;
+  --space-13: 16.5px;
+  --space-14: 18px;
+  --space-15: 20px;
+  --space-16: 24px;
+  --space-17: 32px;
+  --space-18: 40px;
+  --space-19: 64px;
+  --space-20: 96px;
+}

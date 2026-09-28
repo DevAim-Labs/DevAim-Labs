@@ -2,57 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ContactRequest;
 use App\Mail\ContactFormSubmission;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    public function store(Request $request)
+    public function store(ContactRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'name'    => ['required', 'string', 'max:100'],
-            'email'   => ['required', 'email', 'max:255'],
-            'message' => ['required', 'string', 'min:20', 'max:2000'],
-            // Honeypot: a real visitor never sees or fills this field (it's
-            // visually hidden in the form), so any value here means a bot.
-            'website_url' => ['nullable', 'string', 'max:255'],
-        ], [
-            'name.required'    => 'Vul uw naam in.',
-            'email.required'   => 'Vul uw e-mailadres in.',
-            'email.email'      => 'Vul een geldig e-mailadres in.',
-            'message.required' => 'Schrijf een bericht.',
-            'message.min'      => 'Uw bericht moet minimaal 20 tekens bevatten.',
-            'message.max'      => 'Uw bericht mag maximaal 2000 tekens bevatten.',
-        ]);
+        $isEn = $request->isEnglish();
+        $sent = response()->json(['message' => $isEn ? 'Sent.' : 'Verzonden.'], 200);
 
-        if (filled($validated['website_url'] ?? null)) {
+        if ($reason = $request->spamReason()) {
             // Silently pretend success so the bot doesn't learn it was caught.
-            return response()->json(['message' => 'Verzonden.'], 200);
+            // Logged without personal data: only why and which form.
+            Log::info('Contact form submission blocked', [
+                'reason' => $reason,
+                'type' => $request->lead()['type'],
+            ]);
+
+            return $sent;
         }
-
-        unset($validated['website_url']);
-
-        // TODO: Re-enable database storage when Supabase is configured
-        // ContactSubmission::create($validated + [
-        //     'ip_address' => $request->ip(),
-        //     'user_agent' => $request->userAgent(),
-        // ]);
 
         // Mail now goes out via Resend's HTTP API (fast, no blocking SMTP
         // round-trip), so we can wait for the actual result and report a
         // real failure instead of always answering 200.
         try {
             Mail::to(config('mail.from.address'))
-                ->send(new ContactFormSubmission($validated));
+                ->send(new ContactFormSubmission($request->lead()));
         } catch (\Throwable $e) {
             report($e);
 
             return response()->json([
-                'message' => 'Verzenden is mislukt. Probeer het later opnieuw of mail rechtstreeks.',
+                'message' => $isEn
+                    ? 'Sending failed. Please try again later or email me directly.'
+                    : 'Verzenden is mislukt. Probeer het later opnieuw of mail rechtstreeks.',
             ], 500);
         }
 
-        return response()->json(['message' => 'Verzonden.'], 200);
+        return $sent;
     }
 }

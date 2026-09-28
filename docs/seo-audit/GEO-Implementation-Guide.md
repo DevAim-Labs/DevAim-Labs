@@ -86,7 +86,7 @@ APIs: RESTful architecture, webhooks, synchronization jobs
 
 # Contact Information
 Email: contact@devaimlabs.com
-Phone: +31 6385230999
+Phone: +31 638523099
 KvK: 42051464
 BTW-nr: NL005458933B79
 Website: https://devaimlabs.com
@@ -435,7 +435,7 @@ Onze aanpak:
 Tech stack: Laravel | React | Vue | Python | TypeScript
 
 📧 contact@devaimlabs.com
-📞 +31 6385230999
+📞 +31 638523099
 🌐 devaimlabs.com
 ```
 

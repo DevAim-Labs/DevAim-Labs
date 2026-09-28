@@ -1,0 +1,26 @@
+:root {
+  --color-primary: rgb(20, 77, 237);
+  --color-secondary: rgba(0, 0, 0, 0);
+  --font-heading: Proxima-nova;
+  --font-body: Proxima-nova;
+  --space-1: 3px;
+  --space-2: 3.5px;
+  --space-3: 5.625px;
+  --space-4: 6px;
+  --space-5: 7px;
+  --space-6: 7.5px;
+  --space-7: 8px;
+  --space-8: 12px;
+  --space-9: 15px;
+  --space-10: 16px;
+  --space-11: 16.875px;
+  --space-12: 22.5px;
+  --space-13: 24px;
+  --space-14: 28px;
+  --space-15: 30px;
+  --space-16: 32px;
+  --space-17: 40px;
+  --space-18: 48px;
+  --space-19: 56.25px;
+  --space-20: 80px;
+}

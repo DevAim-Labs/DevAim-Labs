@@ -1,0 +1,1335 @@
+{
+  "url": "https://projectie.com/",
+  "extractedAt": "2026-09-28T15:36:21.434Z",
+  "siteName": "PROJECTIE",
+  "logo": {
+    "source": "img",
+    "url": "https://projectie.com/images/projectie-logo.svg",
+    "width": 233,
+    "height": 43,
+    "alt": "Projectie logo",
+    "safeZone": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "background": "rgb(16, 18, 32)"
+  },
+  "favicons": [
+    {
+      "type": "icon",
+      "url": "https://projectie.com/favicon/favicon.ico",
+      "sizes": null
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-57x57.png",
+      "sizes": "57x57"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-60x60.png",
+      "sizes": "60x60"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-72x72.png",
+      "sizes": "72x72"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-76x76.png",
+      "sizes": "76x76"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-114x114.png",
+      "sizes": "114x114"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-120x120.png",
+      "sizes": "120x120"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-144x144.png",
+      "sizes": "144x144"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-152x152.png",
+      "sizes": "152x152"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-180x180.png",
+      "sizes": "180x180"
+    },
+    {
+      "type": "icon",
+      "url": "https://projectie.com/favicon/android-icon-192x192.png",
+      "sizes": "192x192"
+    },
+    {
+      "type": "icon",
+      "url": "https://projectie.com/favicon/favicon-32x32.png",
+      "sizes": "32x32"
+    },
+    {
+      "type": "icon",
+      "url": "https://projectie.com/favicon/favicon-96x96.png",
+      "sizes": "96x96"
+    },
+    {
+      "type": "icon",
+      "url": "https://projectie.com/favicon/favicon-16x16.png",
+      "sizes": "16x16"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-57x57.png",
+      "sizes": "57x57"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-60x60.png",
+      "sizes": "60x60"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-72x72.png",
+      "sizes": "72x72"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-76x76.png",
+      "sizes": "76x76"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-114x114.png",
+      "sizes": "114x114"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-120x120.png",
+      "sizes": "120x120"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-144x144.png",
+      "sizes": "144x144"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-152x152.png",
+      "sizes": "152x152"
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://projectie.com/favicon/apple-icon-180x180.png",
+      "sizes": "180x180"
+    }
+  ],
+  "colors": {
+    "semantic": {
+      "primary": "rgb(20, 77, 237)",
+      "secondary": "rgba(0, 0, 0, 0)"
+    },
+    "palette": [
+      {
+        "color": "rgb(255, 255, 255)",
+        "normalized": "#ffffff",
+        "count": 351,
+        "confidence": "high",
+        "sources": [
+          "cybotcookiebotdialognavitemlin",
+          "cybotcookiebotdialogbodybutton",
+          "nav-link"
+        ],
+        "lch": "lch(100% 0 158.2)",
+        "oklch": "oklch(100% 0 89.88)"
+      },
+      {
+        "color": "rgb(33, 37, 41)",
+        "normalized": "#212529",
+        "count": 261,
+        "confidence": "high",
+        "sources": [
+          "design-2025-home-hero",
+          "col-lg-6",
+          "row"
+        ],
+        "lch": "lch(14.44% 3.34 257.54)",
+        "oklch": "oklch(26.21% 0.009 248.19)"
+      },
+      {
+        "color": "rgb(20, 77, 237)",
+        "normalized": "#144ded",
+        "count": 18,
+        "confidence": "high",
+        "sources": [
+          "btn"
+        ],
+        "lch": "lch(40.52% 95.19 298)",
+        "oklch": "oklch(50.46% 0.245 264.01)"
+      },
+      {
+        "color": "rgba(160, 159, 167, 0.45)",
+        "normalized": "#a09fa7",
+        "count": 11,
+        "confidence": "medium",
+        "sources": [],
+        "lch": "lch(65.8% 4.45 295.45)",
+        "oklch": "oklch(70.58% 0.012 291.85)"
+      }
+    ],
+    "cssVariables": {},
+    "_raw": [
+      {
+        "color": "rgb(16, 18, 32)",
+        "normalized": "#101220",
+        "count": 20
+      },
+      {
+        "color": "rgb(33, 37, 41)",
+        "normalized": "#212529",
+        "count": 261
+      },
+      {
+        "color": "rgb(255, 255, 255)",
+        "normalized": "#ffffff",
+        "count": 351
+      },
+      {
+        "color": "rgb(20, 20, 20)",
+        "normalized": "#141414",
+        "count": 176
+      },
+      {
+        "color": "rgb(20, 77, 237)",
+        "normalized": "#144ded",
+        "count": 18
+      },
+      {
+        "color": "rgba(160, 159, 167, 0.45)",
+        "normalized": "#a09fa7",
+        "count": 11
+      }
+    ]
+  },
+  "typography": {
+    "styles": [
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "64px (4.00rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "54px (3.38rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "54px (3.38rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "44px (2.75rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "30px (1.88rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "24px (1.50rem)",
+        "weight": 400,
+        "lineHeight": "1.40",
+        "spacing": "0.3px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "24px (1.50rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "24px (1.50rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": "0.24px",
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "20px (1.25rem)",
+        "weight": 400,
+        "lineHeight": "1.60",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": "1px",
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 600,
+        "lineHeight": "1.70",
+        "spacing": "0.2px",
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 400,
+        "lineHeight": "1.60",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 400,
+        "lineHeight": "1.60",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 700,
+        "lineHeight": "1.70",
+        "spacing": "0.5px",
+        "transform": "uppercase"
+      },
+      {
+        "context": "button",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 700,
+        "lineHeight": "1.70",
+        "spacing": "0.2px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 600,
+        "lineHeight": "1.70",
+        "spacing": "0.2px",
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 700,
+        "lineHeight": "1.70",
+        "spacing": "0.5px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "18px (1.13rem)",
+        "weight": 700,
+        "lineHeight": "1.70",
+        "spacing": "0.2px",
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "system-ui",
+        "fallbacks": "-apple-system, Segoe UI, Roboto, Helvetica Neue, Noto Sans, Liberation Sans, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+        "size": "16px (1.00rem)",
+        "weight": 400,
+        "lineHeight": "1.50",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "system-ui",
+        "fallbacks": "-apple-system, Segoe UI, Roboto, Helvetica Neue, Noto Sans, Liberation Sans, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+        "size": "16px (1.00rem)",
+        "weight": 400,
+        "lineHeight": "1.50",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 400,
+        "lineHeight": "1.60",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 600,
+        "lineHeight": "1.60",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 400,
+        "lineHeight": "1.60",
+        "spacing": "0.1px",
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 700,
+        "lineHeight": "1.50",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 700,
+        "lineHeight": "1.50",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 400,
+        "lineHeight": "1.60",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 700,
+        "lineHeight": "1.60",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 400,
+        "lineHeight": "1.60",
+        "spacing": "0.3px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 600,
+        "lineHeight": "1.60",
+        "spacing": "0.15px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 600,
+        "lineHeight": "1.60",
+        "spacing": "0.1px",
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 600,
+        "lineHeight": "1.60",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 700,
+        "lineHeight": "1.70",
+        "spacing": "0.5px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "15px (0.94rem)",
+        "weight": 700,
+        "lineHeight": "1.70",
+        "spacing": "0.5px",
+        "transform": null
+      },
+      {
+        "context": "caption",
+        "family": "Proxima-nova",
+        "fallbacks": null,
+        "size": "14px (0.88rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "button",
+        "family": "system-ui",
+        "fallbacks": "-apple-system, Segoe UI, Roboto, Helvetica Neue, Noto Sans, Liberation Sans, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+        "size": "14px (0.88rem)",
+        "weight": 400,
+        "lineHeight": "1.50",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "caption",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "12px (0.75rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": "0.25px",
+        "transform": null
+      }
+    ],
+    "sources": {
+      "googleFonts": [],
+      "adobeFonts": true,
+      "variableFonts": false
+    }
+  },
+  "spacing": {
+    "scaleType": "8px",
+    "commonValues": [
+      {
+        "px": "3px",
+        "rem": "0.19rem",
+        "count": 34,
+        "numericValue": 3
+      },
+      {
+        "px": "3.5px",
+        "rem": "0.22rem",
+        "count": 10,
+        "numericValue": 3.5
+      },
+      {
+        "px": "5.625px",
+        "rem": "0.35rem",
+        "count": 8,
+        "numericValue": 5.625
+      },
+      {
+        "px": "6px",
+        "rem": "0.38rem",
+        "count": 12,
+        "numericValue": 6
+      },
+      {
+        "px": "7px",
+        "rem": "0.44rem",
+        "count": 12,
+        "numericValue": 7
+      },
+      {
+        "px": "7.5px",
+        "rem": "0.47rem",
+        "count": 181,
+        "numericValue": 7.5
+      },
+      {
+        "px": "8px",
+        "rem": "0.50rem",
+        "count": 39,
+        "numericValue": 8
+      },
+      {
+        "px": "12px",
+        "rem": "0.75rem",
+        "count": 26,
+        "numericValue": 12
+      },
+      {
+        "px": "15px",
+        "rem": "0.94rem",
+        "count": 71,
+        "numericValue": 15
+      },
+      {
+        "px": "16px",
+        "rem": "1.00rem",
+        "count": 45,
+        "numericValue": 16
+      },
+      {
+        "px": "16.875px",
+        "rem": "1.05rem",
+        "count": 11,
+        "numericValue": 16.875
+      },
+      {
+        "px": "22.5px",
+        "rem": "1.41rem",
+        "count": 125,
+        "numericValue": 22.5
+      },
+      {
+        "px": "24px",
+        "rem": "1.50rem",
+        "count": 17,
+        "numericValue": 24
+      },
+      {
+        "px": "28px",
+        "rem": "1.75rem",
+        "count": 16,
+        "numericValue": 28
+      },
+      {
+        "px": "30px",
+        "rem": "1.88rem",
+        "count": 7,
+        "numericValue": 30
+      },
+      {
+        "px": "32px",
+        "rem": "2.00rem",
+        "count": 10,
+        "numericValue": 32
+      },
+      {
+        "px": "40px",
+        "rem": "2.50rem",
+        "count": 15,
+        "numericValue": 40
+      },
+      {
+        "px": "48px",
+        "rem": "3.00rem",
+        "count": 16,
+        "numericValue": 48
+      },
+      {
+        "px": "56.25px",
+        "rem": "3.52rem",
+        "count": 11,
+        "numericValue": 56.25
+      },
+      {
+        "px": "80px",
+        "rem": "5.00rem",
+        "count": 11,
+        "numericValue": 80
+      }
+    ]
+  },
+  "borderRadius": {
+    "values": [
+      {
+        "value": "3.75px",
+        "count": 4,
+        "elements": [
+          "button"
+        ],
+        "confidence": "medium",
+        "numericValue": 3.75
+      },
+      {
+        "value": "5px 5px 0px 0px",
+        "count": 5,
+        "elements": [
+          "div"
+        ],
+        "confidence": "medium",
+        "numericValue": 5
+      },
+      {
+        "value": "6px",
+        "count": 16,
+        "elements": [
+          "Close",
+          "image",
+          "alert"
+        ],
+        "confidence": "high",
+        "numericValue": 6
+      },
+      {
+        "value": "7.5px",
+        "count": 14,
+        "elements": [
+          "li",
+          "p",
+          "div"
+        ],
+        "confidence": "high",
+        "numericValue": 7.5
+      },
+      {
+        "value": "8px",
+        "count": 10,
+        "elements": [
+          "region",
+          "Video content",
+          "View FCB Amsterdam project details",
+          "View Camping de Wildhoeve project details",
+          "View De Drukkers project details"
+        ],
+        "confidence": "medium",
+        "numericValue": 8
+      },
+      {
+        "value": "10px",
+        "count": 8,
+        "elements": [
+          "card"
+        ],
+        "confidence": "medium",
+        "numericValue": 10
+      },
+      {
+        "value": "12px",
+        "count": 1,
+        "elements": [
+          "div"
+        ],
+        "confidence": "low",
+        "numericValue": 12
+      },
+      {
+        "value": "15px",
+        "count": 35,
+        "elements": [
+          "div"
+        ],
+        "confidence": "high",
+        "numericValue": 15
+      },
+      {
+        "value": "16px",
+        "count": 13,
+        "elements": [
+          "card",
+          "div"
+        ],
+        "confidence": "high",
+        "numericValue": 16
+      },
+      {
+        "value": "32px",
+        "count": 9,
+        "elements": [
+          "span"
+        ],
+        "confidence": "medium",
+        "numericValue": 32
+      },
+      {
+        "value": "60px",
+        "count": 17,
+        "elements": [
+          "span",
+          "div"
+        ],
+        "confidence": "high",
+        "numericValue": 60
+      },
+      {
+        "value": "100px",
+        "count": 11,
+        "elements": [
+          "button",
+          "link"
+        ],
+        "confidence": "high",
+        "numericValue": 100
+      },
+      {
+        "value": "50%",
+        "count": 1,
+        "elements": [
+          "span"
+        ],
+        "confidence": "low",
+        "numericValue": 50
+      }
+    ]
+  },
+  "borders": {
+    "combinations": [
+      {
+        "width": "1px",
+        "style": "solid",
+        "color": "rgb(214, 214, 214)",
+        "count": 49,
+        "elements": [
+          "li",
+          "div",
+          "p"
+        ],
+        "confidence": "high"
+      },
+      {
+        "width": "1px 0px 0px",
+        "style": "solid none none",
+        "color": "rgb(214, 214, 214)",
+        "count": 38,
+        "elements": [
+          "div"
+        ],
+        "confidence": "high"
+      },
+      {
+        "width": "0px 0px 1px",
+        "style": "none none solid",
+        "color": "rgb(20, 20, 20)",
+        "count": 18,
+        "elements": [
+          "div",
+          "tab",
+          "li",
+          "span"
+        ],
+        "confidence": "high"
+      },
+      {
+        "width": "2px",
+        "style": "solid",
+        "color": "rgb(20, 77, 237)",
+        "count": 9,
+        "elements": [
+          "link",
+          "button"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "width": "1px",
+        "style": "solid",
+        "color": "rgba(160, 159, 167, 0.45)",
+        "count": 7,
+        "elements": [
+          "card"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "width": "2px",
+        "style": "solid",
+        "color": "rgb(255, 255, 255)",
+        "count": 6,
+        "elements": [
+          "button",
+          "link"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "width": "1px",
+        "style": "solid",
+        "color": "rgba(0, 0, 0, 0.176)",
+        "count": 5,
+        "elements": [
+          "alert"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "width": "0px 0px 1px",
+        "style": "none none solid",
+        "color": "rgba(33, 37, 41, 0.75)",
+        "count": 5,
+        "elements": [
+          "div"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "width": "2px",
+        "style": "solid",
+        "color": "rgb(16, 50, 207)",
+        "count": 4,
+        "elements": [
+          "button"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "width": "1px",
+        "style": "solid",
+        "color": "rgba(160, 159, 167, 0.35)",
+        "count": 4,
+        "elements": [
+          "div",
+          "card"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "width": "0px 1px 0px 0px",
+        "style": "none solid none none",
+        "color": "rgb(20, 20, 20)",
+        "count": 3,
+        "elements": [
+          "div"
+        ],
+        "confidence": "low"
+      },
+      {
+        "width": "8px 0px 0px",
+        "style": "solid none none",
+        "color": "rgb(20, 77, 237)",
+        "count": 2,
+        "elements": [
+          "div"
+        ],
+        "confidence": "low"
+      },
+      {
+        "width": "2px 2px 0px 0px",
+        "style": "solid",
+        "color": "rgb(20, 20, 20)",
+        "count": 1,
+        "elements": [
+          "div"
+        ],
+        "confidence": "low"
+      },
+      {
+        "width": "1px 0px 0px",
+        "style": "solid none none",
+        "color": "rgba(255, 255, 255, 0.14)",
+        "count": 1,
+        "elements": [
+          "div"
+        ],
+        "confidence": "low"
+      },
+      {
+        "width": "1px 0px 0px",
+        "style": "solid none none",
+        "color": "rgba(255, 255, 255, 0.1)",
+        "count": 1,
+        "elements": [
+          "div"
+        ],
+        "confidence": "low"
+      }
+    ]
+  },
+  "shadows": [
+    {
+      "shadow": "rgba(0, 0, 0, 0.15) 0px 8px 16px 0px",
+      "count": 5,
+      "confidence": "medium"
+    },
+    {
+      "shadow": "rgba(0, 0, 0, 0.1) 0px 4px 30px 0px",
+      "count": 2,
+      "confidence": "low"
+    },
+    {
+      "shadow": "rgba(16, 18, 32, 0.1) 0px 8px 24px 0px",
+      "count": 2,
+      "confidence": "low"
+    },
+    {
+      "shadow": "rgba(0, 0, 0, 0.3) 0px 32px 68px 0px",
+      "count": 1,
+      "confidence": "low"
+    },
+    {
+      "shadow": "rgba(16, 185, 129, 0.463) 0px 0px 0px 1.35399px, rgba(16, 185, 129, 0.263) 0px 0px 0px 2.70797px",
+      "count": 1,
+      "confidence": "low"
+    },
+    {
+      "shadow": "rgba(0, 0, 0, 0.5) 0px -4px 20px 0px",
+      "count": 1,
+      "confidence": "low"
+    }
+  ],
+  "components": {
+    "buttons": [
+      {
+        "states": {
+          "default": {
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "rgb(20, 20, 20)",
+            "padding": "15px",
+            "borderRadius": "3.75px",
+            "border": "2px solid rgb(16, 50, 207)",
+            "boxShadow": "none",
+            "outline": "rgb(20, 20, 20) none 0px",
+            "transform": "none",
+            "opacity": "1"
+          },
+          "hover": {
+            "backgroundColor": "var(--bs-secondary-bg)"
+          },
+          "active": null,
+          "focus": {
+            "outline": "0px",
+            "boxShadow": "none"
+          }
+        },
+        "fontWeight": "600",
+        "fontSize": "15px",
+        "classes": "CybotCookiebotDialogBodyButton",
+        "confidence": "high"
+      },
+      {
+        "states": {
+          "default": {
+            "backgroundColor": "rgb(16, 50, 207)",
+            "color": "rgb(255, 255, 255)",
+            "padding": "15px",
+            "borderRadius": "3.75px",
+            "border": "2px solid rgb(16, 50, 207)",
+            "boxShadow": "none",
+            "outline": "rgb(255, 255, 255) none 0px",
+            "transform": "none",
+            "opacity": "1"
+          },
+          "hover": {
+            "backgroundColor": "var(--bs-secondary-bg)"
+          },
+          "active": null,
+          "focus": {
+            "outline": "0px",
+            "boxShadow": "none"
+          }
+        },
+        "fontWeight": "600",
+        "fontSize": "15px",
+        "classes": "CybotCookiebotDialogBodyButton",
+        "confidence": "high"
+      },
+      {
+        "states": {
+          "default": {
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "rgb(255, 255, 255)",
+            "padding": "7px 26px 7px 30px",
+            "borderRadius": "100px",
+            "border": "2px solid rgb(255, 255, 255)",
+            "boxShadow": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "transform": "none",
+            "opacity": "1"
+          },
+          "hover": {
+            "color": "rgb(255, 255, 255)",
+            "backgroundColor": "rgb(65, 83, 142)",
+            "opacity": "0.8",
+            "outline": "0px",
+            "boxShadow": "none",
+            "transform": "translateY(-1px)"
+          },
+          "active": {
+            "backgroundColor": "rgb(65, 83, 142)",
+            "color": "rgb(255, 255, 255)",
+            "boxShadow": "none",
+            "transform": "translateY(0px)"
+          },
+          "focus": {
+            "outline": "0px",
+            "boxShadow": "none",
+            "transform": "translateY(-1px)",
+            "backgroundColor": "rgb(65, 83, 142)",
+            "color": "rgb(255, 255, 255)",
+            "opacity": "0.8",
+            "border": "1px solid rgb(20, 77, 237)"
+          }
+        },
+        "fontWeight": "600",
+        "fontSize": "18px",
+        "classes": "btn btn-four btn-icon-right d-flex align-items-cen",
+        "confidence": "medium"
+      },
+      {
+        "states": {
+          "default": {
+            "backgroundColor": "rgb(20, 77, 237)",
+            "color": "rgb(255, 255, 255)",
+            "padding": "8px 30px",
+            "borderRadius": "100px",
+            "border": "2px solid rgb(20, 77, 237)",
+            "boxShadow": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "transform": "none",
+            "opacity": "1"
+          },
+          "hover": {
+            "color": "rgb(255, 255, 255)",
+            "backgroundColor": "rgb(65, 83, 142)",
+            "opacity": "0.8",
+            "outline": "0px",
+            "boxShadow": "none",
+            "transform": "translateY(-1px)"
+          },
+          "active": {
+            "backgroundColor": "rgb(65, 83, 142)",
+            "color": "rgb(255, 255, 255)",
+            "boxShadow": "none",
+            "transform": "translateY(0px)"
+          },
+          "focus": {
+            "outline": "0px",
+            "boxShadow": "none",
+            "transform": "translateY(-1px)",
+            "backgroundColor": "rgb(65, 83, 142)",
+            "color": "rgb(255, 255, 255)",
+            "opacity": "0.8",
+            "border": "1px solid rgb(20, 77, 237)"
+          }
+        },
+        "fontWeight": "700",
+        "fontSize": "18px",
+        "classes": "btn btn-one btn-lg premium-cta-primary",
+        "confidence": "medium"
+      }
+    ],
+    "inputs": {
+      "text": [],
+      "checkbox": [
+        {
+          "specificType": "checkbox",
+          "states": {
+            "default": {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "color": "rgb(20, 20, 20)",
+              "border": "0px none rgb(20, 20, 20)",
+              "borderRadius": "0px",
+              "padding": "0px",
+              "boxShadow": "none",
+              "outline": "rgb(20, 20, 20) none 0px"
+            },
+            "focus": {
+              "borderColor": "transparent",
+              "boxShadow": "rgb(20, 77, 237) 0px 0px 0px 1px",
+              "outline": "0px",
+              "color": "rgb(36, 39, 69)",
+              "border": "1px solid rgb(20, 77, 237)"
+            }
+          }
+        }
+      ],
+      "radio": [],
+      "select": []
+    },
+    "links": [
+      {
+        "color": "rgb(20, 20, 20)",
+        "textDecoration": "none",
+        "fontWeight": "400",
+        "states": {
+          "default": {
+            "color": "rgb(20, 20, 20)",
+            "textDecoration": "none"
+          },
+          "hover": {
+            "color": "rgb(213, 224, 241)"
+          }
+        }
+      },
+      {
+        "color": "rgb(16, 50, 207)",
+        "textDecoration": "none",
+        "fontWeight": "600",
+        "states": {
+          "default": {
+            "color": "rgb(16, 50, 207)",
+            "textDecoration": "none"
+          },
+          "hover": {
+            "color": "rgb(213, 224, 241)"
+          }
+        }
+      },
+      {
+        "color": "rgb(0, 0, 0)",
+        "textDecoration": "none",
+        "fontWeight": "400",
+        "states": {
+          "default": {
+            "color": "rgb(0, 0, 0)",
+            "textDecoration": "none"
+          },
+          "hover": {
+            "color": "rgb(213, 224, 241)"
+          }
+        }
+      },
+      {
+        "color": "rgb(255, 255, 255)",
+        "textDecoration": "none",
+        "fontWeight": "700",
+        "states": {
+          "default": {
+            "color": "rgb(255, 255, 255)",
+            "textDecoration": "underline"
+          },
+          "hover": {
+            "color": "rgb(20, 77, 237)"
+          }
+        }
+      }
+    ],
+    "badges": {
+      "all": [],
+      "byVariant": {
+        "error": [],
+        "warning": [],
+        "success": [],
+        "info": [],
+        "neutral": []
+      }
+    }
+  },
+  "breakpoints": [
+    {
+      "px": "98px"
+    },
+    {
+      "px": "576px"
+    },
+    {
+      "px": "768px"
+    },
+    {
+      "px": "992px"
+    },
+    {
+      "px": "993px"
+    },
+    {
+      "px": "1200px"
+    },
+    {
+      "px": "1400px"
+    },
+    {
+      "px": "1560px"
+    }
+  ],
+  "iconSystem": [],
+  "frameworks": [
+    {
+      "name": "Bootstrap",
+      "confidence": "high",
+      "evidence": "grid system (container + row + col), button variants"
+    },
+    {
+      "name": "PrimeReact/Vue/NG",
+      "confidence": "high",
+      "evidence": "43 Prime components"
+    },
+    {
+      "name": "Fluent UI",
+      "confidence": "high",
+      "evidence": "43 Fluent components"
+    }
+  ]
+}

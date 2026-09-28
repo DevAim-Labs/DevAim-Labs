@@ -40,7 +40,7 @@
                     DevAim Labs<br>
                     Weena 690, 3012 CN Rotterdam<br>
                     <a href="https://devaimlabs.com" class="hover:underline" style="color: var(--color-accent);">devaimlabs.com</a><br>
-                    <a href="tel:+31638523099" class="hover:underline" style="color: var(--color-accent);">+31 6385230999</a>
+                    <a href="tel:+31638523099" class="hover:underline" style="color: var(--color-accent);">+31 638523099</a>
                 </p>
                 <p class="mt-3">
                     DevAim Labs is de functionaris gegevensbescherming van DevAim Labs en is te bereiken via

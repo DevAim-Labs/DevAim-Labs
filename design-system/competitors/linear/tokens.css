@@ -1,0 +1,26 @@
+:root {
+  --color-primary: rgb(247, 248, 248);
+  --color-secondary: rgba(255, 255, 255, 0.05);
+  --font-heading: Inter Variable;
+  --font-body: Inter Variable;
+  --space-1: 1px;
+  --space-2: 3px;
+  --space-3: 4px;
+  --space-4: 5px;
+  --space-5: 6px;
+  --space-6: 7px;
+  --space-7: 8px;
+  --space-8: 10px;
+  --space-9: 11px;
+  --space-10: 12px;
+  --space-11: 14px;
+  --space-12: 16px;
+  --space-13: 19px;
+  --space-14: 24px;
+  --space-15: 28px;
+  --space-16: 30px;
+  --space-17: 35px;
+  --space-18: 48px;
+  --space-19: 80px;
+  --space-20: 128px;
+}

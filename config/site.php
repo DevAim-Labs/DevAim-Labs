@@ -113,7 +113,7 @@ return [
     'organization' => [
         'name' => 'DevAim Labs',
         'email' => 'contact@devaimlabs.com',
-        'phone' => '+316385230999',
+        'phone' => '+31638523099',
         'logo' => '/DevAim_IMG.png',
     ],
 ];
