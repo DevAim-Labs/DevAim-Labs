@@ -147,7 +147,7 @@ class HomeController extends Controller
             $ogLocale = 'en_US';
         }
 
-        return view('home', [
+        $viewData = [
             'initialSection' => $sectionId === 'home' ? null : $sectionId,
             'analyticsSections' => $sections,
             'pageTitle' => $active['title'],
@@ -156,10 +156,20 @@ class HomeController extends Controller
             'ogDescription' => $ogDescription,
             'ogLocale' => $ogLocale,
             'canonicalUrl' => ($active['indexable'] ?? false) ? url($canonicalPath) : url($homePath),
+            'isIndexable' => $active['indexable'] ?? false,
             'breadcrumbs' => $breadcrumbs,
             'locale' => $locale,
             'translations' => $translations,
             'alternateUrls' => $alternateUrls,
-        ]);
+        ];
+
+        // New dark "Blueprint Cyan" landing page — Dutch homepage only for
+        // now. Every other route (deep-linked sections, /en, /diensten/*,
+        // …) keeps rendering the existing 'home' view untouched.
+        if ($locale === 'nl' && $sectionId === 'home') {
+            return view('landing', $viewData);
+        }
+
+        return view('home', $viewData);
     }
 }

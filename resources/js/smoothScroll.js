@@ -64,6 +64,28 @@ export function scrollTo(target, options = {}) {
 }
 
 /**
+ * Bind smooth Lenis scrolling to every in-page anchor link (`href="#..."`)
+ * currently in the DOM. Safe to call more than once as content mounts
+ * asynchronously (e.g. a Vue island rendering its own nav after this first
+ * ran) — it only attaches to anchors it finds at call time, so re-running it
+ * after new anchors appear does not double-bind the ones seen before.
+ */
+export function setupAnchorScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href')
+            if (!href || href === '#') return
+
+            const target = document.querySelector(href)
+            if (target) {
+                e.preventDefault()
+                scrollTo(target, { offset: -80 })
+            }
+        })
+    })
+}
+
+/**
  * Get the Lenis instance for direct control.
  * @returns {Lenis|null}
  */
