@@ -1,18 +1,25 @@
-const NAV_SECTION_IDS = ['services', 'process', 'client-work', 'contact', 'faq']
+// In-page sections tracked while scrolling the homepage
+const NAV_SECTION_IDS = ['services', 'process', 'pricing', 'faq']
 
-let activeSectionId = null
+// Only show indicator on these separate pages (not homepage sections)
+const SEPARATE_PAGES = {
+    '/contact': 'contact',
+    '/en/contact': 'contact',
+}
+
 let indicatorEl = null
+let currentSection = null
+let isInitialLoad = true
 let scrollTicking = false
 
 export function updateNavPillActive(sectionId) {
     const pills = document.querySelectorAll('.nav-pill[data-section]')
     if (!pills.length) return
 
-    const isNavSection = sectionId && NAV_SECTION_IDS.includes(sectionId)
-    activeSectionId = isNavSection ? sectionId : null
+    currentSection = sectionId
 
     pills.forEach((pill) => {
-        pill.classList.toggle('active', pill.dataset.section === activeSectionId)
+        pill.classList.toggle('active', pill.dataset.section === currentSection)
     })
 
     moveIndicator()
@@ -22,8 +29,8 @@ function moveIndicator() {
     indicatorEl ??= document.querySelector('[data-nav-pill-indicator]')
     if (!indicatorEl) return
 
-    const activePill = activeSectionId
-        ? document.querySelector(`.nav-pill[data-section="${activeSectionId}"]`)
+    const activePill = currentSection
+        ? document.querySelector(`.nav-pill[data-section="${currentSection}"]`)
         : null
 
     if (!activePill) {
@@ -37,13 +44,40 @@ function moveIndicator() {
     const trackRect = track.getBoundingClientRect()
     const pillRect = activePill.getBoundingClientRect()
 
+    // On initial load with a separate page, add a nice entrance animation
+    if (isInitialLoad && currentSection) {
+        isInitialLoad = false
+        // Start from slightly scaled down and transparent
+        indicatorEl.style.transition = 'none'
+        indicatorEl.style.opacity = '0'
+        indicatorEl.style.transform = `translate(${pillRect.left - trackRect.left}px, ${pillRect.top - trackRect.top}px) scale(0.9)`
+        indicatorEl.style.width = `${pillRect.width}px`
+        indicatorEl.style.height = `${pillRect.height}px`
+
+        // Force reflow then animate in
+        indicatorEl.offsetHeight
+        indicatorEl.style.transition = ''
+        requestAnimationFrame(() => {
+            indicatorEl.style.opacity = '1'
+            indicatorEl.style.transform = `translate(${pillRect.left - trackRect.left}px, ${pillRect.top - trackRect.top}px) scale(1)`
+        })
+        return
+    }
+
+    isInitialLoad = false
     indicatorEl.style.opacity = '1'
     indicatorEl.style.width = `${pillRect.width}px`
     indicatorEl.style.height = `${pillRect.height}px`
     indicatorEl.style.transform = `translate(${pillRect.left - trackRect.left}px, ${pillRect.top - trackRect.top}px)`
 }
 
-function detectActiveNavSection() {
+function detectSectionFromPath() {
+    const path = window.location.pathname
+    // Only return a section if we're on an actual separate page
+    return SEPARATE_PAGES[path] || null
+}
+
+function detectActiveScrollSection() {
     let bestId = null
     let bestScore = -Infinity
     const line = window.innerHeight * 0.32
@@ -67,13 +101,11 @@ function detectActiveNavSection() {
     return bestId
 }
 
-function evaluateNavSection() {
-    const id = detectActiveNavSection()
+function evaluateScrollSection() {
+    const id = detectActiveScrollSection()
 
-    if (id && id !== activeSectionId) {
+    if (id !== currentSection) {
         updateNavPillActive(id)
-    } else if (!id && activeSectionId) {
-        updateNavPillActive(null)
     } else if (id) {
         moveIndicator()
     }
@@ -84,16 +116,35 @@ function onScrollOrResize() {
     scrollTicking = true
     requestAnimationFrame(() => {
         scrollTicking = false
-        evaluateNavSection()
+        evaluateScrollSection()
     })
 }
 
 export function initNavPillScrollSpy() {
+    // Separate pages (e.g. /contact) have no in-page sections to spy on;
+    // just highlight the matching pill statically from the URL.
+    const pathSection = detectSectionFromPath()
+    if (pathSection) {
+        requestAnimationFrame(() => {
+            updateNavPillActive(pathSection)
+        })
+        window.addEventListener('resize', () => {
+            requestAnimationFrame(moveIndicator)
+        }, { passive: true })
+        return
+    }
+
+    // Homepage: track which in-page section is active while scrolling.
     window.addEventListener('scroll', onScrollOrResize, { passive: true })
     window.addEventListener('resize', onScrollOrResize, { passive: true })
-    requestAnimationFrame(evaluateNavSection)
+    requestAnimationFrame(evaluateScrollSection)
 }
 
 export function refreshNavPillScrollSpy() {
-    requestAnimationFrame(evaluateNavSection)
+    const pathSection = detectSectionFromPath()
+    if (pathSection) {
+        updateNavPillActive(pathSection)
+        return
+    }
+    requestAnimationFrame(evaluateScrollSection)
 }

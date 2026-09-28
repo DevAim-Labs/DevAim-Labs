@@ -1,0 +1,155 @@
+{
+  "url": "https://devaimlabs.com",
+  "score": 63,
+  "timestamp": "2026-09-09T03:51:44.186979",
+  "findings": {
+    "crawlability": [
+      {
+        "severity": "Low",
+        "issue": "Sitemap declared in robots.txt",
+        "status": "PASS",
+        "details": "Found 1 sitemap(s)"
+      },
+      {
+        "severity": "Critical",
+        "issue": "robots.txt blocks all crawlers",
+        "status": "FAIL",
+        "recommendation": "Remove or modify restrictive Disallow rules"
+      },
+      {
+        "severity": "Low",
+        "issue": "Internal linking present",
+        "status": "PASS",
+        "details": "24 internal links"
+      }
+    ],
+    "indexability": [
+      {
+        "severity": "Low",
+        "issue": "Sitemap found at /sitemap.xml",
+        "status": "PASS",
+        "details": "Size: 546 bytes"
+      },
+      {
+        "severity": "Low",
+        "issue": "Sitemap structure",
+        "status": "PASS",
+        "details": "Contains 3 URL entries"
+      },
+      {
+        "severity": "Low",
+        "issue": "Canonical tag present",
+        "status": "PASS",
+        "details": "Points to: https://devaimlabs.com"
+      },
+      {
+        "severity": "Low",
+        "issue": "Title tag is short",
+        "status": "WARNING",
+        "details": "11 characters",
+        "recommendation": "Consider expanding title for better context"
+      }
+    ],
+    "security": [
+      {
+        "severity": "Low",
+        "issue": "HTTPS enabled",
+        "status": "PASS"
+      },
+      {
+        "severity": "Medium",
+        "issue": "Missing HSTS header",
+        "status": "FAIL",
+        "recommendation": "Add Strict-Transport-Security header"
+      },
+      {
+        "severity": "Medium",
+        "issue": "Missing Content-Security-Policy",
+        "status": "FAIL",
+        "recommendation": "Implement CSP header for XSS protection"
+      },
+      {
+        "severity": "Medium",
+        "issue": "Missing X-Frame-Options",
+        "status": "FAIL",
+        "recommendation": "Add X-Frame-Options: SAMEORIGIN or DENY"
+      },
+      {
+        "severity": "Low",
+        "issue": "Missing X-Content-Type-Options",
+        "status": "FAIL",
+        "recommendation": "Add X-Content-Type-Options: nosniff"
+      }
+    ],
+    "url_structure": [
+      {
+        "severity": "Low",
+        "issue": "Clean URL structure",
+        "status": "PASS"
+      }
+    ],
+    "mobile": [
+      {
+        "severity": "Low",
+        "issue": "Viewport meta tag configured",
+        "status": "PASS",
+        "details": "width=device-width, initial-scale=1"
+      }
+    ],
+    "core_web_vitals": [
+      {
+        "severity": "Low",
+        "issue": "Excessive inline styles",
+        "status": "WARNING",
+        "details": "36 elements",
+        "recommendation": "Consider moving to external CSS"
+      }
+    ],
+    "structured_data": [
+      {
+        "severity": "Low",
+        "issue": "JSON-LD structured data present",
+        "status": "PASS",
+        "details": "2 schema blocks found"
+      },
+      {
+        "severity": "Low",
+        "issue": "Schema type: Unknown",
+        "status": "PASS"
+      },
+      {
+        "severity": "Low",
+        "issue": "Schema type: FAQPage",
+        "status": "PASS"
+      }
+    ],
+    "javascript_rendering": [
+      {
+        "severity": "Medium",
+        "issue": "SPA framework detected: react",
+        "status": "WARNING",
+        "recommendation": "Ensure proper SSR/SSG or dynamic rendering for crawlers"
+      },
+      {
+        "severity": "Medium",
+        "issue": "Render-blocking JavaScript detected",
+        "status": "FAIL",
+        "details": "1 blocking scripts",
+        "recommendation": "Add async or defer attributes to script tags"
+      }
+    ],
+    "indexnow": [
+      {
+        "severity": "Low",
+        "issue": "IndexNow not detected",
+        "status": "INFO",
+        "recommendation": "Consider implementing IndexNow for faster indexing (Bing, Yandex, Naver)"
+      }
+    ]
+  },
+  "summary": {
+    "critical": 1,
+    "high": 0,
+    "medium": 4
+  }
+}

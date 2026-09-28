@@ -119,12 +119,14 @@ function handleInPageNavClick(event) {
 
     let section = null
     let target = null
+    let isAnchorLink = false
 
     if (href.startsWith('#')) {
         if (href === '#') return
         target = document.querySelector(href)
         if (!target?.id) return
         section = sectionsById.get(target.id)
+        isAnchorLink = true
     } else if (href.startsWith('/') && !href.startsWith('//')) {
         const url = new URL(href, window.location.origin)
         if (url.origin !== window.location.origin) return
@@ -140,12 +142,14 @@ function handleInPageNavClick(event) {
 
     const runAfterNav = () => finishSectionNav(section, link)
 
-    if (section.id === 'home' && window.location.pathname === '/') {
-        scrollToSection('home', 'smooth')
+    // For anchor links (#services, etc.) or home section: just smooth scroll, no cube animation
+    if (isAnchorLink || (section.id === 'home' && window.location.pathname === '/')) {
+        scrollToSection(section.id, 'smooth')
         runAfterNav()
         return
     }
 
+    // For page navigation (different paths): play transition animation
     playNavTransition(target, runAfterNav)
 }
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Voorbeelden — DevAim Labs</title>
+<style>
+  :root {
+    --color-surface:     #0A0C10;
+    --color-surface-1:   #10131A;
+    --color-surface-2:   #171B24;
+    --color-border:      #232833;
+    --color-text:        #F1F4F8;
+    --color-text-muted:  #8D96A6;
+    --color-text-dim:    #5C6472;
+    --color-accent:      #17C7BC;
+    --color-accent-glow: rgba(23, 199, 188, 0.18);
+    --color-on-accent:   #08201E;
+  }
+  html[data-theme="light"] {
+    --color-surface:     #F7F8FA;
+    --color-surface-1:   #FFFFFF;
+    --color-surface-2:   #EEF1F5;
+    --color-border:      #DDE2E9;
+    --color-text:        #10141C;
+    --color-text-muted:  #57616F;
+    --color-text-dim:    #6C7684;
+    --color-accent:      #0E8F86;
+    --color-accent-glow: rgba(14, 143, 134, 0.12);
+    --color-on-accent:   #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--color-surface); color: var(--color-text);
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  header { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid var(--color-border); }
+  .logo { font-weight: 700; font-size: 17px; letter-spacing: -.01em; }
+  .logo span { color: var(--color-accent); }
+  .back { font-size: 13px; color: var(--color-text-muted); font-weight: 500; }
+  .back:hover { color: var(--color-text); }
+
+  .hero { padding: 56px 0 40px; }
+  .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--color-accent); font-weight: 600; margin-bottom: 14px; }
+  h1 { font-size: clamp(26px, 4vw, 36px); font-weight: 700; letter-spacing: -.01em; margin: 0 0 14px; max-width: 18ch; }
+  .hero p { font-size: 15.5px; color: var(--color-text-muted); max-width: 56ch; margin: 0; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding-bottom: 70px; }
+  @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--color-surface-1); border: 1px solid var(--color-border); border-radius: 14px;
+    padding: 24px; display: flex; flex-direction: column; gap: 10px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .card:hover { border-color: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent), 0 0 24px var(--color-accent-glow); }
+  .card .ic { font-size: 22px; }
+  .card h2 { font-size: 16.5px; font-weight: 700; margin: 0; }
+  .card p { font-size: 13.5px; color: var(--color-text-muted); margin: 0; flex: 1; }
+  .card .tag { font-size: 11px; color: var(--color-text-dim); }
+  .card .go { font-size: 13px; font-weight: 600; color: var(--color-accent); margin-top: 4px; }
+
+  footer { border-top: 1px solid var(--color-border); padding: 26px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12.5px; color: var(--color-text-dim); }
+  footer a { color: var(--color-accent); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">DevAim<span>.</span></a>
+  <a class="back" href="/">← Terug naar devaimlabs.com</a>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <p class="eyebrow">Voorbeelden</p>
+    <h1>Zie hoe het eruitziet, voordat we het voor jou bouwen.</h1>
+    <p>Vier voorbeeldproducten met fictieve bedrijven en nepdata, zodat je een concreet beeld hebt van wat een KPI-dashboard, betaalsysteem, adminpaneel of website kan worden.</p>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="/demo/kpi-dashboard.html">
+      <span class="ic">📊</span>
+      <h2>KPI-dashboard</h2>
+      <p>Omzet, bestellingen en kanalen in één live overzicht, met filters en grafieken.</p>
+      <span class="tag">Havenwerf, fictief logistiekbedrijf</span>
+      <span class="go">Bekijk voorbeeld →</span>
+    </a>
+    <a class="card" href="/demo/betaalsysteem.html">
+      <span class="ic">💳</span>
+      <h2>Betaalsysteem</h2>
+      <p>Abonnement kiezen, betaalgegevens invullen en facturen terugvinden.</p>
+      <span class="tag">Lumen Studio, fictief abonnement</span>
+      <span class="go">Bekijk voorbeeld →</span>
+    </a>
+    <a class="card" href="/demo/adminpaneel.html">
+      <span class="ic">🗂️</span>
+      <h2>Adminpaneel</h2>
+      <p>Reserveringen beheren, goedkeuren of afwijzen, met een detailpaneel per klant.</p>
+      <span class="tag">Kroonveld, fictieve horecazaak</span>
+      <span class="go">Bekijk voorbeeld →</span>
+    </a>
+    <a class="card" href="/demo/website.html">
+      <span class="ic">🏛️</span>
+      <h2>Bedrijfswebsite</h2>
+      <p>Een gewone marketingsite met projecten, werkwijze en een contactsectie.</p>
+      <span class="tag">Studio Wolfshoek, fictief architectenbureau</span>
+      <span class="go">Bekijk voorbeeld →</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span>Alle voorbeelden zijn fictief, geen echte klanten of data.</span>
+  <a href="/contact">Bespreek jouw project →</a>
+</footer>
+
+<script>
+  (function () {
+    var t = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+</body>
+</html>

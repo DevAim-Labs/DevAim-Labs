@@ -2,12 +2,12 @@
 
 return [
     [
-        'q' => 'Welke maatwerksoftware bouwen jullie?',
-        'a' => 'Adminpanelen, KPI-dashboards, websites, REST API\'s, koppelingen met CRM en boekhouding, en betaalstromen. Meestal met Laravel, Vue, en aanbieders zoals Stripe of Mollie.',
+        'q' => 'Welke software bouwt u?',
+        'a' => 'Adminpanelen, KPI-dashboards, websites, portfolio\'s, REST API\'s, koppelingen met CRM en boekhouding, en betaalstromen. Meestal met Laravel, Vue, en aanbieders zoals Stripe of Mollie.',
     ],
     [
-        'q' => 'Kunnen jullie koppelen met onze bestaande systemen?',
-        'a' => 'Ja. Integraties horen bij de kern van het werk. Webhooks, API\'s en synchronisatiejobs zodat je niet voor altijd vastzit aan één leverancier.',
+        'q' => 'Kunt u koppelen met onze bestaande systemen?',
+        'a' => 'Ja. Integraties horen bij de kern van het werk. Webhooks, API\'s en synchronisatiejobs zodat u niet voor altijd vastzit aan één leverancier.',
     ],
     [
         'q' => 'Hoe lang duurt een gemiddeld project?',
@@ -15,14 +15,22 @@ return [
     ],
     [
         'q' => 'Wie is eigenaar van de code?',
-        'a' => 'Jij. Je ontvangt de broncode en documentatie die nodig is om het product te draaien en uit te breiden.',
+        'a' => 'U bent eigenaar. Na oplevering ontvangt u de volledige broncode en alle documentatie die nodig is om het product zelf te draaien en uit te breiden. De code is van u, zonder beperkingen.',
     ],
     [
-        'q' => 'Regelen jullie betalingen en abonnementen?',
-        'a' => 'Ja. Checkout, abonnementen, facturatie en webhooks met Stripe en Mollie, inclusief foutafhandeling.',
+        'q' => 'Hoe werkt doorlopende ondersteuning en updates?',
+        'a' => 'Na oplevering kunt u kiezen voor een maandelijks supportpakket. Hiermee krijgt u snelle reactietijden voor kleine aanpassingen, bugfixes en updates. Voor grotere nieuwe features maak ik een aparte offerte.',
     ],
     [
-        'q' => 'Bieden jullie onderhoud na oplevering?',
-        'a' => 'Ja. Klanten houden ons aan voor fixes, nieuwe features en updates aan integraties.',
+        'q' => 'Wat kost doorlopende support?',
+        'a' => 'Het maandelijkse supportpakket is afhankelijk van de omvang van uw project. Kleine fixes en updates vallen binnen het pakket. Grotere features worden apart geprijsd na overleg.',
+    ],
+    [
+        'q' => 'Regelt u betalingen en abonnementen?',
+        'a' => 'Ja. Checkout, abonnementen, facturatie en webhooks met Stripe en Mollie, inclusief foutafhandeling en retries.',
+    ],
+    [
+        'q' => 'Kan ik een gesprek inplannen?',
+        'a' => 'Ja, u kunt direct een videogesprek inplannen via mijn agenda. Het eerste kennismakingsgesprek is vrijblijvend en gratis.',
     ],
 ];

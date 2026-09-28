@@ -1,52 +1,46 @@
+@php
+    $locale = $locale ?? 'nl';
+    $isEn = $locale === 'en';
+    $contactPath = $isEn ? '/en/contact' : '/contact';
+@endphp
+
 <section id="about" data-gsap="section-about" class="reveal-hidden">
     <div class="section-card">
-    <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-            <p class="section-eyebrow mb-4">Over ons</p>
+    <div class="max-w-4xl mx-auto px-6 py-20">
+        <div class="text-center">
+            <p class="section-eyebrow mb-4">{{ $isEn ? 'About me' : 'Over mij' }}</p>
             <h2 class="text-3xl md:text-4xl section-title mb-6">
-                Software die past.<br>
+                {{ $isEn ? 'Short lines, from conversation to launch.' : 'Korte lijnen, van gesprek tot livegang.' }}
             </h2>
-            <p class="text-[var(--color-text-muted)] leading-relaxed mb-4">
-                Wij bouwen maatwerksoftware voor bedrijven met duidelijke doelen. <br> Van interne tools en KPI-dashboards tot landingspagina's en betaalstromen.
+            <p class="text-[var(--color-text-muted)] leading-relaxed mb-4 max-w-2xl mx-auto">
+                {{ $isEn
+                    ? "I'm the developer who builds your admin panel, dashboard or integration. No account manager, no changing contacts. What you discuss with me is exactly what gets built."
+                    : 'Ik ben de developer die uw adminpaneel, dashboard of integratie bouwt. Geen accountmanager, geen wisselende contactpersonen. Wat u met mij bespreekt, is ook precies wat er gebouwd wordt.'
+                }}
             </p>
-            <p class="text-[var(--color-text-muted)] leading-relaxed mb-8">
-                Je werkt direct met de developer die jouw product bouwt. Heldere communicatie, met software die aansluit op hoe jij werkt.
+            <p class="text-[var(--color-text-muted)] leading-relaxed mb-8 max-w-2xl mx-auto">
+                {{ $isEn
+                    ? 'That means shorter lines, faster adjustments when things change, and a fixed scope and planning before I start. No surprises halfway through.'
+                    : 'Dat betekent kortere lijnen, sneller schakelen als iets verandert, en een vaste scope en planning voordat ik begin. Geen verrassingen halverwege.'
+                }}
             </p>
             <a
-                href="/contact"
-                class="btn-primary hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
+                href="{{ $contactPath }}"
+                class="btn-hover btn-hover-primary"
                 data-track="cta_click"
-                data-track-label="Meer informatie"
+                data-track-label="{{ $isEn ? 'Talk to me' : 'Praat met mij' }}"
                 data-track-location="about"
             >
-                Meer informatie →
+                <span class="btn-hover__dot" aria-hidden="true"></span>
+                <span class="btn-hover__label">{{ $isEn ? 'Talk to me' : 'Praat met mij' }}</span>
+                <span class="btn-hover__reveal" aria-hidden="true">
+                    <span>{{ $isEn ? 'Talk to me' : 'Praat met mij' }}</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </span>
             </a>
         </div>
-
-        <div>
-            <p class="flex mb-7 text-xl font-bold justify-center items-center flex-wrap">Onze specialisaties</p>
-            <div class="grid grid-cols-3 gap-3">
-                @foreach(['Laravel', 'C#', 'React', 'Python', 'Java & TypeScript', 'Inertia', 'REST API\'s', 'Stripe & Mollie', 'Tailwind CSS'] as $tech)
-                <div class="card-glow flex items-center justify-center px-3 py-2.5 rounded-md border border-[var(--color-border)] text-xs text-[var(--color-text-muted)] hover:border-[var(--color-accent)]/30 hover:text-[var(--color-text)] transition-all duration-200 text-center">
-                    {{ $tech }}
-                </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="inline-flex md:hidden justify-center">
-            <a
-                href="/contact"
-                class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold"
-                data-track="cta_click"
-                data-track-label="Meer informatie"
-                data-track-location="about"
-            >
-                Meer informatie →
-            </a>
-        </div>
-
-
     </div>
     </div>
 </section>

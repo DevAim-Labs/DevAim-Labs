@@ -26,6 +26,7 @@ class ContactFormSubmission extends Mailable
     {
         return new Content(
             view: 'emails.contact',
+            text: 'emails.contact-text',
         );
     }
 }

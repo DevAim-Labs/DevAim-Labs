@@ -4,14 +4,13 @@
         <div class="max-w-6xl mx-auto px-6 py-24">
         <div class="mb-16">
             <p class="section-eyebrow mb-3">Eigen projecten</p>
-            <h2 class="text-4xl section-title">Gebouwd voor de leuk</h2>
         </div>
 
         <div v-if="personal.length" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <article
                 v-for="project in personal"
                 :key="project.id"
-                class="card-glow group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-1)] overflow-hidden hover:border-[var(--color-accent)]/30 transition-all duration-300"
+                class="card-glow group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-1)] overflow-hidden hover:border-[var(--color-text-dim)] transition-all duration-300"
             >
                 <div class="aspect-video bg-[var(--color-surface-2)] flex items-center justify-center relative overflow-hidden">
                     <div class="absolute inset-0 bg-grid opacity-40"></div>
