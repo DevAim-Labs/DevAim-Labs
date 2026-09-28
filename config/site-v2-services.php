@@ -10,7 +10,7 @@
  * - The demos are fictional businesses with example data. Every place that
  *   shows one says so ("Voorbeelddata · fictief bedrijf"), outside and
  *   inside the frame.
- * - `cases` names real projects from config('site-v2.{locale}.work.cases').
+ * - Real client cases come from resources/data/clients.json (`services` per client).
  *   Only list a case where it is relevant, and the page only repeats what
  *   was built there. No invented results, quotes or numbers.
  * - Prices come from config('site-v2.{locale}.pricing.packages'), picked by
@@ -44,7 +44,6 @@ return [
                 // Responsive demo: can run inline from tablet width up.
                 'desktop_only' => false,
             ],
-            'cases' => ['Lokanta Proeflokaal', 'Slowdown Store'],
             'related' => ['payments', 'api-integrations'],
 
             'nl' => [
@@ -233,7 +232,6 @@ return [
                 // Desktop layout (min-width 780px): new tab first on tablets.
                 'desktop_only' => true,
             ],
-            'cases' => [],
             'related' => ['dashboards', 'api-integrations'],
 
             'nl' => [
@@ -415,7 +413,6 @@ return [
                 'height' => 956,
                 'desktop_only' => true,
             ],
-            'cases' => [],
             'related' => ['admin-panels', 'api-integrations'],
 
             'nl' => [
@@ -597,7 +594,6 @@ return [
                 'height' => 956,
                 'desktop_only' => false,
             ],
-            'cases' => [],
             'related' => ['websites', 'api-integrations'],
 
             'nl' => [
@@ -773,7 +769,6 @@ return [
             // No demo: an integration has no UI of its own. The page shows
             // an illustrated data flow with an example sync log instead.
             'demo' => null,
-            'cases' => [],
             'related' => ['payments', 'dashboards'],
 
             'nl' => [

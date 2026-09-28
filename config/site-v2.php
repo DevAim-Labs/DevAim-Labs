@@ -171,38 +171,9 @@ return [
             'results_label' => 'Resultaat',
             'tags_label' => 'Kenmerken',
             'live_label' => 'Bekijk de live site',
-            'cases' => [
-                [
-                    'name' => 'Lokanta Proeflokaal',
-                    'domain' => 'lokanta-proeflokaal.nl',
-                    'url' => 'https://lokanta-proeflokaal.nl',
-                    'image' => '/lokanta.webp',
-                    'width' => 200,
-                    'height' => 71,
-                    'alt' => 'Logo van Lokanta Proeflokaal',
-                    'tags' => ['Restaurant', 'Website', 'Astro'],
-                    // TODO: owner to confirm the wording of the client's original question.
-                    'problem' => 'Een tapasbar die gasten online al wil laten proeven wat hen te wachten staat: de kaart, de sfeer en hoe ze kunnen reserveren.',
-                    'built' => 'Een restaurantwebsite met de menukaart, sfeerbeelden, reserveren en alle praktische informatie die gasten nodig hebben voordat ze binnenstappen.',
-                    // TODO: add real, verifiable results (e.g. from analytics). Leave empty until then.
-                    'results' => [],
-                ],
-                [
-                    'name' => 'Slowdown Store',
-                    'domain' => 'slowdownstore.com',
-                    'url' => 'https://slowdownstore.com',
-                    'image' => '/slowdown.webp',
-                    'width' => 125,
-                    'height' => 65,
-                    'alt' => 'Logo van Slowdown Store',
-                    'tags' => ['Mode', 'Webshop', 'Astro'],
-                    // TODO: owner to confirm the wording of the client's original question.
-                    'problem' => 'Een onafhankelijk modelabel dat zijn collectie in een eigen winkel wil verkopen, los van grote platformen.',
-                    'built' => 'Een webshop voor het label, met productpagina\'s die de collectie laten zien en een eigen online verkoopkanaal.',
-                    // TODO: add real, verifiable results. Leave empty until then.
-                    'results' => [],
-                ],
-            ],
+            'more_label' => 'Toon alle :count klanten',
+            'less_label' => 'Toon minder klanten',
+            // Cases: resources/data/clients.json (see resources/data/README.md).
         ],
 
         'process' => [
@@ -566,38 +537,9 @@ return [
             'results_label' => 'Results',
             'tags_label' => 'Tags',
             'live_label' => 'Visit the live site',
-            'cases' => [
-                [
-                    'name' => 'Lokanta Proeflokaal',
-                    'domain' => 'lokanta-proeflokaal.nl',
-                    'url' => 'https://lokanta-proeflokaal.nl',
-                    'image' => '/lokanta.webp',
-                    'width' => 200,
-                    'height' => 71,
-                    'alt' => 'Lokanta Proeflokaal logo',
-                    'tags' => ['Restaurant', 'Website', 'Astro'],
-                    // TODO: owner to confirm the wording of the client's original question.
-                    'problem' => 'A tapas bar that wanted guests to get a taste online first: the menu, the atmosphere and how to book a table.',
-                    'built' => 'A restaurant website with the menu, atmosphere photos, booking and all the practical information guests need before they walk in.',
-                    // TODO: add real, verifiable results. Leave empty until then.
-                    'results' => [],
-                ],
-                [
-                    'name' => 'Slowdown Store',
-                    'domain' => 'slowdownstore.com',
-                    'url' => 'https://slowdownstore.com',
-                    'image' => '/slowdown.webp',
-                    'width' => 125,
-                    'height' => 65,
-                    'alt' => 'Slowdown Store logo',
-                    'tags' => ['Fashion', 'Webshop', 'Astro'],
-                    // TODO: owner to confirm the wording of the client's original question.
-                    'problem' => 'An independent fashion label that wanted to sell its collection in its own store, independent of the big platforms.',
-                    'built' => 'A webshop for the label, with product pages that show off the collection and its own online sales channel.',
-                    // TODO: add real, verifiable results. Leave empty until then.
-                    'results' => [],
-                ],
-            ],
+            'more_label' => 'Show all :count clients',
+            'less_label' => 'Show fewer clients',
+            // Cases: resources/data/clients.json (see resources/data/README.md).
         ],
 
         'process' => [

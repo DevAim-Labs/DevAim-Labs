@@ -7,8 +7,9 @@ namespace App\Support;
  *
  * One place that knows the services: their stable keys, localized slugs
  * and URLs, and the resolved content a service page renders. Content comes
- * from config('site-v2-services'); prices and real cases are looked up in
- * config('site-v2') so they are never duplicated.
+ * from config('site-v2-services'); prices are looked up in config('site-v2')
+ * and real cases in resources/data/clients.json (ClientCases), so neither is
+ * duplicated.
  *
  * Callers: routes (slug patterns), PageController + SitePage (page data),
  * LegacyRedirects (old aliases), SitemapController (URLs).
@@ -86,7 +87,7 @@ final class ServiceCatalog
             'demo' => $demo,
             'flow' => $content['flow'] ?? null,
             'price_from' => self::priceFrom($service['package'], $site),
-            'cases' => self::cases($service['cases'], $site),
+            'cases' => ClientCases::forService($key, $locale),
             'related' => array_map(fn (string $other) => self::card($other, $locale), $service['related']),
             'ui' => config("site-v2-services.ui.{$locale}"),
         ] + $content;
@@ -120,15 +121,6 @@ final class ServiceCatalog
         }
 
         return null;
-    }
-
-    /** Real cases by name, as listed in the home work section. */
-    private static function cases(array $names, array $site): array
-    {
-        return array_values(array_filter(
-            $site['work']['cases'],
-            fn (array $case) => in_array($case['name'], $names, true),
-        ));
     }
 
     /** A related-service card: title, summary, link and thumbnail (or icon). */

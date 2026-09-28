@@ -497,6 +497,36 @@ function initServicePage() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Client cases: max 3 rows, the rest behind "show all"                */
+/* ------------------------------------------------------------------ */
+
+function initCaseLists() {
+    document.querySelectorAll('[data-case-list]').forEach((list) => {
+        const more = list.querySelector('[data-case-more]');
+        const button = list.querySelector('[data-case-toggle]');
+        if (!more || !button) return;
+
+        const label = button.querySelector('[data-case-toggle-label]');
+        const set = (expanded) => {
+            more.hidden = !expanded;
+            button.setAttribute('aria-expanded', String(expanded));
+            label.textContent = expanded ? button.dataset.labelLess : button.dataset.labelMore;
+        };
+
+        // Rendered open so every row works without JS; collapse it here.
+        set(false);
+        button.hidden = false;
+
+        button.addEventListener('click', () => {
+            const expand = button.getAttribute('aria-expanded') !== 'true';
+            set(expand);
+            // Move focus to the first new row so keyboard users land on it.
+            if (expand) more.querySelector('summary')?.focus();
+        });
+    });
+}
+
+/* ------------------------------------------------------------------ */
 
 function init() {
     initTheme();
@@ -505,6 +535,7 @@ function init() {
     initForms();
     initMobileCta();
     initMarquee();
+    initCaseLists();
     initServicePage();
     initMotion();
 }

@@ -195,6 +195,7 @@ final class SitePage
         $link = fn (array $item) => $item + ['href' => ServiceCatalog::path($item['service'], $locale)];
         $t['nav']['services_menu']['items'] = array_map($link, $t['nav']['services_menu']['items']);
         $t['services']['items'] = array_map($link, $t['services']['items']);
+        $t['work']['cases'] = ClientCases::all($locale);
 
         return $t;
     }
