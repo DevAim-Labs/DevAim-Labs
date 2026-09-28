@@ -13,7 +13,7 @@
                     <x-v2::icon name="arrow-right" class="btn__arrow size-5" />
                 </a>
                 <a href="{{ url(\App\Support\SitePage::sectionPath($locale, 'services')) }}" class="btn btn-outline">{{ $error['services'] }}</a>
-                <a href="{{ \App\Support\SitePage::url('contact', $locale) }}" class="link-arrow">
+                <a href="{{ \App\Support\PageRegistry::url('contact', $locale) }}" class="link-arrow">
                     {{ $error['contact'] }}
                     <x-v2::icon name="arrow-right" class="size-4" />
                 </a>

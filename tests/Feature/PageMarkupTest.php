@@ -2,29 +2,20 @@
 
 namespace Tests\Feature;
 
-use App\Support\ServiceCatalog;
-use App\Support\SitePage;
+use App\Support\PageRegistry;
 use Tests\TestCase;
 
 /**
  * Markup rules every page of the site must keep: one h1 and the landmarks,
- * a CSP nonce on every inline script, valid JSON-LD, reciprocal hreflang
- * and safe external links.
+ * a CSP nonce on every inline script, valid JSON-LD and safe external
+ * links. Reciprocal hreflang: PageRegistryTest.
  */
 class PageMarkupTest extends TestCase
 {
-    /** @return list<string> every indexable page path */
+    /** @return list<string> every Page path (PageRegistry) */
     private function paths(): array
     {
-        $paths = ['/', '/en', '/contact', '/en/contact', '/privacyverklaring'];
-
-        foreach (ServiceCatalog::keys() as $key) {
-            foreach (SitePage::LOCALES as $locale) {
-                $paths[] = ServiceCatalog::path($key, $locale);
-            }
-        }
-
-        return $paths;
+        return PageRegistry::livePaths();
     }
 
     public function test_every_page_has_one_h1_the_landmarks_and_a_working_skip_link(): void
@@ -131,17 +122,6 @@ class PageMarkupTest extends TestCase
         }
     }
 
-    public function test_hreflang_alternates_are_reciprocal(): void
-    {
-        foreach ($this->paths() as $path) {
-            $alternates = $this->alternates($path);
-
-            foreach ($alternates as $lang => $href) {
-                $this->assertSame($alternates, $this->alternates(parse_url($href, PHP_URL_PATH) ?: '/'), "{$path}: {$lang} alternate does not link back");
-            }
-        }
-    }
-
     public function test_external_links_open_safely(): void
     {
         foreach ($this->paths() as $path) {
@@ -165,13 +145,5 @@ class PageMarkupTest extends TestCase
                 $this->assertNoPriceLessOffer($child, $path);
             }
         }
-    }
-
-    /** @return array<string, string> hreflang => href */
-    private function alternates(string $path): array
-    {
-        preg_match_all('#<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">#', $this->get($path)->getContent(), $m);
-
-        return array_combine($m[1], $m[2]);
     }
 }

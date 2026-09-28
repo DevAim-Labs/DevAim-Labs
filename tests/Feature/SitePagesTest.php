@@ -3,13 +3,13 @@
 namespace Tests\Feature;
 
 use App\Support\LegacyRedirects;
-use App\Support\ServiceCatalog;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 
 /**
- * Page rendering, redirects, sitemap and error pages for the site layout.
+ * Page rendering, redirects, crawler files and error pages for the site
+ * layout. Which URLs exist (sitemap, llms.txt, hreflang): PageRegistryTest.
  */
 class SitePagesTest extends TestCase
 {
@@ -227,37 +227,6 @@ class SitePagesTest extends TestCase
             ->assertSee(config('site-v2.en.errors.503.heading'));
     }
 
-    public function test_sitemap_lists_only_live_urls(): void
-    {
-        $response = $this->get('/sitemap.xml')->assertOk();
-        preg_match_all('#<loc>(.*?)</loc>#', $response->getContent(), $matches);
-        $locs = $matches[1];
-
-        foreach (['/', '/en', '/contact', '/en/contact', '/privacyverklaring', '/diensten/websites', '/en/services/websites'] as $path) {
-            $this->assertContains(url($path), $locs);
-        }
-
-        foreach (array_keys(LegacyRedirects::all()) as $old) {
-            $this->assertNotContains(url($old), $locs, "{$old} redirects and must not be in the sitemap");
-        }
-
-        foreach ($locs as $loc) {
-            $this->get(parse_url($loc, PHP_URL_PATH) ?: '/')->assertOk();
-        }
-    }
-
-    public function test_robots_and_llms_only_point_at_live_urls(): void
-    {
-        foreach (['/robots.txt', '/llms.txt'] as $file) {
-            $body = $this->get($file)->assertOk()->getContent();
-            preg_match_all('#'.preg_quote(url('/'), '#').'[^\s)]*#', $body, $matches);
-
-            foreach ($matches[0] as $link) {
-                $this->get(parse_url($link, PHP_URL_PATH) ?: '/')->assertOk();
-            }
-        }
-    }
-
     public function test_every_robots_group_keeps_the_demos_out(): void
     {
         $body = $this->get('/robots.txt')->assertOk()->getContent();
@@ -279,14 +248,10 @@ class SitePagesTest extends TestCase
         $this->assertStringContainsString('Sitemap: '.url('/sitemap.xml'), $body);
     }
 
-    public function test_llms_txt_lists_every_service_page_and_the_business_details(): void
+    public function test_llms_txt_carries_the_business_details(): void
     {
+        // Which pages it lists: PageRegistryTest.
         $body = $this->get('/llms.txt')->assertOk()->getContent();
-
-        foreach (ServiceCatalog::keys() as $key) {
-            $this->assertStringContainsString(ServiceCatalog::url($key, 'nl'), $body);
-            $this->assertStringContainsString(ServiceCatalog::url($key, 'en'), $body);
-        }
 
         $this->assertStringContainsString('KvK: '.config('site-v2.company.kvk'), $body);
         $this->assertStringContainsString(config('site.organization.email'), $body);

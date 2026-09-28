@@ -11,13 +11,14 @@ namespace App\Support;
  * and real cases in resources/data/clients.json (ClientCases), so neither is
  * duplicated.
  *
+ * Where a service page lives (its path prefix, which locales) is the
+ * PageRegistry's; this module only knows each Service's localized slug.
+ *
  * Callers: routes (slug patterns), PageController + SitePage (page data),
- * LegacyRedirects (old aliases), SitemapController (URLs).
+ * PageRegistry (service pages), LegacyRedirects (old aliases).
  */
 final class ServiceCatalog
 {
-    private const PREFIX = ['nl' => '/diensten/', 'en' => '/en/services/'];
-
     /** @return list<string> stable service keys, in display order */
     public static function keys(): array
     {
@@ -41,16 +42,22 @@ final class ServiceCatalog
         return null;
     }
 
-    /** Relative path, e.g. path('admin-panels', 'nl') = "/diensten/adminpanelen". */
+    /** Relative path, e.g. path('admin-panels', 'nl') = "/diensten/adminpanelen" (from the PageRegistry). */
     public static function path(string $key, string $locale): string
     {
-        return self::PREFIX[$locale].self::slug($key, $locale);
+        return PageRegistry::path(PageRegistry::service($key), $locale);
     }
 
     /** Absolute URL. */
     public static function url(string $key, string $locale): string
     {
-        return url(self::path($key, $locale));
+        return PageRegistry::url(PageRegistry::service($key), $locale);
+    }
+
+    /** The localized slug, e.g. slug('admin-panels', 'nl') = "adminpanelen". */
+    public static function slug(string $key, string $locale): string
+    {
+        return self::raw($key)['slugs'][$locale];
     }
 
     /**
@@ -104,11 +111,6 @@ final class ServiceCatalog
         }
 
         return $service;
-    }
-
-    private static function slug(string $key, string $locale): string
-    {
-        return self::raw($key)['slugs'][$locale];
     }
 
     /** "vanaf" price of the linked pricing package; null = price on request. */

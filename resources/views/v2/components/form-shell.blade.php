@@ -6,7 +6,7 @@
 --}}
 @props(['type', 'locale', 't', 'id', 'success'])
 
-<form {{ $attributes->merge(['class' => 'v2-form']) }} id="{{ $id }}" action="/contact" method="POST" novalidate
+<form {{ $attributes->merge(['class' => 'v2-form']) }} id="{{ $id }}" action="{{ route('lead.submit', absolute: false) }}" method="POST" novalidate
       data-v2-form
       data-msg-error="{{ $t['forms']['error'] }}"
       data-msg-generic="{{ $t['forms']['error_generic'] }}"

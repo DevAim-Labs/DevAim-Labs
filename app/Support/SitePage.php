@@ -14,21 +14,14 @@ use Illuminate\Http\Request;
  *
  * Pages: home, contact, privacy (Dutch only), the service pages
  * (SitePage::service(), content via ServiceCatalog), error (404/500/503).
+ * Which pages exist, and their URLs and hreflang alternates, come from
+ * the PageRegistry.
  * Strings come from config('site-v2'); organisation data from
  * config('site.organization'). Nothing here touches the database, so
  * the error pages can use it safely.
  */
 final class SitePage
 {
-    public const LOCALES = ['nl', 'en'];
-
-    /** Paths of the pages that exist per locale. */
-    private const PATHS = [
-        'home' => ['nl' => '/', 'en' => '/en'],
-        'contact' => ['nl' => '/contact', 'en' => '/en/contact'],
-        'privacy' => ['nl' => '/privacyverklaring'],
-    ];
-
     /**
      * @param  'home'|'contact'|'privacy'  $page
      */
@@ -37,14 +30,14 @@ final class SitePage
         $locale = self::normalizeLocale($locale);
         $t = config("site-v2.{$locale}");
         $meta = $page === 'home' ? $t['meta'] : $t['pages'][$page];
-        $alternates = self::alternates($page);
+        $alternates = PageRegistry::alternates($page);
 
         return array_merge(self::base($locale, $page), [
             'pageTitle' => $meta['title'],
             'pageDescription' => $meta['description'],
-            'canonicalUrl' => self::url($page, $locale),
+            'canonicalUrl' => PageRegistry::url($page, $locale),
             'alternateUrls' => $alternates,
-            'otherLocaleUrl' => $alternates[self::otherLocale($locale)] ?? self::url('home', self::otherLocale($locale)),
+            'otherLocaleUrl' => $alternates[self::otherLocale($locale)] ?? PageRegistry::url('home', self::otherLocale($locale)),
             'robots' => null,
             'breadcrumbs' => self::breadcrumbs($locale, $page),
             'structuredData' => self::structuredData($locale, $page, $meta),
@@ -59,11 +52,11 @@ final class SitePage
     {
         $locale = self::normalizeLocale($locale);
         $service = ServiceCatalog::page($key, $locale);
-        $alternates = array_combine(self::LOCALES, array_map(fn (string $lang) => ServiceCatalog::url($key, $lang), self::LOCALES));
+        $alternates = PageRegistry::alternates(PageRegistry::service($key));
 
         $t = config("site-v2.{$locale}");
         $breadcrumbs = [
-            ['name' => $t['pages']['home']['crumb'], 'url' => self::url('home', $locale)],
+            ['name' => $t['pages']['home']['crumb'], 'url' => PageRegistry::url('home', $locale)],
             ['name' => $service['ui']['crumb_services'], 'url' => url(self::sectionPath($locale, 'services'))],
             ['name' => $service['name'], 'url' => $service['url']],
         ];
@@ -96,7 +89,7 @@ final class SitePage
             'pageDescription' => null,
             'canonicalUrl' => null,
             'alternateUrls' => [],
-            'otherLocaleUrl' => self::url('home', self::otherLocale($locale)),
+            'otherLocaleUrl' => PageRegistry::url('home', self::otherLocale($locale)),
             'robots' => 'noindex',
             'breadcrumbs' => [],
             'structuredData' => null,
@@ -112,21 +105,13 @@ final class SitePage
         return $request->is('en') || $request->is('en/*') ? 'en' : 'nl';
     }
 
-    /** Absolute URL of a page, e.g. url('contact', 'en'). */
-    public static function url(string $page, string $locale): string
-    {
-        $paths = self::PATHS[$page];
-
-        return url($paths[$locale] ?? $paths['nl']);
-    }
-
     /**
      * Path of a home section, e.g. sectionPath('nl', 'pricing') = "/#tarieven".
      * A null section is the top of the home page.
      */
     public static function sectionPath(string $locale, ?string $section): string
     {
-        $home = self::PATHS['home'][$locale];
+        $home = PageRegistry::path('home', $locale);
 
         if ($section === null) {
             return $home;
@@ -159,7 +144,7 @@ final class SitePage
             } elseif ($link['page'] === 'contact' && $isHome) {
                 $href = '#'.$t['ids']['contact'];
             } else {
-                $href = self::url($link['page'], $locale);
+                $href = PageRegistry::url($link['page'], $locale);
             }
 
             return $link + [
@@ -177,8 +162,10 @@ final class SitePage
             'pageKey' => $page,
             'isHome' => $isHome,
             'minimalChrome' => false,
-            'homeUrl' => self::url('home', $locale),
-            'brandHref' => $isHome ? '#top' : self::url('home', $locale),
+            'homeUrl' => PageRegistry::url('home', $locale),
+            // Dutch only: the same URL from every locale.
+            'privacyUrl' => PageRegistry::url('privacy', $locale),
+            'brandHref' => $isHome ? '#top' : PageRegistry::url('home', $locale),
             'navLinks' => $navLinks,
             'servicesMenu' => $t['nav']['services_menu'],
             'ctaHref' => $section($t['nav']['cta']['section']),
@@ -200,14 +187,6 @@ final class SitePage
         return $t;
     }
 
-    /** hreflang alternates: only for pages that exist in more than one language. */
-    private static function alternates(string $page): array
-    {
-        $paths = self::PATHS[$page];
-
-        return count($paths) > 1 ? array_map(fn (string $path) => url($path), $paths) : [];
-    }
-
     private static function breadcrumbs(string $locale, string $page): array
     {
         if ($page === 'home') {
@@ -217,8 +196,8 @@ final class SitePage
         $pages = config("site-v2.{$locale}.pages");
 
         return [
-            ['name' => $pages['home']['crumb'], 'url' => self::url('home', $locale)],
-            ['name' => $pages[$page]['crumb'], 'url' => self::url($page, $locale)],
+            ['name' => $pages['home']['crumb'], 'url' => PageRegistry::url('home', $locale)],
+            ['name' => $pages[$page]['crumb'], 'url' => PageRegistry::url($page, $locale)],
         ];
     }
 
@@ -226,7 +205,7 @@ final class SitePage
     {
         $t = config("site-v2.{$locale}");
         $org = config('site.organization');
-        $url = self::url($page, $locale);
+        $url = PageRegistry::url($page, $locale);
         $orgId = self::orgId();
 
         if ($page === 'home') {
@@ -408,7 +387,7 @@ final class SitePage
 
     private static function normalizeLocale(string $locale): string
     {
-        return in_array($locale, self::LOCALES, true) ? $locale : 'nl';
+        return in_array($locale, PageRegistry::LOCALES, true) ? $locale : PageRegistry::DEFAULT_LOCALE;
     }
 
     private static function otherLocale(string $locale): string

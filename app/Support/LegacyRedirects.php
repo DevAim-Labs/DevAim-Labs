@@ -11,13 +11,11 @@ namespace App\Support;
  * section by config('site-v2.legacy_sections'). Aliases that name one
  * service (e.g. /kpi-dashboard) go to that service page instead, from
  * config('site-v2-services.legacy') via ServiceCatalog. The /v2 preview
- * URLs are included too.
+ * URLs are included too. Paths of live Pages (PageRegistry) are never
+ * in the map.
  */
 final class LegacyRedirects
 {
-    /** Paths that are real pages now and must never be redirected. */
-    private const LIVE = ['/', '/en', '/contact', '/en/contact'];
-
     /**
      * @return array<string, string> old path => new path (with #anchor)
      */
@@ -53,7 +51,8 @@ final class LegacyRedirects
             $map[$from] = ServiceCatalog::path($key, str_starts_with($from, '/en/') ? 'en' : 'nl');
         }
 
-        return array_diff_key($map, array_flip(self::LIVE));
+        // A live Page is never redirected (e.g. the old "contact" section slug).
+        return array_diff_key($map, array_flip(PageRegistry::livePaths()));
     }
 
     private static function target(string $locale, string $oldSectionId): string

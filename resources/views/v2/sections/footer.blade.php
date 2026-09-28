@@ -50,7 +50,7 @@
                     <li>{{ $f['kvk'] }}: <span class="mono">{{ $company['kvk'] }}</span></li>
                     <li>{{ $f['btw'] }}: <span class="mono">{{ $company['btw'] }}</span></li>
                     {{-- The privacy statement is Dutch only: announce the target language on /en pages. --}}
-                    <li><a href="{{ url($f['privacy']['href']) }}" @if ($locale !== 'nl') hreflang="nl" @endif @if ($pageKey === 'privacy') aria-current="page" @endif>{{ $f['privacy']['label'] }}</a></li>
+                    <li><a href="{{ $privacyUrl }}" @if ($locale !== 'nl') hreflang="nl" @endif @if ($pageKey === 'privacy') aria-current="page" @endif>{{ $f['privacy']['label'] }}</a></li>
                     <!-- <li><a href="{{ url($f['sitemap']['href']) }}">{{ $f['sitemap']['label'] }}</a></li> -->
                     <li>
                         <a href="{{ $otherLocaleUrl }}" hreflang="{{ $f['language']['hreflang'] }}" lang="{{ $f['language']['hreflang'] }}">

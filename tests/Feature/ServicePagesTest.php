@@ -172,14 +172,4 @@ class ServicePagesTest extends TestCase
             $this->get($to)->assertOk(); // single hop
         }
     }
-
-    public function test_sitemap_lists_service_pages_with_hreflang(): void
-    {
-        $xml = $this->get('/sitemap.xml')->assertOk()->getContent();
-
-        foreach (self::PAGES as $path => $page) {
-            $this->assertStringContainsString('<loc>'.url($path).'</loc>', $xml);
-        }
-        $this->assertStringContainsString('<xhtml:link rel="alternate" hreflang="en" href="'.url('/en/services/payments').'"/>', $xml);
-    }
 }
