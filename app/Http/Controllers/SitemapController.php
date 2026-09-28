@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Support\ServiceCatalog;
 use App\Support\SitePage;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 
 class SitemapController extends Controller
 {
@@ -14,13 +15,13 @@ class SitemapController extends Controller
      */
     public function __invoke(): Response
     {
-        $today = date('Y-m-d');
+        $lastmod = $this->contentLastModified();
         $urls = [];
 
         // Pages that exist in both languages, with their hreflang pair.
         foreach (['home' => ['weekly', '1.0'], 'contact' => ['monthly', '0.8']] as $page => [$changefreq, $priority]) {
             array_push($urls, ...$this->pair(
-                fn (string $locale) => SitePage::url($page, $locale), $today, $changefreq, $priority,
+                fn (string $locale) => SitePage::url($page, $locale), $lastmod, $changefreq, $priority,
             ));
         }
 
@@ -34,13 +35,33 @@ class SitemapController extends Controller
 
         foreach (ServiceCatalog::keys() as $key) {
             array_push($urls, ...$this->pair(
-                fn (string $locale) => ServiceCatalog::url($key, $locale), $today, 'monthly', '0.8',
+                fn (string $locale) => ServiceCatalog::url($key, $locale), $lastmod, 'monthly', '0.8',
             ));
         }
 
         $xml = view('sitemap', ['urls' => $urls])->render();
 
         return response($xml, 200)->header('Content-Type', 'application/xml');
+    }
+
+    /**
+     * Date the page content last changed: the newest of the copy, the
+     * service content, the client cases and the page templates. Not
+     * "today": a lastmod that moves daily without a change teaches
+     * crawlers to ignore it.
+     */
+    private function contentLastModified(): string
+    {
+        $times = array_map(
+            fn (string $file) => is_file($file) ? filemtime($file) : 0,
+            [config_path('site-v2.php'), config_path('site-v2-services.php'), resource_path('data/clients.json')],
+        );
+
+        foreach (File::allFiles(resource_path('views/v2')) as $view) {
+            $times[] = $view->getMTime();
+        }
+
+        return date('Y-m-d', max($times) ?: time());
     }
 
     /**

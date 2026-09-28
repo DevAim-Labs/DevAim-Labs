@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
+use App\Support\ClientCases;
 use App\Support\LegacyRedirects;
 use App\Support\ServiceCatalog;
 use Illuminate\Support\Facades\Route;
@@ -34,36 +35,19 @@ foreach (LegacyRedirects::all() as $from => $to) {
 Route::get('/sitemap.xml', SitemapController::class)->middleware('throttle:crawler')->name('sitemap');
 
 Route::get('/robots.txt', function () {
-    $sitemapUrl = url('/sitemap.xml');
-    $body = <<<ROBOTS
-User-agent: *
-Allow: /
-Disallow: /demo/
-
-# AI Crawlers - Explicitly allowed for GEO visibility
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Anthropic-AI
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-Sitemap: {$sitemapUrl}
-ROBOTS;
+    // A crawler obeys only the most specific group that names it, so every
+    // group repeats the /demo/ rule (the demos are fictional businesses).
+    // Search/answer bots (OAI-SearchBot, Claude-SearchBot, PerplexityBot, ...)
+    // are what makes the site citable in AI search.
+    $agents = [
+        '*', 'Googlebot', 'Bingbot',
+        'OAI-SearchBot', 'ChatGPT-User', 'GPTBot',
+        'Claude-SearchBot', 'Claude-User', 'ClaudeBot',
+        'PerplexityBot', 'Perplexity-User',
+        'Google-Extended', 'Applebot-Extended',
+    ];
+    $groups = implode("\n\n", array_map(fn (string $agent) => "User-agent: {$agent}\nAllow: /\nDisallow: /demo/", $agents));
+    $body = $groups."\n\nSitemap: ".url('/sitemap.xml')."\n";
 
     return response($body, 200)->header('Content-Type', 'text/plain; charset=UTF-8');
 })->middleware('throttle:crawler');
@@ -72,59 +56,60 @@ Route::post('/contact', [ContactController::class, 'store'])
     ->middleware('throttle:contact');
 
 Route::get('/llms.txt', function () {
+    // Built from the same config as the pages, so it never claims more than
+    // the site does (llms.txt is optional; search engines do not rank on it).
     $org = config('site.organization');
     $company = config('site-v2.company');
-    $home = url('/');
-    $homeEn = url('/en');
-    $contact = url('/contact');
-    $contactEn = url('/en/contact');
-    $servicePages = collect(ServiceCatalog::keys())
-        ->map(fn (string $key) => '- '.config("site-v2-services.services.{$key}.nl.name").': '.ServiceCatalog::url($key, 'nl').' (EN: '.ServiceCatalog::url($key, 'en').')')
+    $nl = config('site-v2.nl');
+    $services = collect(ServiceCatalog::keys())
+        ->map(fn (string $key) => sprintf(
+            '- [%s](%s): %s (English: %s)',
+            config("site-v2-services.services.{$key}.nl.name"),
+            ServiceCatalog::url($key, 'nl'),
+            config("site-v2-services.services.{$key}.nl.summary"),
+            ServiceCatalog::url($key, 'en'),
+        ))
         ->implode("\n");
-    $body = <<<LLMS
-# DevAim Labs
-> Custom websites, systemen en integraties
+    $cases = collect(ClientCases::all('nl'))
+        ->map(fn (array $case) => "- {$case['name']} ({$case['url']})")
+        ->implode("\n");
+    [$home, $homeEn, $contact, $contactEn, $privacy] = array_map('url', ['/', '/en', '/contact', '/en/contact', '/privacyverklaring']);
+    $about = implode(' ', $nl['about']['paragraphs']);
+    $stack = implode(', ', $nl['about']['stack']);
+    $steps = collect($nl['process']['steps'])->map(fn (array $step) => "- {$step['title']}: {$step['text']}")->implode("\n");
 
-## Over
-DevAim Labs bouwt custom websites, systemen en integraties voor particulieren en bedrijven. Direct contact met de developer die bouwt, geen tussenpersoon. Reactie binnen 1 werkdag.
+    $body = <<<LLMS
+# {$org['name']}
+
+> {$nl['meta']['description']}
+
+{$about}
+
+Taal: Nederlands (standaard) en Engels (/en). Prijzen: vaste prijs vooraf, op aanvraag na een gratis kennismaking.
 
 ## Diensten
-- Maatwerksoftware voor u
-- Websites en webshops
-- KPI-dashboards en rapportages
-- Adminpanelen en interne tools
-- Betaalintegraties (Stripe & Mollie)
-- API-koppelingen en webhooks
+{$services}
+
+## Werkwijze
+{$steps}
+
+## Recent werk (echte klanten)
+{$cases}
 
 ## Pagina's
-- Home (NL): {$home}
-- Home (EN): {$homeEn}
-- Contact (NL): {$contact}
-- Contact (EN): {$contactEn}
+- [Home]({$home}): overzicht, werk, werkwijze, tarieven en veelgestelde vragen (English: {$homeEn})
+- [Contact]({$contact}): formulier, e-mail en telefoon (English: {$contactEn})
+- [Privacyverklaring]({$privacy})
 
-## Dienstpagina's (met live demo's)
-{$servicePages}
+## Techniek
+{$stack}
 
-## Doelgroep
-Particulieren en bedrijven die op zoek zijn naar custom websites, systemen of integraties
-
-## Contact
-- Email: {$org['email']}
+## Bedrijfsgegevens
+- E-mail: {$org['email']}
 - Telefoon: {$org['phone']}
 - KvK: {$company['kvk']}
 - BTW: {$company['btw']}
-- Website: https://devaimlabs.com
-
-## Tech Stack
-Laravel, Vue.js, React, TypeScript, Inertia.js, REST APIs, Tailwind CSS
-
-## Waarom DevAim Labs
-- Direct contact met de developer die bouwt
-- Geen tussenpersoon ertussen
-- Demo's elke 2 weken tijdens ontwikkeling
-- Volledige eigendom van de code
-- Onderhoud en doorontwikkeling na oplevering
 LLMS;
 
-    return response($body, 200)->header('Content-Type', 'text/plain; charset=UTF-8');
+    return response($body."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
 })->middleware('throttle:crawler');

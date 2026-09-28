@@ -42,7 +42,7 @@ return [
 
     'nl' => [
         'meta' => [
-            'title' => 'DevAim Labs | Websites, adminpanelen en betalingen op maat',
+            'title' => 'Website, adminpaneel of koppeling laten maken | DevAim Labs',
             'description' => 'Ik bouw websites, adminpanelen, KPI-dashboards en betaalkoppelingen voor ondernemers. Vaste prijs vooraf, één vaste developer, reactie binnen 1 werkdag.',
             'og_locale' => 'nl_NL',
         ],
@@ -361,7 +361,7 @@ return [
         'pages' => [
             'home' => ['crumb' => 'Home'],
             'contact' => [
-                'title' => 'Contact | DevAim Labs',
+                'title' => 'Contact | Gratis kennismakingsgesprek | DevAim Labs',
                 'description' => 'Neem contact op met DevAim Labs over uw website, adminpaneel, dashboard of koppeling. Via het formulier, e-mail of telefoon. Reactie binnen 1 werkdag.',
                 'crumb' => 'Contact',
                 'eyebrow' => 'Contact',
@@ -413,8 +413,8 @@ return [
 
     'en' => [
         'meta' => [
-            'title' => 'DevAim Labs | Custom websites, admin panels and payments',
-            'description' => 'I build websites, admin panels, KPI dashboards and payment integrations for business owners. Fixed price up front, one dedicated developer, a reply within 1 working day.',
+            'title' => 'Custom websites, admin panels and payments | DevAim Labs',
+            'description' => 'I build websites, admin panels, KPI dashboards and payment integrations for business owners. Fixed price up front, one developer, a reply within 1 working day.',
             'og_locale' => 'en_US',
         ],
 
@@ -724,7 +724,7 @@ return [
         'pages' => [
             'home' => ['crumb' => 'Home'],
             'contact' => [
-                'title' => 'Contact | DevAim Labs',
+                'title' => 'Contact | Book a free intro call | DevAim Labs',
                 'description' => 'Get in touch with DevAim Labs about your website, admin panel, dashboard or integration. Use the form, email or phone. Reply within 1 working day.',
                 'crumb' => 'Contact',
                 'eyebrow' => 'Contact',

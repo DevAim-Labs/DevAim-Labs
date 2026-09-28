@@ -233,26 +233,17 @@ final class SitePage
             return [
                 '@context' => 'https://schema.org',
                 '@graph' => [
-                    [
-                        '@type' => 'ProfessionalService',
-                        '@id' => $orgId,
-                        'name' => $org['name'],
-                        'url' => url('/'),
-                        'logo' => asset(ltrim($org['logo'], '/')),
-                        'image' => asset('og-image.png'),
-                        'email' => $org['email'],
-                        'telephone' => $org['phone'],
-                        'vatID' => config('site-v2.company.btw'),
-                        'description' => $t['meta']['description'],
-                        'areaServed' => ['@type' => 'Country', 'name' => 'Nederland'],
-                        'address' => ['@type' => 'PostalAddress', 'addressCountry' => 'NL'],
-                        'knowsLanguage' => ['nl', 'en'],
+                    self::organizationNode($locale) + [
+                        // No Offer without a real price: the catalog lists the services themselves.
                         'hasOfferCatalog' => [
                             '@type' => 'OfferCatalog',
                             'name' => $t['services']['title'],
                             'itemListElement' => array_map(fn (array $s) => [
-                                '@type' => 'Offer',
-                                'itemOffered' => ['@type' => 'Service', 'name' => $s['title'], 'description' => $s['outcome']],
+                                '@type' => 'Service',
+                                'name' => $s['title'],
+                                'description' => $s['outcome'],
+                                'url' => ServiceCatalog::url($s['service'], $locale),
+                                'provider' => ['@id' => $orgId],
                             ], $t['services']['items']),
                         ],
                     ],
@@ -284,6 +275,7 @@ final class SitePage
                     'isPartOf' => ['@id' => url('/').'#website'],
                     'about' => ['@id' => $orgId],
                 ],
+                self::organizationNode($locale),
                 self::breadcrumbNode($crumbs),
             ],
         ];
@@ -324,10 +316,60 @@ final class SitePage
             '@context' => 'https://schema.org',
             '@graph' => [
                 $serviceNode,
+                self::organizationNode($locale),
                 self::faqNode($url, $locale, $service['faq']),
                 self::breadcrumbNode($crumbs),
             ],
         ];
+    }
+
+    /**
+     * The business, on every page so `provider` / `about` / `publisher`
+     * references resolve without a crawler having to visit the home page.
+     * Service-area business: no street address in the markup (see config/site.php).
+     */
+    private static function organizationNode(string $locale): array
+    {
+        $t = config("site-v2.{$locale}");
+        $org = config('site.organization');
+        $company = config('site-v2.company');
+        $logoPath = public_path(ltrim($org['logo'], '/'));
+        $logoSize = is_file($logoPath) ? @getimagesize($logoPath) : false;
+
+        return array_filter([
+            '@type' => 'ProfessionalService',
+            '@id' => self::orgId(),
+            'name' => $org['name'],
+            'url' => url('/'),
+            'logo' => array_filter([
+                '@type' => 'ImageObject',
+                'url' => asset(ltrim($org['logo'], '/')),
+                'width' => $logoSize[0] ?? null,
+                'height' => $logoSize[1] ?? null,
+            ]),
+            'image' => asset('og-image.png'),
+            'description' => $t['meta']['description'],
+            'email' => $org['email'],
+            'telephone' => $org['phone'],
+            'contactPoint' => [
+                '@type' => 'ContactPoint',
+                'contactType' => 'customer service',
+                'email' => $org['email'],
+                'telephone' => $org['phone'],
+                'availableLanguage' => ['nl', 'en'],
+            ],
+            'vatID' => $company['btw'] ?? null,
+            // Dutch Chamber of Commerce number (KvK), as shown in the footer.
+            'identifier' => empty($company['kvk']) ? null : [
+                '@type' => 'PropertyValue',
+                'propertyID' => 'KvK',
+                'value' => $company['kvk'],
+            ],
+            'areaServed' => ['@type' => 'Country', 'name' => 'Nederland'],
+            'address' => ['@type' => 'PostalAddress', 'addressCountry' => 'NL'],
+            'knowsLanguage' => ['nl', 'en'],
+            'sameAs' => $org['same_as'] ?? null,
+        ], fn ($value) => $value !== null && $value !== []);
     }
 
     /** @param  list<array{q: string, a: string}>  $items */

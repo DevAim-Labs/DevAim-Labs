@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Support\LegacyRedirects;
+use App\Support\ServiceCatalog;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 
@@ -253,6 +255,60 @@ class SitePagesTest extends TestCase
             foreach ($matches[0] as $link) {
                 $this->get(parse_url($link, PHP_URL_PATH) ?: '/')->assertOk();
             }
+        }
+    }
+
+    public function test_every_robots_group_keeps_the_demos_out(): void
+    {
+        $body = $this->get('/robots.txt')->assertOk()->getContent();
+        $groups = preg_split('/\n\s*\n/', trim($body));
+
+        foreach ($groups as $group) {
+            if (! str_starts_with($group, 'User-agent:')) {
+                continue;
+            }
+
+            // A crawler only reads its own group, so each one needs the rule.
+            $this->assertStringContainsString('Disallow: /demo/', $group, "robots.txt group without the /demo/ rule:\n{$group}");
+        }
+
+        foreach (['User-agent: *', 'User-agent: OAI-SearchBot', 'User-agent: Claude-SearchBot', 'User-agent: PerplexityBot'] as $agent) {
+            $this->assertStringContainsString($agent, $body);
+        }
+
+        $this->assertStringContainsString('Sitemap: '.url('/sitemap.xml'), $body);
+    }
+
+    public function test_llms_txt_lists_every_service_page_and_the_business_details(): void
+    {
+        $body = $this->get('/llms.txt')->assertOk()->getContent();
+
+        foreach (ServiceCatalog::keys() as $key) {
+            $this->assertStringContainsString(ServiceCatalog::url($key, 'nl'), $body);
+            $this->assertStringContainsString(ServiceCatalog::url($key, 'en'), $body);
+        }
+
+        $this->assertStringContainsString('KvK: '.config('site-v2.company.kvk'), $body);
+        $this->assertStringContainsString(config('site.organization.email'), $body);
+        $this->assertStringContainsString(config('site-v2.nl.meta.description'), $body);
+    }
+
+    public function test_sitemap_lastmod_is_the_content_date_not_today(): void
+    {
+        $files = [config_path('site-v2.php'), config_path('site-v2-services.php'), resource_path('data/clients.json')];
+
+        foreach (File::allFiles(resource_path('views/v2')) as $view) {
+            $files[] = $view->getPathname();
+        }
+
+        $expected = date('Y-m-d', max(array_map('filemtime', $files)));
+
+        $xml = $this->get('/sitemap.xml')->assertOk()->getContent();
+        preg_match_all('#<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>#', $xml, $m);
+        $this->assertNotEmpty($m[1]);
+
+        foreach (array_combine($m[1], $m[2]) as $loc => $lastmod) {
+            $this->assertSame($loc === url('/privacyverklaring') ? '2026-09-05' : $expected, $lastmod, "{$loc}: lastmod");
         }
     }
 }

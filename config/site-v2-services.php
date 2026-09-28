@@ -237,7 +237,7 @@ return [
             'nl' => [
                 'meta' => [
                     'title' => 'Adminpaneel laten maken | Maatwerk beheersysteem | DevAim Labs',
-                    'description' => 'Adminpaneel laten maken voor uw klanten, planning, orders of voorraad. Eén overzicht met rollen en rechten in plaats van losse Excel-lijsten. Bekijk de live demo.',
+                    'description' => 'Adminpaneel laten maken voor uw klanten, planning, orders of voorraad. Eén overzicht met rollen en rechten in plaats van losse Excel-lijsten. Bekijk de demo.',
                 ],
                 'name' => 'Adminpanelen',
                 'summary' => 'Klanten, orders of planning op één plek beheren, in plaats van in losse Excel-lijsten.',
@@ -319,7 +319,7 @@ return [
             'en' => [
                 'meta' => [
                     'title' => 'Custom admin panel development | DevAim Labs',
-                    'description' => 'A custom admin panel for your customers, planning, orders or stock. One overview with roles and permissions instead of scattered spreadsheets. Try the live demo.',
+                    'description' => 'A custom admin panel for your customers, planning, orders or stock. One overview with roles and permissions instead of scattered spreadsheets. Try the demo.',
                 ],
                 'name' => 'Admin panels',
                 'summary' => 'Manage customers, orders or planning in one place instead of scattered spreadsheets.',
@@ -417,7 +417,7 @@ return [
 
             'nl' => [
                 'meta' => [
-                    'title' => 'KPI-dashboard laten maken | Uw cijfers in één overzicht | DevAim Labs',
+                    'title' => 'KPI-dashboard laten maken | Cijfers op één plek | DevAim Labs',
                     'description' => 'KPI-dashboard laten maken met omzet, orders en trends uit uw eigen systemen, automatisch bijgewerkt. Geen handwerk in Excel meer. Bekijk de live demo.',
                 ],
                 'name' => 'KPI-dashboards',
@@ -598,8 +598,8 @@ return [
 
             'nl' => [
                 'meta' => [
-                    'title' => 'Betaalsysteem laten maken | Mollie en Stripe koppeling | DevAim Labs',
-                    'description' => 'Online betalingen, abonnementen en facturen via Mollie of Stripe, gekoppeld aan uw website of systeem. Inclusief webhooks en foutafhandeling. Bekijk de live demo.',
+                    'title' => 'Betaalsysteem laten maken | Mollie & Stripe | DevAim Labs',
+                    'description' => 'Online betalingen, abonnementen en facturen via Mollie of Stripe, gekoppeld aan uw website of systeem. Met webhooks en foutafhandeling. Bekijk de live demo.',
                 ],
                 'name' => 'Betalingen',
                 'summary' => 'Betalingen, abonnementen en facturen via Mollie of Stripe, inclusief foutafhandeling.',
@@ -773,8 +773,8 @@ return [
 
             'nl' => [
                 'meta' => [
-                    'title' => 'API-koppeling laten maken | Systemen automatisch koppelen | DevAim Labs',
-                    'description' => 'API-koppeling laten maken tussen uw webshop, betaalprovider, CRM en boekhouding. Geen dubbel overtypen meer, met logboek, meldingen en automatische nieuwe pogingen.',
+                    'title' => 'API-koppeling laten maken | Systemen koppelen | DevAim Labs',
+                    'description' => 'API-koppeling laten maken tussen uw webshop, betaalprovider, CRM en boekhouding. Geen dubbel overtypen meer, met logboek, meldingen en nieuwe pogingen.',
                 ],
                 'name' => 'API-koppelingen',
                 'summary' => 'Uw systemen praten met elkaar: geen dubbel overtypen meer.',
@@ -874,7 +874,7 @@ return [
 
             'en' => [
                 'meta' => [
-                    'title' => 'API integration development | Connect your systems | DevAim Labs',
+                    'title' => 'API integration development | Connect systems | DevAim Labs',
                     'description' => 'API integrations between your webshop, payment provider, CRM and accounting. No more retyping data, with a log, alerts and automatic retries.',
                 ],
                 'name' => 'API integrations',
