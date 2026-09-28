@@ -35,7 +35,7 @@ class SitePagesTest extends TestCase
                 ->assertSee('"@type":"FAQPage"', false);
         }
 
-        $this->get('/')->assertSee('Prijs op aanvraag')->assertSee(config('site.organization.email'));
+        $this->get('/')->assertSee('Prijs op aanvraag')->assertSee(config('organisation.email'));
         $this->get('/en')->assertSee('Price on request');
     }
 
@@ -146,7 +146,7 @@ class SitePagesTest extends TestCase
                 ->assertSee('name="locale" value="'.$lang.'"', false)
                 ->assertSee($t['pages']['contact']['heading'])
                 ->assertSee($t['contact']['response'])
-                ->assertSee(config('site.organization.email'))
+                ->assertSee(config('organisation.email'))
                 ->assertSee($t['faq']['items'][$t['pages']['contact']['faq_items'][0]]['q']);
         }
     }
@@ -253,8 +253,8 @@ class SitePagesTest extends TestCase
         // Which pages it lists: PageRegistryTest.
         $body = $this->get('/llms.txt')->assertOk()->getContent();
 
-        $this->assertStringContainsString('KvK: '.config('site-v2.company.kvk'), $body);
-        $this->assertStringContainsString(config('site.organization.email'), $body);
+        $this->assertStringContainsString('KvK: '.config('organisation.kvk'), $body);
+        $this->assertStringContainsString(config('organisation.email'), $body);
         $this->assertStringContainsString(config('site-v2.nl.meta.description'), $body);
     }
 

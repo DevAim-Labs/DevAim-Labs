@@ -16,8 +16,9 @@ use Illuminate\Http\Request;
  * (SitePage::service(), content via ServiceCatalog), error (404/500/503).
  * Which pages exist, and their URLs and hreflang alternates, come from
  * the PageRegistry.
- * Strings come from config('site-v2'); organisation data from
- * config('site.organization'). Nothing here touches the database, so
+ * Strings come from config('site-v2'); the Organisation's details and
+ * schema.org node from App\Support\Organisation (views get them as
+ * `$org`, never from config). Nothing here touches the database, so
  * the error pages can use it safely.
  */
 final class SitePage
@@ -132,7 +133,6 @@ final class SitePage
     private static function base(string $locale, string $page): array
     {
         $t = self::withServiceLinks(config("site-v2.{$locale}"), $locale);
-        $org = config('site.organization');
         $isHome = $page === 'home';
 
         // On home, a section link is a plain in-page anchor.
@@ -156,9 +156,7 @@ final class SitePage
         return [
             'locale' => $locale,
             't' => $t,
-            'org' => $org,
-            'company' => config('site-v2.company'),
-            'phoneHref' => 'tel:'.preg_replace('/[^0-9+]/', '', $org['phone']),
+            'org' => Organisation::details(),
             'pageKey' => $page,
             'isHome' => $isHome,
             'minimalChrome' => false,
@@ -204,15 +202,14 @@ final class SitePage
     private static function structuredData(string $locale, string $page, array $meta): array
     {
         $t = config("site-v2.{$locale}");
-        $org = config('site.organization');
         $url = PageRegistry::url($page, $locale);
-        $orgId = self::orgId();
+        $orgId = Organisation::id();
 
         if ($page === 'home') {
             return [
                 '@context' => 'https://schema.org',
                 '@graph' => [
-                    self::organizationNode($locale) + [
+                    self::organisationNode($locale) + [
                         // No Offer without a real price: the catalog lists the services themselves.
                         'hasOfferCatalog' => [
                             '@type' => 'OfferCatalog',
@@ -230,7 +227,7 @@ final class SitePage
                         '@type' => 'WebSite',
                         '@id' => url('/').'#website',
                         'url' => url('/'),
-                        'name' => $org['name'],
+                        'name' => Organisation::details()['name'],
                         'inLanguage' => ['nl', 'en'],
                         'publisher' => ['@id' => $orgId],
                     ],
@@ -254,7 +251,7 @@ final class SitePage
                     'isPartOf' => ['@id' => url('/').'#website'],
                     'about' => ['@id' => $orgId],
                 ],
-                self::organizationNode($locale),
+                self::organisationNode($locale),
                 self::breadcrumbNode($crumbs),
             ],
         ];
@@ -273,7 +270,7 @@ final class SitePage
             'description' => $service['meta']['description'],
             'url' => $url,
             'inLanguage' => $locale,
-            'provider' => ['@id' => self::orgId()],
+            'provider' => ['@id' => Organisation::id()],
             'areaServed' => ['@type' => 'Country', 'name' => 'Nederland'],
         ];
 
@@ -295,60 +292,17 @@ final class SitePage
             '@context' => 'https://schema.org',
             '@graph' => [
                 $serviceNode,
-                self::organizationNode($locale),
+                self::organisationNode($locale),
                 self::faqNode($url, $locale, $service['faq']),
                 self::breadcrumbNode($crumbs),
             ],
         ];
     }
 
-    /**
-     * The business, on every page so `provider` / `about` / `publisher`
-     * references resolve without a crawler having to visit the home page.
-     * Service-area business: no street address in the markup (see config/site.php).
-     */
-    private static function organizationNode(string $locale): array
+    /** The business node, on every page so provider / about / publisher references resolve. */
+    private static function organisationNode(string $locale): array
     {
-        $t = config("site-v2.{$locale}");
-        $org = config('site.organization');
-        $company = config('site-v2.company');
-        $logoPath = public_path(ltrim($org['logo'], '/'));
-        $logoSize = is_file($logoPath) ? @getimagesize($logoPath) : false;
-
-        return array_filter([
-            '@type' => 'ProfessionalService',
-            '@id' => self::orgId(),
-            'name' => $org['name'],
-            'url' => url('/'),
-            'logo' => array_filter([
-                '@type' => 'ImageObject',
-                'url' => asset(ltrim($org['logo'], '/')),
-                'width' => $logoSize[0] ?? null,
-                'height' => $logoSize[1] ?? null,
-            ]),
-            'image' => asset('og-image.png'),
-            'description' => $t['meta']['description'],
-            'email' => $org['email'],
-            'telephone' => $org['phone'],
-            'contactPoint' => [
-                '@type' => 'ContactPoint',
-                'contactType' => 'customer service',
-                'email' => $org['email'],
-                'telephone' => $org['phone'],
-                'availableLanguage' => ['nl', 'en'],
-            ],
-            'vatID' => $company['btw'] ?? null,
-            // Dutch Chamber of Commerce number (KvK), as shown in the footer.
-            'identifier' => empty($company['kvk']) ? null : [
-                '@type' => 'PropertyValue',
-                'propertyID' => 'KvK',
-                'value' => $company['kvk'],
-            ],
-            'areaServed' => ['@type' => 'Country', 'name' => 'Nederland'],
-            'address' => ['@type' => 'PostalAddress', 'addressCountry' => 'NL'],
-            'knowsLanguage' => ['nl', 'en'],
-            'sameAs' => $org['same_as'] ?? null,
-        ], fn ($value) => $value !== null && $value !== []);
+        return Organisation::schemaNode(config("site-v2.{$locale}.meta.description"));
     }
 
     /** @param  list<array{q: string, a: string}>  $items */
@@ -378,11 +332,6 @@ final class SitePage
                 'item' => $crumb['url'],
             ], $crumbs, array_keys($crumbs)),
         ];
-    }
-
-    private static function orgId(): string
-    {
-        return url('/').'#organization';
     }
 
     private static function normalizeLocale(string $locale): string

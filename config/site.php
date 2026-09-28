@@ -109,11 +109,4 @@ return [
         '/projects' => '/projecten',
         '/faq' => '/veelgestelde-vragen',
     ],
-
-    'organization' => [
-        'name' => 'DevAim Labs',
-        'email' => 'contact@devaimlabs.com',
-        'phone' => '+31638523099',
-        'logo' => '/DevAim_IMG.png',
-    ],
 ];

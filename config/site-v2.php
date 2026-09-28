@@ -4,23 +4,13 @@
  * Content for the site (the "v2" design, live on /, /en, /contact,
  * /en/contact, /privacyverklaring and the error pages).
  *
- * - Organisation name, e-mail, phone and logo come from config('site.organization')
- *   and are NOT duplicated here (render them from there).
+ * - The Organisation's facts (name, e-mail, phone, logo, KvK, BTW) live in
+ *   config/organisation.php and are NOT duplicated here.
  * - Dutch copy uses formal "u" and first person singular ("ik"): one developer.
  * - No fabricated testimonials, metrics or quotes. Case `results` stay empty
  *   until there are real, verifiable numbers (the view renders nothing then).
  */
 return [
-
-    /*
-     * Company registration details. They are not (yet) in config/site.php,
-     * which has uncommitted edits, so they live here for now.
-     * TODO: move to config('site.organization') once that file is settled.
-     */
-    'company' => [
-        'kvk' => '42051464',
-        'btw' => 'NL005458933B79',
-    ],
 
     /*
      * Old one-page URLs (config/site.php and config/site-en.php: section

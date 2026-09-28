@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Support\ClientCases;
+use App\Support\Organisation;
 use App\Support\PageRegistry;
 use Illuminate\Http\Response;
 
@@ -46,8 +47,7 @@ class CrawlerController extends Controller
      */
     public function llms(): Response
     {
-        $org = config('site.organization');
-        $company = config('site-v2.company');
+        $org = Organisation::details();
         $nl = config('site-v2.nl');
 
         $services = $pages = [];
@@ -102,8 +102,8 @@ Taal: Nederlands (standaard) en Engels (/en). Prijzen: vaste prijs vooraf, op aa
 ## Bedrijfsgegevens
 - E-mail: {$org['email']}
 - Telefoon: {$org['phone']}
-- KvK: {$company['kvk']}
-- BTW: {$company['btw']}
+- KvK: {$org['kvk']}
+- BTW: {$org['btw']}
 LLMS;
 
         return $this->text($body."\n");

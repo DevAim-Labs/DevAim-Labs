@@ -82,9 +82,9 @@ class PageMarkupTest extends TestCase
             $org = collect($data['@graph'])->firstWhere('@id', $orgId);
             $this->assertNotNull($org, "{$path}: the business node referenced by provider/about/publisher is on the page");
             $this->assertSame('ProfessionalService', $org['@type']);
-            $this->assertSame(config('site.organization.phone'), $org['telephone'], "{$path}: NAP phone");
-            $this->assertSame(config('site.organization.email'), $org['email'], "{$path}: NAP email");
-            $this->assertSame(['@type' => 'PropertyValue', 'propertyID' => 'KvK', 'value' => config('site-v2.company.kvk')], $org['identifier']);
+            $this->assertSame(config('organisation.phone'), $org['telephone'], "{$path}: NAP phone");
+            $this->assertSame(config('organisation.email'), $org['email'], "{$path}: NAP email");
+            $this->assertSame(['@type' => 'PropertyValue', 'propertyID' => 'KvK', 'value' => config('organisation.kvk')], $org['identifier']);
             $this->assertArrayNotHasKey('aggregateRating', $org);
         }
     }

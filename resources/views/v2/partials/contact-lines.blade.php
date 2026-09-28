@@ -6,7 +6,7 @@
     </li>
     <li>
         <x-v2::icon name="phone" class="size-5" />
-        <a href="{{ $phoneHref }}"><span class="sr-only">{{ $t['contact']['phone_label'] }}: </span>{{ $org['phone'] }}</a>
+        <a href="{{ $org['phone_href'] }}"><span class="sr-only">{{ $t['contact']['phone_label'] }}: </span>{{ $org['phone_display'] }}</a>
     </li>
     @isset($response)
         <li>

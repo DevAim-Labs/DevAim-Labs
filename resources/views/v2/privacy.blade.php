@@ -3,6 +3,8 @@
 {{--
     Privacy statement (Dutch only). The legal text is copied verbatim from
     resources/views/privacy.blade.php (the old layout); edit it here now.
+    E-mail and phone come from the Organisation (`$org`). The address is
+    part of the legal text; see config/organisation.php `address`.
 --}}
 
 @section('content')
@@ -25,11 +27,11 @@
                     DevAim Labs<br>
                     Weena 690, 3012 CN Rotterdam<br>
                     <a href="https://devaimlabs.com">devaimlabs.com</a><br>
-                    <a href="tel:+31638523099">+31 638523099</a>
+                    <a href="{{ $org['phone_href'] }}">{{ $org['phone_display'] }}</a>
                 </p>
                 <p>
                     DevAim Labs is de functionaris gegevensbescherming van DevAim Labs en is te bereiken via
-                    <a href="mailto:contact@devaimlabs.com">contact@devaimlabs.com</a>.
+                    <a href="mailto:{{ $org['email'] }}">{{ $org['email'] }}</a>.
                 </p>
 
                 <h2>Persoonsgegevens die ik verwerk</h2>
@@ -51,7 +53,7 @@
                     bij de online activiteiten van hun kinderen, om zo te voorkomen dat er gegevens over kinderen
                     verzameld worden zonder ouderlijke toestemming. Als u er van overtuigd bent dat ik zonder die
                     toestemming persoonlijke gegevens heb verzameld over een minderjarige, neem dan contact met
-                    mij op via <a href="mailto:contact@devaimlabs.com">contact@devaimlabs.com</a>,
+                    mij op via <a href="mailto:{{ $org['email'] }}">{{ $org['email'] }}</a>,
                     dan verwijder ik deze informatie.
                 </p>
 
@@ -101,7 +103,7 @@
                 <p>
                     U kunt een verzoek tot inzage, correctie, verwijdering, gegevensoverdraging van uw
                     persoonsgegevens of verzoek tot intrekking van uw toestemming of bezwaar op de verwerking van uw
-                    persoonsgegevens sturen naar <a href="mailto:contact@devaimlabs.com">contact@devaimlabs.com</a>.
+                    persoonsgegevens sturen naar <a href="mailto:{{ $org['email'] }}">{{ $org['email'] }}</a>.
                 </p>
                 <p>
                     Om er zeker van te zijn dat het verzoek tot inzage door u is gedaan, vraag ik u een kopie van
@@ -121,7 +123,7 @@
                     DevAim Labs neemt de bescherming van uw gegevens serieus en neemt passende maatregelen om
                     misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging
                     tegen te gaan. Als u de indruk heeft dat uw gegevens niet goed beveiligd zijn of er aanwijzingen
-                    zijn van misbruik, neem dan contact op via <a href="mailto:contact@devaimlabs.com">contact@devaimlabs.com</a>.
+                    zijn van misbruik, neem dan contact op via <a href="mailto:{{ $org['email'] }}">{{ $org['email'] }}</a>.
                 </p>
             </article>
         </div>

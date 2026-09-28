@@ -17,6 +17,12 @@ paths, absolute URLs, hreflang alternates and sitemap metadata. Routes,
 `SitePage`, the sitemap, `robots.txt`, `llms.txt` and `LegacyRedirects` read it;
 nothing else writes a page path.
 
+**Organisation**: DevAim Labs itself as the site presents it: name, e-mail,
+phone, logo, KvK and BTW numbers, optional `same_as` profiles and address. The
+facts live only in `config/organisation.php`; `App\Support\Organisation`
+derives the display phone, the `tel:` link, the logo URL and size, and the
+schema.org business node. Views get it as `$org` through `SitePage`.
+
 **Service**: one thing DevAim Labs builds (websites, admin panels, ...), with a
 detail Page per locale. A Service has a stable **key** (`admin-panels`), used in
 config and code, and a localized **slug** per locale (`adminpanelen`,

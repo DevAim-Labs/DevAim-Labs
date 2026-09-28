@@ -40,15 +40,15 @@
                 <p class="footer-title">{{ $f['contact_title'] }}</p>
                 <ul class="footer-links">
                     <li><a href="mailto:{{ $org['email'] }}">{{ $org['email'] }}</a></li>
-                    <li><a href="{{ $phoneHref }}">{{ $org['phone'] }}</a></li>
+                    <li><a href="{{ $org['phone_href'] }}">{{ $org['phone_display'] }}</a></li>
                 </ul>
             </div>
 
             <div>
                 <p class="footer-title">{{ $f['legal_title'] }}</p>
                 <ul class="footer-links footer-links--meta">
-                    <li>{{ $f['kvk'] }}: <span class="mono">{{ $company['kvk'] }}</span></li>
-                    <li>{{ $f['btw'] }}: <span class="mono">{{ $company['btw'] }}</span></li>
+                    <li>{{ $f['kvk'] }}: <span class="mono">{{ $org['kvk'] }}</span></li>
+                    <li>{{ $f['btw'] }}: <span class="mono">{{ $org['btw'] }}</span></li>
                     {{-- The privacy statement is Dutch only: announce the target language on /en pages. --}}
                     <li><a href="{{ $privacyUrl }}" @if ($locale !== 'nl') hreflang="nl" @endif @if ($pageKey === 'privacy') aria-current="page" @endif>{{ $f['privacy']['label'] }}</a></li>
                     <!-- <li><a href="{{ url($f['sitemap']['href']) }}">{{ $f['sitemap']['label'] }}</a></li> -->
