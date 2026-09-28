@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Support\LeadIntake;
 use App\Support\SitePage;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -9,7 +10,6 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -49,8 +49,9 @@ class AppServiceProvider extends ServiceProvider
      *            Static files (/build, /demo, images) never reach PHP.
      * - crawler: sitemap.xml, robots.txt, llms.txt.
      * - contact: POST /contact, per IP, per e-mail address and, for the
-     *            website check, per checked site. Answers a JSON 429 with
-     *            Retry-After; the form shows its own "too many attempts" text.
+     *            website check, per checked site (keys and limits: LeadIntake).
+     *            Answers a JSON 429 with Retry-After; the form shows its own
+     *            "too many attempts" text.
      */
     private function configureRateLimiting(): void
     {
@@ -58,46 +59,6 @@ class AppServiceProvider extends ServiceProvider
 
         RateLimiter::for('crawler', fn (Request $request) => Limit::perMinute(30)->by($request->ip()));
 
-        RateLimiter::for('contact', function (Request $request) {
-            $tooMany = fn (Request $request, array $headers) => response()->json([
-                'message' => $request->input('locale') === 'en'
-                    ? 'Too many attempts. Please try again later.'
-                    : 'Te veel pogingen. Probeer het later opnieuw.',
-            ], 429, $headers);
-
-            // Each limit needs its own key: limits that share a key share one counter.
-            $limits = [
-                Limit::perMinute(5)->by('ip-minute:'.$request->ip()),
-                Limit::perDay(20)->by('ip-day:'.$request->ip()),
-            ];
-
-            $email = $request->input('email');
-
-            if (is_string($email) && trim($email) !== '') {
-                // Hashed: the cache holds no readable addresses.
-                $limits[] = Limit::perHour(3)->by('email:'.hash('sha256', Str::lower(trim($email))));
-            }
-
-            if ($host = self::scanHost($request)) {
-                $limits[] = Limit::perDay(3)->by('scan-host:'.$host);
-            }
-
-            return array_map(fn (Limit $limit) => $limit->response($tooMany), $limits);
-        });
-    }
-
-    /** Host of the site a website-check asks about, without "www.", or null. */
-    private static function scanHost(Request $request): ?string
-    {
-        $url = $request->input('scan_url');
-
-        if ($request->input('type') !== 'website_check' || ! is_string($url) || trim($url) === '') {
-            return null;
-        }
-
-        $url = trim($url);
-        $host = parse_url(str_contains($url, '://') ? $url : 'https://'.$url, PHP_URL_HOST);
-
-        return is_string($host) && $host !== '' ? preg_replace('/^www\./', '', Str::lower($host)) : null;
+        RateLimiter::for('contact', fn (Request $request) => LeadIntake::limits($request->all(), $request->ip()));
     }
 }

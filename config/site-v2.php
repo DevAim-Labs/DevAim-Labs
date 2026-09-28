@@ -295,6 +295,9 @@ return [
                 'message' => 'Bericht',
                 'message_hint' => 'Minimaal 20 tekens. Bijvoorbeeld: wat u wilt bereiken en wanneer.',
             ],
+            // The project-type vocabulary (read through LeadIntake::projectTypes()):
+            // same keys in both locales; services and pricing packages
+            // preselect one by key (`project_type`).
             'project_types' => [
                 'website' => 'Website',
                 'webshop' => 'Webshop',
@@ -321,6 +324,10 @@ return [
             'error_generic' => 'Verzenden is mislukt. Probeer het later opnieuw of mail rechtstreeks.',
             'error_expired' => 'Uw sessie is verlopen. Ververs de pagina en probeer het opnieuw.',
             'error_throttled' => 'Te veel pogingen. Wacht een minuut en probeer het opnieuw.',
+            // Server answers to a submission (App\Support\LeadIntake). The form
+            // shows the texts above; these reach clients without the page.
+            'sent' => 'Verzonden.',
+            'too_many' => 'Te veel pogingen. Probeer het later opnieuw.',
             'honeypot' => 'Laat dit veld leeg',
             // Under every form, with a link to the privacy statement.
             'privacy_note' => 'Ik gebruik uw gegevens alleen om te reageren.',
@@ -686,6 +693,8 @@ return [
             'error_generic' => 'Sending failed. Please try again later or email me directly.',
             'error_expired' => 'Your session has expired. Please refresh the page and try again.',
             'error_throttled' => 'Too many attempts. Please wait a minute and try again.',
+            'sent' => 'Sent.',
+            'too_many' => 'Too many attempts. Please try again later.',
             'honeypot' => 'Leave this field empty',
             'privacy_note' => 'I only use your details to reply to you.',
             'privacy_link' => 'See the privacy statement (in Dutch)',

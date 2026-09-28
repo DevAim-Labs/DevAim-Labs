@@ -157,6 +157,8 @@ final class SitePage
             'locale' => $locale,
             't' => $t,
             'org' => Organisation::details(),
+            // Options of the contact form's project-type select.
+            'projectTypes' => LeadIntake::projectTypes($locale),
             'pageKey' => $page,
             'isHome' => $isHome,
             'minimalChrome' => false,

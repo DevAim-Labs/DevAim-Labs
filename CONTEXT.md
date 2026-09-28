@@ -23,6 +23,24 @@ facts live only in `config/organisation.php`; `App\Support\Organisation`
 derives the display phone, the `tel:` link, the logo URL and size, and the
 schema.org business node. Views get it as `$org` through `SitePage`.
 
+**Lead**: one person's request that reached the business through a site form:
+a contact message (`type` contact) or a free website check (`type`
+website_check), with name, e-mail, message, and optionally `scan_url`, Project
+type and budget. A bot submission is not a Lead: it gets the same answer but is
+dropped.
+
+**Lead intake**: `App\Support\LeadIntake`, one submission from arrival to
+outcome: locale, cleaning and validation, spam verdict (honeypot and
+`FormTimer`), rate-limit keys, mail, and the localized answer from config
+`forms.*`. `ContactController` is its HTTP adapter. See
+`docs/adr/0001-lead-intake-without-a-mail-port.md`.
+
+**Project type**: the kind of project a Lead is about (`website`,
+`adminpaneel`, `maatwerk`, ...). A fixed vocabulary of keys, the same in every
+Locale, with localized labels in `site-v2.{locale}.contact.project_types`, read
+through `LeadIntake::projectTypes()`. Services and pricing packages name one by
+key to preselect it in the form.
+
 **Service**: one thing DevAim Labs builds (websites, admin panels, ...), with a
 detail Page per locale. A Service has a stable **key** (`admin-panels`), used in
 config and code, and a localized **slug** per locale (`adminpanelen`,

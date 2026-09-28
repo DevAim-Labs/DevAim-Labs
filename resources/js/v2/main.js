@@ -418,7 +418,10 @@ function initForms() {
         link.addEventListener('click', () => {
             const select = document.querySelector('#contact-form-project_type');
             const value = link.getAttribute('data-preselect');
-            if (select && [...select.options].some((o) => o.value === value)) select.value = value;
+            if (!select) return;
+            if ([...select.options].some((o) => o.value === value)) select.value = value;
+            // Keys come from the project-type vocabulary (LeadIntake, checked in LeadIntakeTest).
+            else if (import.meta.env.DEV) console.warn(`Unknown project type "${value}" in data-preselect`);
         });
     });
 }
