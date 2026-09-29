@@ -370,7 +370,7 @@ Responstijden voor support: binnen 24 uur voor normale issues, binnen 4 uur voor
 
 **Contact Page:**
 ```html
-<meta name="description" content="Start je custom software project met DevAim Labs. Gratis initieel consult, vaste prijsofferte binnen 48 uur, direct contact met developers. Email: contact@devaimlabs.com, Tel: +31 6385230999.">
+<meta name="description" content="Start je custom software project met DevAim Labs. Gratis initieel consult, vaste prijsofferte binnen 48 uur, direct contact met developers. Email: contact@devaimlabs.com, Tel: +31 638523099.">
 ```
 
 ---
@@ -401,7 +401,7 @@ Typische projecten:
 • Gemiddelde tijdsbesparing: 10-15 uur/week
 
 📧 contact@devaimlabs.com
-📞 +31 6385230999
+📞 +31 638523099
 🌐 devaimlabs.com
 🏢 KvK: 42051464
 ```
@@ -623,7 +623,7 @@ Custom Software Ontwikkeling
 Admin Panels • Dashboards • API Integraties
 
 📧 contact@devaimlabs.com
-📞 +31 6385230999
+📞 +31 638523099
 🌐 devaimlabs.com
 
 ⚡ 24-uur reactietijd gegarandeerd

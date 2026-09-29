@@ -9,26 +9,47 @@
     ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
+# No directory listings, anywhere under public/ (e.g. /demo/, /build/).
+Options -Indexes
+
+# Keep in line with App\Http\Middleware\SecurityHeaders and
+# deploy/nginx/ (production: DigitalOcean + nginx).
 <IfModule mod_headers.c>
-    # Security Headers
+    # Security headers for every response (PHP responses set the same values).
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set X-Content-Type-Options "nosniff"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Permissions-Policy "accelerometer=(), autoplay=(), bluetooth=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), serial=(), usb=(), browsing-topics=(), interest-cohort=()"
+
+    # The static demos (/demo/*.html, framed by the service pages). Laravel's
+    # nonce CSP never reaches these files, so they get their own policy:
+    # inline script/style (static pages, no nonce) and data: fonts.
+    <If "%{REQUEST_URI} =~ m#^/demo/#">
+        Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+    </If>
+
+    # Demo fonts: the service pages frame the demos in a sandbox without
+    # allow-same-origin, so the demo's origin is opaque ("null") and font
+    # requests are CORS requests. Fonts are public, so "*" is safe here.
+    <If "%{REQUEST_URI} =~ m#^/demo/assets/.+\.woff2$#">
+        Header always set Access-Control-Allow-Origin "*"
+    </If>
 
     # Cache Headers
     <FilesMatch "\.(css|js|jpg|jpeg|png|webp|gif|ico|woff2)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
-    <FilesMatch "^(heroimage.*\.webp)$">
-        Header set Cache-Control "public, max-age=31536000, immutable"
-    </FilesMatch>
+</IfModule>
+
+# Never serve dotfiles (.env, .git, ...) should one end up in public/; .well-known stays reachable.
+<IfModule mod_alias.c>
+    RedirectMatch 404 /\.(?!well-known/)
 </IfModule>
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
+        Options -MultiViews
     </IfModule>
 
     RewriteEngine On

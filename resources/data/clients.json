@@ -1,0 +1,40 @@
+[
+    {
+        "name": "Lokanta Proeflokaal",
+        "url": "https://lokanta-proeflokaal.nl",
+        "logo": "/lokanta.webp",
+        "services": ["websites"],
+        "tags": {
+            "nl": ["Restaurant", "Website", "Astro"],
+            "en": ["Restaurant", "Website", "Astro"]
+        },
+        "problem": {
+            "nl": "Een tapasbar die gasten online al wil laten proeven wat hen te wachten staat: de kaart, de sfeer en hoe ze kunnen reserveren.",
+            "en": "A tapas bar that wanted guests to get a taste online first: the menu, the atmosphere and how to book a table."
+        },
+        "built": {
+            "nl": "Een restaurantwebsite met de menukaart, sfeerbeelden, reserveren en alle praktische informatie die gasten nodig hebben voordat ze binnenstappen.",
+            "en": "A restaurant website with the menu, atmosphere photos, booking and all the practical information guests need before they walk in."
+        },
+        "results": { "nl": [], "en": [] }
+    },
+    {
+        "name": "Slowdown Store",
+        "url": "https://slowdownstore.com",
+        "logo": "/slowdown.webp",
+        "services": ["websites"],
+        "tags": {
+            "nl": ["Mode", "Webshop", "Astro"],
+            "en": ["Fashion", "Webshop", "Astro"]
+        },
+        "problem": {
+            "nl": "Een onafhankelijk modelabel dat zijn collectie in een eigen winkel wil verkopen, los van grote platformen.",
+            "en": "An independent fashion label that wanted to sell its collection in its own store, independent of the big platforms."
+        },
+        "built": {
+            "nl": "Een webshop voor het label, met productpagina's die de collectie laten zien en een eigen online verkoopkanaal.",
+            "en": "A webshop for the label, with product pages that show off the collection and its own online sales channel."
+        },
+        "results": { "nl": [], "en": [] }
+    }
+]

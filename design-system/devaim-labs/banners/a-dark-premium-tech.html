@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction A — Dark Premium Tech · Banner concepts</title>
+<!-- Concept preview only. Production: self-host Geist + JetBrains Mono (woff2, font-display: swap). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{--bg:#0B0D12;--surface:#151922;--border:#2A3140;--text:#F4F6FA;--muted:#9AA3B2;--accent:#4F8CFF;--mint:#5EEAD4}
+  body{margin:0;padding:32px 16px;background:#050608;color:var(--text);font:16px/1.6 Geist,system-ui,sans-serif}
+  .doc{max-width:1200px;margin:0 auto}
+  h1,h2{font-weight:600;letter-spacing:-.02em}
+  .spec{color:var(--muted);max-width:760px}
+  .spec b{color:var(--text)}
+  .frame{overflow-x:auto;margin:16px 0 48px}
+  /* ---------- OG 1200x630 ---------- */
+  .og{position:relative;width:1200px;height:630px;background:var(--bg);overflow:hidden;font-family:Geist,sans-serif}
+  .og::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+    background-size:48px 48px;opacity:.35;mask-image:radial-gradient(ellipse at 75% 40%,#000 0%,transparent 70%)}
+  .og .glow{position:absolute;width:620px;height:620px;right:-120px;top:-160px;border-radius:50%;
+    background:radial-gradient(circle,rgba(79,140,255,.45),rgba(94,234,212,.12) 45%,transparent 70%);filter:blur(20px)}
+  .og .card{position:absolute;right:96px;top:150px;width:360px;padding:24px;border:1px solid var(--border);border-radius:16px;
+    background:rgba(21,25,34,.8);box-shadow:0 0 0 1px rgba(79,140,255,.15),0 24px 60px rgba(0,0,0,.5)}
+  .card .k{font:500 13px 'JetBrains Mono',monospace;color:var(--muted)}
+  .card .v{font-size:44px;font-weight:600;letter-spacing:-.03em;margin:4px 0 16px}
+  .card .v span{color:var(--mint);font-size:20px;margin-left:8px}
+  .bars{display:flex;gap:8px;align-items:flex-end;height:80px}
+  .bars i{flex:1;background:linear-gradient(var(--accent),rgba(79,140,255,.2));border-radius:4px 4px 0 0}
+  .og .copy{position:absolute;left:96px;top:120px;width:560px}
+  .tag{font:500 16px 'JetBrains Mono',monospace;color:var(--mint)}
+  .og h3{font-size:68px;line-height:1.02;letter-spacing:-.04em;margin:16px 0 20px;font-weight:600}
+  .og p{font-size:24px;color:var(--muted);margin:0}
+  .brand{position:absolute;left:96px;bottom:72px;display:flex;gap:12px;align-items:center;font-weight:600;font-size:22px}
+  .brand .mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--mint))}
+  .url{position:absolute;right:96px;bottom:76px;font:400 18px 'JetBrains Mono',monospace;color:var(--muted)}
+  /* ---------- Hero mock (scaled 1440 wide) ---------- */
+  .hero{position:relative;width:1200px;height:640px;background:var(--bg);overflow:hidden;border:1px solid var(--border)}
+  .hero .glow{right:-80px;top:-120px}
+  .hero .copy{position:absolute;left:80px;top:140px;width:560px}
+  .hero h3{font-size:60px;line-height:1.04;letter-spacing:-.035em;margin:16px 0 20px;font-weight:600}
+  .hero p{color:var(--muted);font-size:20px;margin:0 0 32px}
+  .btn{display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:10px;background:var(--accent);color:var(--bg);font-weight:600}
+  .ghost{margin-left:12px;display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:10px;border:1px solid var(--border);color:var(--text)}
+  .stack{position:absolute;right:80px;top:110px;width:420px;height:420px}
+  .stack .card{position:absolute;right:0;top:0;width:340px}
+  .stack .pay{position:absolute;left:0;bottom:30px;width:230px;padding:18px;border:1px solid var(--border);border-radius:14px;background:var(--surface);font:500 14px 'JetBrains Mono',monospace;color:var(--muted)}
+  .pay b{display:block;color:var(--text);font:600 22px Geist,sans-serif;margin-top:6px}
+  .pay em{color:var(--mint);font-style:normal}
+</style>
+</head>
+<body>
+<div class="doc">
+  <h1>Direction A — Dark Premium Tech</h1>
+  <p class="spec">Art-direction style: <b>Geometric + Glow (Gradient)</b>. Mood: precise, engineered, "the developer you would hire if you knew what to look for". Visuals are pure CSS/SVG: fading 48px grid, a single blue-to-mint radial glow, and floating UI cards (a KPI tile and a Mollie/Stripe payment chip) that prove the dashboard and payments offer without stock photos.</p>
+
+  <h2>1 · OG image — 1200 × 630</h2>
+  <div class="frame"><div class="og">
+    <div class="glow"></div>
+    <div class="copy">
+      <div class="tag">// websites · dashboards · betalingen</div>
+      <h3>Software die voor uw bedrijf blijft werken.</h3>
+      <p>Maatwerk van één vaste ontwikkelaar.</p>
+    </div>
+    <div class="card"><div class="k">omzet · deze maand</div><div class="v">€ 18.420<span>+24%</span></div>
+      <div class="bars"><i style="height:35%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:68%"></i><i style="height:60%"></i><i style="height:88%"></i><i style="height:100%"></i></div></div>
+    <div class="brand"><span class="mark"></span>DevAim Labs</div>
+    <div class="url">devaimlabs.nl</div>
+  </div></div>
+  <div class="spec">
+    <p><b>Layout:</b> copy left (x 96–656), proof card right. 96px side margins, 72px bottom; everything critical within the central 1008 × 486 safe area. Keep the headline within x 96–656 so a centre-square crop (WhatsApp/iMessage thumbnail, 630 × 630 from x 285) still keeps the brand mark and most of the headline readable. If square crops matter most, use the centred variant: headline centred, card removed.</p>
+    <p><b>Type:</b> Geist 600 at 68px, tracking −0.04em; mono tag in JetBrains Mono 16px. Only two families.</p>
+    <p><b>Contrast:</b> #F4F6FA on #0B0D12 = 17.96:1; muted #9AA3B2 = 7.64:1; mint tag #5EEAD4 = 13.1:1. The glow sits behind the card, never behind the headline.</p>
+    <p><b>EN variant:</b> "Software that keeps working for your business." / "Custom-built by one dedicated developer."</p>
+    <p><b>Export:</b> PNG under 300 KB, rendered from this HTML at 1×; also 2× (2400 × 1260) for retina previews on LinkedIn.</p>
+  </div>
+
+  <h2>2 · Site hero visual</h2>
+  <div class="frame"><div class="hero">
+    <div class="glow og-glow" style="position:absolute;width:620px;height:620px;border-radius:50%;right:-80px;top:-120px;background:radial-gradient(circle,rgba(79,140,255,.4),rgba(94,234,212,.1) 45%,transparent 70%);filter:blur(20px)"></div>
+    <div class="copy">
+      <div class="tag">// DevAim Labs · maatwerk software</div>
+      <h3>Een website die klanten oplevert, niet alleen bezoekers.</h3>
+      <p>Websites voor restaurants en winkels, dashboards en betalingskoppelingen met Stripe of Mollie. Eén aanspreekpunt, van eerste gesprek tot livegang.</p>
+      <span class="btn">Plan een gratis gesprek</span><span class="ghost">Bekijk projecten</span>
+    </div>
+    <div class="stack">
+      <div class="card"><div class="k">reserveringen · week 39</div><div class="v">142<span>+31%</span></div>
+        <div class="bars"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:82%"></i><i style="height:100%"></i></div></div>
+      <div class="pay">iDEAL · Mollie<b>€ 64,50</b><em>● betaald</em></div>
+    </div>
+  </div></div>
+  <div class="spec">
+    <p><b>Composition:</b> 12-column grid, copy on columns 1–6, a stack of two floating UI cards on columns 8–12, offset by 24px and slightly overlapping for depth (no 3D, no perspective tilt, so it stays sharp and cheap to render).</p>
+    <p><b>Motion (tier 6):</b> on load the cards fade and rise 16px, staggered 80ms; the KPI number counts up once (600ms, ease-out); the glow drifts ±20px over 12s. Under <code>prefers-reduced-motion</code> everything renders in its final state and the glow stays still.</p>
+    <p><b>Mobile (&lt;768px):</b> cards stack below the CTA at 90% width, and the glow shrinks to 360px. The hero must never exceed 100svh before the CTA is visible.</p>
+    <p><b>Assets:</b> none external. The cards are real HTML, so the numbers can be swapped per page (restaurant: reservations; store: orders; dashboards: KPIs).</p>
+  </div>
+</div>
+</body>
+</html>

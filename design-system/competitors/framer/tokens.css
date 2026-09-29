@@ -1,0 +1,24 @@
+:root {
+  --font-heading: GT Walsheim Medium;
+  --font-body: GT Walsheim Medium;
+  --space-1: 1px;
+  --space-2: 1.1px;
+  --space-3: 2px;
+  --space-4: 2.2px;
+  --space-5: 3px;
+  --space-6: 4px;
+  --space-7: 5px;
+  --space-8: 8px;
+  --space-9: 10px;
+  --space-10: 13.5px;
+  --space-11: 15px;
+  --space-12: 16px;
+  --space-13: 20px;
+  --space-14: 25px;
+  --space-15: 30px;
+  --space-16: 40px;
+  --space-17: 50px;
+  --space-18: 64px;
+  --space-19: 100px;
+  --space-20: 120px;
+}

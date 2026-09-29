@@ -1,0 +1,311 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>DevAim Labs Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=Geist:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap">
+<style>
+:root{
+  --bg:#f6f6f4; --surface:#ffffff; --ink:#1b1c1f; --muted:#5d6068; --line:#e2e2de; --chip:#ecece8; --accent:#2f4bd8;
+  --font:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141518; --surface:#1c1d21; --ink:#ececea; --muted:#a2a5ad; --line:#2d2f35; --chip:#26282d; --accent:#8fa2ff; color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#141518; --surface:#1c1d21; --ink:#ececea; --muted:#a2a5ad; --line:#2d2f35; --chip:#26282d; --accent:#8fa2ff; color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.55; padding-inline:clamp(16px,4vw,48px); padding-block:40px 80px}
+.wrap{max-width:1180px; margin-inline:auto; display:grid; gap:56px}
+h1,h2,h3{text-wrap:balance; margin:0; line-height:1.15}
+p{margin:0}
+.eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+header.top{display:grid; gap:14px; max-width:760px}
+header.top h1{font-size:clamp(30px,4.5vw,46px); font-weight:700; letter-spacing:-.02em}
+header.top p{color:var(--muted); font-size:18px; max-width:65ch}
+
+.findings{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.finding{background:var(--surface); padding:20px; display:grid; gap:6px; align-content:start}
+.finding b{font-weight:600}
+.finding span{color:var(--muted); font-size:14.5px}
+
+.dir{display:grid; gap:22px; padding-top:36px; border-top:1px solid var(--line)}
+.dir-head{display:flex; flex-wrap:wrap; gap:10px 18px; align-items:baseline; justify-content:space-between}
+.dir-head h2{font-size:clamp(24px,3vw,32px); font-weight:700; letter-spacing:-.01em}
+.dir-head h2 small{font-family:var(--mono); font-size:14px; font-weight:500; color:var(--muted); margin-right:10px; letter-spacing:0}
+.tag{font-family:var(--mono); font-size:12px; padding:4px 10px; border-radius:999px; background:var(--chip); color:var(--ink)}
+.tag.rec{background:var(--accent); color:var(--bg)}
+.lede{color:var(--muted); max-width:70ch}
+
+.previews{display:grid; grid-template-columns:1.6fr 1fr; gap:16px}
+@media (max-width:860px){.previews{grid-template-columns:1fr}}
+.frame{border-radius:14px; overflow:hidden; border:1px solid var(--line); display:grid; grid-template-rows:auto 1fr}
+.frame-label{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:8px 12px; background:var(--surface); color:var(--muted); border-bottom:1px solid var(--line)}
+.og{aspect-ratio:1200/630; max-width:100%}
+
+.specs{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+.spec{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px; display:grid; gap:12px; align-content:start}
+.spec h3{font-size:13px; font-family:var(--mono); font-weight:500; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+.swatches{display:grid; gap:8px}
+.sw{display:grid; grid-template-columns:28px 1fr auto; gap:10px; align-items:center; font-size:14px}
+.sw i{width:28px; height:28px; border-radius:6px; border:1px solid var(--line)}
+.sw code{font-family:var(--mono); font-size:12.5px; color:var(--muted)}
+ul.plain{margin:0; padding-left:18px; display:grid; gap:6px; font-size:14.5px}
+.pc{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:520px){.pc{grid-template-columns:1fr}}
+.pc h4{margin:0 0 6px; font-size:14px}
+.warn{font-size:13.5px; color:var(--muted); border-left:2px solid var(--line); padding-left:10px}
+
+.decide{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:clamp(20px,3vw,32px); display:grid; gap:14px}
+.decide h2{font-size:26px}
+.decide ol{margin:0; padding-left:20px; display:grid; gap:8px}
+
+/* ---------- Direction A mock ---------- */
+.a{background:#0B0D12; color:#F4F6FA; font-family:"Geist",system-ui,sans-serif; padding:clamp(20px,3.5vw,40px); display:grid; grid-template-columns:1.1fr 1fr; gap:24px; align-items:center; position:relative; overflow:hidden}
+.a::before{content:""; position:absolute; inset:0; background:
+  radial-gradient(60% 70% at 85% 30%,rgba(79,140,255,.28),transparent 70%),
+  radial-gradient(40% 50% at 70% 90%,rgba(94,234,212,.14),transparent 70%),
+  linear-gradient(rgba(42,49,64,.35) 1px,transparent 1px) 0 0/32px 32px,
+  linear-gradient(90deg,rgba(42,49,64,.35) 1px,transparent 1px) 0 0/32px 32px;
+  mask-image:linear-gradient(90deg,transparent,#000 45%)}
+.a > *{position:relative}
+.a .mono{font-family:"JetBrains Mono",monospace; font-size:12px; color:#5EEAD4}
+.a h3{font-size:clamp(22px,3vw,34px); font-weight:600; letter-spacing:-.02em; margin:10px 0 12px}
+.a p{color:#9AA3B2; font-size:14.5px}
+.a .btn{display:inline-block; margin-top:18px; background:#4F8CFF; color:#0B0D12; font-weight:600; font-size:14px; padding:10px 16px; border-radius:10px}
+.a .cards{display:grid; gap:12px}
+.a .card{background:#151922; border:1px solid #2A3140; border-radius:16px; padding:14px; box-shadow:0 0 0 1px rgba(79,140,255,.15),0 24px 60px rgba(0,0,0,.5)}
+.a .card small{font-family:"JetBrains Mono",monospace; font-size:11px; color:#9AA3B2}
+.a .kpi{font-size:26px; font-weight:600; font-variant-numeric:tabular-nums}
+.a .kpi em{font-style:normal; font-size:12px; color:#5EEAD4; margin-left:6px}
+.a .bars{display:flex; gap:5px; align-items:end; height:40px; margin-top:8px}
+.a .bars i{flex:1; background:#4F8CFF; border-radius:3px; opacity:.85}
+.a .paid{display:flex; justify-content:space-between; align-items:center; font-size:13px}
+.a .paid b{font-family:"JetBrains Mono",monospace; font-size:11px; background:rgba(94,234,212,.14); color:#5EEAD4; padding:3px 8px; border-radius:999px; font-weight:500}
+@media (max-width:620px){.a{grid-template-columns:1fr}}
+.a-og{background:#0B0D12; color:#F4F6FA; font-family:"Geist",sans-serif; padding:6%; display:grid; grid-template-columns:1.3fr 1fr; gap:6%; align-items:center}
+.a-og .mono{font-family:"JetBrains Mono",monospace; font-size:clamp(8px,1.1vw,11px); color:#5EEAD4}
+.a-og h4{margin:6px 0 0; font-size:clamp(13px,2vw,20px); font-weight:600; line-height:1.15; letter-spacing:-.01em}
+.a-og .card{background:#151922; border:1px solid #2A3140; border-radius:8px; padding:8%}
+.a-og .bars{display:flex; gap:4%; align-items:end; height:48px}
+.a-og .bars i{flex:1; background:#4F8CFF; border-radius:2px}
+
+/* ---------- Direction B mock ---------- */
+.b{background:#FBF7F0; color:#1F1A14; font-family:"Inter",system-ui,sans-serif; padding:clamp(20px,3.5vw,40px); display:grid; grid-template-columns:1.15fr 1fr; gap:26px; align-items:center}
+.b .eb{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#0F5F46; font-weight:600}
+.b h3{font-family:"Fraunces",Georgia,serif; font-weight:400; font-size:clamp(24px,3.4vw,38px); line-height:1.08; letter-spacing:-.01em; margin:10px 0 14px; hyphens:auto}
+.b h3 em{color:#0F5F46}
+.b p{color:#5E5548; font-size:14.5px}
+.b .btn{display:inline-block; margin-top:18px; background:#C2410C; color:#fff; font-weight:600; font-size:14px; padding:11px 18px; border-radius:999px}
+.b .trust{margin-top:12px; font-size:12.5px; color:#5E5548; display:flex; flex-wrap:wrap; gap:4px 14px}
+.b .trust span::before{content:"✓ "; color:#0F5F46; font-weight:700}
+.b .case{background:#fff; border-radius:12px; box-shadow:0 1px 2px rgba(31,26,20,.06),0 12px 32px rgba(31,26,20,.08); overflow:hidden}
+.b .plate{aspect-ratio:16/10; background:#F1E7D6; border-radius:0 0 90px 90px / 0 0 40px 40px; display:grid; place-items:center; position:relative; overflow:hidden}
+.b .plate::before{content:""; position:absolute; width:34%; aspect-ratio:1; border-radius:50%; background:#C2410C; opacity:.85; top:22%}
+.b .plate::after{content:""; position:absolute; inset:auto -10% -30% -10%; height:65%; background:#0F5F46; border-radius:50% 50% 0 0}
+.b .case-meta{padding:12px 14px; display:grid; gap:2px}
+.b .case-meta b{font-family:"Fraunces",serif; font-weight:600; font-size:16px}
+.b .case-meta small{color:#5E5548; font-size:12px}
+.b blockquote{margin:12px 0 0; font-family:"Fraunces",serif; font-style:italic; font-size:14px; color:#1F1A14; border-left:2px solid #0F5F46; padding-left:10px}
+@media (max-width:620px){.b{grid-template-columns:1fr}}
+.b-og{background:#FBF7F0; color:#1F1A14; padding:6%; display:grid; grid-template-columns:1.4fr 1fr; gap:5%; align-items:center; border-top:3px solid #1F1A14}
+.b-og .mast{font-family:"Inter",sans-serif; font-size:clamp(7px,1vw,10px); letter-spacing:.12em; text-transform:uppercase; border-bottom:1px solid #1F1A14; padding-bottom:4px; margin-bottom:8px}
+.b-og h4{margin:0; font-family:"Fraunces",serif; font-weight:400; font-size:clamp(13px,2.1vw,21px); line-height:1.08}
+.b-og h4 em{color:#0F5F46}
+.b-og .arch{aspect-ratio:3/4; background:#F1E7D6; border-radius:999px 999px 8px 8px; position:relative; overflow:hidden}
+.b-og .arch::before{content:""; position:absolute; width:40%; aspect-ratio:1; border-radius:50%; background:#C2410C; left:30%; top:22%}
+.b-og .arch::after{content:""; position:absolute; inset:auto -20% -20% -20%; height:50%; background:#0F5F46; border-radius:50% 50% 0 0}
+
+/* ---------- Direction C mock ---------- */
+.c{background:#F3F1EC; color:#0A0A0A; font-family:"Inter",system-ui,sans-serif; display:grid; grid-template-rows:auto 1fr}
+.c .ticker{background:#0A0A0A; color:#F3F1EC; font-size:12px; font-weight:600; letter-spacing:.04em; padding:7px 16px; white-space:nowrap; overflow:hidden; text-transform:uppercase}
+.c .ticker b{color:#E6FF3F; margin-inline:10px}
+.c .body{padding:clamp(20px,3.5vw,40px); display:grid; grid-template-columns:1.2fr 1fr; gap:24px; align-items:center}
+.c h3{font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:clamp(28px,4.2vw,50px); line-height:.98; letter-spacing:-.03em}
+.c h3 mark{background:linear-gradient(transparent 12%,#E6FF3F 12%,#E6FF3F 88%,transparent 88%); color:inherit; padding-inline:4px}
+.c .stats{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px}
+.c .stats span{border:2px solid #0A0A0A; border-radius:8px; padding:4px 10px; font-size:12px; font-weight:700; background:#fff}
+.c .form{background:#fff; border:2px solid #0A0A0A; border-radius:12px; padding:16px; box-shadow:8px 8px 0 #1E3AFF; display:grid; gap:10px}
+.c .lbl{font-size:12px; font-weight:700; display:grid; gap:4px}
+.c .in{border:2px solid #0A0A0A; border-radius:8px; padding:8px 10px; font-size:13px; color:#4A4A4A; background:#fff}
+.c .btn{background:#FF5A1F; color:#0A0A0A; border:2px solid #0A0A0A; border-radius:8px; padding:10px; font-weight:800; font-size:14px; text-align:center; box-shadow:4px 4px 0 #0A0A0A}
+.c .note{font-size:11.5px; color:#4A4A4A}
+@media (max-width:620px){.c .body{grid-template-columns:1fr}}
+.c-og{background:#0A0A0A; color:#F3F1EC; padding:6%; position:relative; display:grid; align-content:center}
+.c-og h4{margin:0; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:clamp(16px,3vw,30px); line-height:.95; letter-spacing:-.03em}
+.c-og h4 mark{background:#E6FF3F; color:#0A0A0A; padding-inline:3px}
+.c-og .sticker{position:absolute; right:7%; top:14%; background:#FF5A1F; color:#0A0A0A; font-weight:800; font-family:"Inter",sans-serif; font-size:clamp(7px,1vw,11px); padding:6px 9px; border-radius:6px; transform:rotate(8deg)}
+.c-og .foot{position:absolute; left:0; right:0; bottom:0; background:#E6FF3F; color:#0A0A0A; font-family:"Inter",sans-serif; font-weight:700; font-size:clamp(6px,.9vw,10px); padding:5px 6%; display:flex; justify-content:space-between}
+
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="eyebrow">DevAim Labs · nieuwe website · kies een richting</span>
+    <h1>Three directions for the new DevAim Labs site</h1>
+    <p>Each direction below comes from the competitor research (10 sites), the design tokens extracted from 5 benchmark sites and the UI/UX design database. The previews use your own copy, colours and fonts. Pick one and I'll build it at <code>/v2</code>.</p>
+  </header>
+
+  <section class="findings" aria-label="What the research found">
+    <div class="finding"><span class="eyebrow">Gap in the market</span><b>No Dutch competitor pairs a modern design with public prices.</b><span>4 of 6 Dutch studios hide pricing, and none shows live demos or dashboards. You have both.</span></div>
+    <div class="finding"><span class="eyebrow">What converts</span><b>Outcome headline, proof before the second call to action, "vanaf" prices.</b><span>Seen on In Your Face Media, Studio Brabo and Designjoy.</span></div>
+    <div class="finding"><span class="eyebrow">Lead magnet</span><b>A free website check, and a reply within one working day.</b><span>Short forms (2–4 fields) with visible labels. Your face near the button.</span></div>
+    <div class="finding"><span class="eyebrow">Avoid</span><b>All-dark pages, flat type, heavy scroll effects.</b><span>These put off restaurant and shop owners and slow down mid-range phones.</span></div>
+  </section>
+
+  <!-- A -->
+  <section class="dir" aria-labelledby="dA">
+    <div class="dir-head">
+      <h2 id="dA"><small>A</small>Dark premium tech</h2>
+      <span class="tag">strongest for dashboards &amp; integrations</span>
+    </div>
+    <p class="lede">Near-black with one blue accent and mono numbers, like Linear and basement.studio. Your dashboards, payments and API work look high-end. Restaurant and shop owners may find it cold.</p>
+    <div class="previews">
+      <div class="frame"><div class="frame-label">Hero</div>
+        <div class="a">
+          <div>
+            <span class="mono">// websites · dashboards · betalingen</span>
+            <h3>Een website die klanten oplevert, niet alleen bezoekers.</h3>
+            <p>Maatwerk websites, adminpanelen en betaalkoppelingen. Direct contact met de developer.</p>
+            <span class="btn">Plan een gratis gesprek</span>
+          </div>
+          <div class="cards" aria-hidden="true">
+            <div class="card"><small>RESERVERINGEN · DEZE WEEK</small><div class="kpi">148<em>+23%</em></div>
+              <div class="bars"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:88%"></i><i style="height:100%"></i></div></div>
+            <div class="card paid"><span>Bestelling #2041 · iDEAL</span><b>betaald</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="frame"><div class="frame-label">OG image · 1200×630</div>
+        <div class="a-og og">
+          <div><span class="mono">// devaimlabs.com</span><h4>Software die voor uw bedrijf blijft werken.</h4></div>
+          <div class="card" aria-hidden="true"><div class="bars"><i style="height:30%"></i><i style="height:50%"></i><i style="height:45%"></i><i style="height:75%"></i><i style="height:100%"></i></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="specs">
+      <div class="spec"><h3>Palette</h3><div class="swatches">
+        <div class="sw"><i style="background:#0B0D12"></i>Background<code>#0B0D12</code></div>
+        <div class="sw"><i style="background:#151922"></i>Card<code>#151922</code></div>
+        <div class="sw"><i style="background:#F4F6FA"></i>Text<code>#F4F6FA</code></div>
+        <div class="sw"><i style="background:#4F8CFF"></i>Accent / button<code>#4F8CFF</code></div>
+        <div class="sw"><i style="background:#5EEAD4"></i>Positive / tags<code>#5EEAD4</code></div>
+      </div><p class="warn">Button labels must be dark; white text on this blue fails contrast (3.2:1).</p></div>
+      <div class="spec"><h3>Type &amp; motion</h3><ul class="plain">
+        <li>Geist for headings and UI, JetBrains Mono for numbers</li>
+        <li>Cards 16px radius, 1px borders, soft blue glow</li>
+        <li>Staggered reveals, KPI count-ups, slow glow drift (300–450ms)</li></ul></div>
+      <div class="spec pc"><div><h4>Good</h4><ul class="plain"><li>Signals technical skill</li><li>Dashboards look great</li><li>Stands out from template agencies</li></ul></div>
+        <div><h4>Watch out</h4><ul class="plain"><li>Can feel cold to shop owners</li><li>Light client sites clash with a dark frame</li><li>Glow costs performance</li></ul></div></div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="dir" aria-labelledby="dB">
+    <div class="dir-head">
+      <h2 id="dB"><small>B</small>Light warm editorial</h2>
+      <span class="tag rec">recommended base</span>
+    </div>
+    <p class="lede">Cream paper, a serif headline, forest green and a terracotta call-to-action. It feels local, crafted and trustworthy, which suits restaurants and boutiques. It has the best contrast and the lightest weight on phones.</p>
+    <div class="previews">
+      <div class="frame"><div class="frame-label">Hero</div>
+        <div class="b" lang="nl">
+          <div>
+            <span class="eb">Websites &amp; software op maat</span>
+            <h3>Meer reserveringen, meer bestellingen, <em>minder gedoe.</em></h3>
+            <p>Ik bouw websites, adminpanelen en betaalkoppelingen die voor uw zaak werken.</p>
+            <span class="btn">Plan een gratis kennismaking</span>
+            <div class="trust"><span>Reactie binnen 1 werkdag</span><span>Vaste prijs</span><span>Eén vaste developer</span></div>
+          </div>
+          <div aria-hidden="true">
+            <div class="case"><div class="plate"></div><div class="case-meta"><b>Lokanta Proeflokaal</b><small>Website + reserveringen · live</small></div></div>
+            <blockquote>Hier komt een echte klantquote.</blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="frame"><div class="frame-label">OG image · 1200×630</div>
+        <div class="b-og og">
+          <div><div class="mast">DevAim Labs · Websites &amp; software</div><h4>Uw zaak verdient een website die <em>klanten oplevert.</em></h4></div>
+          <div class="arch" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+    <div class="specs">
+      <div class="spec"><h3>Palette</h3><div class="swatches">
+        <div class="sw"><i style="background:#FBF7F0"></i>Background<code>#FBF7F0</code></div>
+        <div class="sw"><i style="background:#1F1A14"></i>Ink<code>#1F1A14</code></div>
+        <div class="sw"><i style="background:#0F5F46"></i>Forest (primary)<code>#0F5F46</code></div>
+        <div class="sw"><i style="background:#C2410C"></i>Terracotta (actions only)<code>#C2410C</code></div>
+        <div class="sw"><i style="background:#F1E7D6"></i>Sand sections<code>#F1E7D6</code></div>
+      </div><p class="warn">All text pairs pass AA. White on terracotta is 5.2:1.</p></div>
+      <div class="spec"><h3>Type &amp; motion</h3><ul class="plain">
+        <li>Fraunces for headings, Inter for body text</li>
+        <li>12px cards, pill buttons, arched image plates, warm soft shadows</li>
+        <li>Calm: one 350ms fade-and-rise on scroll, no parallax, no loops</li></ul></div>
+      <div class="spec pc"><div><h4>Good</h4><ul class="plain"><li>Closest fit to your main buyers</li><li>Flatters client screenshots</li><li>Suits the formal "u" tone</li></ul></div>
+        <div><h4>Watch out</h4><ul class="plain"><li>Weaker signal for dashboards (fix with dark demo panels)</li><li>Cream + serif + terracotta is a common look; needs your real work to feel yours</li></ul></div></div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="dir" aria-labelledby="dC">
+    <div class="dir-head">
+      <h2 id="dC"><small>C</small>Bold conversion agency</h2>
+      <span class="tag">highest expected lead rate</span>
+    </div>
+    <p class="lede">Big heavy type, a lime highlighter, hard borders and offset shadows. The form sits in the hero. It's the most memorable and works well for ads, but it can feel salesy to premium boutiques.</p>
+    <div class="previews">
+      <div class="frame"><div class="frame-label">Hero</div>
+        <div class="c" lang="nl">
+          <div class="ticker" aria-hidden="true">Websites <b>✦</b> Adminpanelen <b>✦</b> KPI-dashboards <b>✦</b> Betalingen <b>✦</b> API-koppelingen</div>
+          <div class="body">
+            <div>
+              <h3>Een website die <mark>klanten</mark> binnenhaalt.</h3>
+              <div class="stats"><span>1 werkdag reactie</span><span>Vaste prijs</span><span>NL / EN</span></div>
+            </div>
+            <div class="form" aria-hidden="true">
+              <div class="lbl">Naam<span class="in">Sanne de Vries</span></div>
+              <div class="lbl">Uw website (optioneel)<span class="in">www.uwzaak.nl</span></div>
+              <span class="btn">Vraag een offerte aan</span>
+              <span class="note">Reactie binnen 1 werkdag.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame"><div class="frame-label">OG image · 1200×630</div>
+        <div class="c-og og">
+          <h4>Meer<br><mark>aanvragen.</mark><br>Minder gedoe.</h4>
+          <span class="sticker">1 werkdag reactie</span>
+          <div class="foot"><span>Websites · Dashboards · Betalingen</span><span>devaimlabs.com</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="specs">
+      <div class="spec"><h3>Palette</h3><div class="swatches">
+        <div class="sw"><i style="background:#F3F1EC"></i>Paper<code>#F3F1EC</code></div>
+        <div class="sw"><i style="background:#0A0A0A"></i>Ink<code>#0A0A0A</code></div>
+        <div class="sw"><i style="background:#FF5A1F"></i>Button orange<code>#FF5A1F</code></div>
+        <div class="sw"><i style="background:#1E3AFF"></i>Electric blue<code>#1E3AFF</code></div>
+        <div class="sw"><i style="background:#E6FF3F"></i>Highlighter<code>#E6FF3F</code></div>
+      </div><p class="warn">Orange needs black labels; white on it fails contrast (3.1:1).</p></div>
+      <div class="spec"><h3>Type &amp; motion</h3><ul class="plain">
+        <li>Bricolage Grotesque 800 for headings, Inter for body text</li>
+        <li>2px ink borders, hard offset shadows, 8–12px radius</li>
+        <li>Punchy: highlighter wipe, buttons press into their shadow, service ticker</li></ul></div>
+      <div class="spec pc"><div><h4>Good</h4><ul class="plain"><li>Form visible immediately</li><li>Most memorable</li><li>Great for ads and social posts</li></ul></div>
+        <div><h4>Watch out</h4><ul class="plain"><li>Can feel salesy</li><li>Needs strong real proof</li><li>Less suited to refined client designs</li></ul></div></div>
+    </div>
+  </section>
+
+  <section class="decide" aria-labelledby="dec">
+    <h2 id="dec">My recommendation: B, with two borrowed pieces</h2>
+    <p class="lede">Use B for the whole sales page, because it fits restaurant and shop owners and has the lowest accessibility and performance risk. To avoid the generic cream-and-serif look and cover your software buyers too, add:</p>
+    <ol>
+      <li><b>From A:</b> dark panels for the live demos and the dashboard, payments and API cases, with mono numbers and real UI cards. This is the part no Dutch competitor has.</li>
+      <li><b>From C:</b> the two-field website check form in the hero, the stat row and a sticky call-to-action on mobile.</li>
+    </ol>
+    <p class="lede">Reply in the terminal with <b>A</b>, <b>B</b>, <b>C</b> or <b>B + mix</b>, plus any changes to the colours or fonts.</p>
+  </section>
+</div>
+
+</body></html>

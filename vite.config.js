@@ -2,17 +2,21 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import { bunny } from 'laravel-vite-plugin/fonts';
 import tailwindcss from '@tailwindcss/vite';
-import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            // Site entries (v2 design; see App\Support\SiteAssets). The old
+            // resources/js/app.js + resources/css/app.css are no longer
+            // rendered by any route and are left out of the build.
+            input: [
+                'resources/css/v2.css',
+                'resources/js/v2/main.js',
+            ],
             refresh: true,
+            // Only the families the site renders (SiteAssets::FONTS, v2.css),
+            // self-hosted so they stay inside the production CSP's font-src 'self'.
             fonts: [
-                bunny('Space Grotesk', {
-                    weights: [400, 500, 600, 700],
-                }),
                 // display: 'optional' — the plugin's automatic metric-matched
                 // fallback generation (via fontaine) doesn't work in this setup
                 // (verified: fontaine.readMetrics() returns null even for a
@@ -24,18 +28,19 @@ export default defineConfig({
                     weights: [400, 500, 600, 700],
                     display: 'optional',
                 }),
-                bunny('Geist', {
-                    weights: [400, 500, 600, 700],
+                bunny('JetBrains Mono', {
+                    weights: [400, 500, 600],
                     display: 'optional',
                 }),
-                bunny('Geist Mono', {
-                    weights: [400, 500],
+                // Display face; 400 (+ italic) is the H1 face (preloaded, see SiteAssets).
+                bunny('Fraunces', {
+                    weights: [400, 600, 700, 900],
+                    styles: ['normal', 'italic'],
                     display: 'optional',
                 }),
             ],
         }),
         tailwindcss(),
-        vue(),
     ],
     server: {
         watch: {

@@ -1,0 +1,50 @@
+{
+  "source": {
+    "url": "https://projectie.com/",
+    "extractedAt": "2026-09-28T15:36:21.434Z",
+    "extractor": "dembrandt"
+  },
+  "colors": {
+    "primary": "rgb(20, 77, 237)",
+    "secondary": "rgba(0, 0, 0, 0)",
+    "palette": [
+      "rgb(20, 77, 237)",
+      "rgba(0, 0, 0, 0)"
+    ],
+    "cssVariables": {}
+  },
+  "typography": {
+    "headingFont": "Proxima-nova",
+    "bodyFont": "Proxima-nova"
+  },
+  "spacing": {
+    "scale": [
+      "3px",
+      "3.5px",
+      "5.625px",
+      "6px",
+      "7px",
+      "7.5px",
+      "8px",
+      "12px",
+      "15px",
+      "16px",
+      "16.875px",
+      "22.5px",
+      "24px",
+      "28px",
+      "30px",
+      "32px",
+      "40px",
+      "48px",
+      "56.25px",
+      "80px"
+    ]
+  },
+  "radius": {
+    "scale": []
+  },
+  "shadows": {
+    "scale": []
+  }
+}

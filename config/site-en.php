@@ -92,11 +92,4 @@ return [
         'admin-panel' => 'services',
         'dashboard' => 'services',
     ],
-
-    'organization' => [
-        'name' => 'DevAim Labs',
-        'email' => 'contact@devaimlabs.com',
-        'phone' => '+316385230999',
-        'logo' => '/DevAim_IMG.png',
-    ],
 ];

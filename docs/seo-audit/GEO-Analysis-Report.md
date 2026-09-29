@@ -137,7 +137,7 @@ Styling: Tailwind CSS
 
 # Contact
 Email: contact@devaimlabs.com
-Phone: +31 6385230999
+Phone: +31 638523099
 KvK: 42051464
 
 # Target Industries
@@ -765,7 +765,7 @@ Most competitors also lack:
     "url": "https://devaimlabs.com",
     "logo": "https://devaimlabs.com/DevAim_IMG.png",
     "email": "contact@devaimlabs.com",
-    "telephone": "+316385230999",
+    "telephone": "+31638523099",
     "areaServed": "NL",
     "description": "Maatwerksoftware en custom software ontwikkeling voor bedrijven: adminpanelen, KPI-dashboards, landingspagina's, Stripe en Mollie integraties en API-koppelingen."
   }]
