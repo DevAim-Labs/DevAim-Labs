@@ -17,13 +17,21 @@ These are the configs for devaimlabs.com: nginx with PHP-FPM on a Droplet, and D
    sudo certbot certonly --nginx -d devaimlabs.com -d www.devaimlabs.com
    ```
    Renewal runs automatically through the certbot timer. `options-ssl-nginx.conf` comes from certbot.
-3. **Copy and enable:**
+   - If certbot says a certificate already exists, choose **1 (Keep the existing certificate)**. Renewing early only uses up Let's Encrypt's rate limits.
+   - Check with `sudo certbot certificates` that the certificate covers both `devaimlabs.com` and `www.devaimlabs.com`. If `www` is missing, run `sudo certbot certonly --nginx --expand -d devaimlabs.com -d www.devaimlabs.com`.
+   - A certificate from an earlier certbot run may have come with an older site config. Remove its link from `sites-enabled` (step 3) so there's only one server block per domain.
+3. **Copy and enable.** Set `DIR` to this folder on the server, e.g. the project's `deploy/nginx`. If the code isn't on the server yet, copy the folder there with `scp -r deploy/nginx root@<droplet-ip>:/root/devaim-nginx`.
    ```bash
-   sudo cp conf.d/devaimlabs-limits.conf /etc/nginx/conf.d/
-   sudo cp snippets/devaimlabs-headers.conf /etc/nginx/snippets/
-   sudo cp sites-available/devaimlabs.com /etc/nginx/sites-available/
+   DIR=/var/www/devaimlabs/deploy/nginx
+   sudo cp $DIR/conf.d/devaimlabs-limits.conf /etc/nginx/conf.d/
+   sudo cp $DIR/snippets/devaimlabs-headers.conf /etc/nginx/snippets/
+   sudo cp $DIR/sites-available/devaimlabs.com /etc/nginx/sites-available/
    sudo ln -s /etc/nginx/sites-available/devaimlabs.com /etc/nginx/sites-enabled/
    sudo rm -f /etc/nginx/sites-enabled/default
+   # Any older config for this domain must go too, or nginx warns
+   # "conflicting server name ... ignored" and keeps serving the old one.
+   # -R follows the symlinks in sites-enabled.
+   sudo grep -Rl "devaimlabs.com" /etc/nginx/sites-enabled/ /etc/nginx/conf.d/
    ```
 4. **Check the marked values** in the site file:
    - the project path (`/var/www/devaimlabs/public`);

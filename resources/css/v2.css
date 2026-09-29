@@ -1208,6 +1208,37 @@ html.sheet-open { overflow: hidden; }
     .process__line-fill { transform-origin: left; }
 }
 
+/* Mobile/tablet: a timeline. Numbers in a narrow left column, the text
+   beside them, so the vertical line never crosses the copy. */
+@media (max-width: 899px) {
+    .process { overflow: clip; }
+    .process__step {
+        grid-template-columns: 48px minmax(0, 1fr);
+        column-gap: 20px;
+        row-gap: 8px;
+    }
+    .process__step > :not(.process__num) { grid-column: 2; }
+    .process__num {
+        grid-row: 1 / span 3;
+        align-self: start;
+        width: 48px; height: 48px;
+        font-size: 1.125rem;
+    }
+    /* Title centred on the 48px circle (22px x 1.25 line height). */
+    .process__step .h3 { margin-top: 10px; }
+    .process__line { left: 23px; top: 24px; bottom: 0; }
+    /* Stop the line at the last circle: cover what runs below it. */
+    .process__step:last-child .process__num::after {
+        content: "";
+        position: absolute;
+        /* Below the 1.5px border (positioned from the padding box). */
+        top: calc(100% + 1.5px); left: 50%;
+        width: 4px; height: 100vh;
+        translate: -50% 0;
+        background: var(--bg);
+    }
+}
+
 /* ------------------------------------------------------------------ */
 /* About                                                               */
 /* ------------------------------------------------------------------ */
