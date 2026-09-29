@@ -1,0 +1,14 @@
+# /etc/systemd/system/devaim-deploy.timer
+# Checks origin/main every 2 minutes; a check without new commits costs one
+# `git fetch` and exits.
+[Unit]
+Description=Check for new DevAim Labs commits every 2 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+AccuracySec=15s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

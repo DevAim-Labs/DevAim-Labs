@@ -1,0 +1,16 @@
+# /etc/systemd/system/devaim-deploy.service
+# Runs one auto-deploy check; started by devaim-deploy.timer.
+[Unit]
+Description=DevAim Labs auto-deploy (pull main, build, cache)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/devaim-deploy
+# Adjust if node/npm or composer live elsewhere (e.g. nvm): `which npm`.
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=APP_DIR=/var/www/devaimlabs
+Environment=DEPLOY_BRANCH=main
+Environment=PHP_FPM_SERVICE=php8.3-fpm
+TimeoutStartSec=15min
