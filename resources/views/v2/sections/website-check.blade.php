@@ -28,7 +28,7 @@
                 <x-v2::field form="check-form" name="email" type="email" :label="$f['email_label']"
                              :placeholder="$f['email_placeholder']" inputmode="email" autocomplete="email" required />
                 <x-v2::field form="check-form" name="name" :label="$f['name_label']" :optional="$f['optional']"
-                             autocomplete="name" />
+                             :placeholder="$f['name_placeholder']" autocomplete="name" />
                 <div class="form-actions">
                     <x-v2::submit :label="$f['submit']" :sending="$t['forms']['sending']" class="w-full" />
                 </div>
