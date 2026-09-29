@@ -531,7 +531,78 @@ function initCaseLists() {
 
 /* ------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------ */
+/* Clean URLs: in-page links scroll without adding "#section"          */
+/* ------------------------------------------------------------------ */
+
+// Links stay real anchors (they work without JS and for crawlers); with JS
+// the address bar keeps showing "/" instead of "/#werk". Arrivals with a
+// hash (old /tarieven redirects, "/#diensten" from a service page) scroll to
+// the section and then drop the hash.
+function sectionFor(hash) {
+    if (!hash || hash.length < 2) return null;
+    try {
+        return document.getElementById(decodeURIComponent(hash.slice(1)));
+    } catch {
+        return null;
+    }
+}
+
+function goTo(target, behavior) {
+    target.scrollIntoView({ block: 'start', behavior });
+
+    // A smooth scroll can be cut short when something refreshes the layout
+    // mid-way (the lazily loaded ScrollTrigger does). Re-align once it ends.
+    const offset = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+    let done = false;
+    const realign = () => {
+        if (done) return;
+        done = true;
+        if (Math.abs(target.getBoundingClientRect().top - offset) > 4) {
+            target.scrollIntoView({ block: 'start', behavior: 'instant' });
+        }
+    };
+    window.addEventListener('scrollend', realign, { once: true });
+    setTimeout(realign, 1500); // browsers without scrollend
+    // Move focus for keyboard and screen-reader users, without a second jump.
+    if (!target.matches('a, button, input, select, textarea, summary, [tabindex]')) {
+        target.setAttribute('tabindex', '-1');
+    }
+    target.focus({ preventScroll: true });
+}
+
+function initCleanUrls() {
+    document.addEventListener('click', (event) => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const link = event.target.closest('a[href*="#"]');
+        if (!link || link.target === '_blank') return;
+
+        const url = new URL(link.href, location.href);
+        if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search) return;
+
+        const target = sectionFor(url.hash);
+        if (!target) return;
+
+        event.preventDefault();
+        // "smooth" follows the CSS scroll-behavior, which is off under reduced motion.
+        goTo(target, 'auto');
+    });
+
+    const arrival = sectionFor(location.hash);
+    if (location.hash) {
+        history.replaceState(history.state, '', location.pathname + location.search);
+    }
+    if (arrival) {
+        // Once now, and again after images/fonts settle the layout.
+        requestAnimationFrame(() => goTo(arrival, 'instant'));
+        window.addEventListener('load', () => arrival.scrollIntoView({ block: 'start', behavior: 'instant' }), { once: true });
+    }
+}
+
+/* ------------------------------------------------------------------ */
+
 function init() {
+    initCleanUrls();
     initTheme();
     initMenu();
     initNavMenus();
