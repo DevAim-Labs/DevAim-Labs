@@ -98,8 +98,8 @@ final class Organisation
     {
         $digits = preg_replace('/[^0-9+]/', '', $phone);
 
-        if (preg_match('/^\+316(\d{4})(\d{4})$/', $digits, $m)) {
-            return "+31 6 {$m[1]} {$m[2]}";
+        if (preg_match('/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/', $digits, $m)) {
+            return "+31 6 {$m[1]} {$m[2]} {$m[3]} {$m[4]}";
         }
 
         return $phone;

@@ -17,7 +17,7 @@ class OrganisationTest extends TestCase
         $org = Organisation::details();
 
         $this->assertSame('+31638523099', $org['phone']);
-        $this->assertSame('+31 6 3852 3099', $org['phone_display']);
+        $this->assertSame('+31 6 38 52 30 99', $org['phone_display']);
         $this->assertSame('tel:+31638523099', $org['phone_href']);
 
         // Not a Dutch mobile number: shown as configured.
