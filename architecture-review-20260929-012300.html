@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Architecture review for DevAim-Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+    </script>
+    <style>
+      .seam { stroke-dasharray: 4 4; }
+      .leak { stroke: #dc2626; }
+      .deep { background: linear-gradient(135deg, #0f172a, #1e293b); }
+      .mermaid { display: flex; justify-content: center; }
+    </style>
+  </head>
+  <body class="bg-stone-50 text-slate-900 font-sans">
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-12">
+
+      <header class="space-y-4">
+        <p class="text-xs uppercase tracking-wider text-slate-500">DevAim-Labs · branch redesign-v2 · 29 sep 2026</p>
+        <h1 class="font-serif text-4xl">Architecture review</h1>
+        <div class="flex flex-wrap gap-5 text-xs text-slate-600">
+          <span class="flex items-center gap-2"><span class="inline-block w-5 h-4 border-2 border-slate-400 bg-white"></span>module</span>
+          <span class="flex items-center gap-2"><svg width="28" height="6"><line x1="0" y1="3" x2="28" y2="3" stroke="#64748b" stroke-width="2" class="seam"/></svg>seam</span>
+          <span class="flex items-center gap-2"><svg width="28" height="6"><line x1="0" y1="3" x2="28" y2="3" stroke-width="2" class="leak"/></svg>leakage</span>
+          <span class="flex items-center gap-2"><span class="inline-block w-5 h-4 deep rounded-sm"></span>deep module</span>
+        </div>
+      </header>
+
+      <section id="candidates" class="space-y-10">
+
+        <!-- 1 Page registry -->
+        <article id="c-registry" class="rounded-xl border border-slate-200 bg-white p-6 space-y-5 shadow-sm">
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 class="font-serif text-2xl">1 · One page registry for URLs, locales and crawler outputs</h2>
+            <span class="rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1">Strong</span>
+            <span class="rounded-full bg-slate-100 text-slate-700 text-xs px-3 py-1">in-process</span>
+          </div>
+          <p class="font-mono text-sm text-slate-600 leading-6">app/Support/SitePage.php (PATHS) · ServiceCatalog.php (PREFIX) · LegacyRedirects.php (LIVE) · SitemapController.php · routes/web.php (llms.txt, robots.txt) · config/site-v2.php (privacy href) · components/form-shell.blade.php</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">Before</p>
+              <pre class="mermaid">
+flowchart LR
+  R[routes/web.php] --> SC[ServiceCatalog]
+  R -. url literals .-> L[llms.txt closure]
+  SM[SitemapController] --> SP[SitePage::PATHS]
+  SM --> SC
+  LR[LegacyRedirects::LIVE] -. copy .-> SP
+  V[views] -. /contact, /privacyverklaring .-> X((hardcoded))
+  L -. hardcoded service list .-> X
+  classDef leak stroke:#dc2626,stroke-width:2px;
+  class L,LR,V,X leak
+              </pre>
+            </div>
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">After</p>
+              <pre class="mermaid">
+flowchart LR
+  R[routes] --> PR[PageRegistry]
+  SM[Sitemap] --> PR
+  L[llms / robots] --> PR
+  LR[LegacyRedirects] --> PR
+  SP[SitePage] --> PR
+  PR --> SC[ServiceCatalog slugs]
+  classDef deep fill:#0f172a,color:#fff,stroke:#0f172a,stroke-width:3px;
+  class PR deep
+              </pre>
+            </div>
+          </div>
+          <p><b>Problem:</b> the list of live pages per locale is written out in six or more places, so the sitemap, llms.txt and the redirect exclusions can drift without any test failing.</p>
+          <p><b>Solution:</b> one module knows every live page for each locale (URL, alternates, sitemap data), and routes, the sitemap, llms/robots, hreflang and LegacyRedirects all read from it.</p>
+          <ul class="list-disc pl-5 text-sm space-y-1">
+            <li>Locality: adding a page is one edit</li>
+            <li>Leverage: one interface, five callers</li>
+            <li>Tests hit the registry, not scraped HTML</li>
+            <li>llms.txt service list stops duplicating</li>
+          </ul>
+        </article>
+
+        <!-- 2 Organisation -->
+        <article id="c-org" class="rounded-xl border border-slate-200 bg-white p-6 space-y-5 shadow-sm">
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 class="font-serif text-2xl">2 · Organisation facts behind one module</h2>
+            <span class="rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1">Strong</span>
+            <span class="rounded-full bg-slate-100 text-slate-700 text-xs px-3 py-1">in-process</span>
+          </div>
+          <p class="font-mono text-sm text-slate-600 leading-6">config/site.php:113 · config/site-en.php:96 · config/site-v2.php:15 (company) · SitePage.php:150,171,228,238 · routes/web.php (llms.txt) · sections/footer.blade.php · partials/contact-lines.blade.php</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">Before</p>
+              <pre class="mermaid">
+flowchart LR
+  SP[SitePage] --> A[(site.organization)]
+  SP --> B[(site-v2.company)]
+  L[llms.txt] --> A
+  L --> B
+  F[footer view] -. raw $org + $company .-> A
+  A2[(site-en.organization)] -. copy .-> A
+  classDef leak stroke:#dc2626,stroke-width:2px;
+  class F,A2 leak
+              </pre>
+            </div>
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">After</p>
+              <pre class="mermaid">
+flowchart LR
+  SP[SitePage] --> O[Organisation]
+  L[llms.txt] --> O
+  J[JSON-LD] --> O
+  F[footer / contact lines] --> SP
+  O --> C[(one config block)]
+  classDef deep fill:#0f172a,color:#fff,stroke:#0f172a,stroke-width:3px;
+  class O deep
+              </pre>
+            </div>
+          </div>
+          <p><b>Problem:</b> name, email, phone, KvK and BTW live in three config files, and derived facts (the tel: link, the schema.org organisation) are rebuilt by each caller.</p>
+          <p><b>Solution:</b> one Organisation module owns every fact, including the derived ones, and every caller reads from it.</p>
+          <ul class="list-disc pl-5 text-sm space-y-1">
+            <li>Locality: phone changes in one place</li>
+            <li>Leverage: footer, JSON-LD, llms share it</li>
+            <li>Tests read values, not rendered HTML</li>
+          </ul>
+        </article>
+
+        <!-- 3 Lead intake -->
+        <article id="c-lead" class="rounded-xl border border-slate-200 bg-white p-6 space-y-5 shadow-sm">
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 class="font-serif text-2xl">3 · Deepen contact lead intake</h2>
+            <span class="rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1">Strong</span>
+            <span class="rounded-full bg-slate-100 text-slate-700 text-xs px-3 py-1">ports &amp; adapters</span>
+          </div>
+          <p class="font-mono text-sm text-slate-600 leading-6">app/Http/Requests/ContactRequest.php · ContactController.php · AppServiceProvider.php:57-83 · config/site-v2.php (project_types, forms) · config/site-v2-services.php (project_type ×5) · sections/pricing.blade.php · resources/js/v2/main.js:416</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-3">Before · cross-section of one submission</p>
+              <div class="space-y-1 text-xs uppercase tracking-wider">
+                <div class="h-9 border-l-4 border-slate-300 bg-slate-50 pl-3 flex items-center">Provider limiter · re-parses scan_url</div>
+                <div class="h-9 border-l-4 border-slate-300 bg-slate-50 pl-3 flex items-center">ContactRequest · rules + messages</div>
+                <div class="h-9 border-l-4 border-slate-300 bg-slate-50 pl-3 flex items-center">FormTimer · spam verdict</div>
+                <div class="h-9 border-l-4 border-red-400 bg-red-50 pl-3 flex items-center">Controller · hardcoded NL/EN text</div>
+                <div class="h-9 border-l-4 border-red-400 bg-red-50 pl-3 flex items-center">429 closure · own wording</div>
+                <div class="h-9 border-l-4 border-red-400 bg-red-50 pl-3 flex items-center">project_type strings · unchecked ×3</div>
+              </div>
+            </div>
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-3">After</p>
+              <div class="space-y-1 text-xs uppercase tracking-wider">
+                <div class="h-9 border-l-4 border-slate-300 bg-slate-50 pl-3 flex items-center">Controller · thin adapter (HTTP)</div>
+                <div class="h-32 deep text-white rounded-sm pl-3 pr-3 flex flex-col justify-center gap-1">
+                  <span>LeadIntake</span>
+                  <span class="text-slate-400 normal-case tracking-normal">locale · cleaned lead · spam verdict · limiter keys · localized outcome · project-type vocabulary</span>
+                </div>
+                <div class="h-9 border-l-4 border-slate-300 bg-slate-50 pl-3 flex items-center"><svg width="24" height="6" class="mr-2"><line x1="0" y1="3" x2="24" y2="3" stroke="#64748b" stroke-width="2" class="seam"/></svg>Mail port · Laravel Mail / fake</div>
+              </div>
+            </div>
+          </div>
+          <p><b>Problem:</b> one submission is handled in five places, the wording is split three ways, and a wrong service <code>project_type</code> fails silently.</p>
+          <p><b>Solution:</b> one module takes a submission from arrival to outcome and owns the project-type vocabulary; mail is the only seam.</p>
+          <ul class="list-disc pl-5 text-sm space-y-1">
+            <li>Spam and throttle tested without HTTP</li>
+            <li>Two adapters: Laravel Mail, fake</li>
+            <li>Vocabulary mismatch fails a test</li>
+          </ul>
+        </article>
+
+        <!-- 4 Page head / JSON-LD -->
+        <article id="c-head" class="rounded-xl border border-slate-200 bg-white p-6 space-y-5 shadow-sm">
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 class="font-serif text-2xl">4 · Split SEO head and JSON-LD out of SitePage</h2>
+            <span class="rounded-full bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1">Worth exploring</span>
+            <span class="rounded-full bg-slate-100 text-slate-700 text-xs px-3 py-1">in-process</span>
+          </div>
+          <p class="font-mono text-sm text-slate-600 leading-6">app/Support/SitePage.php:36-81, 222-338 · ServiceCatalog.php:74-98 · tests/Feature/PageMarkupTest.php:58-78</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-3">Before · mass diagram</p>
+              <div class="flex items-end gap-6 h-48">
+                <div class="text-center">
+                  <div class="w-20 bg-red-100 border-2 border-red-300" style="height:140px"></div>
+                  <p class="text-xs uppercase tracking-wider mt-1">interface</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-20 bg-slate-200 border-2 border-slate-400" style="height:170px"></div>
+                  <p class="text-xs uppercase tracking-wider mt-1">impl.</p>
+                </div>
+                <p class="text-xs text-slate-500 self-center">SitePage: chrome + SEO keys ×3 + JSON-LD privates; breadcrumbs built twice</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-3">After</p>
+              <div class="flex items-end gap-6 h-48">
+                <div class="text-center">
+                  <div class="w-20 bg-emerald-100 border-2 border-emerald-400" style="height:36px"></div>
+                  <p class="text-xs uppercase tracking-wider mt-1">interface</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-20 deep" style="height:170px"></div>
+                  <p class="text-xs uppercase tracking-wider mt-1">impl.</p>
+                </div>
+                <p class="text-xs text-slate-500 self-center">PageHead: one value per page type; StructuredData builds from it</p>
+              </div>
+            </div>
+          </div>
+          <p><b>Problem:</b> the same eight SEO keys are restated for fixed, service and error pages, and JSON-LD can only be tested by scraping rendered HTML.</p>
+          <p><b>Solution:</b> every page resolves to one head value made in one place, and JSON-LD is built from it; SitePage keeps only chrome and nav.</p>
+          <ul class="list-disc pl-5 text-sm space-y-1">
+            <li>SEO shape lives in one place</li>
+            <li>JSON-LD tested as data</li>
+            <li>Builds on the page registry (#1)</li>
+          </ul>
+        </article>
+
+        <!-- 5 Structure vs copy -->
+        <article id="c-config" class="rounded-xl border border-slate-200 bg-white p-6 space-y-5 shadow-sm">
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 class="font-serif text-2xl">5 · Keep structure once, translate only copy</h2>
+            <span class="rounded-full bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1">Worth exploring</span>
+            <span class="rounded-full bg-slate-100 text-slate-700 text-xs px-3 py-1">in-process</span>
+          </div>
+          <p class="font-mono text-sm text-slate-600 leading-6">config/site-v2.php (nl 43-412 / en 414-769: ids, nav, pricing.packages, services.items) · ServiceCatalog.php:115-124 (priceFrom) · 19 views reading $t['ids']</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">Before</p>
+              <pre class="mermaid">
+flowchart TB
+  NL[(nl tree: copy + price + ids + nav)]
+  EN[(en tree: copy + price + ids + nav)]
+  V[views] -. raw $t ids .-> NL
+  V -.-> EN
+  P[ServiceCatalog::priceFrom] -. per locale .-> EN
+  classDef leak stroke:#dc2626,stroke-width:2px;
+  class V,P leak
+              </pre>
+            </div>
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-2">After</p>
+              <pre class="mermaid">
+flowchart TB
+  S[Structure: packages, prices, ids, nav]
+  NL[(nl strings)]
+  EN[(en strings)]
+  V[views] --> R[resolved hrefs + ids]
+  R --> S
+  R --> NL
+  R --> EN
+  classDef deep fill:#0f172a,color:#fff,stroke:#0f172a,stroke-width:3px;
+  class S deep
+              </pre>
+            </div>
+          </div>
+          <p><b>Problem:</b> prices and ids are repeated per locale, so a price entered only in Dutch shows "on request" on the English page, which is a real bug waiting to happen.</p>
+          <p><b>Solution:</b> keep structure once and translate only strings; views get resolved hrefs and ids.</p>
+          <ul class="list-disc pl-5 text-sm space-y-1">
+            <li>Price changes in one place</li>
+            <li>Locale parity test becomes trivial</li>
+          </ul>
+        </article>
+
+        <!-- 6 main.js forms -->
+        <article id="c-js" class="rounded-xl border border-slate-200 bg-white p-6 space-y-5 shadow-sm">
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 class="font-serif text-2xl">6 · Pull form handling out of main.js</h2>
+            <span class="rounded-full bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-1">Speculative</span>
+            <span class="rounded-full bg-slate-100 text-slate-700 text-xs px-3 py-1">mock (fetch)</span>
+          </div>
+          <p class="font-mono text-sm text-slate-600 leading-6">resources/js/v2/main.js:280-425 (of 547; init() calls nine init functions)</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-3">Before</p>
+              <div class="grid grid-cols-3 gap-1 text-[10px] uppercase tracking-wider">
+                <div class="border border-slate-300 p-2">theme</div><div class="border border-slate-300 p-2">sheet</div><div class="border border-slate-300 p-2">nav</div>
+                <div class="border-2 border-red-400 bg-red-50 p-2 col-span-2">forms · 419/429 · errors · preselect</div><div class="border border-slate-300 p-2">cta</div>
+                <div class="border border-slate-300 p-2">marquee</div><div class="border border-slate-300 p-2">cases</div><div class="border border-slate-300 p-2">service</div>
+              </div>
+            </div>
+            <div class="rounded-lg border border-slate-200 p-4">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-3">After</p>
+              <div class="grid grid-cols-3 gap-1 text-[10px] uppercase tracking-wider">
+                <div class="border border-slate-300 p-2">theme</div><div class="border border-slate-300 p-2">sheet</div><div class="border border-slate-300 p-2">nav</div>
+                <div class="border border-slate-300 p-2">cta</div><div class="border border-slate-300 p-2">marquee</div><div class="border border-slate-300 p-2">cases</div>
+                <div class="deep text-white p-2 col-span-3 rounded-sm">forms.js · fetch at the seam</div>
+              </div>
+            </div>
+          </div>
+          <p><b>Problem:</b> the only real behaviour in main.js (status mapping, error slots, preselect) has no tests and is coupled to a DOM id.</p>
+          <p><b>Solution:</b> move form handling into its own module with fetch at the seam; leave the thin DOM inits where they are.</p>
+          <ul class="list-disc pl-5 text-sm space-y-1">
+            <li>Form behaviour becomes testable</li>
+            <li>Other inits gain little</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="rounded-xl border border-slate-200 bg-white p-6 space-y-2 shadow-sm">
+        <p class="text-xs uppercase tracking-wider text-slate-500">Leave alone</p>
+        <p class="text-sm"><b>ClientCases</b> and <b>FormTimer</b> are already deep: small interface, real behaviour, tested. <b>config/site.php / site-en.php</b> (~220 lines of old SEO copy) now only feed LegacyRedirects and organisation data; the redirect map could be frozen as a flat list (deletion test: the module reads four configs to produce a static answer).</p>
+      </section>
+
+      <section id="top-recommendation" class="rounded-xl deep text-white p-8 space-y-3">
+        <p class="text-xs uppercase tracking-wider text-slate-400">Top recommendation</p>
+        <h2 class="font-serif text-3xl"><a href="#c-registry" class="underline underline-offset-4">1 · Page registry</a></h2>
+        <p class="text-slate-300">It has the most scattered copies of one concept, it is where crawler outputs silently drift, and #2 and #4 both build on it. Do the Organisation module (#2) in the same pass as a quick win.</p>
+      </section>
+    </main>
+  </body>
+</html>
