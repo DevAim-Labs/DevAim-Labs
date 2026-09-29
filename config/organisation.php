@@ -16,7 +16,7 @@ return [
     'phone' => '+31638523099',
 
     // Path under public/.
-    'logo' => '/DevAim_IMG.png',
+    'logo' => '/brand/devaim-mark-512.png',
 
     // Dutch Chamber of Commerce (KvK) and VAT (BTW) numbers.
     'kvk' => '42051464',

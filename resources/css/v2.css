@@ -603,16 +603,7 @@
     color: var(--ink);
     margin-right: auto;
 }
-.brand__mark {
-    display: grid; place-items: center;
-    width: 34px; height: 34px;
-    border-radius: 999px 999px 8px 8px;
-    background: var(--primary);
-    color: var(--bg);
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.1rem;
-}
+.brand__mark { display: block; width: 30px; height: auto; flex: none; }
 .brand__word { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; letter-spacing: -0.01em; }
 .brand__word span { font-weight: 400; font-style: italic; }
 

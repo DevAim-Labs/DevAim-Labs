@@ -38,7 +38,7 @@ class OrganisationTest extends TestCase
         $this->assertSame(config('organisation.email'), $node['contactPoint']['email']);
         $this->assertSame(config('organisation.btw'), $node['vatID']);
         $this->assertSame(['@type' => 'PropertyValue', 'propertyID' => 'KvK', 'value' => config('organisation.kvk')], $node['identifier']);
-        $this->assertSame(asset('DevAim_IMG.png'), $node['logo']['url']);
+        $this->assertSame(asset(ltrim(config('organisation.logo'), '/')), $node['logo']['url']);
         $this->assertIsInt($node['logo']['width']);
 
         // Service-area business: no street, no empty sameAs.

@@ -49,8 +49,9 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FBF7F0">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15120E">
 
-    <link rel="icon" type="image/png" sizes="144x144" href="{{ asset('IMG_144.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('IMG_144.png') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 
     {{--
         Theme before first paint (no flash). Allowed by the CSP through the

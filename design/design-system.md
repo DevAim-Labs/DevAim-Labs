@@ -175,6 +175,21 @@ Elk component gebruikt alleen de tokens hierboven; minimaal 44×44px aanraakvlak
 
 ## Logo: kleuradvies
 
+**Gekozen logo (29 september 2026):** een "D" met een mintgroene buitenvorm en een bijna-zwarte binnenvorm.
+
+| Onderdeel | Kleur | Bestand |
+| --- | --- | --- |
+| Buitenvorm (mint) | #85C7A3 | `public/brand/devaim-mark.svg` |
+| Binnenvorm (inkt) | #1C1D17 | idem |
+| Eenkleurig (binnenvorm als uitsparing, volgt de tekstkleur) | `currentColor` | `public/brand/devaim-mark-mono.svg` |
+| Favicon | mark op transparant; Apple-icoon op crème #FBF7F0 | `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png` |
+| Logo voor structured data | 465×512 PNG | `public/brand/devaim-mark-512.png` |
+| Origineel (bron) | 313×377 PNG | `design/logo/devaim-logo-source.png` |
+
+In het donkere thema valt de binnenvorm weg tegen de achtergrond, zodat de mark leest als een mintgroene D-omlijning. Mint op crème heeft weinig contrast (1,8:1); het logo leunt in het lichte thema op de donkere binnenvorm. Logo's zijn uitgezonderd van de WCAG-contrasteis, maar gebruik de mark in licht niet kleiner dan 24px hoog.
+
+Het advies hieronder was de afweging vooraf.
+
 Advies: maak het beeldmerk **bosgroen** en het woordmerk **ink**, met een lichte variant voor donkere achtergronden. Zo sluit het logo aan op de merkkleur van de site en blijft terracotta gereserveerd voor knoppen.
 
 | Optie | Licht thema | Donker thema | Contrast op #FBF7F0 / #15120E | Oordeel |

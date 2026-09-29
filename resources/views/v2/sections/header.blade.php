@@ -10,7 +10,7 @@
 <header class="site-header" data-header>
     <div class="wrap site-header__inner">
         <a href="{{ $brandHref }}" class="brand" aria-label="{{ $homeLabel }}">
-            <span class="brand__mark" aria-hidden="true">D</span>
+            @include('v2.partials.brand-mark')
             <span class="brand__word">DevAim <span>Labs</span></span>
         </a>
 
