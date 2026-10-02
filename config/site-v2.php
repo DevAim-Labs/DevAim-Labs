@@ -218,7 +218,7 @@ return [
                     'tagline' => 'Website + leads & CMS: zelf teksten beheren en meer aanvragen binnenhalen.',
                     // TODO: fill in real "vanaf" price
                     'price_from' => null,
-                    'features' => ['Alles uit Starter', 'Zelf content beheren (CMS)', 'Reserverings- of offerteformulieren', 'Koppeling met e-mail of agenda', 'Statistieken en conversiemeting'],
+                    'features' => ['Alles uit Starter', 'Zelf content beheren (CMS)', 'Reserverings- of offerteformulieren', 'Koppeling met e-mail of agenda'],
                     'cta' => 'Kies Groei',
                     'project_type' => 'website',
                     'highlighted' => true,
@@ -592,7 +592,7 @@ return [
                     'tagline' => 'Website + leads & CMS: edit your own content and bring in more enquiries.',
                     // TODO: fill in real "vanaf" price
                     'price_from' => null,
-                    'features' => ['Everything in Starter', 'Manage your own content (CMS)', 'Booking or quote forms', 'Email or calendar integration', 'Analytics and conversion tracking'],
+                    'features' => ['Everything in Starter', 'Manage your own content (CMS)', 'Booking or quote forms', 'Email or calendar integration'],
                     'cta' => 'Choose Growth',
                     'project_type' => 'website',
                     'highlighted' => true,
