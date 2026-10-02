@@ -42,5 +42,9 @@
             <x-v2::icon name="shield-check" class="size-5" />
             {{ $p['note'] }}
         </p>
+        <p class="pricing-note" data-reveal style="margin-top: 10px;">
+            <x-v2::icon name="shield-check" class="size-5" />
+            {{ $p['note2'] }}
+        </p>
     </div>
 </section>

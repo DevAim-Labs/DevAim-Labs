@@ -188,7 +188,7 @@ return [
             ],
             'direct' => 'Direct contact',
             'stack_label' => 'Waar ik mee werk',
-            'stack' => ['Laravel', 'PHP', 'Vue', 'TypeScript', 'Astro', 'Tailwind CSS', 'Stripe', 'Mollie', 'REST API\'s'],
+            'stack' => ['Laravel', 'PHP', 'Vue', 'TypeScript', 'Astro', 'Tailwind CSS', 'Stripe', 'Mollie', 'REST API\'s', 'React'],
         ],
 
         'pricing' => [
@@ -196,6 +196,7 @@ return [
             'title' => 'Duidelijke pakketten',
             'intro' => 'Elk project is anders, maar u weet altijd vooraf waar u aan toe bent.',
             'note' => 'Vaste prijs vooraf, geen verrassingen.',
+            'note2' => 'Onderhoud & Doorontwikkeling maandelijks opzegbaar',
             'from' => 'vanaf',
             'on_request' => 'Prijs op aanvraag',
             'highlight' => 'Aanbevolen',
@@ -570,6 +571,7 @@ return [
             'title' => 'Clear packages',
             'intro' => 'Every project is different, but you always know where you stand up front.',
             'note' => 'Fixed price up front, no surprises.',
+            'note2' => 'Maintenance and ongoing development monthly cancelable ',
             'from' => 'from',
             'on_request' => 'Price on request',
             'highlight' => 'Recommended',
