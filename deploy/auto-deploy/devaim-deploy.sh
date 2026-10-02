@@ -45,6 +45,24 @@ OLD="$(as_owner git rev-parse HEAD)"
 NEW="$(as_owner git rev-parse "origin/$BRANCH")"
 [ "$OLD" = "$NEW" ] && exit 0
 
+# A commit that already failed is not retried every 2 minutes (each retry
+# would briefly put unbuilt code live); the next push gets a fresh attempt.
+FAILED_MARK=/var/tmp/devaim-deploy-failed
+if [ "$(cat "$FAILED_MARK" 2>/dev/null)" = "$NEW" ]; then
+    exit 0
+fi
+
+# Anything root created in the project (a manual `git pull`, `npm` or
+# `artisan` as root) blocks the build later. Stop before touching the site.
+NOT_OWNED="$(find .git node_modules public/build storage bootstrap/cache \
+    ! -user "$OWNER" -print -quit 2>/dev/null || true)"
+if [ -n "$NOT_OWNED" ]; then
+    log "NOT deploying ${NEW:0:7}: $NOT_OWNED is not owned by $OWNER."
+    log "Fix with: chown -R $OWNER:$OWNER $APP"
+    echo "$NEW" > "$FAILED_MARK"
+    exit 1
+fi
+
 log "deploying ${OLD:0:7} -> ${NEW:0:7}"
 CHANGED="$(as_owner git diff --name-only "$OLD" "$NEW")"
 changed() { grep -qE "$1" <<<"$CHANGED"; }
@@ -65,7 +83,8 @@ build() {
 }
 
 rollback() {
-    log "FAILED on ${NEW:0:7}; rolling back to ${OLD:0:7}"
+    log "FAILED on ${NEW:0:7}; rolling back to ${OLD:0:7} (not retried until the next push)"
+    echo "$NEW" > "$FAILED_MARK"
     as_owner git reset --hard --quiet "$OLD"
     as_owner npm run build || true
     as_owner php artisan optimize || true

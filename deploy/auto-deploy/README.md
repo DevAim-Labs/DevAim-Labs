@@ -34,6 +34,7 @@ Controleer eerst deze twee dingen:
 | Timer actief? | `systemctl list-timers devaim-deploy.timer` |
 | Nu direct deployen | `sudo systemctl start devaim-deploy.service` |
 | Log bekijken | `journalctl -u devaim-deploy.service -n 50 --no-pager` |
+| Mislukte commit opnieuw proberen (na een reparatie) | `sudo rm -f /var/tmp/devaim-deploy-failed && sudo systemctl start devaim-deploy.service` |
 | Tijdelijk uitzetten | `sudo systemctl stop devaim-deploy.timer` |
 | Weer aanzetten | `sudo systemctl start devaim-deploy.timer` |
 
@@ -47,6 +48,8 @@ sudo install -m 755 /var/www/devaimlabs/deploy/auto-deploy/devaim-deploy.sh /usr
 
 ## Goed om te weten
 
+- **Werk niet als root in de projectmap.** Het script draait alles als de eigenaar van de map (`www-data`). Een handmatige `git pull`, `npm` of `artisan` als root maakt bestanden die `www-data` niet mag aanpassen. Dan stopt de deploy met de melding "NOT deploying … is not owned by www-data". Herstellen met `sudo chown -R www-data:www-data /var/www/devaimlabs`. Moet u toch iets met de hand doen, gebruik dan `sudo -u www-data …`.
+- **Een mislukte commit wordt niet elke 2 minuten opnieuw geprobeerd.** Het script zet de vorige versie terug en wacht op de volgende push. Na een reparatie kunt u het met de hand opnieuw proberen (zie de tabel hierboven).
 - **Wachttijd:** tussen een push naar `main` en de site live zit maximaal ongeveer 2 minuten plus de buildtijd.
 - **Mismatch tijdens de build:** heel even kunnen nieuwe views de oude CSS gebruiken, tot `npm run build` klaar is. Dat duurt meestal een paar seconden.
 - **Wijzig geen bestanden direct op de server.** Dan weigert `--ff-only` de deploy. Dat ziet u in het log. Zet de wijzigingen terug met `git -C /var/www/devaimlabs status` en `git checkout -- <bestand>`.
