@@ -16,13 +16,13 @@
         <x-v2::field form="contact-form" name="name" :label="$f['name']" autocomplete="name" required />
         <x-v2::field form="contact-form" name="email" type="email" :label="$f['email']"
                      inputmode="email" autocomplete="email" required />
-        <x-v2::field form="contact-form" name="project_type" as="select" :label="$f['project_type']"
-                     :options="$projectTypes" :empty-option="$f['project_type_placeholder']"
-                     :optional="$f['optional']" :value="$projectType ?? null" />
-        <x-v2::field form="contact-form" name="budget" as="select" :label="$f['budget']"
-                     :options="$c['budgets']" :empty-option="$f['budget_placeholder']"
-                     :optional="$f['optional']" />
     </div>
+    <x-v2::field form="contact-form" name="project_type" as="select" :label="$f['project_type']"
+                 :options="$projectTypes" :empty-option="$f['project_type_placeholder']"
+                 :optional="$f['optional']" :value="$projectType ?? null" />
+    {{-- <x-v2::field form="contact-form" name="budget" as="select" :label="$f['budget']"
+                 :options="$c['budgets']" :empty-option="$f['budget_placeholder']"
+                 :optional="$f['optional']" /> --}}
     <x-v2::field form="contact-form" name="message" as="textarea" :label="$f['message']"
                  :hint="$f['message_hint']" required />
     <div class="form-actions form-actions--split">
