@@ -320,8 +320,8 @@ return [
 
         'forms' => [
             'sending' => 'Bezig met versturen…',
-            'success_contact' => 'Bedankt! Uw bericht is verstuurd. Ik reageer binnen 1 werkdag.',
-            'success_check' => 'Bedankt! Uw aanvraag is binnen. U ontvangt het rapport binnen 2 werkdagen.',
+            'success_contact' => 'Bedankt! Uw bericht is verstuurd.',
+            'success_check' => 'Bedankt! Uw aanvraag is binnen. U ontvangt het rapport zo snel mogelijk!',
             'error' => 'Er ging iets mis. Controleer de gemarkeerde velden.',
             'error_generic' => 'Verzenden is mislukt. Probeer het later opnieuw of mail rechtstreeks.',
             'error_expired' => 'Uw sessie is verlopen. Ververs de pagina en probeer het opnieuw.',
@@ -691,8 +691,8 @@ return [
 
         'forms' => [
             'sending' => 'Sending…',
-            'success_contact' => 'Thank you! Your message has been sent. I\'ll reply within 1 working day.',
-            'success_check' => 'Thank you! Your request is in. You\'ll receive the report within 2 working days.',
+            'success_contact' => 'Thank you! Your message has been sent.',
+            'success_check' => 'Thank you! Your request is in. You\'ll receive the report as soon as possible',
             'error' => 'Something went wrong. Please check the highlighted fields.',
             'error_generic' => 'Sending failed. Please try again later or email me directly.',
             'error_expired' => 'Your session has expired. Please refresh the page and try again.',
